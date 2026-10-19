@@ -2,8 +2,13 @@
 import { useState } from "react";
 import { salaryNeeded } from "../engine.ts";
 import {
+  addRealOffers,
   autoFill,
   FA_ROUNDS,
+  isOpening,
+  myRealArrivals,
+  myRealSignings,
+  realDeal,
   finishMarket,
   myExpiring,
   myTeam,
@@ -42,7 +47,8 @@ export function Offseason({ career, onChange, onOpen }: { career: Career; onChan
           </li>
         ))}
       </ol>
-      {o.stage === "review" && <Review career={career} onNext={() => onChange(toResign(career))} />}
+      {o.stage === "review" &&
+        (isOpening(career) ? <OpeningReview career={career} onNext={() => onChange(toResign(career))} /> : <Review career={career} onNext={() => onChange(toResign(career))} />)}
       {o.stage === "resign" && <Resign career={career} onChange={onChange} />}
       {o.stage === "market" && (
         <section className="panel stack">
@@ -53,6 +59,7 @@ export function Offseason({ career, onChange, onOpen }: { career: Career; onChan
             라운드마다 모든 팀이 FA에게 제안하고, 선수는 연봉·팀 명성·주전 약속·같은 지역을 보고 고름. 이적료 영입과 트레이드는 바로 결정됨. 마지막 라운드엔 선수들이 낮은 조건도
             받음.
           </p>
+          {isOpening(career) && myRealSignings(career).length > 0 && <RealOffers career={career} onChange={onChange} />}
           <div className="row" style={{ flexWrap: "wrap" }}>
             <button className="btn" onClick={() => onOpen("market")}>
               시장에서 제안하기
@@ -210,6 +217,7 @@ function ResignRow({ career, id, need, err, onResult }: { career: Career; id: st
         <span className="faint num" style={{ fontSize: 13 }}>
           지금 {fmt1(p.contract?.salary ?? 0)}C · 필요 {fmt1(need)}C
         </span>
+        {realDeal(career, id) && <span className="chip">실제 2026: {realDeal(career, id)!.label}</span>}
       </div>
       <div className="form-row">
         <label className="field">
@@ -295,5 +303,102 @@ function Register({ career, onChange, onOpen }: { career: Career; onChange: (c: 
       </div>
       <Log lines={career.offseason!.log} />
     </section>
+  );
+}
+
+// 첫 스토브리그 결산: 실제 2025 결과, 계약이 끝난 우리 선수와 실제 행선지, 실제 2026에 우리 팀으로 온 선수
+function OpeningReview({ career, onNext }: { career: Career; onNext: () => void }) {
+  const w = career.world;
+  const o = career.offseason!;
+  const leaving = myExpiring(career);
+  const coming = myRealArrivals(career);
+  const t = myTeam(career);
+  return (
+    <>
+      <div className="grid-2">
+        <section className="panel stack">
+          <h2>
+            계약이 끝난 선수 <span className="label">{leaving.length}명</span>
+          </h2>
+          <p className="muted" style={{ margin: 0, fontSize: 14 }}>
+            2025 시즌으로 계약이 끝남. 다음 단계에서 재계약하지 않으면 FA가 되어 실제 2026 팀으로 감.
+          </p>
+          {leaving.length === 0 && <div className="empty">없음</div>}
+          {leaving.map((id) => {
+            const p = w.players[id];
+            const d = realDeal(career, id);
+            return (
+              <div className="row" key={id} style={{ flexWrap: "wrap" }}>
+                <span className="pl-pos">{POS_KO[p.position]}</span>
+                <b>{p.name}</b>
+                <span className="num">{ovr(p)}</span>
+                <span className="faint">{p.age}세</span>
+                <span className="chip">{d ? `실제 2026: ${d.label}` : "실제 2026: 팀 없음"}</span>
+              </div>
+            );
+          })}
+        </section>
+        <section className="panel stack">
+          <h2>
+            실제 2026에 온 선수 <span className="label">{coming.length}명</span>
+          </h2>
+          <p className="muted" style={{ margin: 0, fontSize: 14 }}>
+            실제로 우리 팀과 계약한 FA. 시장에서 제안하면 거의 받아들이고, 안 데려오면 다른 팀은 건드리지 않음 (다른 팀 합의 선수도 큰 조건이면 뺏어 올 수 있음).
+          </p>
+          {coming.length === 0 && <div className="empty">없음</div>}
+          {coming.map((x) => {
+            const p = w.players[x.player];
+            return (
+              <div className="row" key={x.player} style={{ flexWrap: "wrap" }}>
+                <span className="pl-pos">{POS_KO[p.position]}</span>
+                <b>{p.name}</b>
+                <span className="num">{ovr(p)}</span>
+                <span className="faint">{p.contract ? `2025 ${p.contract.team}` : "FA"}</span>
+                <span className="chip">{x.academy ? "2군" : x.starter ? "주전" : "후보"}</span>
+              </div>
+            );
+          })}
+        </section>
+      </div>
+      <section className="panel stack">
+        <h2>
+          예산 <span className="label">2026 시즌</span>
+        </h2>
+        <div className="faint" style={{ fontSize: 14 }}>
+          연봉 상한 <b className="num">{t.cap}C</b> · 이적 예산 <b className="num">{fmt1(t.transferBudget)}C</b>. 상한은 실제 2026 로스터를 데려올 수 있을 만큼으로 정했음.
+        </div>
+        {o.retired.length > 0 && (
+          <div className="faint" style={{ fontSize: 14 }}>
+            은퇴: {o.retired.map((id) => w.players[id]?.name ?? id).join(", ")}
+          </div>
+        )}
+      </section>
+      <div className="row">
+        <button className="btn primary" onClick={onNext}>
+          재계약 단계로
+        </button>
+      </div>
+    </>
+  );
+}
+
+function RealOffers({ career, onChange }: { career: Career; onChange: (c: Career) => void }) {
+  const [err, setErr] = useState("");
+  const pending = myRealSignings(career).filter((x) => !career.offseason!.offers.some((o) => o.player === x.player));
+  if (!pending.length) return null;
+  return (
+    <div className="row" style={{ flexWrap: "wrap" }}>
+      <button
+        className="btn"
+        onClick={() => {
+          const r = addRealOffers(career);
+          onChange(r.career);
+          setErr(r.ok ? "" : r.reason);
+        }}
+      >
+        실제 2026 영입 그대로 제안 ({pending.length}명)
+      </button>
+      {err && <span className="chip bad">{err}</span>}
+    </div>
   );
 }

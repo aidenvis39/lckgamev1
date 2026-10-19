@@ -26,6 +26,7 @@ import {
   placeBid,
   playMarketRound,
   proposeTrade,
+  realDeal,
   removeOffer,
   seasonOf,
   signFreeAgent,
@@ -208,6 +209,7 @@ function PlayerSearch({ career, mode, onAct, onChange }: { career: Career; mode:
               onClick={() => setOpen(open === p.id ? null : p.id)}
               right={
                 <span className="pl-right faint num">
+                  {realDeal(career, p.id) && <span className="chip">실제 2026: {realDeal(career, p.id)!.label}</span>}
                   {mode === "fa" ? `요구 ${fmt1(salaryDemand(p))}C` : `몸값 ${fmt1(transferFee(p, w.season))}C · ~${p.contract?.endSeason}`}
                 </span>
               }

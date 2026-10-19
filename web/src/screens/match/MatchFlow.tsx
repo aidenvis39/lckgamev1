@@ -2,7 +2,7 @@
 // 세트가 끝날 때마다 진행을 저장해서, 나갔다 와도 그 세트부터 이어서 한다 (밴픽 중간은 저장 안 함)
 import { useMemo, useState } from "react";
 import { lineupOf, POSITIONS, simulateGame, type DraftResult, type Match, type Side } from "../../engine.ts";
-import { paramsFor, seriesRng, universeFor, type Career, type PlayedGame, type SeriesProgress } from "../../game/career.ts";
+import { paramsFor, seriesRng, universeFor, type ActiveCareer as Career, type PlayedGame, type SeriesProgress } from "../../game/career.ts";
 import { clock, TEAM_STYLE } from "../../game/meta.ts";
 import { TeamBadge } from "../../ui/bits.tsx";
 import { DraftBoard } from "./DraftBoard.tsx";

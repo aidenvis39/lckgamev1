@@ -1,7 +1,7 @@
 // 대회 탭: Road to MSI, MSI, LCK 포스트시즌, 월즈의 대진표·스위스 기록·최종 순위
 import { useMemo, useState } from "react";
 import { bracketDefOf, bracketView, champion, resolveSlot, RULES, swissTable, type BracketDef, type BracketView, type Match, type PhaseId, type Slot } from "../engine.ts";
-import { type Career } from "../game/career.ts";
+import { type ActiveCareer as Career } from "../game/career.ts";
 import { clock, EVENT_NAME, placeName, TEAM_STYLE } from "../game/meta.ts";
 import { LeagueTag, TeamBadge } from "../ui/bits.tsx";
 

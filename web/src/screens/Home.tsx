@@ -13,6 +13,8 @@ import {
   startOffseason,
   today,
   universeFor,
+  hasYear,
+  type ActiveCareer,
   type Career,
 } from "../game/career.ts";
 import { EVENT_NAME, placeName, TEAM_STYLE } from "../game/meta.ts";
@@ -33,9 +35,15 @@ interface Props {
 }
 
 const leagueOf = (c: Career, t: string) => universeFor(c).teams.get(t)!.league;
-export const placeOf = (c: Career, event: string) => c.year.finals[event]?.find(([, t]) => t === c.teamId)?.[0] ?? null;
+export const placeOf = (c: ActiveCareer, event: string) => c.year.finals[event]?.find(([, t]) => t === c.teamId)?.[0] ?? null;
 
-export function Home({ career, onPlay, onAutoDay, onAdvance, onChoose, onChange, onOpen }: Props) {
+export function Home(props: Props) {
+  const { career, onChange, onOpen } = props;
+  if (!hasYear(career)) return <OpeningHome career={career} onChange={onChange} onOpen={onOpen} />;
+  return <SeasonHome {...props} career={career} />;
+}
+
+function SeasonHome({ career, onPlay, onAutoDay, onAdvance, onChoose, onChange, onOpen }: Props & { career: ActiveCareer }) {
   const me = career.teamId;
   const y = career.year;
   const lck = useMemo(() => leagueStandings(y, "LCK"), [y]);
@@ -194,7 +202,7 @@ export function Home({ career, onPlay, onAutoDay, onAdvance, onChoose, onChange,
   );
 }
 
-function restReason(c: Career, inMsi: boolean, inWorlds: boolean): string {
+function restReason(c: ActiveCareer, inMsi: boolean, inWorlds: boolean): string {
   const p = c.year.phase;
   if (p === "RTM") return "Road to MSI에 못 나감 (1~2라운드 6위 밖). 다른 팀 결과를 보고 넘어가면 됨.";
   if (p === "MSI_PI" || p === "MSI_BR")
@@ -205,7 +213,7 @@ function restReason(c: Career, inMsi: boolean, inWorlds: boolean): string {
   return "5팀 그룹이라 하루씩 쉬는 날이 있음.";
 }
 
-function MiniStandings({ career }: { career: Career }) {
+function MiniStandings({ career }: { career: ActiveCareer }) {
   const y = career.year;
   const g = useMemo(() => lckGroupStandings(y), [y]);
   const spring = useMemo(() => lckSpringStandings(y), [y]);
@@ -260,7 +268,7 @@ function MiniStandings({ career }: { career: Career }) {
   );
 }
 
-function ResultRow({ career, match: m }: { career: Career; match: Match }) {
+function ResultRow({ career, match: m }: { career: ActiveCareer; match: Match }) {
   const me = career.teamId;
   const o = career.year.results[m.id];
   const opp = m.home === me ? m.away : m.home;
@@ -290,7 +298,7 @@ const COMPARE: Array<[keyof TeamProfile, string]> = [
   ["macro", "운영"],
 ];
 
-function NextMatch({ career, match, onPlay, onAuto }: { career: Career; match: Match; onPlay: (id: string) => void; onAuto: () => void }) {
+function NextMatch({ career, match, onPlay, onAuto }: { career: ActiveCareer; match: Match; onPlay: (id: string) => void; onAuto: () => void }) {
   const u = useMemo(() => universeFor(career), [career]);
   const lck = leagueStandings(career.year, "LCK");
   const [home, away] = [teamProfile(u, match.home), teamProfile(u, match.away)];
@@ -373,7 +381,7 @@ function NextMatch({ career, match, onPlay, onAuto }: { career: Career; match: M
 
 const myPayroll = (c: Career) => payroll(c.world.players, mainRoster(myTeam(c)));
 
-function SeasonSummary({ career, onStove, onOpen }: { career: Career; onStove: () => void; onOpen: (tab: Tab) => void }) {
+function SeasonSummary({ career, onStove, onOpen }: { career: ActiveCareer; onStove: () => void; onOpen: (tab: Tab) => void }) {
   const y = career.year;
   const events = ["LCK", "MSI", "WORLDS"] as const;
   const eventKey = { LCK: "LCK", MSI: "MSI", WORLDS: "WORLDS" };
@@ -416,5 +424,62 @@ function SeasonSummary({ career, onStove, onOpen }: { career: Career; onStove: (
         스토브리그: 시즌 결산·구단주 평가 → 재계약 → FA 시장(이적료 영입·트레이드) → 등록 → {seasonOf(career) + 1} 시즌. 선수는 나이를 먹고, 은퇴하고, 2군에 신인이 들어옴.
       </p>
     </section>
+  );
+}
+
+// 첫 스토브리그 (2025 시즌이 끝난 뒤, 2026 대진 전)
+function OpeningHome({ career, onChange, onOpen }: { career: Career; onChange: (c: Career) => void; onOpen: (tab: Tab) => void }) {
+  const me = career.teamId;
+  const t = myTeam(career);
+  const h = career.world.history[0];
+  const label: Record<string, string> = { LCK: "LCK", MSI: "MSI", WORLDS: "월즈" };
+  return (
+    <div className="page">
+      <div className="page-head">
+        <div className="stack" style={{ gap: 6 }}>
+          <span className="label">{dayLabel(career)}</span>
+          <h1>{TEAM_STYLE[me].name}</h1>
+        </div>
+        <div className="row" style={{ flexWrap: "wrap" }}>
+          <span className="chip gold">2025 정규 세트 승률 {Math.round(t.prestige * 100)}%</span>
+          <span className="chip">
+            연봉 {myPayroll(career)} / {t.cap}C
+          </span>
+          <span className="chip">이적 예산 {t.transferBudget}C</span>
+        </div>
+      </div>
+      <Offseason career={career} onChange={onChange} onOpen={onOpen} />
+      <div className="grid-2">
+        <section className="panel">
+          <h2>
+            2025 시즌 <span className="label">실제 결과</span>
+          </h2>
+          <div className="stack" style={{ gap: 8 }}>
+            {(["LCK", "MSI", "WORLDS"] as const).map((ev) => (
+              <div className="row" key={ev}>
+                <span className="faint" style={{ width: 44, fontSize: 13 }}>
+                  {label[ev]}
+                </span>
+                <TeamBadge team={h.champions[ev]} size={22} />
+                <span>{TEAM_STYLE[h.champions[ev]]?.name ?? h.champions[ev]} 우승</span>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="panel">
+          <h2>
+            구단주 목표 <span className="label">2026 시즌</span>
+          </h2>
+          <ul className="goals">
+            {career.goals.map((g) => (
+              <li key={g.text}>{g.text}</li>
+            ))}
+          </ul>
+          <p className="faint" style={{ fontSize: 12, margin: "8px 0 0" }}>
+            목표는 2025 성적으로 정한 구단 명성 순위에 따라 다름. 시즌이 끝나면 평가 등급(S~D)을 매김.
+          </p>
+        </section>
+      </div>
+    </div>
   );
 }

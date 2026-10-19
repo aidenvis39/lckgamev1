@@ -91,7 +91,7 @@ export function newWorld(seed: number) {
     champions: champions as unknown as Champion[],
     params,
     world: worldTargets as unknown as WorldTargets,
-    start: start2025 as unknown as Start2025,
+    start: startData,
     seed,
     cp: careerParams,
   });
@@ -99,15 +99,18 @@ export function newWorld(seed: number) {
 export { mainRoster, toUniverse, validateWorld, worldParams, MAX_MAIN_ROSTER, OPENING_SEASON, FIRST_SEASON } from "../../engine/src/career/world.ts";
 export { CHECKPOINTS, crossedCheckpoints, developAt } from "../../engine/src/career/develop.ts";
 export { aiOpening, newYearFor } from "../../engine/src/career/play.ts";
+export { beginOpening } from "../../engine/src/career/opening.ts";
+export { upgradeWorld } from "../../engine/src/career/migrate.ts";
+export const startData = start2025 as unknown as Start2025;
 export { beginOffseason, closeSeason, finishOffseason, positionTop } from "../../engine/src/career/rollover.ts";
 export { makeRookie, seedPool } from "../../engine/src/career/rookies.ts";
 export { goalsFor } from "../../engine/src/career/owner.ts";
 export type { Goal } from "../../engine/src/career/owner.ts";
 export { recordSeries, cloneStats } from "../../engine/src/career/stats.ts";
 export { ABILITIES, emptyStats } from "../../engine/src/career/types.ts";
-export type { GrowthReport, PlayerState, SeasonStats, TeamState, WorldState, Ability } from "../../engine/src/career/types.ts";
+export type { GrowthReport, PlayerState, PreAgreement, SeasonStats, Start2025, TeamState, WorldState, Ability } from "../../engine/src/career/types.ts";
 export { headroom, overall, payroll, playerValue, potentialStars, salaryDemand, transferFee } from "../../engine/src/career/value.ts";
-export { ACCEPT, capRoom, offerUtility } from "../../engine/src/career/market.ts";
+export { ACCEPT, capRoom, isPreAgreed, offerUtility, preOffers } from "../../engine/src/career/market.ts";
 export type { Bid, Offer } from "../../engine/src/career/market.ts";
 export {
   acceptance,

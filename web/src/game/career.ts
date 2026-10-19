@@ -7,6 +7,7 @@ import {
   applyTrade,
   baseUniverse,
   beginOffseason,
+  beginOpening,
   careerParams,
   bidFor,
   capRoom,
@@ -37,6 +38,7 @@ import {
   phaseName,
   positionTop,
   POSITIONS,
+  preOffers,
   recordResult,
   recordSeries,
   registrationIssues,
@@ -45,8 +47,10 @@ import {
   setStarter,
   signNow,
   simulateMatch,
+  startData,
   todayMatches,
   toUniverse,
+  upgradeWorld,
   worldParams,
   type Ability,
   type Bid,
@@ -117,11 +121,11 @@ export interface Offseason {
 export const FA_ROUNDS = 4;
 
 export interface Career {
-  version: 3;
+  version: 4;
   teamId: string;
   seed: number;
   world: WorldState;
-  year: YearState;
+  year: YearState | null; // 첫 스토브리그(2025 → 2026) 동안만 null
   stats: SeasonStats; // 이번 시즌 출전 기록 (성장 출전 비율·챔피언 풀)
   records: Record<string, SeriesRecord>;
   progress: SeriesProgress | null;
@@ -131,25 +135,58 @@ export interface Career {
   offseason: Offseason | null;
 }
 
+// 시즌 중이거나 시즌이 끝난 커리어 (그해 대진이 있음). 첫 스토브리그엔 year가 없다
+export type ActiveCareer = Career & { year: YearState };
+export const hasYear = (c: Career): c is ActiveCareer => c.year !== null;
+
 const DETAILED = new Set(["LCK", "RTM", "MSI", "LCKPO", "WORLDS"]);
 export const isOverseasLeague = (m: Match) => OVERSEAS.includes(m.event);
 
+// 새 커리어는 2025 시즌이 끝난 스토브리그에서 시작한다 (실제 은퇴 반영, 계약 끝난 선수 목록)
 export function newCareer(teamId: string, seed = Math.floor(Math.random() * 1e9)): Career {
-  const world = aiOpening(newWorld(seed), baseUniverse);
+  const start = newWorld(seed);
+  const mine = [...mainRoster(start.teams[teamId]), ...start.teams[teamId].academy];
+  const { world, expiring } = beginOpening(start);
   return {
-    version: 3,
+    version: 4,
     teamId,
     seed,
     world,
-    year: newYearFor(world, teamId),
+    year: null,
     stats: emptyStats(),
     records: {},
     progress: null,
     goals: goalsFor(world, teamId),
     growth: [],
     growthSeen: 0,
-    offseason: null,
+    offseason: { stage: "review", expiring, round: 0, offers: [], log: [], retired: mine.filter((id) => world.players[id].retired) },
   };
+}
+
+// 첫 스토브리그인가 (2025 → 2026, 실제 2026 이적이 사전 합의된 상태)
+export const isOpening = (c: Career) => Boolean(c.world.opening);
+// 실제 2026 계약 안내: "HLE 주전", "T1 2군"
+export function realDeal(c: Career, id: string): { team: string; label: string } | null {
+  const a = c.world.opening?.pre[id];
+  return a ? { team: a.team, label: `${a.team} ${a.academy ? "2군" : a.starter ? "주전" : "후보"}` } : null;
+}
+// 실제 2026에 우리 팀으로 온 선수: 전부(안내용)와, 지금 FA라 제안할 수 있는 선수
+export const myRealArrivals = (c: Career) =>
+  Object.entries(c.world.opening?.pre ?? {})
+    .filter(([id, a]) => a.team === c.teamId && !c.world.players[id].retired)
+    .map(([id, a]) => ({ player: id, ...a }));
+export const myRealSignings = (c: Career) => preOffers(c.world, c.teamId);
+
+// 실제 2026 영입 그대로 제안 (요구 연봉, 실제 역할·기간)
+export function addRealOffers(c: Career): Outcome {
+  let next = c;
+  const failed: string[] = [];
+  for (const o of myRealSignings(c)) {
+    const r = addOffer(next, o);
+    if (r.ok) next = r.career;
+    else failed.push(`${name(c, o.player)}: ${r.reason}`);
+  }
+  return { career: next, ok: failed.length === 0, reason: failed.join(", ") };
 }
 
 // 화면 여러 곳에서 같은 세계로 Universe를 만들어서 마지막 것을 기억해 둔다
@@ -164,25 +201,25 @@ export const paramsFor = (c: Career): Params => built(c).p; // 세계의 팀워�
 
 export const seasonOf = (c: Career) => c.world.season;
 export const isMine = (c: Career, m: Match) => m.home === c.teamId || m.away === c.teamId;
-export const today = (c: Career) => todayMatches(c.year);
-export const myMatchToday = (c: Career) => today(c).find((m) => isMine(c, m) && !c.year.results[m.id]) ?? null;
-export const myPendingChoice = (c: Career) => pendingChoice(c.year);
-export const seasonOver = (c: Career) => c.year.phase === "DONE";
+export const today = (c: Career) => (c.year ? todayMatches(c.year) : []);
+export const myMatchToday = (c: Career) => today(c).find((m) => isMine(c, m) && !c.year!.results[m.id]) ?? null;
+export const myPendingChoice = (c: Career) => (c.year ? pendingChoice(c.year) : null);
+export const seasonOver = (c: Career) => c.year?.phase === "DONE";
 // 경기 난수는 (그 해 시드, 경기 id)로 고정. 해마다 경기 id가 같아도 시드가 달라 다른 경기가 된다
-export const seriesRng = (c: Career, m: Match, salt = "") => createRng(hashSeed(c.year.seed, m.id, salt));
+export const seriesRng = (c: Career, m: Match, salt = "") => createRng(hashSeed(c.year!.seed, m.id, salt));
 export const myTeam = (c: Career) => c.world.teams[c.teamId];
 export const myPlayers = (c: Career) => [...mainRoster(myTeam(c)), ...myTeam(c).academy];
 
 // "LCK 1~2라운드 3일차", "MSI 브래킷 2일차" 같은 오늘 이름
 export function dayLabel(c: Career): string {
   const y = c.year;
-  if (c.offseason) return `${seasonOf(c)} 스토브리그`;
+  if (c.offseason || !y) return `${seasonOf(c)} 스토브리그`;
   if (y.phase === "DONE") return `${seasonOf(c)} 시즌 종료`;
   const start = y.phaseStart[y.phase] ?? y.day;
   return `${phaseName(y.phase)} ${y.day - start + 1}일차`;
 }
 
-export const matchById = (c: Career, id: string) => c.year.matches.find((m) => m.id === id) ?? null;
+export const matchById = (c: Career, id: string) => c.year?.matches.find((m) => m.id === id) ?? null;
 
 function toRecord(games: PlayedGame[], auto = false): SeriesRecord {
   return {
@@ -232,7 +269,7 @@ export function recordMine(c: Career, matchId: string, games: PlayedGame[]): Car
   return {
     ...c,
     stats,
-    year: recordResult(c.year, m.id, { winner, score }),
+    year: recordResult(c.year!, m.id, { winner, score }),
     records: { ...c.records, [m.id]: toRecord(games) },
     progress: null,
   };
@@ -240,6 +277,7 @@ export function recordMine(c: Career, matchId: string, games: PlayedGame[]): Car
 
 // 오늘 남은 경기를 모두 시뮬하고 다음 날로. 내 경기가 남아 있으면 AI가 대신 치른다. 성장 시점을 지나면 성장
 export function finishDay(c: Career): Career {
+  if (!c.year) return c;
   const u = universeFor(c);
   const p = paramsFor(c);
   const stats = cloneStats(c.stats);
@@ -261,7 +299,7 @@ export function finishDay(c: Career): Career {
 // 내 경기·내 지목 차례·내 팀 성장이 올 때까지 (또는 시즌 끝까지) 하루씩 넘긴다
 export function advanceToMine(c: Career, limit = 200): Career {
   let next = c;
-  for (let i = 0; i < limit && !seasonOver(next); i++) {
+  for (let i = 0; i < limit && next.year && !seasonOver(next); i++) {
     next = finishDay(next);
     if (myMatchToday(next) || myPendingChoice(next) || next.growth.length > c.growth.length) break;
   }
@@ -270,7 +308,7 @@ export function advanceToMine(c: Career, limit = 200): Career {
 
 // 플레이오프에서 내 팀이 상대를 지목
 export function pickOpponent(c: Career, id: string, team: string): Career {
-  return { ...c, year: choose(c.year, id, team) };
+  return c.year ? { ...c, year: choose(c.year, id, team) } : c;
 }
 
 export function saveProgress(c: Career, progress: SeriesProgress | null): Career {
@@ -297,7 +335,7 @@ export function marketWindow(c: Career): Window {
   if (o?.stage === "register") return { fa: "now", transfers: true, label: "스토브리그 등록 기간" };
   if (o) return { fa: null, transfers: false, label: "재계약을 마치고 시장을 열면 영입할 수 있음" };
   if (seasonOver(c)) return { fa: null, transfers: false, label: "스토브리그를 시작하면 시장이 열림" };
-  if (MIDSEASON.has(c.year.phase)) return { fa: "now", transfers: true, label: "시즌 중 이적 창 (Road to MSI~MSI)" };
+  if (c.year && MIDSEASON.has(c.year.phase)) return { fa: "now", transfers: true, label: "시즌 중 이적 창 (Road to MSI~MSI)" };
   return { fa: "now", transfers: false, label: "이적 창은 Road to MSI~MSI 기간과 스토브리그. FA는 지금도 계약 가능" };
 }
 
@@ -350,7 +388,7 @@ const offRng = (c: Career, salt: string | number) => createRng(hashSeed(c.world.
 
 // 월즈가 끝나면: 시즌 기록·구단주 평가 → 시즌 끝 성장·노쇠·은퇴·2군 신인 → 계약 끝나는 선수 목록
 export function startOffseason(c: Career): Career {
-  if (!seasonOver(c) || c.offseason) return c;
+  if (!c.year || !seasonOver(c) || c.offseason) return c;
   const closed = closeSeason(c.world, c.year, { team: c.teamId, goals: c.goals });
   const mine = myPlayers(c);
   const { world, expiring } = beginOffseason(closed, c.stats, baseUniverse.champions);
@@ -502,8 +540,10 @@ export function startNextSeason(c: Career): Outcome {
 }
 
 // ── 저장 ──────────────────────────────────────────────
-// v3 = 여러 시즌. v2(한 해) 저장은 2026 세계를 새로 만들어 감싸서 이어 한다. v1(정규시즌만)은 버린다
-const KEY = "lck-manager:career:v3";
+// v4 = 2025 스토브리그 시작. v3(2026 시작 여러 시즌) 저장은 새 값(통산 경기·실제 우승)을 채워 이어 하고,
+// v2(한 해) 저장은 AI가 실제대로 진행한 첫 스토브리그로 2026 세계를 만들어 감싸서 이어 한다. v1(정규시즌만)은 버린다
+const KEY = "lck-manager:career:v4";
+const V3_KEY = "lck-manager:career:v3";
 const V2_KEY = "lck-manager:career:v2";
 const V1_KEY = "lck-manager:career:v1";
 
@@ -527,7 +567,7 @@ export function fromV2(old: CareerV2): Career {
     }
   }
   return {
-    version: 3,
+    version: 4,
     teamId: old.teamId,
     seed: old.seed,
     world,
@@ -554,7 +594,17 @@ export function loadCareer(): { career: Career | null; notice: LoadNotice } {
     const raw = localStorage.getItem(KEY);
     if (raw) {
       const c = JSON.parse(raw) as Career;
-      if (c.version === 3) return { career: { ...c, world: { ...c.world, cp: careerParams } }, notice };
+      if (c.version === 4) return { career: { ...c, world: { ...c.world, cp: careerParams } }, notice };
+    }
+    const v3 = localStorage.getItem(V3_KEY);
+    if (v3) {
+      const c3 = JSON.parse(v3) as Omit<Career, "version"> & { version: 3 };
+      if (c3.version === 3) {
+        const c: Career = { ...c3, version: 4, world: upgradeWorld(c3.world, startData, careerParams) };
+        localStorage.setItem(KEY, JSON.stringify(c));
+        localStorage.removeItem(V3_KEY);
+        return { career: c, notice };
+      }
     }
     const old = localStorage.getItem(V2_KEY);
     if (old) {

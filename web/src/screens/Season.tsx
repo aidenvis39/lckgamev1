@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { lckGroupStandings, lckSpringStandings, LEAGUES, leagueStandings, RULES, worldsSlotsOf, type Standing } from "../engine.ts";
-import { isMine, type Career } from "../game/career.ts";
+import { isMine, type ActiveCareer as Career } from "../game/career.ts";
 import { LEAGUE_STYLE, TEAM_STYLE } from "../game/meta.ts";
 import { FormPill, TeamBadge } from "../ui/bits.tsx";
 

@@ -82,6 +82,7 @@ export function marketRound(world: WorldState, userTeam: string, userOffers: Off
 export function checkOffer(world: WorldState, o: Offer, pending: Offer[]): { ok: boolean; reason: string } {
   const p = world.players[o.player];
   if (!world.freeAgents.includes(o.player)) return { ok: false, reason: "FA가 아님" };
+  if (o.academy) return world.teams[o.team].league === "LCK" ? { ok: true, reason: "" } : { ok: false, reason: "2군은 LCK 팀만" }; // 2군 계약은 1군 인원·상한 밖
   const committed = pending.filter((x) => x.team === o.team && x.player !== o.player).reduce((s, x) => s + x.salary, 0);
   if (o.salary + committed > capRoom(world, o.team) + 0.05) return { ok: false, reason: `연봉 상한 초과 (여유 ${round1(capRoom(world, o.team) - committed)}C)` };
   if (mainRoster(world.teams[o.team]).length + pending.filter((x) => x.team === o.team && x.player !== o.player).length >= MAX_MAIN_ROSTER)

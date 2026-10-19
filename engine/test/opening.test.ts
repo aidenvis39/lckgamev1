@@ -104,3 +104,14 @@ test("사용자가 사전 합의 선수를 뺏으면: 내 팀으로 오고, 원�
 test("첫 스토브리그는 같은 시드면 같은 결과", () => {
   assert.deepEqual(aiOpening(opening(9), base), aiOpening(opening(9), base));
 });
+
+test("v3 저장 세계 올리기: 통산 경기·실제 우승을 채우고 조절값을 새로", async () => {
+  const { upgradeWorld } = await import("../src/career/migrate.ts");
+  const w = aiOpening(opening(2), base);
+  const old = { ...w, opening: undefined, players: Object.fromEntries(Object.values(w.players).map((p) => [p.id, { ...p, careerGames: undefined, careerTitles: [] }])) } as unknown as typeof w;
+  const up = upgradeWorld(old, start, loadCareerParams());
+  assert.equal(up.opening, null);
+  assert.equal(up.players.faker.careerGames, start.entries.faker.careerGames);
+  assert.ok(up.players.faker.careerTitles.includes("2025 월즈"));
+  assert.deepEqual(validateWorld(up), []);
+});

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   advanceToMine,
   finishDay,
+  hasYear,
   loadCareer,
   marketWindow,
   matchById,
@@ -70,8 +71,8 @@ export function App() {
     );
   }
 
-  const match = playing ? matchById(career, playing) : null;
-  if (match) {
+  const match = playing && hasYear(career) ? matchById(career, playing) : null;
+  if (match && hasYear(career)) {
     return (
       <MatchFlow
         career={career}
@@ -149,8 +150,8 @@ export function App() {
             onOpen={setTab}
           />
         )}
-        {tab === "league" && <Season career={career} />}
-        {tab === "events" && <Events career={career} />}
+        {tab === "league" && (hasYear(career) ? <Season career={career} /> : <NotYet title="리그" />)}
+        {tab === "events" && (hasYear(career) ? <Events career={career} /> : <NotYet title="대회" />)}
         {tab === "club" && <Club career={career} onChange={setCareer} />}
         {tab === "market" && <Market career={career} onChange={setCareer} />}
         {tab === "lab" && <Lab />}
@@ -159,6 +160,21 @@ export function App() {
       <nav className="tabbar" aria-label="메뉴">
         {nav(true)}
       </nav>
+    </div>
+  );
+}
+
+// 첫 스토브리그(2025 → 2026) 동안엔 아직 그해 대진이 없다
+function NotYet({ title }: { title: string }) {
+  return (
+    <div className="page">
+      <div className="page-head">
+        <div className="stack" style={{ gap: 6 }}>
+          <span className="label">2026 시즌 전</span>
+          <h1>{title}</h1>
+        </div>
+      </div>
+      <div className="empty panel">2026 대진은 스토브리그가 끝나고 시즌을 시작하면 정해짐. 홈에서 스토브리그를 마저 진행해 줘.</div>
     </div>
   );
 }
