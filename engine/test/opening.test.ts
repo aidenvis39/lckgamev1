@@ -91,7 +91,7 @@ test("사용자가 사전 합의 선수를 뺏으면: 내 팀으로 오고, 원�
   w = { ...w, teams: { ...w.teams, DNS: { ...w.teams.DNS, cap: 300 } } };
   const begun = beginOpening(w);
   let m = openMarket(begun.world, begun.expiring, "DNS", createRng(1));
-  const offer = { team: "DNS", player: "peyz", salary: Math.round(salaryDemand(peyz) * 1.8 * 10) / 10, years: 2, role: "starter" as const };
+  const offer = { team: "DNS", player: "peyz", salary: Math.round(salaryDemand(w, peyz) * 1.8 * 10) / 10, years: 2, role: "starter" as const };
   for (let r = 0; r < 4; r++) m = marketRound(m, "DNS", r === 0 ? [offer] : [], r === 3, createRng(r + 2)).world;
   assert.equal(m.players.peyz.contract?.team, "DNS");
   const done = finishOffseason(m, emptyStats(), base.champions, "DNS");

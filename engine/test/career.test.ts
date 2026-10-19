@@ -75,8 +75,8 @@ test("이적료 영입 규칙: 몸값 미만이면 거절, 대체 없는 주전�
   const w = fresh();
   const p = w.players[w.teams.T1.starters.mid]; // Faker
   const buyer = "DNS";
-  const fee = transferFee(p, w.season);
-  const bid = (f: number): Bid => ({ team: buyer, player: p.id, fee: f, salary: salaryDemand(p), years: 1, role: "starter" });
+  const fee = transferFee(w, p);
+  const bid = (f: number): Bid => ({ team: buyer, player: p.id, fee: f, salary: salaryDemand(w, p), years: 1, role: "starter" });
   assert.equal(sellerVerdict(w, bid(fee * 0.9)).ok, false);
   const t1 = w.teams.T1;
   const cover = [...t1.bench, ...t1.academy].some((id) => w.players[id].position === "mid");

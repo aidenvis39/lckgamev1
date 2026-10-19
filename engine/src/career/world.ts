@@ -61,6 +61,7 @@ export function initWorld(input: WorldInput): WorldState {
   const rng = createRng(hashSeed(input.seed, "world-init"));
   const offset = (lg: string) => (lg === "LCKCL" ? input.world.academyOffset : (input.params.leagueOffset[lg] ?? 0));
   const players: Record<string, PlayerState> = {};
+  const ctx = { macroWeight: input.params.macroWeight, cp, season: OPENING_SEASON };
   const pre: Record<string, PreAgreement> = {};
   const retire: string[] = [];
   const add = (p: Player, e: StartEntry) => {
@@ -80,11 +81,14 @@ export function initWorld(input: WorldInput): WorldState {
       retired: false,
       careerTitles: [...e.titles],
       careerGames: e.careerGames,
+      // 운영 기여: 진짜 값 = 데이터 추정치. 공개 추정치도 같고, 추정이 없는 선수(해외)는 '모름'(불확실성 큼)
+      macroTrue: p.intangible,
+      intangibleSe: p.intangibleKnown ? p.intangibleSe : cp.macro.newSd,
     };
     if (e.team) {
       const stays = e.team === e.dest;
       const end = e.contractEnd == null ? FIRST_SEASON + rng.int(2) : stays ? Math.max(FIRST_SEASON, e.contractEnd) : e.contractEnd;
-      base.contract = { team: e.team, endSeason: end, salary: base.academy ? 0.3 : salaryDemand(base), role: e.starter ? "starter" : "bench", generated: e.contractEnd == null };
+      base.contract = { team: e.team, endSeason: end, salary: base.academy ? 0.3 : salaryDemand(ctx, base), role: e.starter ? "starter" : "bench", generated: e.contractEnd == null };
     }
     if (e.dest && e.dest !== e.team)
       pre[p.id] = { team: e.dest, academy: e.destAcademy, starter: e.destStarter, years: Math.min(3, Math.max(1, e.destYears ?? contractYears(age))) };
@@ -92,9 +96,11 @@ export function initWorld(input: WorldInput): WorldState {
     players[p.id] = base;
   };
   for (const p of [...input.players, ...input.academy]) add(p, st.entries[p.id]);
+  // 2025에만 뛴 선수: 2026엔 실제로 1부 리그 로스터에 없었다. 무소속 한 시즌을 이미 보낸 셈으로 둬서 이번에도 못 뛰면 은퇴
   for (const x of st.extra) {
-    const { academy, dest, destAcademy, destStarter, destYears, retire: r, titles, careerGames, contractEnd, ...p } = x;
+    const { academy, dest, destAcademy, destStarter, destYears, retire: r, titles, careerGames, contractEnd, ageEstimated: _, ...p } = x;
     add({ ...p, contractEnd } as Player, { team: p.team || null, academy, starter: p.starter, contractEnd, dest, destAcademy, destStarter, destYears, retire: r, titles, careerGames });
+    if (!r) players[p.id].faSeasons = 1;
   }
 
   // 실제 2026 로스터: 세계 수준 기준선, 연봉 상한(실제 영입이 상한 안에 들게), 첫 스토브리그 목표
@@ -104,7 +110,7 @@ export function initWorld(input: WorldInput): WorldState {
     const r = st.teams[t.id];
     const main2025 = [...POSITIONS.map((pos) => r.starters[pos]), ...r.bench].filter(Boolean);
     const main2026 = [...POSITIONS.map((pos) => t.starters[pos]), ...t.bench];
-    const real = Math.round(main2026.reduce((sum, id) => sum + salaryDemand(players[id]), 0) * 10) / 10;
+    const real = Math.round(main2026.reduce((sum, id) => sum + salaryDemand(ctx, players[id]), 0) * 10) / 10;
     const cap = Math.max(CAP_FLOOR[t.league] ?? 10, Math.ceil(Math.max(payroll(players, main2025), real) * 1.1));
     const state: TeamState = {
       id: t.id,
@@ -164,7 +170,7 @@ export function starterMeans(players: Record<string, PlayerState>, teams: Record
       const ids = POSITIONS.map((pos) => t.starters[pos]).filter((id) => players[id]);
       const r = (id: string) => players[id].ratings;
       const ovr = ids.reduce((s, id) => s + (r(id).laning + r(id).teamfight + r(id).vision + r(id).survival) / 4, 0) / Math.max(1, ids.length);
-      const macro = macroWeight * ids.reduce((s, id) => s + (players[id].intangible ?? 0), 0);
+      const macro = macroWeight * ids.reduce((s, id) => s + (players[id].macroTrue ?? players[id].intangible ?? 0), 0);
       sum += ovr + 17 * macro;
     }
     out[lg] = Math.round((sum / list.length) * 10) / 10;
@@ -193,7 +199,7 @@ export function toUniverse(world: WorldState, base: Universe, stats?: SeasonStat
     const extra = stats?.picks[p.id];
     const pool = extra ? { ...p.champions } : p.champions;
     if (extra) for (const [c, n] of Object.entries(extra)) pool[c] = (pool[c] ?? 0) + n;
-    players.set(p.id, { ...p, champions: pool, team: p.contract?.team ?? "" });
+    players.set(p.id, { ...p, champions: pool, team: p.contract?.team ?? "", intangible: p.macroTrue ?? p.intangible }); // 경기엔 진짜 운영 능력
   }
   const teams = new Map<string, TeamInfo>(
     Object.values(world.teams).map((t) => [t.id, { id: t.id, name: t.name, league: t.league, starters: { ...t.starters }, bench: [...t.bench] }]),

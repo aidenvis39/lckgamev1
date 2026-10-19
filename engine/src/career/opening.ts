@@ -4,7 +4,7 @@ import type { Champion, Position } from "../types.ts";
 import { POSITIONS } from "../types.ts";
 import { fillRosters, release } from "./market.ts";
 import type { SeasonStats, TeamState, WorldState } from "./types.ts";
-import { overall } from "./value.ts";
+import { effective } from "./value.ts";
 import { FIRST_SEASON, mainRoster, MAX_MAIN_ROSTER } from "./world.ts";
 import { createRng, hashSeed } from "../rng.ts";
 
@@ -35,7 +35,7 @@ function openingLineups(world: WorldState, userTeam: string | null): WorldState 
     for (const pos of POSITIONS) {
       const real = w.opening!.realStarters[t.id]?.[pos];
       const pool = [...mainRoster(t), ...t.academy].filter((id) => w.players[id].position === pos);
-      const pick = real && pool.includes(real) ? real : pool.sort((a, b) => overall(w.players[b].ratings) - overall(w.players[a].ratings))[0];
+      const pick = real && pool.includes(real) ? real : pool.sort((a, b) => effective(w, w.players[b]) - effective(w, w.players[a]))[0];
       if (!pick || t.starters[pos] === pick) continue;
       const cur = t.starters[pos];
       const fromAcademy = t.academy.includes(pick);
@@ -52,7 +52,7 @@ function openingLineups(world: WorldState, userTeam: string | null): WorldState 
     }
     // 1군 인원이 넘치면 가치 낮은 후보를 2군(LCK) 또는 방출
     while (mainRoster(t).length > MAX_MAIN_ROSTER) {
-      const cut = [...t.bench].sort((a, b) => overall(w.players[a].ratings) - overall(w.players[b].ratings))[0];
+      const cut = [...t.bench].sort((a, b) => effective(w, w.players[a]) - effective(w, w.players[b]))[0];
       if (t.league === "LCK") {
         t = { ...t, bench: t.bench.filter((x) => x !== cut), academy: [...t.academy, cut] };
         w = { ...w, players: { ...w.players, [cut]: { ...w.players[cut], academy: true } } };

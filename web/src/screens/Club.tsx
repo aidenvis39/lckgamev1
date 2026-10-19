@@ -185,7 +185,7 @@ export function Club({ career, onChange }: { career: Career; onChange: (c: Caree
                         }
                       />
                       {open === id && (
-                        <PlayerDetail p={p} growth={g}>
+                        <PlayerDetail p={p} world={w} growth={g}>
                           {actions(p)}
                         </PlayerDetail>
                       )}

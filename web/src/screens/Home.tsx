@@ -301,7 +301,7 @@ const COMPARE: Array<[keyof TeamProfile, string]> = [
 function NextMatch({ career, match, onPlay, onAuto }: { career: ActiveCareer; match: Match; onPlay: (id: string) => void; onAuto: () => void }) {
   const u = useMemo(() => universeFor(career), [career]);
   const lck = leagueStandings(career.year, "LCK");
-  const [home, away] = [teamProfile(u, match.home), teamProfile(u, match.away)];
+  const [home, away] = [teamProfile(u, match.home, career.world), teamProfile(u, match.away, career.world)];
   const scale = (k: keyof TeamProfile, v: number) => (k === "macro" ? Math.max(4, Math.min(100, 50 + v * 90)) : Math.max(4, ((v - 40) / 59) * 100));
   const need = Math.ceil(match.bestOf / 2);
   const resumed = career.progress?.matchId === match.id ? career.progress.games.length : 0;

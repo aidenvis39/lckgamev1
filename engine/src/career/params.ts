@@ -61,6 +61,23 @@ export interface CareerParams {
   opening: {
     preBonus: number; // 첫 스토브리그: 실제 2026 팀 제안에 더하는 효용 (사전 합의)
   };
+  macro: {
+    newMean: Record<string, number>; // 새 선수(신인·유망주) 진짜 운영 능력 평균 (리그별)
+    newSd: number; // 새 선수 운영 능력 퍼짐 = 처음 추정의 불확실성
+    maxAbs: number;
+    obsSd: number; // 한 세트로 보는 운영 능력의 흔들림 (추정 갱신: 약 (obsSd/newSd)² 세트에 반쯤 드러남)
+    knownSe: number; // 불확실성이 이 아래면 '추정 있음'
+    learn: number; // 경험으로 오르는 운영 능력 (learnGames 세트까지 고르게)
+    learnGames: number;
+    price: number; // 시장 평가에 넣는 운영 기여 비율 (불확실성 할인)
+    priceCap: number; // 시장 평가에 더하는 운영 기여 상한 (실력 점수)
+  };
+  fame: {
+    weights: Record<string, number>; // 우승 가중: worlds, msi, lck, split(예전 LCK 스플릿)
+    decay: number; // 한 해 지날 때마다
+    rate: number; // 인지도 1당 요구 연봉 할증
+    cap: number; // 할증 상한
+  };
 }
 
 export const DEFAULT_CAREER_PARAMS: CareerParams = {
@@ -113,6 +130,18 @@ export const DEFAULT_CAREER_PARAMS: CareerParams = {
     faSeasons: 2,
   },
   opening: { preBonus: 0.45 },
+  macro: {
+    newMean: { LCK: -0.02, LPL: -0.05, LEC: -0.05, LCS: -0.05, LCP: -0.05, CBLOL: -0.05 },
+    newSd: 0.12,
+    maxAbs: 0.35,
+    obsSd: 1.5,
+    knownSe: 0.1,
+    learn: 0.05,
+    learnGames: 400,
+    price: 0.6,
+    priceCap: 10,
+  },
+  fame: { weights: { worlds: 1, msi: 0.6, lck: 0.5, split: 0.35 }, decay: 0.85, rate: 0.15, cap: 0.6 },
 };
 
 // 나이 표 읽기: 점 사이는 직선, 범위 밖은 끝 값

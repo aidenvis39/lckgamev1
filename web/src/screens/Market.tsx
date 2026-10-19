@@ -4,6 +4,7 @@ import {
   acceptance,
   capRoom,
   checkOffer,
+  effective,
   evaluateTrade,
   LEAGUES,
   mainRoster,
@@ -210,12 +211,12 @@ function PlayerSearch({ career, mode, onAct, onChange }: { career: Career; mode:
               right={
                 <span className="pl-right faint num">
                   {realDeal(career, p.id) && <span className="chip">실제 2026: {realDeal(career, p.id)!.label}</span>}
-                  {mode === "fa" ? `요구 ${fmt1(salaryDemand(p))}C` : `몸값 ${fmt1(transferFee(p, w.season))}C · ~${p.contract?.endSeason}`}
+                  {mode === "fa" ? `요구 ${fmt1(salaryDemand(w, p))}C` : `몸값 ${fmt1(transferFee(w, p))}C · ~${p.contract?.endSeason}`}
                 </span>
               }
             />
             {open === p.id && (
-              <PlayerDetail p={p}>
+              <PlayerDetail p={p} world={w}>
                 {mode === "fa" ? <OfferForm career={career} p={p} onAct={onAct} onChange={onChange} /> : <BidForm career={career} p={p} onAct={onAct} />}
               </PlayerDetail>
             )}
@@ -271,14 +272,14 @@ function Role({ value, onChange }: { value: "starter" | "bench"; onChange: (v: "
 // 내 주전보다 잘하면 주전 약속을 기본으로
 function defaultRole(career: Career, p: PlayerState): "starter" | "bench" {
   const cur = myTeam(career).starters[p.position];
-  return !cur || overall(p.ratings) > overall(career.world.players[cur].ratings) ? "starter" : "bench";
+  return !cur || effective(career.world, p) > effective(career.world, career.world.players[cur]) ? "starter" : "bench";
 }
 
 function OfferForm({ career, p, onAct, onChange }: { career: Career; p: PlayerState; onAct: (o: Outcome, ok: string) => void; onChange: (c: Career) => void }) {
   const w = career.world;
   const win = marketWindow(career);
   const off = career.offseason;
-  const [salary, setSalary] = useState(Math.max(0.3, salaryDemand(p)));
+  const [salary, setSalary] = useState(Math.max(0.3, salaryDemand(w, p)));
   const [years, setYears] = useState(1);
   const [role, setRole] = useState(defaultRole(career, p));
   const offer: Offer = { team: career.teamId, player: p.id, salary, years, role };
@@ -320,9 +321,9 @@ function OfferForm({ career, p, onAct, onChange }: { career: Career; p: PlayerSt
 function BidForm({ career, p, onAct }: { career: Career; p: PlayerState; onAct: (o: Outcome, ok: string) => void }) {
   const w = career.world;
   const win = marketWindow(career);
-  const base = transferFee(p, w.season);
+  const base = transferFee(w, p);
   const [fee, setFee] = useState(base);
-  const [salary, setSalary] = useState(round1(Math.max(salaryDemand(p), (p.contract?.salary ?? 0) * 1.1)));
+  const [salary, setSalary] = useState(round1(Math.max(salaryDemand(w, p), (p.contract?.salary ?? 0) * 1.1)));
   const [years, setYears] = useState(2);
   const [role, setRole] = useState(defaultRole(career, p));
   const left = Math.max(0, (p.contract?.endSeason ?? w.season) - w.season);

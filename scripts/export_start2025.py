@@ -9,6 +9,7 @@
 - 계약: 같은 구단에 남은 선수는 지금 계약 만료, 옮긴 선수는 2025에 만료(= 이번 스토브리그 FA).
   2025 기록이 없는 선수(신인·하부 리그에서 온 선수)는 처음부터 2026 팀에 있다.
 - 2025에만 뛴 선수: 2025 능력치(리그 안 백분위)로 넣는다. 2026 OE 기록이 없거나 Leaguepedia 은퇴면 은퇴.
+  생년월일이 없으면 첫 프로 시즌(2020~) + 18세로 나이를 추정한다.
 - 2020~2025 실제 우승(LCK 스플릿, MSI, 월즈)과 통산 경기 수, 팀별 2025 정규 승률, 2025 우승팀.
 
 사용법: python3 -I scripts/export_start2025.py .
@@ -146,11 +147,15 @@ def titles_2020_2025():
 
 
 def career_games():
-    n = Counter()
+    """통산 출전 세트(2020~2025)와 처음 나온 해 (생년월일이 없는 선수의 나이 추정용)"""
+    n, first = Counter(), {}
     for year in range(2020, YEAR + 1):
         df = ba.load(year, usecols=["date", "playerid", "position"])
-        n.update(df[df["position"].isin(POSITIONS)]["playerid"].dropna())
-    return n
+        ids = df[df["position"].isin(POSITIONS)]["playerid"].dropna()
+        n.update(ids)
+        for pid in ids.unique():
+            first.setdefault(pid, year)
+    return n, first
 
 
 def main():
@@ -161,7 +166,7 @@ def main():
     end = end_positions(dom)
     seen2026 = set(ba.load(YEAR + 1, usecols=["date", "playerid"])["playerid"].dropna())
     titles, champs = titles_2020_2025()
-    games = career_games()
+    games, first_year = career_games()
     part = json.loads((ROOT / "raw/leaguepedia/participation.json").read_text())
     retired_lp = {r["ID"].lower() for r in part if r.get("IsRetired") in (1, "1", True) and r.get("ID")}
 
@@ -206,9 +211,11 @@ def main():
         retire = pid not in seen2026 or e["player"].lower() in retired_lp
         report["only25-retire" if retire else "only25-fa"] += 1
         birth = r.get("birth_date") if isinstance(r.get("birth_date"), str) else None
+        # 생년월일이 없으면 첫 프로 시즌(2020 이전이면 2020) + 18세로 추정
+        age = ee.age_of(birth) if birth else min(32, YEAR + 1 - first_year.get(pid, YEAR) + 18)
         extra.append({
             "id": eid, "name": e["player"], "team": e["team"], "position": e["position"],
-            "age": ee.age_of(birth), "birthDate": birth[:10] if birth else None,
+            "age": age, "birthDate": birth[:10] if birth else None, "ageEstimated": not birth,
             "nationality": r.get("Nationality") if isinstance(r.get("Nationality"), str) else None,
             "contractEnd": YEAR, "games2026": 0, "starter": e["starter"], "ratingLeague": rating_league,
             "lowSample": bool(r["low_sample"]),

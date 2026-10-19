@@ -5,7 +5,7 @@ import type { Position } from "../types.ts";
 import { POSITIONS } from "../types.ts";
 import { makeRookie, REGION_NATION, seedPool } from "./rookies.ts";
 import type { PlayerState, TeamState, WorldState } from "./types.ts";
-import { contractYears, overall, payroll, playerValue, salaryDemand, transferFee } from "./value.ts";
+import { contractYears, effective, payroll, playerValue, salaryDemand, transferFee } from "./value.ts";
 import { mainRoster, MAX_MAIN_ROSTER } from "./world.ts";
 
 export interface Offer {
@@ -41,7 +41,7 @@ export function homeRegion(p: PlayerState, world: WorldState): string {
 // 제안 효용: 요구 대비 연봉 + 팀 명성 + 주전 약속 + 같은 지역 + 원소속 우대 (+ 첫 스토브리그 사전 합의)
 export function offerUtility(world: WorldState, p: PlayerState, o: Offer): number {
   const t = world.teams[o.team];
-  const demand = Math.max(0.3, salaryDemand(p));
+  const demand = Math.max(0.3, salaryDemand(world, p));
   return (
     (isPreAgreed(world, p.id, o.team) ? world.cp.opening.preBonus : 0) +
     Math.min(1.6, o.salary / demand) +
@@ -146,16 +146,16 @@ export function aiResign(world: WorldState, teamId: string, expiring: string[], 
   }
   const t = w.teams[teamId];
   const starterIds = new Set(POSITIONS.map((pos) => t.starters[pos]));
-  const ranked = [...expiring].sort((a, b) => playerValue(w.players[b]) - playerValue(w.players[a]));
+  const ranked = [...expiring].sort((a, b) => playerValue(w, w.players[b]) - playerValue(w, w.players[a]));
   for (const id of ranked) {
     const p = w.players[id];
     const age = p.age ?? 22;
-    const keep = (starterIds.has(id) || playerValue(p) >= 1.5 || (p.academy && age <= 21)) && age <= 30;
-    const salary = p.academy ? 0.3 : salaryDemand(p);
+    const keep = (starterIds.has(id) || playerValue(w, p) >= 1.5 || (p.academy && age <= 21)) && age <= 30;
+    const salary = p.academy ? 0.3 : salaryDemand(w, p);
     const room = capRoom(w, teamId, [id]);
     const fits = p.academy || salary <= room;
     // 잘하는 선수 일부는 시장을 보려고 재계약을 거절한다 (명성이 낮은 팀일수록)
-    const tests = !p.academy && overall(p.ratings) >= 85 && rng.next() < 0.35 * (1 - w.teams[teamId].prestige);
+    const tests = !p.academy && effective(w, p) >= 85 && rng.next() < 0.35 * (1 - w.teams[teamId].prestige);
     if (keep && fits && !tests) w = extend(w, id, salary, contractYears(age));
     else w = release(w, id);
   }
@@ -186,7 +186,7 @@ export function preOffers(world: WorldState, teamId: string): Offer[] {
   if (!world.opening) return [];
   return Object.entries(world.opening.pre)
     .filter(([id, a]) => a.team === teamId && world.freeAgents.includes(id) && !world.players[id].retired)
-    .map(([id, a]) => ({ team: teamId, player: id, salary: a.academy ? 0.3 : salaryDemand(world.players[id]), years: a.years, role: a.starter ? "starter" : "bench", academy: a.academy }));
+    .map(([id, a]) => ({ team: teamId, player: id, salary: a.academy ? 0.3 : salaryDemand(world, world.players[id]), years: a.years, role: a.starter ? "starter" : "bench", academy: a.academy }));
 }
 
 // 사전 합의한 선수 중 다른 팀과 계약했거나 은퇴한 선수가 있으면 계획이 깨진 것
@@ -214,10 +214,10 @@ export function aiOffers(world: WorldState, teamId: string, rng: Rng): Offer[] {
   const limit = offers.length + 2;
   const want = (pos: Position, role: "starter" | "bench", minOvr: number) => {
     const cands = pool
-      .filter((p) => p.position === pos && overall(p.ratings) >= minOvr && !offers.some((o) => o.player === p.id))
-      .map((p) => ({ p, demand: salaryDemand(p) }))
+      .filter((p) => p.position === pos && effective(world, p) >= minOvr && !offers.some((o) => o.player === p.id))
+      .map((p) => ({ p, demand: salaryDemand(world, p) }))
       .filter((x) => x.demand <= room + 0.05)
-      .sort((a, b) => overall(b.p.ratings) - overall(a.p.ratings) + 0.5 * (rng.next() - 0.5));
+      .sort((a, b) => effective(world, b.p) - effective(world, a.p) + 0.5 * (rng.next() - 0.5));
     const pick = cands[0];
     if (!pick) return;
     offers.push({ team: teamId, player: pick.p.id, salary: pick.demand, years: contractYears(pick.p.age ?? 22), role });
@@ -229,8 +229,8 @@ export function aiOffers(world: WorldState, teamId: string, rng: Rng): Offer[] {
   }
   if (offers.length < limit && mainRoster(t).length < MAX_MAIN_ROSTER) {
     // 주전보다 4점 이상 좋은 FA가 있고 연봉이 되면 업그레이드
-    const weakest = POSITIONS.filter((pos) => t.starters[pos]).sort((a, b) => overall(world.players[t.starters[a]].ratings) - overall(world.players[t.starters[b]].ratings))[0];
-    if (weakest) want(weakest, "starter", overall(world.players[t.starters[weakest]].ratings) + 4);
+    const weakest = POSITIONS.filter((pos) => t.starters[pos]).sort((a, b) => effective(world, world.players[t.starters[a]]) - effective(world, world.players[t.starters[b]]))[0];
+    if (weakest) want(weakest, "starter", effective(world, world.players[t.starters[weakest]]) + 4);
   }
   return offers;
 }
@@ -242,7 +242,7 @@ export function resolveOffers(world: WorldState, offers: Offer[], last: boolean)
   for (const o of offers) byPlayer.set(o.player, [...(byPlayer.get(o.player) ?? []), o]);
   const signed: Offer[] = [];
   // 몸값 높은 선수부터 결정 (상한 경쟁 순서가 결과에 영향을 덜 주게)
-  const order = [...byPlayer.keys()].sort((a, b) => playerValue(w.players[b]) - playerValue(w.players[a]));
+  const order = [...byPlayer.keys()].sort((a, b) => playerValue(w, w.players[b]) - playerValue(w, w.players[a]));
   for (const id of order) {
     const p = w.players[id];
     if (!w.freeAgents.includes(id) && !p.contract) continue;
@@ -267,12 +267,12 @@ export function fillRosters(world: WorldState, rng: Rng, positionTop: Record<Pos
     for (const pos of POSITIONS) {
       let t = w.teams[teamId];
       if (t.starters[pos]) continue;
-      const bench = t.bench.filter((id) => w.players[id].position === pos).sort((a, b) => overall(w.players[b].ratings) - overall(w.players[a].ratings))[0];
+      const bench = t.bench.filter((id) => w.players[id].position === pos).sort((a, b) => effective(w, w.players[b]) - effective(w, w.players[a]))[0];
       if (bench) {
         w = setTeam(w, teamId, { ...t, starters: { ...t.starters, [pos]: bench }, bench: t.bench.filter((x) => x !== bench) });
         continue;
       }
-      const acad = t.academy.filter((id) => w.players[id].position === pos).sort((a, b) => overall(w.players[b].ratings) - overall(w.players[a].ratings))[0];
+      const acad = t.academy.filter((id) => w.players[id].position === pos).sort((a, b) => effective(w, w.players[b]) - effective(w, w.players[a]))[0];
       if (acad) {
         const p = w.players[acad];
         w = setTeam(w, teamId, { ...t, starters: { ...t.starters, [pos]: acad }, academy: t.academy.filter((x) => x !== acad) });
@@ -282,10 +282,10 @@ export function fillRosters(world: WorldState, rng: Rng, positionTop: Record<Pos
       const room = capRoom(w, teamId);
       const fa = w.freeAgents
         .map((id) => w.players[id])
-        .filter((p) => p.position === pos && salaryDemand(p) * 0.8 <= room)
-        .sort((a, b) => overall(b.ratings) - overall(a.ratings))[0];
+        .filter((p) => p.position === pos && salaryDemand(w, p) * 0.8 <= room)
+        .sort((a, b) => effective(w, b) - effective(w, a))[0];
       if (fa) {
-        w = sign(w, { team: teamId, player: fa.id, salary: Math.min(salaryDemand(fa), Math.max(0.6, room)), years: 1, role: "starter" });
+        w = sign(w, { team: teamId, player: fa.id, salary: Math.min(salaryDemand(w, fa), Math.max(0.6, room)), years: 1, role: "starter" });
         continue;
       }
       t = w.teams[teamId];
@@ -297,7 +297,7 @@ export function fillRosters(world: WorldState, rng: Rng, positionTop: Record<Pos
     // 1군 인원 상한
     let t = w.teams[teamId];
     while (mainRoster(t).length > MAX_MAIN_ROSTER) {
-      const cut = [...t.bench].sort((a, b) => playerValue(w.players[a]) - playerValue(w.players[b]))[0];
+      const cut = [...t.bench].sort((a, b) => playerValue(w, w.players[a]) - playerValue(w, w.players[b]))[0];
       w = release(w, cut);
       t = w.teams[teamId];
     }
@@ -314,10 +314,10 @@ export function aiSetLineups(world: WorldState, skipTeam: string | null): WorldS
     for (const pos of POSITIONS) {
       const t = w.teams[teamId];
       const cur = t.starters[pos];
-      const curOvr = cur ? overall(w.players[cur].ratings) + 2 : -1;
+      const curOvr = cur ? effective(w, w.players[cur]) + 2 : -1;
       const cands = [...t.bench, ...t.academy].filter((id) => w.players[id].position === pos);
-      const best = cands.sort((a, b) => overall(w.players[b].ratings) - overall(w.players[a].ratings))[0];
-      if (!best || overall(w.players[best].ratings) <= curOvr) continue;
+      const best = cands.sort((a, b) => effective(w, w.players[b]) - effective(w, w.players[a]))[0];
+      if (!best || effective(w, w.players[best]) <= curOvr) continue;
       const fromAcademy = t.academy.includes(best);
       const bench = [...t.bench.filter((x) => x !== best), ...(cur ? [cur] : [])];
       w = setTeam(w, teamId, { ...t, starters: { ...t.starters, [pos]: best }, bench, academy: t.academy.filter((x) => x !== best) });
@@ -330,7 +330,7 @@ export function aiSetLineups(world: WorldState, skipTeam: string | null): WorldS
     // 1군 인원이 넘치면: LCK는 어린 후보를 2군으로, 아니면 가치 낮은 후보 방출
     let t = w.teams[teamId];
     while (mainRoster(t).length > MAX_MAIN_ROSTER) {
-      const cut = [...t.bench].sort((a, b) => playerValue(w.players[a]) - playerValue(w.players[b]))[0];
+      const cut = [...t.bench].sort((a, b) => playerValue(w, w.players[a]) - playerValue(w, w.players[b]))[0];
       if (t.league === "LCK" && (w.players[cut].age ?? 30) <= 21) {
         w = setTeam(w, teamId, { ...t, bench: t.bench.filter((x) => x !== cut), academy: [...t.academy, cut] });
         w = setPlayer(w, { ...w.players[cut], academy: true });
@@ -357,7 +357,7 @@ export function sellerVerdict(world: WorldState, bid: Bid): { ok: boolean; reaso
   const seller = p.contract?.team;
   if (!seller) return { ok: true, reason: "" };
   const t = world.teams[seller];
-  const fee = transferFee(p, world.season);
+  const fee = transferFee(world, p);
   const isStarter = t.starters[p.position] === p.id;
   const cover = [...t.bench, ...t.academy].some((id) => id !== p.id && world.players[id].position === p.position);
   if (bid.fee < fee) return { ok: false, reason: `이적료 부족 (몸값 ${fee}C)` };
@@ -397,15 +397,15 @@ export function aiBuyouts(world: WorldState, rng: Rng, skipTeam: string | null):
   const order = Object.values(w.teams).filter((t) => t.id !== skipTeam).sort((a, b) => b.prestige - a.prestige + 0.1 * (rng.next() - 0.5));
   for (const buyer of order) {
     const t = w.teams[buyer.id];
-    const weakest = POSITIONS.filter((pos) => t.starters[pos]).sort((a, b) => overall(w.players[t.starters[a]].ratings) - overall(w.players[t.starters[b]].ratings))[0];
+    const weakest = POSITIONS.filter((pos) => t.starters[pos]).sort((a, b) => effective(w, w.players[t.starters[a]]) - effective(w, w.players[t.starters[b]]))[0];
     if (!weakest) continue;
-    const curOvr = overall(w.players[t.starters[weakest]].ratings);
+    const curOvr = effective(w, w.players[t.starters[weakest]]);
     const targets = Object.values(w.players)
       .filter((p) => !p.retired && p.contract && p.contract.team !== buyer.id && p.position === weakest && !p.academy && p.contract.team !== skipTeam)
-      .filter((p) => overall(p.ratings) >= curOvr + 4)
-      .sort((a, b) => overall(b.ratings) - overall(a.ratings));
+      .filter((p) => effective(w, p) >= curOvr + 4)
+      .sort((a, b) => effective(w, b) - effective(w, a));
     for (const p of targets.slice(0, 5)) {
-      const bid: Bid = { team: buyer.id, player: p.id, fee: transferFee(p, w.season), salary: salaryDemand(p), years: contractYears(p.age ?? 22), role: "starter" };
+      const bid: Bid = { team: buyer.id, player: p.id, fee: transferFee(w, p), salary: salaryDemand(w, p), years: contractYears(p.age ?? 22), role: "starter" };
       if (!canAfford(w, bid).ok || !sellerVerdict(w, bid).ok || !playerAcceptsMove(w, bid)) continue;
       w = completeBid(w, bid);
       done.push(bid);

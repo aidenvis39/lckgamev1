@@ -27,7 +27,7 @@ export function TeamSelect({ onPick }: { onPick: (teamId: string) => void }) {
       <div className="team-grid">
         {teams.map((t) => {
           const full = POSITIONS.every((pos) => t.starters[pos]);
-          const prof = full ? teamProfile(u, t.id) : null;
+          const prof = full ? teamProfile(u, t.id, w) : null;
           const overall = prof ? (prof.laning + prof.teamfight + prof.vision + prof.survival) / 4 : 0;
           const ids = [...POSITIONS.map((pos) => t.starters[pos]), ...t.bench, ...t.academy].filter(Boolean);
           const expiring = ids.filter((id) => (w.players[id].contract?.endSeason ?? 0) <= w.season).length;

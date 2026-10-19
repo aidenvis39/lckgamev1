@@ -1,6 +1,6 @@
 // 다년 커리어 선수 표시: 한 줄 요약, 상세 카드, 성장 리포트
 import type { ReactNode } from "react";
-import { ABILITIES, baseUniverse, overall, potentialStars, type Ability, type PlayerState, type WorldState } from "../engine.ts";
+import { ABILITIES, baseUniverse, effective, famePremium, macroPoints, overall, potentialStars, type Ability, type PlayerState, type WorldState } from "../engine.ts";
 import type { GrowthNote } from "../game/career.ts";
 import { macroGrade, POS_KO } from "../game/meta.ts";
 import { ChampIcon, RatingBar, TeamBadge } from "./bits.tsx";
@@ -53,9 +53,14 @@ export function PlayerLine({ p, team = false, right, onClick, open }: { p: Playe
   );
 }
 
-export function PlayerDetail({ p, children, growth }: { p: PlayerState; children?: ReactNode; growth?: Partial<Record<Ability, number>> }) {
+export function PlayerDetail({ p, world, children, growth }: { p: PlayerState; world: WorldState; children?: ReactNode; growth?: Partial<Record<Ability, number>> }) {
   const r = p.ratings;
-  const macro = p.intangibleKnown ? macroGrade(p.intangible) : { label: "추정 없음", tone: "neutral" as const };
+  const macro = p.intangibleKnown ? macroGrade(p.intangible) : { label: "아직 모름", tone: "neutral" as const };
+  // 운영 기여를 실력 점수로: 추정치와 대략의 범위 (±1 표준오차)
+  const pts = macroPoints(world);
+  const mid = Math.round(pts * p.intangible);
+  const band = Math.round(pts * p.intangibleSe);
+  const fp = famePremium(world, p);
   const pool = Object.entries(p.champions)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 6);
@@ -79,8 +84,26 @@ export function PlayerDetail({ p, children, growth }: { p: PlayerState; children
           </div>
           <div className="row" style={{ justifyContent: "space-between" }}>
             <span className="muted">운영</span>
-            <span className={`chip ${macro.tone === "neutral" ? "" : macro.tone}`}>{macro.label}</span>
+            <span className="row" style={{ gap: 6 }}>
+              <span className="faint num" title="운영 기여를 실력 점수로 바꾼 추정치와 범위. 경기를 뛸수록 범위가 좁아짐">
+                {mid >= 0 ? "+" : ""}
+                {mid} ± {band}
+              </span>
+              <span className={`chip ${macro.tone === "neutral" ? "" : macro.tone}`}>{macro.label}</span>
+            </span>
           </div>
+          <div className="row" style={{ justifyContent: "space-between" }}>
+            <span className="muted">실효 실력</span>
+            <span className="num" title="경기 능력 + 운영 기여 추정치. AI가 주전을 고를 때 보는 값">
+              {Math.round(effective(world, p))}
+            </span>
+          </div>
+          {fp > 0.005 && (
+            <div className="row" style={{ justifyContent: "space-between" }}>
+              <span className="muted">인지도</span>
+              <span className="num" title="우승 경력만큼 요구 연봉이 오름 (최근 우승일수록 큼)">연봉 +{Math.round(fp * 100)}%</span>
+            </div>
+          )}
           {p.careerTitles.length > 0 && (
             <div className="row" style={{ justifyContent: "space-between", alignItems: "flex-start" }}>
               <span className="muted">우승</span>

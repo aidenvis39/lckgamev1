@@ -109,7 +109,7 @@ export type { Goal } from "../../engine/src/career/owner.ts";
 export { recordSeries, cloneStats } from "../../engine/src/career/stats.ts";
 export { ABILITIES, emptyStats } from "../../engine/src/career/types.ts";
 export type { GrowthReport, PlayerState, PreAgreement, SeasonStats, Start2025, TeamState, WorldState, Ability } from "../../engine/src/career/types.ts";
-export { headroom, overall, payroll, playerValue, potentialStars, salaryDemand, transferFee } from "../../engine/src/career/value.ts";
+export { effective, fame, famePremium, headroom, macroPoints, marketRating, overall, payroll, playerValue, potentialStars, salaryDemand, transferFee } from "../../engine/src/career/value.ts";
 export { ACCEPT, capRoom, isPreAgreed, offerUtility, preOffers } from "../../engine/src/career/market.ts";
 export type { Bid, Offer } from "../../engine/src/career/market.ts";
 export {

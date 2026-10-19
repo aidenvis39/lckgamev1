@@ -9,7 +9,8 @@ export function upgradeWorld(world: WorldState, start: Start2025, cp: CareerPara
     Object.values(world.players).map((p) => {
       const e = start.entries[p.id] ?? extra.get(p.id);
       const real = (e?.titles ?? []).filter((t) => !p.careerTitles.includes(t));
-      return [p.id, { ...p, careerGames: p.careerGames ?? e?.careerGames ?? 0, careerTitles: [...real, ...p.careerTitles] }];
+      const macro = { macroTrue: p.macroTrue ?? p.intangible, intangibleSe: p.intangibleKnown || p.intangibleSe ? p.intangibleSe : cp.macro.newSd };
+      return [p.id, { ...p, ...macro, careerGames: p.careerGames ?? e?.careerGames ?? 0, careerTitles: [...real, ...p.careerTitles] }];
     }),
   );
   return { ...world, players, cp, opening: world.opening ?? null };

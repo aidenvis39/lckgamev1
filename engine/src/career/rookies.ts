@@ -45,6 +45,10 @@ export function makeRookie(
   const mean = opts.replacement ? (world.replacement[league] ?? 60) : Math.min(rk.cap, (rk.mean[league] ?? 50) + rk.meanShift + drift);
   const r = () => Math.round(Math.min(mean + 12, Math.max(35, mean + (opts.replacement ? rk.replacementSd : rk.sd) * rng.normal())) * 10) / 10;
   const ratings = { laning: r(), teamfight: r(), vision: r(), survival: r(), champPool: Math.round(45 + 15 * rng.next()) };
+  // 운영 능력: 진짜 값은 뽑아 두고(숨김), 공개 추정치는 리그 평균에서 시작해 뛸수록 드러난다
+  const mc = world.cp.macro;
+  const prior = mc.newMean[league] ?? 0;
+  const macroTrue = Math.round(Math.max(-mc.maxAbs, Math.min(mc.maxAbs, prior + mc.newSd * rng.normal())) * 1000) / 1000;
   // 포지션 메타 상위 챔피언 몇 개를 조금 해본 상태로 시작
   const id = `rk${world.season + 1}-${world.nextRookie}`;
   return {
@@ -61,9 +65,10 @@ export function makeRookie(
     ratingLeague: "GLOBAL",
     lowSample: true,
     ratings,
-    intangible: 0,
-    intangibleSe: 0,
+    intangible: prior,
+    intangibleSe: mc.newSd,
     intangibleKnown: false,
+    macroTrue,
     champions: {},
     potential: rollPotential(world.cp, ratings, age, rng, Math.max(0, drift) + rk.extra),
     contract: team ? { team, endSeason: world.season + 2, salary: opts.salary ?? (academy ? 0.3 : 0.6), role: "bench", generated: true } : null,

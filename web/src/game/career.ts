@@ -18,6 +18,7 @@ import {
   createRng,
   crossedCheckpoints,
   developAt,
+  effective,
   emptyStats,
   endDay,
   fillStarters,
@@ -484,7 +485,7 @@ export function autoFill(c: Career): Outcome {
     const cands = w.freeAgents
       .map((id) => w.players[id])
       .filter((p) => p.position === pos)
-      .sort((a, b) => overall(b.ratings) - overall(a.ratings));
+      .sort((a, b) => effective(w, b) - effective(w, a));
     for (const p of cands) {
       let offer: Offer | null = null;
       for (let s = 0.3; s <= room + 0.001 && !offer; s = Math.round((s + 0.1) * 10) / 10) {

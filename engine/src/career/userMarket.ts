@@ -23,7 +23,7 @@ import {
   type Offer,
 } from "./market.ts";
 import type { PlayerState, WorldState } from "./types.ts";
-import { overall, payroll, playerValue } from "./value.ts";
+import { effective, payroll, playerValue } from "./value.ts";
 import { mainRoster, MAX_MAIN_ROSTER } from "./world.ts";
 
 export interface Result {
@@ -131,13 +131,13 @@ const coversAll = (world: WorldState, teamId: string, out: string[], inc: string
 // 팀이 낼 수 있는 가장 강한 주전 5명의 평균 실력 (포지션별 최고)
 function bestLineup(world: WorldState, ids: string[]): number {
   return (
-    POSITIONS.reduce((s, pos) => s + Math.max(0, ...ids.filter((id) => world.players[id].position === pos).map((id) => overall(world.players[id].ratings))), 0) /
+    POSITIONS.reduce((s, pos) => s + Math.max(0, ...ids.filter((id) => world.players[id].position === pos).map((id) => effective(world, world.players[id]))), 0) /
     POSITIONS.length
   );
 }
 
 export function evaluateTrade(world: WorldState, tp: TradeProposal): { ok: boolean; reason: string; valueIn: number; valueOut: number } {
-  const v = (ids: string[]) => Math.round(ids.reduce((s, id) => s + playerValue(world.players[id]), 0) * 10) / 10;
+  const v = (ids: string[]) => Math.round(ids.reduce((s, id) => s + playerValue(world, world.players[id]), 0) * 10) / 10;
   // 상대 팀 입장: 주전 전력이 약해지면 그만큼 더 받아야 한다 (평균 1점 = 가치 2)
   const theirs = [...mainRoster(world.teams[tp.to]), ...world.teams[tp.to].academy];
   const after = theirs.filter((id) => !tp.get.includes(id)).concat(tp.give);
@@ -198,7 +198,7 @@ export function fillStarters(world: WorldState, teamId: string): WorldState {
     if (t.starters[pos]) continue;
     const pick = [...t.bench, ...t.academy]
       .filter((id) => w.players[id].position === pos)
-      .sort((a, b) => playerValue(w.players[b]) - playerValue(w.players[a]))[0];
+      .sort((a, b) => playerValue(w, w.players[b]) - playerValue(w, w.players[a]))[0];
     if (!pick) continue;
     w = setStarter(w, teamId, pos, pick).world;
   }

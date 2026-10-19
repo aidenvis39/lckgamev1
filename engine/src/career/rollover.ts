@@ -8,13 +8,14 @@ import { createRng, hashSeed, type Rng } from "../rng.ts";
 import type { Champion, Position } from "../types.ts";
 import { POSITIONS } from "../types.ts";
 import { seasonEndDevelop } from "./develop.ts";
+import { seasonMacro } from "./macro.ts";
 import { aiBuyouts, aiOffers, aiResign, aiSetLineups, fillRosters, release, resolveOffers, type Offer } from "./market.ts";
 import { expiringOf, finishOpening } from "./opening.ts";
 import { evaluateGoals, type Goal } from "./owner.ts";
 import type { CareerParams } from "./params.ts";
 import { makeRookie, seedPool } from "./rookies.ts";
 import type { SeasonStats, TeamState, WorldState } from "./types.ts";
-import { overall } from "./value.ts";
+import { effective } from "./value.ts";
 import { mainRoster, retuneReplacement } from "./world.ts";
 
 const clamp = (x: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, x));
@@ -75,13 +76,13 @@ export function positionTop(champions: Map<string, Champion>, meta: Record<strin
 
 export function beginOffseason(world: WorldState, stats: SeasonStats, champions: Map<string, Champion>): { world: WorldState; expiring: Record<string, string[]> } {
   const rng = createRng(hashSeed(world.seed, world.season, "offseason"));
-  let w = retuneReplacement(seasonEndDevelop(world, stats));
+  let w = retuneReplacement(seasonMacro(seasonEndDevelop(world, stats), stats));
   // 은퇴 (팀 소속이면 방출 후 은퇴 처리)
   for (const p of Object.values(w.players)) {
     if (p.retired) continue;
     const longFa = !p.contract && p.faSeasons >= w.cp.retire.faSeasons;
     const contracted = (p.contract?.endSeason ?? 0) > world.season;
-    if (longFa || rng.next() < retireChance(w.cp, p.age ?? 22, overall(p.ratings), contracted)) {
+    if (longFa || rng.next() < retireChance(w.cp, p.age ?? 22, effective(w, p), contracted)) {
       if (p.contract) w = release(w, p.id);
       w = { ...w, players: { ...w.players, [p.id]: { ...w.players[p.id], retired: true, contract: null } }, freeAgents: w.freeAgents.filter((x) => x !== p.id) };
     }

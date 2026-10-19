@@ -14,7 +14,9 @@ export interface Contract {
   generated: boolean; // 실제 계약 정보 없이 게임이 만든 계약
 }
 
+// intangible·intangibleSe·intangibleKnown = 공개된 운영 기여 추정치 (화면·시장·AI 판단), macroTrue = 경기에 쓰이는 진짜 값
 export interface PlayerState extends Player {
+  macroTrue: number; // 숨김. 실제 선수는 데이터 추정치, 새 선수는 뽑은 값 (경험으로 조금씩 오름)
   potential: Ratings; // 숨김. 능력별 도달 가능한 상한 (커리어 시작이나 신인 생성 때 고정)
   contract: Contract | null; // null = 자유계약(FA)
   academy: boolean; // LCK 팀 2군 소속
@@ -92,7 +94,7 @@ export interface StartEntry {
 export interface Start2025 {
   season: number;
   entries: Record<string, StartEntry>; // players.json + academy.json 선수
-  extra: Array<Player & StartEntry & { academy: boolean }>; // 2025에만 뛴 선수
+  extra: Array<Player & StartEntry & { academy: boolean; ageEstimated?: boolean }>; // 2025에만 뛴 선수 (나이가 없으면 첫 프로 시즌으로 추정)
   teams: Record<string, { starters: Record<Position, string>; bench: string[]; academy: string[]; winrate2025: number | null }>;
   history: SeasonRecord;
 }
