@@ -5,6 +5,7 @@ python3 -I scripts/build_all.py .            # raw/ → output/ 전체 재생성
 python3 -I scripts/player_intangibles.py .   # 선수 운영 기여 회귀분석 (약 15초)
 python3 -I scripts/build_world.py .          # 해외 5개 리그 선수·팀, 국제전 리그 쌍 기준값 (약 5초)
 python3 -I scripts/export_engine_data.py .   # output/ → engine/data/ (엔진 입력)
+python3 -I scripts/export_start2025.py .     # 커리어 시작 상태: 2025 시즌이 끝난 스토브리그 (engine/data/start2025.json, 약 40초)
 ```
 
 `build_world.py`가 만드는 것:
@@ -25,6 +26,21 @@ python3 -I scripts/export_engine_data.py .   # output/ → engine/data/ (엔진 
   - LCK·CL은 `raw/leaguepedia/participation.json`, 해외는 `overseas_participation_2026.json`(242명 중 240명 매칭)에서 가져온다.
   - `contractEnd`는 그 시즌 끝에 풀리는 해다. 만료일이 9월 이후면 그해, 그 전이면 전해 시즌 끝으로 본다 (2026-11-16 → 2026).
 - `engine/data/academy.json`: LCK 팀별 2군(LCK CL 2026 출전) 47명. 능력치는 LCK CL 안 포지션 백분위. 1군 로스터에 있는 선수는 뺀다.
+
+`export_start2025.py` (커리어 시작 상태):
+- 게임은 2025 시즌이 끝난 스토브리그에서 시작한다. 능력치·챔피언 풀은 2026 값 그대로, 소속·계약만 2025 시즌 끝으로 되돌린다.
+- **2025 끝 소속**: LCK·LCK CL·LPL·LEC·LTA N(→LCS)·LTA S(→CBLOL)·LCP의 2025-11-10 전 국내 경기 중 마지막 팀.
+  - KeSPA컵 같은 시즌 뒤 이벤트는 이미 2026 로스터로 뛰어서 뺀다.
+  - 주전은 마지막 스플릿에 그 팀·포지션으로 가장 많이 뛴 선수.
+  - Team BDS → Shifters, MGN Vikings → MVK는 이름을 바꿔 자리를 이은 팀으로 본다. FPX·UP·100T 등 2026에 자리가 없는 팀의 선수는 FA로 시작한다.
+- **실제 2026 행선지** = `players.json`·`academy.json`의 팀 (2026 마지막 소속). 선수는 OE playerid로 잇는다 (이름으로 잇지 않음).
+- **계약**: 같은 구단에 남은 선수는 지금 계약 만료, 팀을 옮긴 선수는 2025에 만료(이번 스토브리그 FA)로 본다. 2025 계약 만료 기록은 없어서 추정이다.
+  - 2025 기록이 없는 선수(신인·하부 리그 출신)는 처음부터 2026 팀에 있다. 같은 구단 1군 ↔ 2군 이동은 시작 상태에 바로 넣는다.
+- **2025에만 뛴 선수 135명**: 2025 능력치(리그 안 백분위)로 넣는다. OE 2026 기록이 없거나 Leaguepedia 은퇴면 은퇴(51), 아니면 FA(84).
+  생년월일이 없으면 첫 프로 시즌(2020 이전이면 2020) + 18세로 나이를 추정한다.
+- **2020~2025 실제 우승**: LCK 스플릿(스프링·서머, 2025는 Rounds 3-5)·MSI·월즈를 대회 마지막 경기 승자로 정하고, 그 팀으로 뛴 선수에게 붙인다.
+  2025 우승: LCK GEN, MSI GEN, 월즈 T1.
+- 통산 출전 세트(2020~2025), 팀별 2025 정규 승률(명성 초기값)도 넣는다.
 
 `raw/oe_drive/`(Oracle's Elixir CSV, 약 600MB)는 용량 때문에 저장소에 넣지 않았다.
 다시 만들려면 [Oracle's Elixir 구글 드라이브 폴더](https://drive.google.com/drive/folders/1gLSw0RLjBbtaNy0dgnGQDAZOHIgCe-HH)에서
