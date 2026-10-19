@@ -1,6 +1,7 @@
 // 다년 커리어의 세계 상태. 전부 JSON으로 저장할 수 있는 평범한 객체 (웹 localStorage, 재개).
 // 능력치는 커리어 시작 때 리그 보정을 한 번 더한 '세계 공통' 값이라, 리그를 옮겨도 실력이 그대로 따라간다.
 import type { Player, Position, Ratings } from "../types.ts";
+import type { CareerParams } from "./params.ts";
 
 export type Ability = "laning" | "teamfight" | "vision" | "survival" | "champPool";
 export const ABILITIES: readonly Ability[] = ["laning", "teamfight", "vision", "survival", "champPool"];
@@ -69,6 +70,7 @@ export interface WorldState {
   replacement: Record<string, number>; // 리그별 '대체 선수 수준'. 빈자리·해외 유망주·신인 능력 기준 (해마다 보정)
   baseline: Record<string, number>; // 2026 리그별 주전 평균 '실효' 실력 (세계 수준 유지 목표)
   macroWeight: number; // 운영 기여를 실력 점수로 바꿀 때 씀 (엔진 params.macroWeight)
+  cp: CareerParams; // 성장·노쇠·신인·은퇴 조절값 (저장을 불러올 때 최신 값으로 바꿀 수 있음)
 }
 
 // 시즌 중 쌓는 기록 (성장·챔피언 풀용). 시즌이 바뀌면 비운다

@@ -1,5 +1,6 @@
 // data/*.json 로더 (Node 전용). 엔진 코어(draft, match, series, season)는 fs에 의존하지 않는다.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { withDefaults, type CareerParams } from "./career/params.ts";
 import { DEFAULT_PARAMS, type Params } from "./params.ts";
 import type { Targets, WorldTargets } from "./targets.ts";
 import type { Champion, Player, TeamInfo, Universe } from "./types.ts";
@@ -28,6 +29,17 @@ export function loadParams(): Params {
 
 export function saveParams(p: Params): void {
   writeFileSync(PARAMS_FILE, JSON.stringify(p, null, 2) + "\n");
+}
+
+// 다년 커리어 조절값 (npm run tune -- --career 결과). 파일에 없는 값은 기본값
+const CAREER_PARAMS_FILE = new URL("careerParams.json", DATA_DIR);
+export function loadCareerParams(): CareerParams {
+  return withDefaults(existsSync(CAREER_PARAMS_FILE) ? JSON.parse(readFileSync(CAREER_PARAMS_FILE, "utf8")) : undefined);
+}
+export function saveCareerParams(cp: CareerParams): void {
+  // 나이 표 [나이, 값]은 한 줄로
+  const text = JSON.stringify(cp, null, 1).replace(/\[\s*(-?[\d.]+),\s*(-?[\d.]+)\s*\]/g, "[$1, $2]");
+  writeFileSync(CAREER_PARAMS_FILE, text + "\n");
 }
 
 export function loadTargets(year: string): Targets {

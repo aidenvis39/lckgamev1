@@ -4,6 +4,7 @@ import { createRng, hashSeed, type Rng } from "../rng.ts";
 import type { Targets, WorldTargets } from "../targets.ts";
 import type { Champion, Player, Ratings, TeamInfo, Universe } from "../types.ts";
 import { POSITIONS } from "../types.ts";
+import { DEFAULT_CAREER_PARAMS, knot, type CareerParams } from "./params.ts";
 import type { PlayerState, SeasonStats, TeamState, WorldState } from "./types.ts";
 import { payroll, salaryDemand } from "./value.ts";
 
@@ -13,15 +14,13 @@ export const MAX_MAIN_ROSTER = 10; // 1군 최대 인원 (2026 실제 로스터 
 const CAP_FLOOR: Record<string, number> = { LCK: 18, LPL: 18, LEC: 14, LCS: 14, LCP: 10, CBLOL: 10 };
 
 // 나이별 잠재력 여유 평균 (경기 능력 평균 기준 점수)
-export function headroomMean(age: number): number {
-  const table: Record<number, number> = { 16: 17, 17: 16, 18: 13, 19: 10, 20: 7, 21: 5, 22: 3, 23: 1.5 };
-  return age <= 16 ? 17 : (table[age] ?? 0.5);
-}
+export const headroomMean = (cp: CareerParams, age: number) => knot(cp.potential.headroom, age);
 
-// extra: 신인·유망주에게 더 주는 여유 (세계 수준 유지 보정). 12%는 '재능형'으로 여유가 크게 붙는다 (스타가 나올 꼬리)
-export function rollPotential(r: Ratings, age: number, rng: Rng, extra = 0): Ratings {
-  const prodigy = extra > 0 || age <= 19 ? (rng.next() < 0.12 ? 8 + 10 * rng.next() : 0) : 0;
-  const h = Math.max(0, headroomMean(age) + 4 * rng.normal() + prodigy + extra);
+// extra: 신인·유망주에게 더 주는 여유 (세계 수준 유지 보정). 일부는 '재능형'으로 여유가 크게 붙는다 (스타가 나올 꼬리)
+export function rollPotential(cp: CareerParams, r: Ratings, age: number, rng: Rng, extra = 0): Ratings {
+  const pt = cp.potential;
+  const prodigy = extra > 0 || age <= pt.prodigyMaxAge ? (rng.next() < pt.prodigyP ? pt.prodigyMin + pt.prodigyRange * rng.next() : 0) : 0;
+  const h = Math.max(0, headroomMean(cp, age) + pt.sd * rng.normal() + prodigy + extra);
   const up = () => h * (0.7 + 0.6 * rng.next());
   return {
     laning: r.laning + up(),
@@ -50,9 +49,11 @@ export interface WorldInput {
   world: WorldTargets;
   targets: Targets; // 2026 LCK 팀 승률 (명성 초기값)
   seed: number;
+  cp?: CareerParams; // 커리어 조절값 (없으면 기본값)
 }
 
 export function initWorld(input: WorldInput): WorldState {
+  const cp = input.cp ?? DEFAULT_CAREER_PARAMS;
   const rng = createRng(hashSeed(input.seed, "world-init"));
   const offset = (lg: string) => (lg === "LCKCL" ? input.world.academyOffset : (input.params.leagueOffset[lg] ?? 0));
   const players: Record<string, PlayerState> = {};
@@ -64,7 +65,7 @@ export function initWorld(input: WorldInput): WorldState {
       age,
       ratings,
       ratingLeague: "GLOBAL",
-      potential: rollPotential(ratings, age, rng),
+      potential: rollPotential(cp, ratings, age, rng),
       contract: null,
       academy,
       virtual: false,
@@ -102,7 +103,7 @@ export function initWorld(input: WorldInput): WorldState {
   }
   const meta = Object.fromEntries(input.champions.map((c) => [c.id, c.meta]));
   const baseline = starterMeans(players, teams, input.params.macroWeight);
-  const replacement = Object.fromEntries(Object.entries(baseline).map(([lg, m]) => [lg, Math.round((m - REPLACEMENT_GAP) * 10) / 10]));
+  const replacement = Object.fromEntries(Object.entries(baseline).map(([lg, m]) => [lg, Math.round((m - cp.replacement.gap) * 10) / 10]));
   return {
     version: 1,
     seed: input.seed,
@@ -118,10 +119,9 @@ export function initWorld(input: WorldInput): WorldState {
     replacement,
     baseline,
     macroWeight: input.params.macroWeight,
+    cp,
   };
 }
-
-export const REPLACEMENT_GAP = 8;
 
 // 리그별 주전 평균 '실효' 실력 = 경기 능력 평균 + 팀 운영 기여를 능력 점수로 바꾼 값.
 // 운영 기여(팀 합 × macroWeight)는 팀 전투력에 바로 더해지는데, 전투력 1 = 주전 5명 능력 17점과 같다.
@@ -146,8 +146,9 @@ export function starterMeans(players: Record<string, PlayerState>, teams: Record
 // 세계 수준 유지: 리그 주전 평균이 2026보다 떨어지면 새로 들어오는 선수(대체 선수·유망주·신인) 수준을 올리고, 오르면 내린다
 export function retuneReplacement(world: WorldState): WorldState {
   const now = starterMeans(world.players, world.teams, world.macroWeight);
+  const r = world.cp.replacement;
   const replacement = Object.fromEntries(
-    Object.entries(world.baseline).map(([lg, base]) => [lg, Math.round((base - REPLACEMENT_GAP + 4 * Math.max(-4, Math.min(6, base - (now[lg] ?? base)))) * 10) / 10]),
+    Object.entries(world.baseline).map(([lg, base]) => [lg, Math.round((base - r.gap + r.gain * Math.max(r.lo, Math.min(r.hi, base - (now[lg] ?? base)))) * 10) / 10]),
   );
   return { ...world, replacement };
 }

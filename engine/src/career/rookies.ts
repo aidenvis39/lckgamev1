@@ -17,8 +17,7 @@ export const REGION_NATION: Record<string, string> = {
   CBLOL: "Brazil",
 };
 
-// 리그별 신인 평균 능력 (세계 공통 기준). 2026 각 리그 주전 평균보다 15~20점 낮게
-const ROOKIE_MEAN: Record<string, number> = { LCK: 55, LPL: 56, LEC: 50, LCS: 47, LCP: 46, CBLOL: 47 };
+// 리그별 신인 평균 능력은 CareerParams.rookies (2026 각 리그 주전 평균보다 15~20점 낮게)
 
 function rookieName(world: WorldState, rng: Rng): string {
   const taken = new Set(Object.values(world.players).map((p) => p.name.toLowerCase()));
@@ -39,11 +38,12 @@ export function makeRookie(
   rng: Rng,
   opts: { replacement?: boolean; salary?: number } = {},
 ): PlayerState {
+  const rk = world.cp.rookies;
   const age = opts.replacement ? 19 + rng.int(5) : 17 + rng.int(3);
   // 2군 신인도 대체 선수 수준을 따라 오르내린다 (세계 수준 유지 보정이 신인에게도 걸림)
-  const drift = (world.replacement[league] ?? 0) - ((world.baseline[league] ?? 0) - 8);
-  const mean = opts.replacement ? (world.replacement[league] ?? 60) : Math.min(62, (ROOKIE_MEAN[league] ?? 50) + drift);
-  const r = () => Math.round(Math.min(mean + 12, Math.max(35, mean + (opts.replacement ? 4 : 5) * rng.normal())) * 10) / 10;
+  const drift = (world.replacement[league] ?? 0) - ((world.baseline[league] ?? 0) - world.cp.replacement.gap);
+  const mean = opts.replacement ? (world.replacement[league] ?? 60) : Math.min(rk.cap, (rk.mean[league] ?? 50) + rk.meanShift + drift);
+  const r = () => Math.round(Math.min(mean + 12, Math.max(35, mean + (opts.replacement ? rk.replacementSd : rk.sd) * rng.normal())) * 10) / 10;
   const ratings = { laning: r(), teamfight: r(), vision: r(), survival: r(), champPool: Math.round(45 + 15 * rng.next()) };
   // 포지션 메타 상위 챔피언 몇 개를 조금 해본 상태로 시작
   const id = `rk${world.season + 1}-${world.nextRookie}`;
@@ -65,7 +65,7 @@ export function makeRookie(
     intangibleSe: 0,
     intangibleKnown: false,
     champions: {},
-    potential: rollPotential(ratings, age, rng, Math.max(0, drift) + 1),
+    potential: rollPotential(world.cp, ratings, age, rng, Math.max(0, drift) + rk.extra),
     contract: team ? { team, endSeason: world.season + 2, salary: opts.salary ?? (academy ? 0.3 : 0.6), role: "bench", generated: true } : null,
     academy,
     virtual: true,

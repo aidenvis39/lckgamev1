@@ -4,6 +4,7 @@
 import { createRng, hashSeed } from "../rng.ts";
 import type { YearState } from "../competition/year.ts";
 import { RULES } from "../competition/year.ts";
+import { knot, type CareerParams } from "./params.ts";
 import type { Ability, GrowthReport, PlayerState, SeasonStats, WorldState } from "./types.ts";
 import { ABILITIES } from "./types.ts";
 import { mainRoster } from "./world.ts";
@@ -48,19 +49,16 @@ export function crossedCheckpoints(prev: YearState, next: YearState): Checkpoint
   return (Object.keys(CHECKPOINTS) as Checkpoint[]).filter((cp) => !reached(prev, cp) && reached(next, cp));
 }
 
-// 리그 수준이 높을수록 더 큰다 (2024~2026 국제전 리그 강도 순서)
-export const LEAGUE_GROWTH: Record<string, number> = { LCK: 1, LPL: 1, LEC: 0.9, LCS: 0.85, LCP: 0.8, CBLOL: 0.8 };
+// 나이 계수·리그 배율(리그 수준이 높을수록 더 큰다)·상한은 CareerParams.growth
+export const ageCoef = (cp: CareerParams, age: number) => knot(cp.growth.ageCoef, age);
 
-export const ageCoef = (age: number) => (age <= 19 ? 0.55 : age <= 21 ? 0.4 : age <= 23 ? 0.25 : 0.1);
-const MAX_YEAR_GAIN = 6;
-
-// 이번 시즌 팀 경기 중 몇 %를 뛰었나 → 성장 배율 0.4~1.0. 2군은 2군 리그에서 뛰는 셈으로 0.7
-function playFactor(p: PlayerState, stats: SeasonStats): number {
-  if (p.academy) return 0.7;
+// 이번 시즌 팀 경기 중 몇 %를 뛰었나 → 성장 배율 playMin~1.0. 2군은 2군 리그에서 뛰는 셈으로 academyPlay
+function playFactor(cp: CareerParams, p: PlayerState, stats: SeasonStats): number {
+  if (p.academy) return cp.growth.academyPlay;
   const team = p.contract?.team;
   const total = team ? (stats.teamGames[team] ?? 0) : 0;
-  if (!total) return 0.7;
-  return 0.4 + 0.6 * Math.min(1, (stats.games[p.id] ?? 0) / total);
+  if (!total) return cp.growth.academyPlay;
+  return cp.growth.playMin + (1 - cp.growth.playMin) * Math.min(1, (stats.games[p.id] ?? 0) / total);
 }
 
 function participants(world: WorldState, y: YearState | null, who: "all" | "MSI" | "WORLDS"): Set<string> {
@@ -74,6 +72,7 @@ const round1 = (x: number) => Math.round(x * 10) / 10;
 // 한 성장 시점 적용. 선수 능력치만 바꾸고, 내 팀 리포트용 변화를 돌려준다
 export function developAt(world: WorldState, cp: Checkpoint, stats: SeasonStats, y: YearState | null): WorldState {
   const { share, who, label } = CHECKPOINTS[cp];
+  const g = world.cp.growth;
   const rng = createRng(hashSeed(world.seed, world.season, "grow", cp));
   const who_ = participants(world, y, who);
   const focus = new Set(Object.values(world.teams).flatMap((t) => t.focus));
@@ -83,12 +82,12 @@ export function developAt(world: WorldState, cp: Checkpoint, stats: SeasonStats,
     const p = players[id];
     if (!p || p.retired) continue;
     const league = world.teams[p.contract?.team ?? ""]?.league ?? "LCK";
-    const mult = share * playFactor(p, stats) * (focus.has(id) ? 1.5 : 1) * (LEAGUE_GROWTH[league] ?? 0.85);
+    const mult = share * playFactor(world.cp, p, stats) * (focus.has(id) ? g.focus : 1) * (g.league[league] ?? 0.85);
     const ratings = { ...p.ratings };
     const diff: Partial<Record<Ability, number>> = {};
     for (const a of ABILITIES) {
-      const yearly = Math.min(MAX_YEAR_GAIN, Math.max(0, (p.potential[a] - p.ratings[a]) * ageCoef(p.age ?? 22)));
-      const d = round1(yearly * mult + 0.4 * share * rng.normal());
+      const yearly = Math.min(g.maxYearGain, Math.max(0, (p.potential[a] - p.ratings[a]) * ageCoef(world.cp, p.age ?? 22)));
+      const d = round1(yearly * mult + g.noise * share * rng.normal());
       if (d === 0) continue;
       ratings[a] = round1(ratings[a] + d);
       diff[a] = d;
@@ -99,13 +98,13 @@ export function developAt(world: WorldState, cp: Checkpoint, stats: SeasonStats,
   return { ...world, players, lastGrowth: { checkpoint: cp, label, season: world.season, changes } };
 }
 
-// 시즌 전환: 남은 30% 성장 + 나이 +1 + 노쇠. 라인전·한타가 먼저 떨어지고 시야는 늦게 떨어진다
-const DECLINE: Record<Ability, number> = { laning: 1.2, teamfight: 1.2, vision: 0.6, survival: 0.8, champPool: 0 };
-export const declineAt = (age: number) => (age <= 23 ? 0 : age === 24 ? 0.5 : age === 25 ? 1 : age === 26 ? 1.5 : age === 27 ? 2 : 2.5);
+// 시즌 전환: 남은 30% 성장 + 나이 +1 + 노쇠. 라인전·한타가 먼저 떨어지고 시야는 늦게 떨어진다 (CareerParams.decline)
+export const declineAt = (cp: CareerParams, age: number) => knot(cp.decline.byAge, age);
 
 export function seasonEndDevelop(world: WorldState, stats: SeasonStats): WorldState {
   let w = developAt(world, "SEASON_END", stats, null);
   const rng = createRng(hashSeed(world.seed, world.season, "aging"));
+  const dc = world.cp.decline;
   const players = { ...w.players };
   const changes = { ...w.lastGrowth!.changes };
   for (const p of Object.values(players)) {
@@ -114,8 +113,8 @@ export function seasonEndDevelop(world: WorldState, stats: SeasonStats): WorldSt
     const ratings = { ...p.ratings };
     const diff = { ...(changes[p.id] ?? {}) };
     for (const a of ABILITIES) {
-      if (!DECLINE[a]) continue;
-      const d = round1(Math.max(-4, -declineAt(age) * DECLINE[a] + (age >= 24 ? 1.5 : 1) * rng.normal() * 0.6));
+      if (!dc.weights[a]) continue;
+      const d = round1(Math.max(-dc.max, -declineAt(world.cp, age) * dc.weights[a] + (age >= dc.oldAge ? dc.noiseOld : 1) * rng.normal() * dc.noise));
       ratings[a] = round1(ratings[a] + d);
       diff[a] = round1((diff[a] ?? 0) + d);
     }

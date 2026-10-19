@@ -6,6 +6,7 @@ import {
   applyTrade,
   baseUniverse,
   beginOffseason,
+  careerParams,
   bidFor,
   capRoom,
   checkOffer,
@@ -552,7 +553,7 @@ export function loadCareer(): { career: Career | null; notice: LoadNotice } {
     const raw = localStorage.getItem(KEY);
     if (raw) {
       const c = JSON.parse(raw) as Career;
-      if (c.version === 3) return { career: c, notice };
+      if (c.version === 3) return { career: { ...c, world: { ...c.world, cp: careerParams } }, notice };
     }
     const old = localStorage.getItem(V2_KEY);
     if (old) {

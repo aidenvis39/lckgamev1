@@ -1,5 +1,6 @@
 // 엔진 데이터를 번들에 넣고 브라우저에서 Universe를 만든다. LCK + 해외 5개 리그 56팀이 한 세계에 있다.
 import academy from "../../engine/data/academy.json";
+import careerParams_ from "../../engine/data/careerParams.json";
 import champions from "../../engine/data/champions.json";
 import worldTargets from "../../engine/data/world.json";
 import matchups from "../../engine/data/matchups.json";
@@ -10,6 +11,7 @@ import teams from "../../engine/data/teams.json";
 import { DEFAULT_PARAMS, type Params } from "../../engine/src/params.ts";
 import type { Champion, Player, TeamInfo, Universe } from "../../engine/src/types.ts";
 import type { Targets, WorldTargets } from "../../engine/src/targets.ts";
+import { withDefaults, type CareerParams } from "../../engine/src/career/params.ts";
 import { initWorld } from "../../engine/src/career/world.ts";
 import { applyLeagueOffsets, createUniverse, leagueUniverse, type RawData } from "../../engine/src/universe.ts";
 
@@ -77,6 +79,8 @@ export type {
 } from "../../engine/src/types.ts";
 
 // ── 다년 커리어 ───────────────────────────────────────
+// 커리어 조절값 (성장·노쇠·신인·은퇴). 저장을 불러올 때도 이 최신 값으로 바꾼다
+export const careerParams: CareerParams = withDefaults(careerParams_ as Partial<Record<keyof CareerParams, object>>);
 export function newWorld(seed: number) {
   return initWorld({
     players: players as unknown as Player[],
@@ -87,6 +91,7 @@ export function newWorld(seed: number) {
     world: worldTargets as unknown as WorldTargets,
     targets: (targets as unknown as Record<string, Targets>)["2026"],
     seed,
+    cp: careerParams,
   });
 }
 export { mainRoster, toUniverse, validateWorld, worldParams, MAX_MAIN_ROSTER, START_SEASON } from "../../engine/src/career/world.ts";
