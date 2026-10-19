@@ -1,0 +1,147 @@
+[
+ {
+  "id": "GEN",
+  "name": "Gen.G",
+  "starters": {
+   "top": "kiin",
+   "jng": "canyon",
+   "mid": "chovy",
+   "bot": "ruler",
+   "sup": "duro"
+  },
+  "bench": []
+ },
+ {
+  "id": "HLE",
+  "name": "Hanwha Life Esports",
+  "starters": {
+   "top": "zeus",
+   "jng": "kanavi",
+   "mid": "zeka",
+   "bot": "gumayusi",
+   "sup": "delight"
+  },
+  "bench": [
+   "bluffing"
+  ]
+ },
+ {
+  "id": "T1",
+  "name": "T1",
+  "starters": {
+   "top": "doran",
+   "jng": "oner",
+   "mid": "faker",
+   "bot": "peyz",
+   "sup": "keria"
+  },
+  "bench": [
+   "painter"
+  ]
+ },
+ {
+  "id": "DK",
+  "name": "Dplus Kia",
+  "starters": {
+   "top": "siwoo",
+   "jng": "lucid",
+   "mid": "showmaker",
+   "bot": "smash",
+   "sup": "career"
+  },
+  "bench": []
+ },
+ {
+  "id": "KT",
+  "name": "KT Rolster",
+  "starters": {
+   "top": "perfect",
+   "jng": "cuzz",
+   "mid": "bdd",
+   "bot": "jiwoo",
+   "sup": "effort"
+  },
+  "bench": [
+   "fenrir",
+   "pollu",
+   "ghost"
+  ]
+ },
+ {
+  "id": "BRO",
+  "name": "HANJIN BRION",
+  "starters": {
+   "top": "casting",
+   "jng": "gideon",
+   "mid": "roamer",
+   "bot": "teddy",
+   "sup": "namgung"
+  },
+  "bench": [
+   "loki"
+  ]
+ },
+ {
+  "id": "NS",
+  "name": "Nongshim RedForce",
+  "starters": {
+   "top": "kingen",
+   "jng": "sponge",
+   "mid": "scout",
+   "bot": "diable",
+   "sup": "lehends"
+  },
+  "bench": [
+   "pleata"
+  ]
+ },
+ {
+  "id": "BFX",
+  "name": "BNK FEARX",
+  "starters": {
+   "top": "clear",
+   "jng": "raptor",
+   "mid": "vicla",
+   "bot": "taeyoon",
+   "sup": "kellin"
+  },
+  "bench": [
+   "daystar",
+   "slayer"
+  ]
+ },
+ {
+  "id": "DRX",
+  "name": "Kiwoom DRX",
+  "starters": {
+   "top": "rich",
+   "jng": "willer",
+   "mid": "ucal",
+   "bot": "aiming",
+   "sup": "andil"
+  },
+  "bench": [
+   "frog",
+   "lazyfeel",
+   "minous"
+  ]
+ },
+ {
+  "id": "DNS",
+  "name": "DN SOOPers",
+  "starters": {
+   "top": "dudu",
+   "jng": "pyosik",
+   "mid": "clozer",
+   "bot": "deokdam",
+   "sup": "peter"
+  },
+  "bench": [
+   "sharvel",
+   "ddoiv",
+   "enosh",
+   "quantum",
+   "life"
+  ]
+ }
+]

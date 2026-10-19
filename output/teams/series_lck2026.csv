@@ -1,0 +1,189 @@
+﻿series,league,split,playoffs,date,team_a,team_b,wins_a,wins_b,best_of,winner,game_winners
+1,LCK,Cup,0,2026-01-29,BNK FEARX,DN SOOPers,3,1,5,BNK FEARX,BNK FEARX > BNK FEARX > DN SOOPers > BNK FEARX
+2,LCK,Cup,0,2026-02-12,BNK FEARX,DN SOOPers,3,2,5,BNK FEARX,DN SOOPers > BNK FEARX > BNK FEARX > DN SOOPers > BNK FEARX
+3,LCK,Rounds 1-2,0,2026-04-12,BNK FEARX,DN SOOPers,2,0,3,BNK FEARX,BNK FEARX > BNK FEARX
+4,LCK,Rounds 1-2,0,2026-05-03,BNK FEARX,DN SOOPers,2,0,3,BNK FEARX,BNK FEARX > BNK FEARX
+5,LCK,Rounds 3-4,0,2026-07-30,BNK FEARX,DN SOOPers,2,0,3,BNK FEARX,BNK FEARX > BNK FEARX
+6,LCK,Rounds 3-4,0,2026-08-15,BNK FEARX,DN SOOPers,0,2,3,DN SOOPers,DN SOOPers > DN SOOPers
+7,LCK,Cup,0,2026-02-28,BNK FEARX,Dplus Kia,3,0,5,BNK FEARX,BNK FEARX > BNK FEARX > BNK FEARX
+8,LCK,Rounds 1-2,0,2026-04-30,BNK FEARX,Dplus Kia,0,2,3,Dplus Kia,Dplus Kia > Dplus Kia
+9,LCK,Rounds 1-2,0,2026-05-23,BNK FEARX,Dplus Kia,1,2,3,Dplus Kia,Dplus Kia > BNK FEARX > Dplus Kia
+10,LCK,Rounds 3-4,1,2026-09-03,BNK FEARX,Dplus Kia,2,3,5,Dplus Kia,BNK FEARX > BNK FEARX > Dplus Kia > Dplus Kia > Dplus Kia
+11,LCK,Cup,0,2026-01-22,BNK FEARX,Gen.G,0,2,3,Gen.G,Gen.G > Gen.G
+12,LCK,Cup,0,2026-02-21,BNK FEARX,Gen.G,1,3,5,Gen.G,Gen.G > Gen.G > BNK FEARX > Gen.G
+13,LCK,Cup,0,2026-03-01,BNK FEARX,Gen.G,0,3,5,Gen.G,Gen.G > Gen.G > Gen.G
+14,LCK,Rounds 1-2,0,2026-04-05,BNK FEARX,Gen.G,0,2,3,Gen.G,Gen.G > Gen.G
+15,LCK,Rounds 1-2,0,2026-05-14,BNK FEARX,Gen.G,0,2,3,Gen.G,Gen.G > Gen.G
+16,LCK,Cup,0,2026-01-17,BNK FEARX,HANJIN BRION,2,1,3,BNK FEARX,BNK FEARX > HANJIN BRION > BNK FEARX
+17,LCK,Rounds 1-2,0,2026-04-03,BNK FEARX,HANJIN BRION,0,2,3,HANJIN BRION,HANJIN BRION > HANJIN BRION
+18,LCK,Rounds 1-2,0,2026-05-07,BNK FEARX,HANJIN BRION,0,2,3,HANJIN BRION,HANJIN BRION > HANJIN BRION
+19,LCK,Rounds 3-4,0,2026-08-07,BNK FEARX,HANJIN BRION,0,2,3,HANJIN BRION,HANJIN BRION > HANJIN BRION
+20,LCK,Rounds 3-4,0,2026-08-21,BNK FEARX,HANJIN BRION,2,1,3,BNK FEARX,BNK FEARX > HANJIN BRION > BNK FEARX
+21,LCK,Rounds 3-4,1,2026-08-28,BNK FEARX,HANJIN BRION,3,2,5,BNK FEARX,BNK FEARX > HANJIN BRION > HANJIN BRION > BNK FEARX > BNK FEARX
+22,LCK,Rounds 1-2,0,2026-04-10,BNK FEARX,Hanwha Life Esports,1,2,3,Hanwha Life Esports,Hanwha Life Esports > BNK FEARX > Hanwha Life Esports
+23,LCK,Rounds 1-2,0,2026-05-21,BNK FEARX,Hanwha Life Esports,0,2,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+24,LCK,Rounds 1-2,0,2026-04-24,BNK FEARX,KT Rolster,0,2,3,KT Rolster,KT Rolster > KT Rolster
+25,LCK,Rounds 1-2,0,2026-05-09,BNK FEARX,KT Rolster,2,0,3,BNK FEARX,BNK FEARX > BNK FEARX
+26,LCK,Rounds 1-2,0,2026-04-17,BNK FEARX,Kiwoom DRX,2,0,3,BNK FEARX,BNK FEARX > BNK FEARX
+27,LCK,Rounds 1-2,0,2026-05-27,BNK FEARX,Kiwoom DRX,2,1,3,BNK FEARX,BNK FEARX > Kiwoom DRX > BNK FEARX
+28,LCK,Rounds 3-4,0,2026-08-09,BNK FEARX,Kiwoom DRX,2,0,3,BNK FEARX,BNK FEARX > BNK FEARX
+29,LCK,Rounds 3-4,0,2026-08-13,BNK FEARX,Kiwoom DRX,2,1,3,BNK FEARX,Kiwoom DRX > BNK FEARX > BNK FEARX
+30,LCK,Cup,0,2026-01-15,BNK FEARX,Nongshim RedForce,2,0,3,BNK FEARX,BNK FEARX > BNK FEARX
+31,LCK,Rounds 1-2,0,2026-04-15,BNK FEARX,Nongshim RedForce,0,2,3,Nongshim RedForce,Nongshim RedForce > Nongshim RedForce
+32,LCK,Rounds 1-2,0,2026-05-16,BNK FEARX,Nongshim RedForce,2,0,3,BNK FEARX,BNK FEARX > BNK FEARX
+33,LCK,Rounds 3-4,0,2026-08-01,BNK FEARX,Nongshim RedForce,1,2,3,Nongshim RedForce,Nongshim RedForce > BNK FEARX > Nongshim RedForce
+34,LCK,Rounds 3-4,0,2026-08-23,BNK FEARX,Nongshim RedForce,1,2,3,Nongshim RedForce,BNK FEARX > Nongshim RedForce > Nongshim RedForce
+35,LCK,Rounds 3-4,1,2026-08-27,BNK FEARX,Nongshim RedForce,3,1,5,BNK FEARX,Nongshim RedForce > BNK FEARX > BNK FEARX > BNK FEARX
+36,LCK,Cup,0,2026-01-25,BNK FEARX,T1,1,2,3,T1,T1 > BNK FEARX > T1
+37,LCK,Cup,0,2026-02-15,BNK FEARX,T1,3,1,5,BNK FEARX,BNK FEARX > T1 > BNK FEARX > BNK FEARX
+38,LCK,Rounds 1-2,0,2026-04-26,BNK FEARX,T1,0,2,3,T1,T1 > T1
+39,LCK,Rounds 1-2,0,2026-05-30,BNK FEARX,T1,0,2,3,T1,T1 > T1
+40,LCK,Rounds 3-4,1,2026-08-29,BNK FEARX,T1,2,3,5,T1,T1 > BNK FEARX > BNK FEARX > T1 > T1
+41,LCK,Cup,0,2026-01-16,DN SOOPers,Dplus Kia,0,2,3,Dplus Kia,Dplus Kia > Dplus Kia
+42,LCK,Cup,0,2026-02-20,DN SOOPers,Dplus Kia,1,3,5,Dplus Kia,Dplus Kia > Dplus Kia > DN SOOPers > Dplus Kia
+43,LCK,Rounds 1-2,0,2026-04-25,DN SOOPers,Dplus Kia,0,2,3,Dplus Kia,Dplus Kia > Dplus Kia
+44,LCK,Rounds 1-2,0,2026-05-13,DN SOOPers,Dplus Kia,0,2,3,Dplus Kia,Dplus Kia > Dplus Kia
+45,LCK,Rounds 1-2,0,2026-04-23,DN SOOPers,Gen.G,0,2,3,Gen.G,Gen.G > Gen.G
+46,LCK,Rounds 1-2,0,2026-05-24,DN SOOPers,Gen.G,0,2,3,Gen.G,Gen.G > Gen.G
+47,LCK,Rounds 1-2,0,2026-05-01,DN SOOPers,HANJIN BRION,0,2,3,HANJIN BRION,HANJIN BRION > HANJIN BRION
+48,LCK,Rounds 1-2,0,2026-05-15,DN SOOPers,HANJIN BRION,0,2,3,HANJIN BRION,HANJIN BRION > HANJIN BRION
+49,LCK,Rounds 3-4,0,2026-08-02,DN SOOPers,HANJIN BRION,2,1,3,DN SOOPers,DN SOOPers > HANJIN BRION > DN SOOPers
+50,LCK,Rounds 3-4,0,2026-08-19,DN SOOPers,HANJIN BRION,0,2,3,HANJIN BRION,HANJIN BRION > HANJIN BRION
+51,LCK,Cup,0,2026-01-24,DN SOOPers,Hanwha Life Esports,1,2,3,Hanwha Life Esports,Hanwha Life Esports > DN SOOPers > Hanwha Life Esports
+52,LCK,Rounds 1-2,0,2026-04-16,DN SOOPers,Hanwha Life Esports,0,2,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+53,LCK,Rounds 1-2,0,2026-05-06,DN SOOPers,Hanwha Life Esports,0,2,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+54,LCK,Cup,0,2026-01-14,DN SOOPers,KT Rolster,1,2,3,KT Rolster,DN SOOPers > KT Rolster > KT Rolster
+55,LCK,Cup,0,2026-02-06,DN SOOPers,KT Rolster,2,0,3,DN SOOPers,DN SOOPers > DN SOOPers
+56,LCK,Rounds 1-2,0,2026-04-18,DN SOOPers,KT Rolster,0,2,3,KT Rolster,KT Rolster > KT Rolster
+57,LCK,Rounds 1-2,0,2026-05-30,DN SOOPers,KT Rolster,0,2,3,KT Rolster,KT Rolster > KT Rolster
+58,LCK,Cup,0,2026-01-21,DN SOOPers,Kiwoom DRX,2,1,3,DN SOOPers,Kiwoom DRX > DN SOOPers > DN SOOPers
+59,LCK,Cup,0,2026-02-19,DN SOOPers,Kiwoom DRX,3,1,5,DN SOOPers,DN SOOPers > DN SOOPers > Kiwoom DRX > DN SOOPers
+60,LCK,Rounds 1-2,0,2026-04-02,DN SOOPers,Kiwoom DRX,2,0,3,DN SOOPers,DN SOOPers > DN SOOPers
+61,LCK,Rounds 1-2,0,2026-05-22,DN SOOPers,Kiwoom DRX,0,2,3,Kiwoom DRX,Kiwoom DRX > Kiwoom DRX
+62,LCK,Rounds 3-4,0,2026-08-06,DN SOOPers,Kiwoom DRX,0,2,3,Kiwoom DRX,Kiwoom DRX > Kiwoom DRX
+63,LCK,Rounds 3-4,0,2026-08-22,DN SOOPers,Kiwoom DRX,2,0,3,DN SOOPers,DN SOOPers > DN SOOPers
+64,LCK,Cup,0,2026-02-07,DN SOOPers,Nongshim RedForce,2,1,3,DN SOOPers,Nongshim RedForce > DN SOOPers > DN SOOPers
+65,LCK,Rounds 1-2,0,2026-04-05,DN SOOPers,Nongshim RedForce,0,2,3,Nongshim RedForce,Nongshim RedForce > Nongshim RedForce
+66,LCK,Rounds 1-2,0,2026-05-28,DN SOOPers,Nongshim RedForce,1,2,3,Nongshim RedForce,DN SOOPers > Nongshim RedForce > Nongshim RedForce
+67,LCK,Rounds 3-4,0,2026-08-08,DN SOOPers,Nongshim RedForce,2,0,3,DN SOOPers,DN SOOPers > DN SOOPers
+68,LCK,Rounds 3-4,0,2026-08-12,DN SOOPers,Nongshim RedForce,2,1,3,DN SOOPers,Nongshim RedForce > DN SOOPers > DN SOOPers
+69,LCK,Rounds 1-2,0,2026-04-10,DN SOOPers,T1,0,2,3,T1,T1 > T1
+70,LCK,Rounds 1-2,0,2026-05-08,DN SOOPers,T1,0,2,3,T1,T1 > T1
+71,LCK,Cup,0,2026-01-24,Dplus Kia,Gen.G,0,2,3,Gen.G,Gen.G > Gen.G
+72,LCK,Cup,0,2026-02-14,Dplus Kia,Gen.G,1,3,5,Gen.G,Gen.G > Dplus Kia > Gen.G > Gen.G
+73,LCK,Rounds 1-2,0,2026-04-11,Dplus Kia,Gen.G,2,0,3,Dplus Kia,Dplus Kia > Dplus Kia
+74,LCK,Rounds 1-2,0,2026-05-02,Dplus Kia,Gen.G,1,2,3,Gen.G,Gen.G > Dplus Kia > Gen.G
+75,LCK,Rounds 3-4,0,2026-08-01,Dplus Kia,Gen.G,1,0,1,Dplus Kia,Dplus Kia
+76,LCK,Rounds 3-4,0,2026-08-22,Dplus Kia,Gen.G,2,1,3,Dplus Kia,Gen.G > Dplus Kia > Dplus Kia
+77,LCK,Cup,0,2026-01-14,Dplus Kia,HANJIN BRION,2,0,3,Dplus Kia,Dplus Kia > Dplus Kia
+78,LCK,Rounds 1-2,0,2026-04-23,Dplus Kia,HANJIN BRION,2,0,3,Dplus Kia,Dplus Kia > Dplus Kia
+79,LCK,Rounds 1-2,0,2026-05-21,Dplus Kia,HANJIN BRION,2,1,3,Dplus Kia,Dplus Kia > HANJIN BRION > Dplus Kia
+80,LCK,Rounds 1-2,1,2026-06-06,Dplus Kia,HANJIN BRION,3,0,5,Dplus Kia,Dplus Kia > Dplus Kia > Dplus Kia
+81,LCK,Rounds 1-2,0,2026-04-08,Dplus Kia,Hanwha Life Esports,0,2,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+82,LCK,Rounds 1-2,0,2026-05-15,Dplus Kia,Hanwha Life Esports,0,2,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+83,LCK,Rounds 3-4,0,2026-07-30,Dplus Kia,Hanwha Life Esports,2,1,3,Dplus Kia,Dplus Kia > Hanwha Life Esports > Dplus Kia
+84,LCK,Rounds 3-4,0,2026-08-20,Dplus Kia,Hanwha Life Esports,0,2,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+85,LCK,Rounds 1-2,0,2026-04-15,Dplus Kia,KT Rolster,1,2,3,KT Rolster,Dplus Kia > KT Rolster > KT Rolster
+86,LCK,Rounds 1-2,0,2026-05-07,Dplus Kia,KT Rolster,0,2,3,KT Rolster,KT Rolster > KT Rolster
+87,LCK,Rounds 1-2,1,2026-06-07,Dplus Kia,KT Rolster,2,3,5,KT Rolster,Dplus Kia > Dplus Kia > KT Rolster > KT Rolster > KT Rolster
+88,LCK,Rounds 3-4,0,2026-08-09,Dplus Kia,KT Rolster,2,1,3,Dplus Kia,KT Rolster > Dplus Kia > Dplus Kia
+89,LCK,Rounds 3-4,0,2026-08-12,Dplus Kia,KT Rolster,2,0,3,Dplus Kia,Dplus Kia > Dplus Kia
+90,LCK,Rounds 3-4,1,2026-08-30,Dplus Kia,KT Rolster,0,3,5,KT Rolster,KT Rolster > KT Rolster > KT Rolster
+91,LCK,Rounds 3-4,1,2026-09-04,Dplus Kia,KT Rolster,3,1,5,Dplus Kia,KT Rolster > Dplus Kia > Dplus Kia > Dplus Kia
+92,LCK,Cup,0,2026-02-07,Dplus Kia,Kiwoom DRX,2,0,3,Dplus Kia,Dplus Kia > Dplus Kia
+93,LCK,Cup,0,2026-02-13,Dplus Kia,Kiwoom DRX,3,2,5,Dplus Kia,Kiwoom DRX > Dplus Kia > Kiwoom DRX > Dplus Kia > Dplus Kia
+94,LCK,Rounds 1-2,0,2026-04-04,Dplus Kia,Kiwoom DRX,2,0,3,Dplus Kia,Dplus Kia > Dplus Kia
+95,LCK,Rounds 1-2,0,2026-05-29,Dplus Kia,Kiwoom DRX,2,1,3,Dplus Kia,Dplus Kia > Kiwoom DRX > Dplus Kia
+96,LCK,Cup,0,2026-01-21,Dplus Kia,Nongshim RedForce,2,1,3,Dplus Kia,Dplus Kia > Nongshim RedForce > Dplus Kia
+97,LCK,Rounds 1-2,0,2026-04-02,Dplus Kia,Nongshim RedForce,0,2,3,Nongshim RedForce,Nongshim RedForce > Nongshim RedForce
+98,LCK,Rounds 1-2,0,2026-05-31,Dplus Kia,Nongshim RedForce,2,0,3,Dplus Kia,Dplus Kia > Dplus Kia
+99,LCK,Cup,0,2026-01-31,Dplus Kia,T1,0,3,5,T1,T1 > T1 > T1
+100,LCK,Cup,0,2026-02-22,Dplus Kia,T1,3,2,5,Dplus Kia,T1 > T1 > Dplus Kia > Dplus Kia > Dplus Kia
+101,LCK,Rounds 1-2,0,2026-04-17,Dplus Kia,T1,2,1,3,Dplus Kia,Dplus Kia > T1 > Dplus Kia
+102,LCK,Rounds 1-2,0,2026-05-10,Dplus Kia,T1,0,2,3,T1,T1 > T1
+103,LCK,Rounds 3-4,0,2026-08-06,Dplus Kia,T1,0,2,3,T1,T1 > T1
+104,LCK,Rounds 3-4,0,2026-08-14,Dplus Kia,T1,2,1,3,Dplus Kia,T1 > Dplus Kia > Dplus Kia
+105,LCK,Rounds 3-4,1,2026-09-06,Dplus Kia,T1,1,3,5,T1,T1 > Dplus Kia > T1 > T1
+106,LCK,Rounds 1-2,0,2026-04-16,Gen.G,HANJIN BRION,2,0,3,Gen.G,Gen.G > Gen.G
+107,LCK,Rounds 1-2,0,2026-05-29,Gen.G,HANJIN BRION,2,0,3,Gen.G,Gen.G > Gen.G
+108,LCK,Cup,0,2026-02-01,Gen.G,Hanwha Life Esports,3,0,5,Gen.G,Gen.G > Gen.G > Gen.G
+109,LCK,Rounds 1-2,0,2026-04-18,Gen.G,Hanwha Life Esports,0,2,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+110,LCK,Rounds 1-2,0,2026-05-27,Gen.G,Hanwha Life Esports,2,1,3,Gen.G,Hanwha Life Esports > Gen.G > Gen.G
+111,LCK,Rounds 3-4,0,2026-08-05,Gen.G,Hanwha Life Esports,2,1,3,Gen.G,Gen.G > Hanwha Life Esports > Gen.G
+112,LCK,Rounds 3-4,0,2026-08-13,Gen.G,Hanwha Life Esports,2,0,3,Gen.G,Gen.G > Gen.G
+113,LCK,Rounds 3-4,1,2026-09-05,Gen.G,Hanwha Life Esports,3,1,5,Gen.G,Hanwha Life Esports > Gen.G > Gen.G > Gen.G
+114,LCK,Rounds 3-4,1,2026-09-13,Gen.G,Hanwha Life Esports,3,1,5,Gen.G,Hanwha Life Esports > Gen.G > Gen.G > Gen.G
+115,LCK,Cup,0,2026-01-17,Gen.G,KT Rolster,2,0,3,Gen.G,Gen.G > Gen.G
+116,LCK,Rounds 1-2,0,2026-04-03,Gen.G,KT Rolster,1,2,3,KT Rolster,KT Rolster > Gen.G > KT Rolster
+117,LCK,Rounds 1-2,0,2026-05-22,Gen.G,KT Rolster,2,0,3,Gen.G,Gen.G > Gen.G
+118,LCK,Rounds 1-2,1,2026-06-13,Gen.G,KT Rolster,3,0,5,Gen.G,Gen.G > Gen.G > Gen.G
+119,LCK,Rounds 3-4,0,2026-08-07,Gen.G,KT Rolster,2,0,3,Gen.G,Gen.G > Gen.G
+120,LCK,Rounds 3-4,0,2026-08-19,Gen.G,KT Rolster,2,1,3,Gen.G,Gen.G > KT Rolster > Gen.G
+121,LCK,Rounds 3-4,1,2026-09-01,Gen.G,KT Rolster,3,0,5,Gen.G,Gen.G > Gen.G > Gen.G
+122,LCK,Cup,0,2026-01-15,Gen.G,Kiwoom DRX,2,0,3,Gen.G,Gen.G > Gen.G
+123,LCK,Rounds 1-2,0,2026-04-30,Gen.G,Kiwoom DRX,2,1,3,Gen.G,Gen.G > Kiwoom DRX > Gen.G
+124,LCK,Rounds 1-2,0,2026-05-08,Gen.G,Kiwoom DRX,2,0,3,Gen.G,Gen.G > Gen.G
+125,LCK,Rounds 1-2,0,2026-04-26,Gen.G,Nongshim RedForce,2,0,3,Gen.G,Gen.G > Gen.G
+126,LCK,Rounds 1-2,0,2026-05-06,Gen.G,Nongshim RedForce,2,0,3,Gen.G,Gen.G > Gen.G
+127,LCK,Rounds 1-2,0,2026-04-08,Gen.G,T1,2,0,3,Gen.G,Gen.G > Gen.G
+128,LCK,Rounds 1-2,0,2026-05-16,Gen.G,T1,1,2,3,T1,Gen.G > T1 > T1
+129,LCK,Rounds 1-2,1,2026-06-14,Gen.G,T1,2,3,5,T1,Gen.G > T1 > T1 > Gen.G > T1
+130,LCK,Rounds 3-4,0,2026-07-31,Gen.G,T1,0,2,3,T1,T1 > T1
+131,LCK,Rounds 3-4,0,2026-08-16,Gen.G,T1,2,0,3,Gen.G,Gen.G > Gen.G
+132,LCK,Cup,0,2026-01-22,HANJIN BRION,Hanwha Life Esports,1,2,3,Hanwha Life Esports,Hanwha Life Esports > HANJIN BRION > Hanwha Life Esports
+133,LCK,Rounds 1-2,0,2026-04-01,HANJIN BRION,Hanwha Life Esports,0,2,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+134,LCK,Rounds 1-2,0,2026-05-31,HANJIN BRION,Hanwha Life Esports,0,2,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+135,LCK,Cup,0,2026-01-25,HANJIN BRION,KT Rolster,1,2,3,KT Rolster,HANJIN BRION > KT Rolster > KT Rolster
+136,LCK,Rounds 1-2,0,2026-04-12,HANJIN BRION,KT Rolster,0,2,3,KT Rolster,KT Rolster > KT Rolster
+137,LCK,Rounds 1-2,0,2026-05-03,HANJIN BRION,KT Rolster,2,0,3,HANJIN BRION,HANJIN BRION > HANJIN BRION
+138,LCK,Rounds 3-4,1,2026-08-26,HANJIN BRION,KT Rolster,2,3,5,KT Rolster,KT Rolster > HANJIN BRION > HANJIN BRION > KT Rolster > KT Rolster
+139,LCK,Cup,0,2026-01-28,HANJIN BRION,Kiwoom DRX,2,3,5,Kiwoom DRX,Kiwoom DRX > HANJIN BRION > HANJIN BRION > Kiwoom DRX > Kiwoom DRX
+140,LCK,Cup,0,2026-02-06,HANJIN BRION,Kiwoom DRX,1,2,3,Kiwoom DRX,Kiwoom DRX > HANJIN BRION > Kiwoom DRX
+141,LCK,Rounds 1-2,0,2026-04-09,HANJIN BRION,Kiwoom DRX,1,2,3,Kiwoom DRX,HANJIN BRION > Kiwoom DRX > Kiwoom DRX
+142,LCK,Rounds 1-2,0,2026-05-17,HANJIN BRION,Kiwoom DRX,1,2,3,Kiwoom DRX,HANJIN BRION > Kiwoom DRX > Kiwoom DRX
+143,LCK,Rounds 3-4,0,2026-07-31,HANJIN BRION,Kiwoom DRX,1,2,3,Kiwoom DRX,HANJIN BRION > Kiwoom DRX > Kiwoom DRX
+144,LCK,Rounds 3-4,0,2026-08-16,HANJIN BRION,Kiwoom DRX,2,1,3,HANJIN BRION,HANJIN BRION > Kiwoom DRX > HANJIN BRION
+145,LCK,Rounds 1-2,0,2026-04-19,HANJIN BRION,Nongshim RedForce,1,2,3,Nongshim RedForce,HANJIN BRION > Nongshim RedForce > Nongshim RedForce
+146,LCK,Rounds 1-2,0,2026-05-09,HANJIN BRION,Nongshim RedForce,2,0,3,HANJIN BRION,HANJIN BRION > HANJIN BRION
+147,LCK,Rounds 3-4,0,2026-08-05,HANJIN BRION,Nongshim RedForce,2,1,3,HANJIN BRION,HANJIN BRION > Nongshim RedForce > HANJIN BRION
+148,LCK,Rounds 3-4,0,2026-08-14,HANJIN BRION,Nongshim RedForce,0,2,3,Nongshim RedForce,Nongshim RedForce > Nongshim RedForce
+149,LCK,Rounds 1-2,0,2026-04-25,HANJIN BRION,T1,0,2,3,T1,T1 > T1
+150,LCK,Rounds 1-2,0,2026-05-24,HANJIN BRION,T1,0,2,3,T1,T1 > T1
+151,LCK,Rounds 1-2,0,2026-04-29,Hanwha Life Esports,KT Rolster,2,0,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+152,LCK,Rounds 1-2,0,2026-05-17,Hanwha Life Esports,KT Rolster,1,2,3,KT Rolster,KT Rolster > Hanwha Life Esports > KT Rolster
+153,LCK,Rounds 3-4,0,2026-08-02,Hanwha Life Esports,KT Rolster,1,2,3,KT Rolster,KT Rolster > Hanwha Life Esports > KT Rolster
+154,LCK,Rounds 3-4,0,2026-08-15,Hanwha Life Esports,KT Rolster,2,1,3,Hanwha Life Esports,KT Rolster > Hanwha Life Esports > Hanwha Life Esports
+155,LCK,Rounds 1-2,0,2026-04-24,Hanwha Life Esports,Kiwoom DRX,2,0,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+156,LCK,Rounds 1-2,0,2026-05-10,Hanwha Life Esports,Kiwoom DRX,2,1,3,Hanwha Life Esports,Kiwoom DRX > Hanwha Life Esports > Hanwha Life Esports
+157,LCK,Cup,0,2026-01-18,Hanwha Life Esports,Nongshim RedForce,0,2,3,Nongshim RedForce,Nongshim RedForce > Nongshim RedForce
+158,LCK,Rounds 1-2,0,2026-04-22,Hanwha Life Esports,Nongshim RedForce,2,1,3,Hanwha Life Esports,Hanwha Life Esports > Nongshim RedForce > Hanwha Life Esports
+159,LCK,Rounds 1-2,0,2026-05-23,Hanwha Life Esports,Nongshim RedForce,2,1,3,Hanwha Life Esports,Nongshim RedForce > Hanwha Life Esports > Hanwha Life Esports
+160,LCK,Cup,0,2026-01-16,Hanwha Life Esports,T1,1,2,3,T1,Hanwha Life Esports > T1 > T1
+161,LCK,Rounds 1-2,0,2026-04-04,Hanwha Life Esports,T1,0,2,3,T1,T1 > T1
+162,LCK,Rounds 1-2,0,2026-05-01,Hanwha Life Esports,T1,2,1,3,Hanwha Life Esports,Hanwha Life Esports > T1 > Hanwha Life Esports
+163,LCK,Rounds 1-2,1,2026-06-12,Hanwha Life Esports,T1,3,1,5,Hanwha Life Esports,Hanwha Life Esports > T1 > Hanwha Life Esports > Hanwha Life Esports
+164,LCK,Rounds 3-4,0,2026-08-08,Hanwha Life Esports,T1,2,1,3,Hanwha Life Esports,T1 > Hanwha Life Esports > Hanwha Life Esports
+165,LCK,Rounds 3-4,0,2026-08-23,Hanwha Life Esports,T1,2,0,3,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports
+166,LCK,Rounds 3-4,1,2026-09-02,Hanwha Life Esports,T1,3,2,5,Hanwha Life Esports,T1 > T1 > Hanwha Life Esports > Hanwha Life Esports > Hanwha Life Esports
+167,LCK,Rounds 3-4,1,2026-09-12,Hanwha Life Esports,T1,3,1,5,Hanwha Life Esports,Hanwha Life Esports > Hanwha Life Esports > T1 > Hanwha Life Esports
+168,LCK,Rounds 1-2,0,2026-04-22,KT Rolster,Kiwoom DRX,2,0,3,KT Rolster,KT Rolster > KT Rolster
+169,LCK,Rounds 1-2,0,2026-05-14,KT Rolster,Kiwoom DRX,2,1,3,KT Rolster,KT Rolster > Kiwoom DRX > KT Rolster
+170,LCK,Cup,0,2026-01-30,KT Rolster,Nongshim RedForce,2,3,5,Nongshim RedForce,Nongshim RedForce > Nongshim RedForce > KT Rolster > KT Rolster > Nongshim RedForce
+171,LCK,Rounds 1-2,0,2026-04-09,KT Rolster,Nongshim RedForce,2,0,3,KT Rolster,KT Rolster > KT Rolster
+172,LCK,Rounds 1-2,0,2026-05-20,KT Rolster,Nongshim RedForce,2,1,3,KT Rolster,Nongshim RedForce > KT Rolster > KT Rolster
+173,LCK,Cup,0,2026-01-23,KT Rolster,T1,0,2,3,T1,T1 > T1
+174,LCK,Rounds 1-2,0,2026-04-01,KT Rolster,T1,2,0,3,KT Rolster,KT Rolster > KT Rolster
+175,LCK,Rounds 1-2,0,2026-05-28,KT Rolster,T1,0,2,3,T1,T1 > T1
+176,LCK,Rounds 3-4,0,2026-07-29,KT Rolster,T1,2,0,3,KT Rolster,KT Rolster > KT Rolster
+177,LCK,Rounds 3-4,0,2026-08-21,KT Rolster,T1,1,2,3,T1,KT Rolster > T1 > T1
+178,LCK,Cup,0,2026-01-23,Kiwoom DRX,Nongshim RedForce,2,1,3,Kiwoom DRX,Kiwoom DRX > Nongshim RedForce > Kiwoom DRX
+179,LCK,Cup,0,2026-02-08,Kiwoom DRX,Nongshim RedForce,3,0,5,Kiwoom DRX,Kiwoom DRX > Kiwoom DRX > Kiwoom DRX
+180,LCK,Rounds 1-2,0,2026-04-11,Kiwoom DRX,Nongshim RedForce,2,0,3,Kiwoom DRX,Kiwoom DRX > Kiwoom DRX
+181,LCK,Rounds 1-2,0,2026-05-02,Kiwoom DRX,Nongshim RedForce,2,0,3,Kiwoom DRX,Kiwoom DRX > Kiwoom DRX
+182,LCK,Rounds 3-4,0,2026-07-29,Kiwoom DRX,Nongshim RedForce,0,2,3,Nongshim RedForce,Nongshim RedForce > Nongshim RedForce
+183,LCK,Rounds 3-4,0,2026-08-20,Kiwoom DRX,Nongshim RedForce,0,2,3,Nongshim RedForce,Nongshim RedForce > Nongshim RedForce
+184,LCK,Cup,0,2026-01-18,Kiwoom DRX,T1,1,2,3,T1,T1 > Kiwoom DRX > T1
+185,LCK,Rounds 1-2,0,2026-04-19,Kiwoom DRX,T1,0,2,3,T1,T1 > T1
+186,LCK,Rounds 1-2,0,2026-05-20,Kiwoom DRX,T1,1,2,3,T1,T1 > Kiwoom DRX > T1
+187,LCK,Rounds 1-2,0,2026-04-29,Nongshim RedForce,T1,0,2,3,T1,T1 > T1
+188,LCK,Rounds 1-2,0,2026-05-13,Nongshim RedForce,T1,0,2,3,T1,T1 > T1

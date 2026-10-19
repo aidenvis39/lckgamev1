@@ -1,0 +1,10 @@
+﻿level,winpct_gap,n_games,stronger_team_winrate
+game,0~10%p,126,0.587
+game,10~20%p,88,0.602
+game,20~30%p,58,0.879
+game,30~45%p,26,0.923
+game,45%p+,4,1.0
+series(BO3),순위차 1~2,62,0.661
+series(BO3),3~4,38,0.632
+series(BO3),5~6,18,1.0
+series(BO3),7~9,12,1.0

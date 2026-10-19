@@ -1,0 +1,22 @@
+{
+  "name": "lck-sim-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "LCK 구단 운영 시뮬레이션 - 경기 시뮬 엔진 프로토타입",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "match": "node src/cli.ts match",
+    "season": "node src/cli.ts season",
+    "calibrate": "node src/cli.ts calibrate",
+    "tune": "node src/cli.ts tune",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test \"test/**/*.test.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "5.9"
+  }
+}

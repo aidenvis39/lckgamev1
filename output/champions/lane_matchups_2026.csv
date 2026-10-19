@@ -1,0 +1,1791 @@
+﻿position,champion,champion_opp,n,winrate,avg_gd15,avg_csd15,avg_xpd15
+bot,Corki,Yunara,326,0.488,-215.505,1.969,66.711
+bot,Yunara,Corki,326,0.512,215.505,-1.969,-66.711
+bot,Ezreal,Sivir,279,0.427,-243.335,-0.486,42.349
+bot,Sivir,Ezreal,279,0.573,243.335,0.486,-42.349
+bot,Ezreal,Kai'Sa,274,0.496,-96.511,5.423,176.055
+bot,Kai'Sa,Ezreal,274,0.504,96.511,-5.423,-176.055
+bot,Ashe,Ezreal,255,0.533,-185.688,-5.245,-252.874
+bot,Ezreal,Ashe,255,0.467,185.688,5.245,252.874
+bot,Caitlyn,Ezreal,253,0.522,229.972,4.032,-26.845
+bot,Ezreal,Caitlyn,253,0.478,-229.972,-4.032,26.845
+bot,Ezreal,Jhin,248,0.54,125.0,3.294,29.274
+bot,Jhin,Ezreal,248,0.46,-125.0,-3.294,-29.274
+bot,Lucian,Yunara,238,0.45,62.878,5.426,171.515
+bot,Yunara,Lucian,238,0.55,-62.878,-5.426,-171.515
+bot,Ezreal,Yunara,233,0.562,-22.506,6.567,300.97
+bot,Yunara,Ezreal,233,0.438,22.506,-6.567,-300.97
+bot,Sivir,Varus,217,0.498,-45.682,-3.77,-90.765
+bot,Varus,Sivir,217,0.502,45.682,3.77,90.765
+bot,Caitlyn,Jhin,194,0.464,327.809,7.557,0.093
+bot,Jhin,Caitlyn,194,0.536,-327.809,-7.557,-0.093
+bot,Corki,Ezreal,177,0.452,-88.141,-2.26,-99.949
+bot,Ezreal,Corki,177,0.548,88.141,2.26,99.949
+bot,Ezreal,Varus,174,0.523,6.902,-0.23,-46.925
+bot,Varus,Ezreal,174,0.477,-6.902,0.23,46.925
+bot,Ezreal,Lucian,173,0.439,-269.699,-3.48,23.208
+bot,Lucian,Ezreal,173,0.561,269.699,3.48,-23.208
+bot,Caitlyn,Yunara,169,0.586,448.84,14.172,306.621
+bot,Yunara,Caitlyn,169,0.414,-448.84,-14.172,-306.621
+bot,Caitlyn,Lucian,159,0.547,138.006,5.968,118.62
+bot,Jhin,Varus,159,0.472,-161.818,-2.428,-37.535
+bot,Lucian,Caitlyn,159,0.453,-138.006,-5.968,-118.62
+bot,Varus,Jhin,159,0.528,161.818,2.428,37.535
+bot,Aphelios,Yunara,151,0.457,45.126,2.656,-35.781
+bot,Yunara,Aphelios,151,0.543,-45.126,-2.656,35.781
+bot,Ashe,Yunara,148,0.547,-132.365,3.338,10.885
+bot,Yunara,Ashe,148,0.453,132.365,-3.338,-10.885
+bot,Ashe,Lucian,140,0.536,-154.633,-3.367,-145.986
+bot,Lucian,Ashe,140,0.464,154.633,3.367,145.986
+bot,Kai'Sa,Yunara,132,0.447,-368.689,-4.75,-115.159
+bot,Yunara,Kai'Sa,132,0.553,368.689,4.75,115.159
+bot,Corki,Jhin,125,0.464,8.064,-1.352,-91.664
+bot,Jhin,Corki,125,0.536,-8.064,1.352,91.664
+bot,Ashe,Jhin,119,0.622,-13.41,-2.094,-248.419
+bot,Corki,Lucian,119,0.462,-255.017,-5.697,-94.941
+bot,Jhin,Ashe,119,0.378,13.41,2.094,248.419
+bot,Lucian,Corki,119,0.538,255.017,5.697,94.941
+bot,Lucian,Xayah,117,0.41,31.845,4.793,-51.336
+bot,Xayah,Lucian,117,0.59,-31.845,-4.793,51.336
+bot,Ashe,Caitlyn,110,0.482,-211.973,-5.491,-283.045
+bot,Caitlyn,Ashe,110,0.518,211.973,5.491,283.045
+bot,Varus,Yunara,103,0.485,-207.99,0.301,195.117
+bot,Yunara,Varus,103,0.515,207.99,-0.301,-195.117
+bot,Corki,Sivir,98,0.49,95.49,4.082,122.633
+bot,Sivir,Corki,98,0.51,-95.49,-4.082,-122.633
+bot,Jhin,Yunara,91,0.44,-303.912,-0.121,221.352
+bot,Yunara,Jhin,91,0.56,303.912,0.121,-221.352
+bot,Corki,Kai'Sa,89,0.449,-326.775,0.067,4.213
+bot,Kai'Sa,Corki,89,0.551,326.775,-0.067,-4.213
+bot,Ashe,Corki,78,0.628,159.487,4.808,85.564
+bot,Corki,Ashe,78,0.372,-159.487,-4.808,-85.564
+bot,Corki,Varus,74,0.459,15.27,-1.595,-202.081
+bot,Varus,Corki,74,0.541,-15.27,1.595,202.081
+bot,Jhin,Kai'Sa,73,0.397,-248.329,3.068,178.438
+bot,Kai'Sa,Jhin,73,0.603,248.329,-3.068,-178.438
+bot,Ashe,Mel,71,0.577,-430.845,-9.324,-620.324
+bot,Mel,Ashe,71,0.423,430.845,9.324,620.324
+bot,Ezreal,Ziggs,70,0.486,101.657,4.586,-15.371
+bot,Xayah,Yunara,70,0.471,85.5,2.514,193.4
+bot,Yunara,Xayah,70,0.529,-85.5,-2.514,-193.4
+bot,Ziggs,Ezreal,70,0.514,-101.657,-4.586,15.371
+bot,Caitlyn,Corki,69,0.565,418.072,10.652,193.768
+bot,Corki,Caitlyn,69,0.435,-418.072,-10.652,-193.768
+bot,Ashe,Varus,68,0.574,-144.735,-0.426,-318.529
+bot,Varus,Ashe,68,0.426,144.735,0.426,318.529
+bot,Sivir,Yunara,65,0.385,-160.431,0.492,58.938
+bot,Yunara,Sivir,65,0.615,160.431,-0.492,-58.938
+bot,Caitlyn,Varus,64,0.531,506.875,6.734,-80.5
+bot,Kai'Sa,Xayah,64,0.469,-274.188,-8.984,-199.766
+bot,Varus,Caitlyn,64,0.469,-506.875,-6.734,80.5
+bot,Xayah,Kai'Sa,64,0.531,274.188,8.984,199.766
+bot,Jhin,Lucian,63,0.492,-257.143,-6.667,184.73
+bot,Lucian,Jhin,63,0.508,257.143,6.667,-184.73
+bot,Kai'Sa,Sivir,57,0.474,19.614,-3.667,-22.281
+bot,Sivir,Kai'Sa,57,0.526,-19.614,3.667,22.281
+bot,Kalista,Lucian,56,0.518,294.536,2.375,86.75
+bot,Lucian,Kalista,56,0.482,-294.536,-2.375,-86.75
+bot,Ashe,Miss Fortune,55,0.527,-91.909,-0.909,-66.0
+bot,Ashe,Zeri,55,0.582,-131.327,-0.527,398.073
+bot,Miss Fortune,Ashe,55,0.473,91.909,0.909,66.0
+bot,Zeri,Ashe,55,0.418,131.327,0.527,-398.073
+bot,Jhin,Sivir,50,0.28,-263.78,-1.1,13.0
+bot,Sivir,Jhin,50,0.72,263.78,1.1,-13.0
+bot,Kalista,Yunara,48,0.542,168.396,1.708,64.688
+bot,Yunara,Kalista,48,0.458,-168.396,-1.708,-64.688
+bot,Jhin,Miss Fortune,46,0.435,-331.674,-3.826,32.935
+bot,Lucian,Varus,46,0.522,33.087,4.565,-108.261
+bot,Miss Fortune,Jhin,46,0.565,331.674,3.826,-32.935
+bot,Varus,Lucian,46,0.478,-33.087,-4.565,108.261
+bot,Corki,Xayah,44,0.568,-75.932,3.818,168.955
+bot,Kai'Sa,Ziggs,44,0.591,660.25,1.614,40.273
+bot,Xayah,Corki,44,0.432,75.932,-3.818,-168.955
+bot,Ziggs,Kai'Sa,44,0.409,-660.25,-1.614,-40.273
+bot,Ezreal,Miss Fortune,43,0.605,157.698,5.163,195.581
+bot,Miss Fortune,Ezreal,43,0.395,-157.698,-5.163,-195.581
+bot,Ezreal,Xayah,42,0.452,-137.024,4.548,69.571
+bot,Jinx,Yunara,42,0.429,-3.119,-0.071,-244.571
+bot,Sivir,Xayah,42,0.5,-270.024,-5.643,-225.738
+bot,Xayah,Ezreal,42,0.548,137.024,-4.548,-69.571
+bot,Xayah,Sivir,42,0.5,270.024,5.643,225.738
+bot,Yunara,Jinx,42,0.571,3.119,0.071,244.571
+bot,Sivir,Ziggs,40,0.45,20.275,2.45,-133.125
+bot,Ziggs,Sivir,40,0.55,-20.275,-2.45,133.125
+bot,Kai'Sa,Varus,39,0.538,152.333,-4.0,-240.205
+bot,Varus,Kai'Sa,39,0.462,-152.333,4.0,240.205
+bot,Tristana,Yunara,38,0.474,-116.658,-2.184,-96.816
+bot,Yunara,Tristana,38,0.526,116.658,2.184,96.816
+bot,Aphelios,Lucian,37,0.378,87.703,0.568,-145.0
+bot,Lucian,Aphelios,37,0.622,-87.703,-0.568,145.0
+bot,Ezreal,Zeri,36,0.389,-215.639,-2.167,271.028
+bot,Zeri,Ezreal,36,0.611,215.639,2.167,-271.028
+bot,Lucian,Miss Fortune,35,0.486,1.171,4.829,-52.143
+bot,Miss Fortune,Lucian,35,0.514,-1.171,-4.829,52.143
+bot,Ashe,Kalista,34,0.529,96.697,3.182,103.545
+bot,Caitlyn,Miss Fortune,34,0.647,336.118,7.324,54.235
+bot,Jhin,Kalista,34,0.529,111.294,-5.059,286.618
+bot,Jhin,Xayah,34,0.382,-658.647,-5.265,-90.676
+bot,Kalista,Ashe,34,0.471,-96.697,-3.182,-103.545
+bot,Kalista,Jhin,34,0.471,-111.294,5.059,-286.618
+bot,Miss Fortune,Caitlyn,34,0.353,-336.118,-7.324,-54.235
+bot,Xayah,Jhin,34,0.618,658.647,5.265,90.676
+bot,Caitlyn,Ziggs,33,0.424,23.303,1.788,-258.848
+bot,Ziggs,Caitlyn,33,0.576,-23.303,-1.788,258.848
+bot,Aphelios,Corki,32,0.531,232.469,1.469,-65.781
+bot,Corki,Aphelios,32,0.469,-232.469,-1.469,65.781
+bot,Kai'Sa,Lucian,32,0.5,-128.781,-10.0,-302.969
+bot,Lucian,Kai'Sa,32,0.5,128.781,10.0,302.969
+bot,Jhin,Ziggs,31,0.516,78.387,1.839,-83.677
+bot,Miss Fortune,Yunara,31,0.548,17.129,3.903,322.548
+bot,Yunara,Miss Fortune,31,0.452,-17.129,-3.903,-322.548
+bot,Ziggs,Jhin,31,0.484,-78.387,-1.839,83.677
+bot,Ashe,Ziggs,30,0.6,-16.867,2.7,-464.9
+bot,Kalista,Varus,30,0.6,-64.0,2.333,-211.2
+bot,Kalista,Xayah,30,0.467,379.833,7.433,30.4
+bot,Varus,Kalista,30,0.4,64.0,-2.333,211.2
+bot,Xayah,Kalista,30,0.533,-379.833,-7.433,-30.4
+bot,Ziggs,Ashe,30,0.4,16.867,-2.7,464.9
+bot,Ashe,Senna,29,0.552,-35.31,5.552,-15.897
+bot,Corki,Miss Fortune,29,0.448,-301.379,-2.069,5.103
+bot,Miss Fortune,Corki,29,0.552,301.379,2.069,-5.103
+bot,Senna,Ashe,29,0.448,35.31,-5.552,15.897
+bot,Smolder,Yunara,29,0.379,-1015.345,-8.828,-86.103
+bot,Yunara,Smolder,29,0.621,1015.345,8.828,86.103
+bot,Aphelios,Jinx,28,0.429,192.214,3.107,136.036
+bot,Caitlyn,Mel,28,0.464,-479.321,-7.357,-670.393
+bot,Jinx,Aphelios,28,0.571,-192.214,-3.107,-136.036
+bot,Mel,Caitlyn,28,0.536,479.321,7.357,670.393
+bot,Kai'Sa,Tristana,27,0.63,623.444,8.0,443.222
+bot,Tristana,Kai'Sa,27,0.37,-623.444,-8.0,-443.222
+bot,Yunara,Zeri,27,0.593,-98.963,-3.519,204.148
+bot,Zeri,Yunara,27,0.407,98.963,3.519,-204.148
+bot,Ezreal,Syndra,26,0.462,72.0,-6.423,-222.192
+bot,Lucian,Senna,26,0.5,291.692,9.231,76.308
+bot,Senna,Lucian,26,0.5,-291.692,-9.231,-76.308
+bot,Syndra,Ezreal,26,0.538,-72.0,6.423,222.192
+bot,Aphelios,Sivir,25,0.4,142.36,2.04,-163.84
+bot,Caitlyn,Sivir,25,0.68,542.12,15.16,293.16
+bot,Ezreal,Kalista,25,0.56,47.6,0.96,130.16
+bot,Kalista,Ezreal,25,0.44,-47.6,-0.96,-130.16
+bot,Lucian,Ziggs,25,0.64,433.08,14.56,-54.92
+bot,Sivir,Aphelios,25,0.6,-142.36,-2.04,163.84
+bot,Sivir,Caitlyn,25,0.32,-542.12,-15.16,-293.16
+bot,Yunara,Ziggs,25,0.48,174.0,-0.8,-542.72
+bot,Ziggs,Lucian,25,0.36,-433.08,-14.56,54.92
+bot,Ziggs,Yunara,25,0.52,-174.0,0.8,542.72
+bot,Caitlyn,Jinx,24,0.625,133.583,6.542,9.417
+bot,Ezreal,Tristana,24,0.5,-145.667,4.833,-16.458
+bot,Ezreal,Viktor,24,0.417,237.875,-0.458,-211.875
+bot,Jinx,Caitlyn,24,0.375,-133.583,-6.542,-9.417
+bot,Jinx,Xayah,24,0.417,-195.875,-2.167,-400.583
+bot,Tristana,Ezreal,24,0.5,145.667,-4.833,16.458
+bot,Varus,Xayah,24,0.5,-46.125,2.0,37.333
+bot,Viktor,Ezreal,24,0.583,-237.875,0.458,211.875
+bot,Xayah,Jinx,24,0.583,195.875,2.167,400.583
+bot,Xayah,Varus,24,0.5,46.125,-2.0,-37.333
+bot,Corki,Kalista,23,0.348,-22.565,-1.0,68.696
+bot,Corki,Tristana,23,0.478,164.913,9.913,153.826
+bot,Kalista,Corki,23,0.652,22.565,1.0,-68.696
+bot,Sivir,Zeri,23,0.348,-557.783,-6.217,-161.913
+bot,Tristana,Corki,23,0.522,-164.913,-9.913,-153.826
+bot,Zeri,Sivir,23,0.652,557.783,6.217,161.913
+bot,Aphelios,Miss Fortune,22,0.545,152.682,-0.955,-206.545
+bot,Aphelios,Xayah,22,0.5,455.636,8.636,220.318
+bot,Kalista,Miss Fortune,22,0.455,37.636,3.955,-229.455
+bot,Miss Fortune,Aphelios,22,0.455,-152.682,0.955,206.545
+bot,Miss Fortune,Kalista,22,0.545,-37.636,-3.955,229.455
+bot,Miss Fortune,Sivir,22,0.409,138.273,0.818,56.545
+bot,Sivir,Miss Fortune,22,0.591,-138.273,-0.818,-56.545
+bot,Tristana,Xayah,22,0.591,-267.455,-4.909,-193.727
+bot,Xayah,Aphelios,22,0.5,-455.636,-8.636,-220.318
+bot,Xayah,Tristana,22,0.409,267.455,4.909,193.727
+bot,Aphelios,Kai'Sa,21,0.429,-57.571,1.0,-192.905
+bot,Kai'Sa,Aphelios,21,0.571,57.571,-1.0,192.905
+bot,Aphelios,Caitlyn,20,0.45,-143.0,-5.75,-188.65
+bot,Aphelios,Ezreal,20,0.5,116.9,1.4,-99.2
+bot,Caitlyn,Aphelios,20,0.55,143.0,5.75,188.65
+bot,Ezreal,Aphelios,20,0.5,-116.9,-1.4,99.2
+bot,Kog'Maw,Lucian,20,0.5,11.55,8.3,22.6
+bot,Lucian,Kog'Maw,20,0.5,-11.55,-8.3,-22.6
+bot,Jhin,Tristana,19,0.421,-349.632,1.579,70.895
+bot,Miss Fortune,Varus,19,0.684,382.789,3.842,-26.526
+bot,Syndra,Viktor,19,0.526,508.737,6.526,65.632
+bot,Tristana,Jhin,19,0.579,349.632,-1.579,-70.895
+bot,Varus,Miss Fortune,19,0.316,-382.789,-3.842,26.526
+bot,Viktor,Syndra,19,0.474,-508.737,-6.526,-65.632
+bot,Aphelios,Ashe,18,0.444,70.056,-4.167,-83.5
+bot,Ashe,Aphelios,18,0.556,-70.056,4.167,83.5
+bot,Ashe,Sivir,18,0.389,-760.444,-4.944,-446.056
+bot,Draven,Lucian,18,0.444,159.444,1.611,45.444
+bot,Ezreal,Smolder,18,0.611,610.222,14.722,449.111
+bot,Kai'Sa,Zeri,18,0.389,-606.222,-11.444,-249.167
+bot,Lucian,Draven,18,0.556,-159.444,-1.611,-45.444
+bot,Lucian,Zeri,18,0.722,609.5,10.222,397.167
+bot,Senna,Yunara,18,0.611,-510.5,-13.611,113.222
+bot,Sivir,Ashe,18,0.611,760.444,4.944,446.056
+bot,Smolder,Ezreal,18,0.389,-610.222,-14.722,-449.111
+bot,Yunara,Senna,18,0.389,510.5,13.611,-113.222
+bot,Zeri,Kai'Sa,18,0.611,606.222,11.444,249.167
+bot,Zeri,Lucian,18,0.278,-609.5,-10.222,-397.167
+bot,Ashe,Kai'Sa,17,0.647,126.706,7.882,150.176
+bot,Jhin,Zeri,17,0.471,-154.353,5.118,283.294
+bot,Kai'Sa,Ashe,17,0.353,-126.706,-7.882,-150.176
+bot,Xayah,Zeri,17,0.765,-30.353,0.941,540.882
+bot,Zeri,Jhin,17,0.529,154.353,-5.118,-283.294
+bot,Zeri,Xayah,17,0.235,30.353,-0.941,-540.882
+bot,Caitlyn,Kalista,16,0.5,-143.625,8.438,308.25
+bot,Cassiopeia,Ziggs,16,0.812,20.375,3.062,524.25
+bot,Kalista,Caitlyn,16,0.5,143.625,-8.438,-308.25
+bot,Ziggs,Cassiopeia,16,0.188,-20.375,-3.062,-524.25
+bot,Aphelios,Kalista,15,0.533,-545.8,-11.733,-253.8
+bot,Corki,Viktor,15,0.6,565.667,4.533,-14.667
+bot,Ezreal,Jinx,15,0.467,-426.867,0.4,90.933
+bot,Jinx,Ezreal,15,0.533,426.867,-0.4,-90.933
+bot,Jinx,Sivir,15,0.6,-322.667,-3.333,-267.933
+bot,Kai'Sa,Miss Fortune,15,0.733,-92.067,-9.2,-64.6
+bot,Kalista,Aphelios,15,0.467,545.8,11.733,253.8
+bot,Miss Fortune,Kai'Sa,15,0.267,92.067,9.2,64.6
+bot,Sivir,Jinx,15,0.4,322.667,3.333,267.933
+bot,Varus,Ziggs,15,0.6,172.6,1.333,-32.8
+bot,Viktor,Corki,15,0.4,-565.667,-4.533,14.667
+bot,Ziggs,Varus,15,0.4,-172.6,-1.333,32.8
+bot,Aphelios,Zeri,14,0.714,178.357,9.143,344.071
+bot,Corki,Ziggs,14,0.643,519.571,6.571,115.5
+bot,Ezreal,Mel,14,0.357,-533.929,-10.0,-507.5
+bot,Ezreal,Senna,14,0.714,499.5,10.214,256.0
+bot,Kalista,Taliyah,14,0.571,300.857,12.357,-139.786
+bot,Mel,Ezreal,14,0.643,533.929,10.0,507.5
+bot,Senna,Ezreal,14,0.286,-499.5,-10.214,-256.0
+bot,Taliyah,Kalista,14,0.429,-300.857,-12.357,139.786
+bot,Varus,Zeri,14,0.429,-88.0,4.143,281.786
+bot,Zeri,Aphelios,14,0.286,-178.357,-9.143,-344.071
+bot,Zeri,Varus,14,0.571,88.0,-4.143,-281.786
+bot,Ziggs,Corki,14,0.357,-519.571,-6.571,-115.5
+bot,Kalista,Ziggs,13,0.462,226.0,6.154,-301.231
+bot,Tristana,Ziggs,13,0.692,168.692,-4.154,-72.154
+bot,Xayah,Ziggs,13,0.846,590.538,8.077,-277.615
+bot,Ziggs,Kalista,13,0.538,-226.0,-6.154,301.231
+bot,Ziggs,Tristana,13,0.308,-168.692,4.154,72.154
+bot,Ziggs,Xayah,13,0.154,-590.538,-8.077,277.615
+bot,Aphelios,Varus,12,0.667,104.083,2.5,-370.917
+bot,Aphelios,Ziggs,12,0.583,504.75,2.417,-246.417
+bot,Caitlyn,Kai'Sa,12,0.417,422.0,11.333,-86.083
+bot,Caitlyn,Xayah,12,0.417,733.0,12.583,164.583
+bot,Corki,Zeri,12,0.583,23.667,4.667,482.75
+bot,Kai'Sa,Caitlyn,12,0.583,-422.0,-11.333,86.083
+bot,Kalista,Sivir,12,0.583,-150.417,5.75,77.917
+bot,Lucian,Tristana,12,0.667,769.0,12.833,451.917
+bot,Miss Fortune,Xayah,12,0.25,296.917,15.0,137.833
+bot,Sivir,Kalista,12,0.417,150.417,-5.75,-77.917
+bot,Syndra,Ziggs,12,0.333,51.667,10.5,316.0
+bot,Tristana,Lucian,12,0.333,-769.0,-12.833,-451.917
+bot,Varus,Aphelios,12,0.333,-104.083,-2.5,370.917
+bot,Xayah,Caitlyn,12,0.583,-733.0,-12.583,-164.583
+bot,Xayah,Miss Fortune,12,0.75,-296.917,-15.0,-137.833
+bot,Zeri,Corki,12,0.417,-23.667,-4.667,-482.75
+bot,Ziggs,Aphelios,12,0.417,-504.75,-2.417,246.417
+bot,Ziggs,Syndra,12,0.667,-51.667,-10.5,-316.0
+bot,Jhin,Jinx,11,0.455,404.091,8.182,565.455
+bot,Jhin,Viktor,11,0.636,-145.818,-10.091,-563.909
+bot,Jinx,Jhin,11,0.545,-404.091,-8.182,-565.455
+bot,Jinx,Kai'Sa,11,0.273,-688.455,-4.364,-552.273
+bot,Jinx,Zeri,11,0.455,-444.091,1.455,-156.364
+bot,Kai'Sa,Jinx,11,0.727,688.455,4.364,552.273
+bot,Kai'Sa,Kalista,11,0.364,-585.091,-18.455,-210.727
+bot,Kalista,Kai'Sa,11,0.636,585.091,18.455,210.727
+bot,Lucian,Viktor,11,0.455,758.818,14.727,-55.455
+bot,Sivir,Syndra,11,0.727,-40.636,-7.364,-346.364
+bot,Syndra,Sivir,11,0.273,40.636,7.364,346.364
+bot,Viktor,Jhin,11,0.364,145.818,10.091,563.909
+bot,Viktor,Lucian,11,0.545,-758.818,-14.727,55.455
+bot,Zeri,Jinx,11,0.545,444.091,-1.455,156.364
+bot,Ashe,Tristana,10,0.4,91.8,11.5,-269.4
+bot,Corki,Jinx,10,0.7,166.2,4.7,280.8
+bot,Jhin,Mel,10,0.5,-530.6,-15.4,-659.4
+bot,Jhin,Syndra,10,0.4,-222.8,-4.8,-18.5
+bot,Jinx,Corki,10,0.3,-166.2,-4.7,-280.8
+bot,Jinx,Tristana,10,0.6,-405.1,1.9,-393.9
+bot,Mel,Jhin,10,0.5,530.6,15.4,659.4
+bot,Mel,Sivir,10,0.3,-436.9,-0.7,-151.9
+bot,Mel,Varus,10,0.6,-204.8,2.1,-6.8
+bot,Senna,Sivir,10,0.7,-102.9,-6.2,537.2
+bot,Sivir,Mel,10,0.7,436.9,0.7,151.9
+bot,Sivir,Senna,10,0.3,102.9,6.2,-537.2
+bot,Sivir,Viktor,10,0.7,847.1,-2.1,-271.6
+bot,Syndra,Jhin,10,0.6,222.8,4.8,18.5
+bot,Tristana,Ashe,10,0.6,-91.8,-11.5,269.4
+bot,Tristana,Jinx,10,0.4,405.1,-1.9,393.9
+bot,Varus,Mel,10,0.4,204.8,-2.1,6.8
+bot,Viktor,Sivir,10,0.3,-847.1,2.1,271.6
+bot,Viktor,Ziggs,10,0.5,212.4,3.6,325.7
+bot,Zeri,Ziggs,10,0.6,749.0,2.9,-175.6
+bot,Ziggs,Viktor,10,0.5,-212.4,-3.6,-325.7
+bot,Ziggs,Zeri,10,0.4,-749.0,-2.9,175.6
+bot,Ashe,Jinx,9,0.556,38.778,9.556,-20.778
+bot,Cassiopeia,Ezreal,9,0.444,-587.778,-5.222,44.889
+bot,Draven,Kalista,9,0.556,1754.0,13.556,577.0
+bot,Ezreal,Cassiopeia,9,0.556,587.778,5.222,-44.889
+bot,Jhin,Taliyah,9,0.333,-25.556,1.0,-342.333
+bot,Jinx,Ashe,9,0.444,-38.778,-9.556,20.778
+bot,Kai'Sa,Smolder,9,0.889,35.667,-3.444,-202.889
+bot,Kalista,Draven,9,0.444,-1754.0,-13.556,-577.0
+bot,Lucian,Sivir,9,0.778,1026.778,15.556,370.222
+bot,Senna,Varus,9,0.667,-414.778,-13.222,-149.889
+bot,Sivir,Lucian,9,0.222,-1026.778,-15.556,-370.222
+bot,Sivir,Vayne,9,0.333,688.222,8.333,-59.0
+bot,Smolder,Kai'Sa,9,0.111,-35.667,3.444,202.889
+bot,Taliyah,Jhin,9,0.667,25.556,-1.0,342.333
+bot,Tristana,Varus,9,0.333,-579.222,-11.444,-209.889
+bot,Varus,Senna,9,0.333,414.778,13.222,149.889
+bot,Varus,Tristana,9,0.667,579.222,11.444,209.889
+bot,Vayne,Sivir,9,0.667,-688.222,-8.333,59.0
+bot,Aphelios,Jhin,8,0.625,50.375,-2.5,-290.5
+bot,Aphelios,Tristana,8,0.625,-175.375,-1.625,-330.75
+bot,Ashe,Seraphine,8,0.5,467.625,2.0,-231.75
+bot,Caitlyn,Tristana,8,0.25,-665.125,4.375,-314.5
+bot,Caitlyn,Viktor,8,0.5,51.75,0.625,-807.625
+bot,Caitlyn,Zeri,8,0.875,433.25,13.25,891.25
+bot,Cassiopeia,Viktor,8,0.375,-54.5,-3.625,-139.125
+bot,Corki,Senna,8,0.25,233.875,6.5,-3.875
+bot,Draven,Kai'Sa,8,0.75,1551.0,25.5,645.5
+bot,Jhin,Aphelios,8,0.375,-50.375,2.5,290.5
+bot,Kai'Sa,Draven,8,0.25,-1551.0,-25.5,-645.5
+bot,Kog'Maw,Yunara,8,0.125,-283.125,0.125,111.25
+bot,Mel,Ziggs,8,0.625,369.0,16.125,491.375
+bot,Senna,Corki,8,0.75,-233.875,-6.5,3.875
+bot,Seraphine,Ashe,8,0.5,-467.625,-2.0,231.75
+bot,Seraphine,Sivir,8,0.625,-496.0,-6.125,400.375
+bot,Sivir,Seraphine,8,0.375,496.0,6.125,-400.375
+bot,Tristana,Aphelios,8,0.375,175.375,1.625,330.75
+bot,Tristana,Caitlyn,8,0.75,665.125,-4.375,314.5
+bot,Viktor,Caitlyn,8,0.5,-51.75,-0.625,807.625
+bot,Viktor,Cassiopeia,8,0.625,54.5,3.625,139.125
+bot,Yunara,Kog'Maw,8,0.875,283.125,-0.125,-111.25
+bot,Zeri,Caitlyn,8,0.125,-433.25,-13.25,-891.25
+bot,Ziggs,Mel,8,0.375,-369.0,-16.125,-491.375
+jng,Jarvan IV,Xin Zhao,403,0.524,53.551,-0.623,46.635
+jng,Xin Zhao,Jarvan IV,403,0.476,-53.551,0.623,-46.635
+jng,Vi,Xin Zhao,301,0.518,93.475,1.319,157.09
+jng,Xin Zhao,Vi,301,0.482,-93.475,-1.319,-157.09
+jng,Jarvan IV,Vi,289,0.478,3.882,-1.024,-122.554
+jng,Vi,Jarvan IV,289,0.522,-3.882,1.024,122.554
+jng,Jarvan IV,Wukong,267,0.551,-36.884,-0.91,-18.76
+jng,Wukong,Jarvan IV,267,0.449,36.884,0.91,18.76
+jng,Jarvan IV,Lee Sin,258,0.434,-334.903,-3.058,-258.895
+jng,Lee Sin,Jarvan IV,258,0.566,334.903,3.058,258.895
+jng,Pantheon,Xin Zhao,257,0.521,45.237,-4.342,-172.49
+jng,Wukong,Xin Zhao,257,0.463,41.86,1.615,22.128
+jng,Xin Zhao,Pantheon,257,0.479,-45.237,4.342,172.49
+jng,Xin Zhao,Wukong,257,0.537,-41.86,-1.615,-22.128
+jng,Jarvan IV,Pantheon,230,0.574,62.683,5.283,248.165
+jng,Pantheon,Jarvan IV,230,0.426,-62.683,-5.283,-248.165
+jng,Vi,Wukong,214,0.551,-22.379,1.332,112.07
+jng,Wukong,Vi,214,0.449,22.379,-1.332,-112.07
+jng,Jarvan IV,Naafiri,175,0.531,-166.84,-4.274,-175.234
+jng,Naafiri,Jarvan IV,175,0.469,166.84,4.274,175.234
+jng,Pantheon,Vi,172,0.529,114.349,-1.483,-96.483
+jng,Vi,Pantheon,172,0.471,-114.349,1.483,96.483
+jng,Jarvan IV,Nocturne,169,0.521,-18.089,-1.32,0.609
+jng,Nocturne,Jarvan IV,169,0.479,18.089,1.32,-0.609
+jng,Nocturne,Wukong,165,0.527,-37.545,0.97,42.091
+jng,Wukong,Nocturne,165,0.473,37.545,-0.97,-42.091
+jng,Pantheon,Wukong,163,0.497,92.344,-5.374,-88.356
+jng,Wukong,Pantheon,163,0.503,-92.344,5.374,88.356
+jng,Nocturne,Pantheon,154,0.506,131.506,6.078,253.026
+jng,Pantheon,Nocturne,154,0.494,-131.506,-6.078,-253.026
+jng,Naafiri,Vi,145,0.462,287.572,5.379,200.855
+jng,Vi,Naafiri,145,0.538,-287.572,-5.379,-200.855
+jng,Lee Sin,Skarner,142,0.507,388.262,4.418,292.596
+jng,Skarner,Lee Sin,142,0.493,-388.262,-4.418,-292.596
+jng,Nocturne,Xin Zhao,139,0.54,171.266,3.878,199.719
+jng,Xin Zhao,Nocturne,139,0.46,-171.266,-3.878,-199.719
+jng,Trundle,Xin Zhao,133,0.496,-106.03,-4.94,-268.549
+jng,Xin Zhao,Trundle,133,0.504,106.03,4.94,268.549
+jng,Pantheon,Skarner,129,0.403,245.76,-0.721,106.372
+jng,Skarner,Pantheon,129,0.597,-245.76,0.721,-106.372
+jng,Lee Sin,Xin Zhao,121,0.537,422.132,3.38,375.347
+jng,Xin Zhao,Lee Sin,121,0.463,-422.132,-3.38,-375.347
+jng,Nocturne,Vi,116,0.5,14.112,1.086,-107.81
+jng,Vi,Nocturne,116,0.5,-14.112,-1.086,107.81
+jng,Lee Sin,Naafiri,114,0.474,-4.596,-2.298,11.491
+jng,Naafiri,Lee Sin,114,0.526,4.596,2.298,-11.491
+jng,Lee Sin,Vi,108,0.491,269.796,0.444,78.667
+jng,Vi,Lee Sin,108,0.509,-269.796,-0.444,-78.667
+jng,Jarvan IV,Qiyana,103,0.417,-796.637,-8.088,-396.186
+jng,Lee Sin,Pantheon,103,0.524,102.34,3.272,176.893
+jng,Pantheon,Lee Sin,103,0.476,-102.34,-3.272,-176.893
+jng,Qiyana,Jarvan IV,103,0.583,796.637,8.088,396.186
+jng,Lee Sin,Wukong,102,0.696,164.363,2.314,227.824
+jng,Wukong,Lee Sin,102,0.304,-164.363,-2.314,-227.824
+jng,Naafiri,Wukong,92,0.446,-5.934,1.396,94.989
+jng,Wukong,Naafiri,92,0.554,5.934,-1.396,-94.989
+jng,Naafiri,Pantheon,82,0.573,290.659,9.5,364.232
+jng,Pantheon,Naafiri,82,0.427,-290.659,-9.5,-364.232
+jng,Naafiri,Xin Zhao,73,0.562,200.301,2.205,77.658
+jng,Xin Zhao,Naafiri,73,0.438,-200.301,-2.205,-77.658
+jng,Lee Sin,Nocturne,66,0.591,230.273,-0.121,107.424
+jng,Nocturne,Lee Sin,66,0.409,-230.273,0.121,-107.424
+jng,Aatrox,Jarvan IV,64,0.531,201.875,5.453,255.891
+jng,Jarvan IV,Aatrox,64,0.469,-201.875,-5.453,-255.891
+jng,Skarner,Wukong,61,0.541,-159.967,-1.016,52.18
+jng,Wukong,Skarner,61,0.459,159.967,1.016,-52.18
+jng,Jarvan IV,Skarner,60,0.5,153.683,-0.933,-67.65
+jng,Skarner,Jarvan IV,60,0.5,-153.683,0.933,67.65
+jng,Pantheon,Trundle,58,0.483,-12.724,-2.483,-42.448
+jng,Skarner,Xin Zhao,58,0.621,-97.414,-1.879,-87.948
+jng,Trundle,Pantheon,58,0.517,12.724,2.483,42.448
+jng,Xin Zhao,Skarner,58,0.379,97.414,1.879,87.948
+jng,Naafiri,Nocturne,56,0.536,342.054,5.964,428.964
+jng,Nocturne,Naafiri,56,0.464,-342.054,-5.964,-428.964
+jng,Qiyana,Wukong,56,0.643,807.25,7.464,490.607
+jng,Wukong,Qiyana,56,0.357,-807.25,-7.464,-490.607
+jng,Aatrox,Xin Zhao,52,0.5,307.788,9.404,557.538
+jng,Xin Zhao,Aatrox,52,0.5,-307.788,-9.404,-557.538
+jng,Trundle,Wukong,51,0.667,-108.941,-4.392,-197.804
+jng,Wukong,Trundle,51,0.333,108.941,4.392,197.804
+jng,Aatrox,Wukong,49,0.571,50.469,3.592,73.776
+jng,Dr. Mundo,Wukong,49,0.51,107.653,10.02,390.286
+jng,Skarner,Vi,49,0.592,-170.224,-6.816,-269.959
+jng,Vi,Skarner,49,0.408,170.224,6.816,269.959
+jng,Wukong,Aatrox,49,0.429,-50.469,-3.592,-73.776
+jng,Wukong,Dr. Mundo,49,0.49,-107.653,-10.02,-390.286
+jng,Aatrox,Pantheon,48,0.438,-58.104,9.375,195.75
+jng,Dr. Mundo,Xin Zhao,48,0.5,24.532,13.638,529.957
+jng,Pantheon,Aatrox,48,0.562,58.104,-9.375,-195.75
+jng,Vi,Zaahen,48,0.479,-205.75,-6.125,-134.583
+jng,Xin Zhao,Dr. Mundo,48,0.5,-24.532,-13.638,-529.957
+jng,Zaahen,Vi,48,0.521,205.75,6.125,134.583
+jng,Naafiri,Trundle,47,0.489,84.674,8.652,350.87
+jng,Trundle,Naafiri,47,0.511,-84.674,-8.652,-350.87
+jng,Trundle,Vi,46,0.435,6.543,-2.87,-222.413
+jng,Vi,Trundle,46,0.565,-6.543,2.87,222.413
+jng,Nocturne,Skarner,44,0.545,352.341,4.636,140.227
+jng,Skarner,Nocturne,44,0.455,-352.341,-4.636,-140.227
+jng,Xin Zhao,Zaahen,42,0.524,-76.167,-3.286,-101.333
+jng,Zaahen,Xin Zhao,42,0.476,76.167,3.286,101.333
+jng,Pantheon,Qiyana,41,0.341,-940.105,-11.579,-615.158
+jng,Qiyana,Pantheon,41,0.659,940.105,11.579,615.158
+jng,Jarvan IV,Poppy,40,0.5,99.525,1.825,68.975
+jng,Poppy,Jarvan IV,40,0.5,-99.525,-1.825,-68.975
+jng,Nocturne,Trundle,36,0.5,115.111,2.139,103.944
+jng,Qiyana,Xin Zhao,36,0.611,941.722,6.778,374.778
+jng,Skarner,Trundle,36,0.389,-263.889,-5.056,-162.528
+jng,Trundle,Nocturne,36,0.5,-115.111,-2.139,-103.944
+jng,Trundle,Skarner,36,0.611,263.889,5.056,162.528
+jng,Xin Zhao,Qiyana,36,0.389,-941.722,-6.778,-374.778
+jng,Dr. Mundo,Vi,35,0.514,69.229,11.057,265.714
+jng,Vi,Dr. Mundo,35,0.486,-69.229,-11.057,-265.714
+jng,Dr. Mundo,Pantheon,34,0.5,-152.324,13.235,489.971
+jng,Pantheon,Dr. Mundo,34,0.5,152.324,-13.235,-489.971
+jng,Poppy,Vi,34,0.529,-95.971,-1.882,-137.647
+jng,Vi,Poppy,34,0.471,95.971,1.882,137.647
+jng,Wukong,Zaahen,34,0.353,-273.206,-6.794,-295.118
+jng,Zaahen,Wukong,34,0.647,273.206,6.794,295.118
+jng,Ambessa,Wukong,33,0.545,-91.758,0.697,15.333
+jng,Lee Sin,Qiyana,33,0.515,-319.636,-5.424,-263.394
+jng,Maokai,Wukong,33,0.606,-263.303,-3.818,-342.485
+jng,Qiyana,Lee Sin,33,0.485,319.636,5.424,263.394
+jng,Wukong,Ambessa,33,0.455,91.758,-0.697,-15.333
+jng,Wukong,Maokai,33,0.394,263.303,3.818,342.485
+jng,Aatrox,Nocturne,32,0.5,-58.188,5.688,259.312
+jng,Dr. Mundo,Jarvan IV,32,0.438,-258.969,3.875,-43.75
+jng,Jarvan IV,Dr. Mundo,32,0.562,258.969,-3.875,43.75
+jng,Naafiri,Skarner,32,0.562,454.938,9.375,366.656
+jng,Nocturne,Aatrox,32,0.5,58.188,-5.688,-259.312
+jng,Skarner,Naafiri,32,0.438,-454.938,-9.375,-366.656
+jng,Jax,Xin Zhao,31,0.548,347.0,8.161,411.065
+jng,Xin Zhao,Jax,31,0.452,-347.0,-8.161,-411.065
+jng,Jarvan IV,Sejuani,30,0.467,277.033,6.3,234.467
+jng,Naafiri,Qiyana,30,0.433,-379.633,1.233,-129.833
+jng,Qiyana,Naafiri,30,0.567,379.633,-1.233,129.833
+jng,Sejuani,Jarvan IV,30,0.533,-277.033,-6.3,-234.467
+jng,Ambessa,Xin Zhao,29,0.724,122.724,9.172,464.345
+jng,Dr. Mundo,Nocturne,29,0.552,-253.103,-0.276,-71.828
+jng,Jayce,Xin Zhao,29,0.31,364.655,9.759,218.483
+jng,Nocturne,Dr. Mundo,29,0.448,253.103,0.276,71.828
+jng,Xin Zhao,Ambessa,29,0.276,-122.724,-9.172,-464.345
+jng,Xin Zhao,Jayce,29,0.69,-364.655,-9.759,-218.483
+jng,Ambessa,Jarvan IV,27,0.148,-268.519,-2.593,-143.593
+jng,Ambessa,Pantheon,27,0.519,-113.407,4.148,41.296
+jng,Jarvan IV,Ambessa,27,0.852,268.519,2.593,143.593
+jng,Pantheon,Ambessa,27,0.481,113.407,-4.148,-41.296
+jng,Nocturne,Qiyana,26,0.538,-330.846,-0.346,19.731
+jng,Qiyana,Nocturne,26,0.462,330.846,0.346,-19.731
+jng,Sejuani,Vi,26,0.577,58.269,-3.538,-46.731
+jng,Vi,Sejuani,26,0.423,-58.269,3.538,46.731
+jng,Aatrox,Vi,25,0.48,368.32,12.12,531.8
+jng,Lee Sin,Trundle,25,0.64,533.4,10.64,546.52
+jng,Pantheon,Zaahen,25,0.36,-112.12,-2.12,-323.36
+jng,Trundle,Lee Sin,25,0.36,-533.4,-10.64,-546.52
+jng,Vi,Aatrox,25,0.52,-368.32,-12.12,-531.8
+jng,Zaahen,Pantheon,25,0.64,112.12,2.12,323.36
+jng,Aatrox,Dr. Mundo,24,0.667,464.208,4.792,522.542
+jng,Dr. Mundo,Aatrox,24,0.333,-464.208,-4.792,-522.542
+jng,Qiyana,Vi,24,0.25,384.958,3.0,-39.667
+jng,Vi,Qiyana,24,0.75,-384.958,-3.0,39.667
+jng,Jarvan IV,Jayce,23,0.696,-333.913,-8.0,-127.043
+jng,Jarvan IV,Zaahen,23,0.565,-2.087,0.652,69.217
+jng,Jayce,Jarvan IV,23,0.304,333.913,8.0,127.043
+jng,Zaahen,Jarvan IV,23,0.435,2.087,-0.652,-69.217
+jng,Jayce,Vi,21,0.524,1021.619,12.476,508.571
+jng,Jayce,Wukong,21,0.762,1086.048,20.19,970.476
+jng,Kha'Zix,Xin Zhao,21,0.667,685.524,4.429,284.381
+jng,Nocturne,Zaahen,21,0.19,-237.952,-5.19,-316.524
+jng,Olaf,Vi,21,0.476,180.714,14.952,419.619
+jng,Vi,Jayce,21,0.476,-1021.619,-12.476,-508.571
+jng,Vi,Olaf,21,0.524,-180.714,-14.952,-419.619
+jng,Wukong,Jayce,21,0.238,-1086.048,-20.19,-970.476
+jng,Xin Zhao,Kha'Zix,21,0.333,-685.524,-4.429,-284.381
+jng,Zaahen,Nocturne,21,0.81,237.952,5.19,316.524
+jng,Cho'Gath,Naafiri,20,0.45,-191.5,-4.15,-196.8
+jng,Dr. Mundo,Malphite,20,0.6,395.35,14.0,738.45
+jng,Malphite,Dr. Mundo,20,0.4,-395.35,-14.0,-738.45
+jng,Naafiri,Cho'Gath,20,0.55,191.5,4.15,196.8
+jng,Pantheon,Sejuani,20,0.5,498.9,4.15,275.55
+jng,Sejuani,Pantheon,20,0.5,-498.9,-4.15,-275.55
+jng,Sejuani,Wukong,20,0.7,-113.55,-8.9,-284.6
+jng,Wukong,Sejuani,20,0.3,113.55,8.9,284.6
+jng,Dr. Mundo,Trundle,19,0.526,409.737,16.842,777.895
+jng,Maokai,Skarner,19,0.316,51.895,3.211,-116.895
+jng,Olaf,Xin Zhao,19,0.526,368.316,10.211,326.053
+jng,Qiyana,Trundle,19,0.474,553.526,9.316,420.368
+jng,Sejuani,Xin Zhao,19,0.526,-487.316,-12.789,-575.211
+jng,Skarner,Maokai,19,0.684,-51.895,-3.211,116.895
+jng,Trundle,Dr. Mundo,19,0.474,-409.737,-16.842,-777.895
+jng,Trundle,Qiyana,19,0.526,-553.526,-9.316,-420.368
+jng,Vi,Viego,19,0.684,-284.0,-11.316,-440.211
+jng,Viego,Vi,19,0.316,284.0,11.316,440.211
+jng,Xin Zhao,Olaf,19,0.474,-368.316,-10.211,-326.053
+jng,Xin Zhao,Sejuani,19,0.474,487.316,12.789,575.211
+jng,Ambessa,Vi,18,0.389,487.778,10.444,451.833
+jng,Lee Sin,Poppy,18,0.167,38.667,-2.222,-147.889
+jng,Poppy,Lee Sin,18,0.833,-38.667,2.222,147.889
+jng,Vi,Ambessa,18,0.611,-487.778,-10.444,-451.833
+jng,Aatrox,Naafiri,17,0.471,-199.059,5.706,228.118
+jng,Cho'Gath,Nocturne,17,0.412,-399.882,-6.353,-518.0
+jng,Naafiri,Aatrox,17,0.529,199.059,-5.706,-228.118
+jng,Nocturne,Cho'Gath,17,0.588,399.882,6.353,518.0
+jng,Ambessa,Nocturne,16,0.438,-307.312,-1.5,-156.438
+jng,Dr. Mundo,Zaahen,16,0.75,239.438,8.75,466.0
+jng,Jarvan IV,Trundle,16,0.438,58.5,3.438,253.062
+jng,Maokai,Naafiri,16,0.312,-235.0,-6.6,-424.2
+jng,Naafiri,Maokai,16,0.688,235.0,6.6,424.2
+jng,Naafiri,Sejuani,16,0.5,358.625,8.562,388.938
+jng,Nocturne,Ambessa,16,0.562,307.312,1.5,156.438
+jng,Nocturne,Sejuani,16,0.438,298.562,7.0,123.812
+jng,Sejuani,Naafiri,16,0.5,-358.625,-8.562,-388.938
+jng,Sejuani,Nocturne,16,0.562,-298.562,-7.0,-123.812
+jng,Trundle,Jarvan IV,16,0.562,-58.5,-3.438,-253.062
+jng,Zaahen,Dr. Mundo,16,0.25,-239.438,-8.75,-466.0
+jng,Jayce,Malphite,15,0.467,750.867,8.667,357.2
+jng,Jayce,Pantheon,15,0.667,403.333,13.933,363.2
+jng,Malphite,Jayce,15,0.533,-750.867,-8.667,-357.2
+jng,Malphite,Wukong,15,0.6,97.467,-0.6,76.933
+jng,Maokai,Trundle,15,0.467,91.929,2.0,88.429
+jng,Nasus,Vi,15,0.533,-238.933,-12.267,-394.8
+jng,Pantheon,Jayce,15,0.333,-403.333,-13.933,-363.2
+jng,Sejuani,Skarner,15,0.6,382.667,2.267,384.667
+jng,Sejuani,Trundle,15,0.533,-366.8,-7.6,-279.333
+jng,Shyvana,Vi,15,0.4,105.0,11.857,330.714
+jng,Skarner,Sejuani,15,0.4,-382.667,-2.267,-384.667
+jng,Trundle,Maokai,15,0.533,-91.929,-2.0,-88.429
+jng,Trundle,Sejuani,15,0.467,366.8,7.6,279.333
+jng,Vi,Nasus,15,0.467,238.933,12.267,394.8
+jng,Vi,Shyvana,15,0.6,-105.0,-11.857,-330.714
+jng,Wukong,Malphite,15,0.4,-97.467,0.6,-76.933
+jng,Cho'Gath,Wukong,14,0.429,-440.071,-0.357,-214.643
+jng,Jarvan IV,Viego,14,0.429,-822.643,-22.286,-968.714
+jng,Kha'Zix,Nocturne,14,0.571,150.143,6.357,175.5
+jng,Lee Sin,Maokai,14,0.357,66.5,6.143,291.929
+jng,Lee Sin,Sejuani,14,0.714,366.857,9.571,375.857
+jng,Maokai,Lee Sin,14,0.643,-66.5,-6.143,-291.929
+jng,Maokai,Vi,14,0.286,-117.5,2.643,-277.571
+jng,Nocturne,Kha'Zix,14,0.429,-150.143,-6.357,-175.5
+jng,Qiyana,Skarner,14,0.643,1622.214,15.857,1022.357
+jng,Sejuani,Lee Sin,14,0.286,-366.857,-9.571,-375.857
+jng,Skarner,Qiyana,14,0.357,-1622.214,-15.857,-1022.357
+jng,Vi,Maokai,14,0.714,117.5,-2.643,277.571
+jng,Viego,Jarvan IV,14,0.571,822.643,22.286,968.714
+jng,Wukong,Cho'Gath,14,0.571,440.071,0.357,214.643
+jng,Aatrox,Lee Sin,13,0.154,-610.923,-3.385,-195.462
+jng,Lee Sin,Aatrox,13,0.846,610.923,3.385,195.462
+jng,Maokai,Xin Zhao,13,0.231,-169.231,-2.923,-230.615
+jng,Naafiri,Poppy,13,0.615,25.923,5.0,32.538
+jng,Nocturne,Shyvana,13,0.462,-96.231,-2.692,-239.077
+jng,Poppy,Naafiri,13,0.385,-25.923,-5.0,-32.538
+jng,Shyvana,Nocturne,13,0.538,96.231,2.692,239.077
+jng,Viego,Wukong,13,0.462,550.385,8.077,453.923
+jng,Wukong,Viego,13,0.538,-550.385,-8.077,-453.923
+jng,Xin Zhao,Maokai,13,0.769,169.231,2.923,230.615
+jng,Aatrox,Zaahen,12,0.583,307.5,5.75,314.167
+jng,Ambessa,Naafiri,12,0.333,-464.917,-3.667,-226.25
+jng,Cho'Gath,Pantheon,12,0.333,-403.667,1.833,-125.25
+jng,Dr. Mundo,Naafiri,12,0.417,-95.5,0.75,-64.75
+jng,Jarvan IV,Maokai,12,0.667,414.833,11.583,585.75
+jng,Jarvan IV,Nidalee,12,0.583,-446.5,-18.083,-494.833
+jng,Malphite,Pantheon,12,0.5,-262.583,0.0,47.5
+jng,Maokai,Jarvan IV,12,0.333,-414.833,-11.583,-585.75
+jng,Maokai,Pantheon,12,0.5,-232.583,-4.833,-473.417
+jng,Naafiri,Ambessa,12,0.667,464.917,3.667,226.25
+jng,Naafiri,Dr. Mundo,12,0.583,95.5,-0.75,64.75
+jng,Nidalee,Jarvan IV,12,0.417,446.5,18.083,494.833
+jng,Pantheon,Cho'Gath,12,0.667,403.667,-1.833,125.25
+jng,Pantheon,Malphite,12,0.5,262.583,0.0,-47.5
+jng,Pantheon,Maokai,12,0.5,232.583,4.833,473.417
+jng,Poppy,Wukong,12,0.333,-274.75,-9.667,-454.833
+jng,Wukong,Poppy,12,0.667,274.75,9.667,454.833
+jng,Wukong,Zyra,12,0.583,-458.917,-24.417,-1059.583
+jng,Zaahen,Aatrox,12,0.417,-307.5,-5.75,-314.167
+jng,Zyra,Wukong,12,0.417,458.917,24.417,1059.583
+jng,Ambessa,Lee Sin,11,0.364,334.364,10.545,498.0
+jng,Dr. Mundo,Lee Sin,11,0.273,-305.727,-3.091,-143.818
+jng,Dr. Mundo,Skarner,11,0.364,187.545,5.909,243.636
+jng,Lee Sin,Ambessa,11,0.636,-334.364,-10.545,-498.0
+jng,Lee Sin,Dr. Mundo,11,0.727,305.727,3.091,143.818
+jng,Lee Sin,Rek'Sai,11,0.364,-210.0,7.455,244.636
+jng,Malphite,Xin Zhao,11,0.818,-35.545,-10.818,-162.091
+jng,Maokai,Nocturne,11,0.545,-370.545,-6.455,-178.0
+jng,Nocturne,Maokai,11,0.455,370.545,6.455,178.0
+jng,Nocturne,Olaf,11,0.636,-216.364,-7.182,-374.818
+jng,Olaf,Nocturne,11,0.364,216.364,7.182,374.818
+jng,Rek'Sai,Lee Sin,11,0.636,210.0,-7.455,-244.636
+jng,Skarner,Dr. Mundo,11,0.636,-187.545,-5.909,-243.636
+jng,Viego,Xin Zhao,11,0.636,583.364,10.273,850.455
+jng,Xin Zhao,Malphite,11,0.182,35.545,10.818,162.091
+jng,Xin Zhao,Viego,11,0.364,-583.364,-10.273,-850.455
+jng,Aatrox,Skarner,10,0.6,466.5,21.0,767.0
+jng,Jarvan IV,Rek'Sai,10,0.4,41.2,-3.9,-116.9
+jng,Jayce,Lee Sin,10,0.3,570.2,13.5,786.7
+jng,Jayce,Nocturne,10,0.6,679.0,19.7,892.3
+jng,Lee Sin,Jayce,10,0.7,-570.2,-13.5,-786.7
+jng,Maokai,Sejuani,10,0.4,115.4,-0.1,-111.4
+jng,Nocturne,Jayce,10,0.4,-679.0,-19.7,-892.3
+jng,Rek'Sai,Jarvan IV,10,0.6,-41.2,3.9,116.9
+jng,Sejuani,Maokai,10,0.6,-115.4,0.1,111.4
+jng,Shyvana,Wukong,10,0.5,573.8,7.3,342.7
+jng,Skarner,Aatrox,10,0.4,-466.5,-21.0,-767.0
+jng,Vi,Zyra,10,0.6,-534.5,-12.8,-432.3
+jng,Wukong,Shyvana,10,0.5,-573.8,-7.3,-342.7
+jng,Zyra,Vi,10,0.4,534.5,12.8,432.3
+jng,Aatrox,Ambessa,9,0.333,-190.333,3.333,-30.333
+jng,Aatrox,Trundle,9,0.333,316.444,14.111,843.889
+jng,Ambessa,Aatrox,9,0.667,190.333,-3.333,30.333
+jng,Ambessa,Qiyana,9,0.667,-262.222,-4.111,-119.444
+jng,Cho'Gath,Lee Sin,9,0.222,-148.111,-4.889,-269.444
+jng,Dr. Mundo,Jayce,9,0.667,-426.889,4.111,196.556
+jng,Dr. Mundo,Sejuani,9,0.556,17.667,12.778,517.444
+jng,Graves,Jarvan IV,9,0.333,1024.0,25.667,1002.444
+jng,Hecarim,Naafiri,9,0.556,53.889,0.556,132.889
+jng,Jarvan IV,Graves,9,0.667,-1024.0,-25.667,-1002.444
+jng,Jarvan IV,Shyvana,9,0.222,-700.444,-10.111,-685.0
+jng,Jayce,Dr. Mundo,9,0.333,426.889,-4.111,-196.556
+jng,Lee Sin,Cho'Gath,9,0.778,148.111,4.889,269.444
+jng,Lee Sin,Zaahen,9,0.556,-292.556,-15.667,-651.667
+jng,Naafiri,Hecarim,9,0.444,-53.889,-0.556,-132.889
+jng,Pantheon,Poppy,9,0.444,266.778,-1.556,32.667
+jng,Poppy,Pantheon,9,0.556,-266.778,1.556,-32.667
+jng,Qiyana,Ambessa,9,0.333,262.222,4.111,119.444
+jng,Rek'Sai,Xin Zhao,9,0.556,20.889,0.111,115.778
+jng,Sejuani,Dr. Mundo,9,0.444,-17.667,-12.778,-517.444
+jng,Shyvana,Jarvan IV,9,0.778,700.444,10.111,685.0
+jng,Sylas,Xin Zhao,9,0.556,728.889,5.444,561.0
+jng,Trundle,Aatrox,9,0.667,-316.444,-14.111,-843.889
+jng,Xin Zhao,Rek'Sai,9,0.444,-20.889,-0.111,-115.778
+jng,Xin Zhao,Sylas,9,0.444,-728.889,-5.444,-561.0
+jng,Zaahen,Lee Sin,9,0.444,292.556,15.667,651.667
+jng,Aatrox,Qiyana,8,0.25,-893.0,-3.5,-363.375
+jng,Ambessa,Zaahen,8,0.5,-332.375,3.25,109.125
+jng,Cho'Gath,Qiyana,8,0.375,-1032.0,-10.0,-615.25
+jng,Cho'Gath,Vi,8,0.875,370.25,17.875,737.25
+jng,Dr. Mundo,Qiyana,8,0.5,-940.5,-3.5,-524.875
+jng,Dr. Mundo,Viego,8,0.625,-449.75,2.375,85.625
+jng,Ivern,Pantheon,8,0.875,294.125,-3.375,-133.125
+jng,Jarvan IV,Malphite,8,0.5,967.25,13.75,803.125
+jng,Kha'Zix,Trundle,8,0.75,959.375,18.25,1023.625
+jng,Lillia,Wukong,8,0.625,468.0,12.125,767.625
+jng,Malphite,Jarvan IV,8,0.5,-967.25,-13.75,-803.125
+jng,Malphite,Vi,8,0.5,183.0,2.625,109.0
+jng,Naafiri,Olaf,8,0.625,72.0,-3.75,-62.0
+jng,Nidalee,Wukong,8,0.375,1083.0,18.375,1080.375
+jng,Olaf,Naafiri,8,0.375,-72.0,3.75,62.0
+jng,Olaf,Wukong,8,0.75,607.875,16.25,875.0
+jng,Pantheon,Ivern,8,0.125,-294.125,3.375,133.125
+jng,Qiyana,Aatrox,8,0.75,893.0,3.5,363.375
+jng,Qiyana,Cho'Gath,8,0.625,1032.0,10.0,615.25
+jng,Qiyana,Dr. Mundo,8,0.5,940.5,3.5,524.875
+jng,Qiyana,Sejuani,8,0.75,648.0,8.5,256.75
+jng,Rek'Sai,Vi,8,0.75,-131.875,-9.5,-224.0
+jng,Sejuani,Qiyana,8,0.25,-648.0,-8.5,-256.75
+jng,Trundle,Kha'Zix,8,0.25,-959.375,-18.25,-1023.625
+jng,Vi,Cho'Gath,8,0.125,-370.25,-17.875,-737.25
+jng,Vi,Malphite,8,0.5,-183.0,-2.625,-109.0
+jng,Vi,Rek'Sai,8,0.25,131.875,9.5,224.0
+jng,Viego,Dr. Mundo,8,0.375,449.75,-2.375,-85.625
+jng,Wukong,Lillia,8,0.375,-468.0,-12.125,-767.625
+jng,Wukong,Nidalee,8,0.625,-1083.0,-18.375,-1080.375
+jng,Wukong,Olaf,8,0.25,-607.875,-16.25,-875.0
+jng,Zaahen,Ambessa,8,0.5,332.375,-3.25,-109.125
+mid,Anivia,Ryze,323,0.526,65.639,2.103,275.95
+mid,Ryze,Anivia,323,0.474,-65.639,-2.103,-275.95
+mid,Ryze,Taliyah,300,0.5,92.59,2.38,9.66
+mid,Taliyah,Ryze,300,0.5,-92.59,-2.38,-9.66
+mid,Orianna,Ryze,248,0.524,133.343,4.702,159.75
+mid,Ryze,Orianna,248,0.476,-133.343,-4.702,-159.75
+mid,Akali,Orianna,238,0.513,19.706,-6.591,5.353
+mid,Orianna,Akali,238,0.487,-19.706,6.591,-5.353
+mid,Ryze,Syndra,229,0.45,-188.079,-5.772,-168.855
+mid,Syndra,Ryze,229,0.55,188.079,5.772,168.855
+mid,Azir,Orianna,208,0.471,-242.591,-4.822,-156.12
+mid,Orianna,Azir,208,0.529,242.591,4.822,156.12
+mid,Ahri,Aurora,203,0.567,-21.606,0.488,-3.852
+mid,Aurora,Ahri,203,0.433,21.606,-0.488,3.852
+mid,Galio,Orianna,199,0.467,-366.296,-12.065,-165.598
+mid,Orianna,Galio,199,0.533,366.296,12.065,165.598
+mid,Orianna,Viktor,157,0.497,53.93,1.159,-48.592
+mid,Viktor,Orianna,157,0.503,-53.93,-1.159,48.592
+mid,Azir,Ryze,150,0.44,92.627,5.68,252.653
+mid,Cassiopeia,Ryze,150,0.487,122.22,4.26,64.327
+mid,Cassiopeia,Syndra,150,0.58,-97.493,-2.513,-95.8
+mid,Ryze,Azir,150,0.56,-92.627,-5.68,-252.653
+mid,Ryze,Cassiopeia,150,0.513,-122.22,-4.26,-64.327
+mid,Syndra,Cassiopeia,150,0.42,97.493,2.513,95.8
+mid,Syndra,Viktor,145,0.497,226.51,2.007,-23.655
+mid,Viktor,Syndra,145,0.503,-226.51,-2.007,23.655
+mid,Orianna,Syndra,144,0.542,14.056,0.639,89.951
+mid,Syndra,Orianna,144,0.458,-14.056,-0.639,-89.951
+mid,Annie,Ryze,140,0.557,-262.721,-6.014,-223.55
+mid,Ryze,Annie,140,0.443,262.721,6.014,223.55
+mid,Ahri,Ryze,130,0.446,-25.147,-2.062,35.814
+mid,Ryze,Ahri,130,0.554,25.147,2.062,-35.814
+mid,Cassiopeia,Viktor,126,0.587,101.341,-0.325,-134.341
+mid,Viktor,Cassiopeia,126,0.413,-101.341,0.325,134.341
+mid,Ryze,Viktor,113,0.54,82.566,-3.549,-145.354
+mid,Viktor,Ryze,113,0.46,-82.566,3.549,145.354
+mid,Ahri,Sylas,110,0.482,353.673,14.073,228.782
+mid,Sylas,Ahri,110,0.518,-353.673,-14.073,-228.782
+mid,Azir,Taliyah,109,0.486,52.019,5.444,65.296
+mid,Taliyah,Azir,109,0.514,-52.019,-5.444,-65.296
+mid,Aurora,Ryze,103,0.495,76.476,-3.786,118.631
+mid,Ryze,Aurora,103,0.505,-76.476,3.786,-118.631
+mid,Anivia,Cassiopeia,98,0.459,-187.602,-8.112,20.898
+mid,Cassiopeia,Anivia,98,0.541,187.602,8.112,-20.898
+mid,Annie,Aurora,97,0.619,-154.361,-0.247,-198.629
+mid,Aurora,Annie,97,0.381,154.361,0.247,198.629
+mid,Ahri,Taliyah,95,0.589,386.663,7.084,290.726
+mid,Taliyah,Ahri,95,0.411,-386.663,-7.084,-290.726
+mid,Aurora,Viktor,92,0.522,-47.891,-7.924,-126.533
+mid,Viktor,Aurora,92,0.478,47.891,7.924,126.533
+mid,Ahri,Orianna,90,0.456,-75.678,-7.211,-135.611
+mid,Orianna,Ahri,90,0.544,75.678,7.211,135.611
+mid,Ahri,Syndra,81,0.63,58.778,-3.0,201.63
+mid,Cassiopeia,Orianna,81,0.556,132.235,1.605,20.42
+mid,Orianna,Cassiopeia,81,0.444,-132.235,-1.605,-20.42
+mid,Syndra,Ahri,81,0.37,-58.778,3.0,-201.63
+mid,Ahri,Mel,76,0.566,-543.868,-13.461,-429.763
+mid,Mel,Ahri,76,0.434,543.868,13.461,429.763
+mid,Akali,Cassiopeia,75,0.453,-170.573,-11.04,0.947
+mid,Cassiopeia,Akali,75,0.547,170.573,11.04,-0.947
+mid,Ryze,Yone,75,0.547,-93.907,-0.293,-183.427
+mid,Yone,Ryze,75,0.453,93.907,0.293,183.427
+mid,Locke,Orianna,73,0.493,501.458,-11.0,-16.083
+mid,Orianna,Locke,73,0.507,-501.458,11.0,16.083
+mid,Annie,Viktor,70,0.543,-199.471,-8.029,-283.9
+mid,Azir,Yone,70,0.471,-62.667,0.812,-156.275
+mid,Viktor,Annie,70,0.457,199.471,8.029,283.9
+mid,Yone,Azir,70,0.529,62.667,-0.812,156.275
+mid,Ahri,Viktor,69,0.362,-123.551,-11.565,-395.014
+mid,Viktor,Ahri,69,0.638,123.551,11.565,395.014
+mid,Akali,Syndra,67,0.537,-17.418,-4.522,130.164
+mid,Syndra,Akali,67,0.463,17.418,4.522,-130.164
+mid,Ahri,Galio,66,0.591,515.677,12.6,273.708
+mid,Galio,Ahri,66,0.409,-515.677,-12.6,-273.708
+mid,Akali,Azir,64,0.531,207.234,0.25,293.891
+mid,Akali,Viktor,64,0.688,433.859,1.297,251.578
+mid,Azir,Akali,64,0.469,-207.234,-0.25,-293.891
+mid,Viktor,Akali,64,0.312,-433.859,-1.297,-251.578
+mid,Aurora,Taliyah,63,0.508,350.238,4.508,168.984
+mid,Taliyah,Aurora,63,0.492,-350.238,-4.508,-168.984
+mid,Orianna,Sylas,62,0.565,80.306,10.984,74.435
+mid,Sylas,Orianna,62,0.435,-80.306,-10.984,-74.435
+mid,Ahri,Annie,60,0.55,133.1,-1.167,44.45
+mid,Annie,Ahri,60,0.45,-133.1,1.167,-44.45
+mid,Sylas,Viktor,60,0.567,-10.567,-9.583,-166.467
+mid,Viktor,Sylas,60,0.433,10.567,9.583,166.467
+mid,Ahri,Lissandra,57,0.579,136.667,1.158,37.754
+mid,Aurora,Azir,57,0.474,48.439,-5.421,-74.509
+mid,Azir,Aurora,57,0.526,-48.439,5.421,74.509
+mid,Lissandra,Ahri,57,0.421,-136.667,-1.158,-37.754
+mid,Annie,Galio,56,0.518,304.839,8.268,79.964
+mid,Galio,Annie,56,0.482,-304.839,-8.268,-79.964
+mid,Ryze,Twisted Fate,54,0.444,-432.17,9.453,17.377
+mid,Twisted Fate,Ryze,54,0.556,432.17,-9.453,-17.377
+mid,Akali,Ryze,53,0.604,2.321,-4.415,132.868
+mid,Ryze,Akali,53,0.396,-2.321,4.415,-132.868
+mid,Aurora,Galio,50,0.5,531.68,14.1,229.26
+mid,Aurora,Syndra,50,0.52,-238.28,-7.36,1.66
+mid,Galio,Aurora,50,0.5,-531.68,-14.1,-229.26
+mid,Galio,Ryze,50,0.46,-227.62,-10.24,4.7
+mid,Ryze,Galio,50,0.54,227.62,10.24,-4.7
+mid,Syndra,Aurora,50,0.48,238.28,7.36,-1.66
+mid,Akali,Annie,49,0.51,167.592,-0.918,165.714
+mid,Annie,Akali,49,0.49,-167.592,0.918,-165.714
+mid,Ahri,Azir,48,0.542,205.812,-2.604,47.625
+mid,Azir,Ahri,48,0.458,-205.812,2.604,-47.625
+mid,Ahri,LeBlanc,46,0.543,-311.0,-5.065,-209.304
+mid,Akali,Aurora,46,0.674,-45.283,-5.283,-123.217
+mid,Aurora,Akali,46,0.326,45.283,5.283,123.217
+mid,LeBlanc,Ahri,46,0.457,311.0,5.065,209.304
+mid,Sylas,Syndra,46,0.543,-187.37,-13.891,-207.043
+mid,Syndra,Sylas,46,0.457,187.37,13.891,207.043
+mid,Taliyah,Viktor,45,0.4,-204.0,-8.622,-216.4
+mid,Viktor,Taliyah,45,0.6,204.0,8.622,216.4
+mid,Ahri,Akali,44,0.705,120.909,0.773,-41.523
+mid,Akali,Ahri,44,0.295,-120.909,-0.773,41.523
+mid,Locke,Syndra,44,0.614,584.295,-2.841,265.318
+mid,Syndra,Locke,44,0.386,-584.295,2.841,-265.318
+mid,Hwei,Viktor,43,0.465,135.86,-4.233,-25.395
+mid,Viktor,Hwei,43,0.535,-135.86,4.233,25.395
+mid,Azir,LeBlanc,42,0.381,-619.31,-6.0,-405.619
+mid,LeBlanc,Azir,42,0.619,619.31,6.0,405.619
+mid,Ahri,Cassiopeia,41,0.463,30.098,-8.268,-66.122
+mid,Akali,Galio,41,0.512,45.976,5.317,-38.878
+mid,Cassiopeia,Ahri,41,0.537,-30.098,8.268,66.122
+mid,Galio,Akali,41,0.488,-45.976,-5.317,38.878
+mid,Viktor,Yone,41,0.537,-105.146,2.585,-73.195
+mid,Yone,Viktor,41,0.463,105.146,-2.585,73.195
+mid,Aurora,LeBlanc,40,0.5,-396.0,-9.875,-225.2
+mid,Cassiopeia,Galio,40,0.575,371.7,13.2,6.475
+mid,Galio,Cassiopeia,40,0.425,-371.7,-13.2,-6.475
+mid,LeBlanc,Aurora,40,0.5,396.0,9.875,225.2
+mid,Aurora,Twisted Fate,39,0.308,-400.051,7.487,159.513
+mid,Hwei,Ryze,39,0.385,124.026,3.205,120.179
+mid,Ryze,Hwei,39,0.615,-124.026,-3.205,-120.179
+mid,Twisted Fate,Aurora,39,0.692,400.051,-7.487,-159.513
+mid,Aurora,Orianna,38,0.421,-308.895,-11.789,-324.605
+mid,Galio,Viktor,38,0.447,-329.684,-8.816,-228.447
+mid,LeBlanc,Orianna,38,0.553,435.474,0.447,298.579
+mid,Orianna,Aurora,38,0.579,308.895,11.789,324.605
+mid,Orianna,LeBlanc,38,0.447,-435.474,-0.447,-298.579
+mid,Viktor,Galio,38,0.553,329.684,8.816,228.447
+mid,Cassiopeia,Hwei,36,0.556,378.556,11.972,198.611
+mid,Hwei,Cassiopeia,36,0.444,-378.556,-11.972,-198.611
+mid,Annie,Hwei,35,0.543,-218.886,-6.857,-320.114
+mid,Azir,Viktor,35,0.4,-38.743,-3.629,-90.143
+mid,Galio,Locke,35,0.514,-419.171,-4.429,-20.143
+mid,Hwei,Annie,35,0.457,218.886,6.857,320.114
+mid,Locke,Galio,35,0.486,419.171,4.429,20.143
+mid,Viktor,Azir,35,0.6,38.743,3.629,90.143
+mid,Ahri,Yone,34,0.676,-29.971,0.824,-80.0
+mid,Galio,Syndra,34,0.5,-584.588,-10.676,-80.559
+mid,Syndra,Galio,34,0.5,584.588,10.676,80.559
+mid,Yone,Ahri,34,0.324,29.971,-0.824,80.0
+mid,Locke,Ryze,33,0.394,333.697,-12.182,-12.152
+mid,Ryze,Locke,33,0.606,-333.697,12.182,12.152
+mid,Aurora,Mel,32,0.531,-264.062,-12.125,-75.25
+mid,LeBlanc,Syndra,32,0.531,344.312,-4.938,158.188
+mid,Mel,Aurora,32,0.469,264.062,12.125,75.25
+mid,Syndra,LeBlanc,32,0.469,-344.312,4.938,-158.188
+mid,Ahri,Anivia,31,0.452,-118.548,-1.194,-175.387
+mid,Anivia,Ahri,31,0.548,118.548,1.194,175.387
+mid,Anivia,Aurora,31,0.677,30.968,2.387,184.839
+mid,Annie,Taliyah,31,0.484,-50.871,4.871,111.065
+mid,Aurora,Anivia,31,0.323,-30.968,-2.387,-184.839
+mid,Taliyah,Annie,31,0.516,50.871,-4.871,-111.065
+mid,Aurora,Cassiopeia,30,0.3,-234.5,-10.667,76.133
+mid,Cassiopeia,Aurora,30,0.7,234.5,10.667,-76.133
+mid,Aurora,Sylas,29,0.414,65.207,8.931,-51.586
+mid,Cassiopeia,LeBlanc,29,0.517,-385.034,-2.172,-223.069
+mid,LeBlanc,Cassiopeia,29,0.483,385.034,2.172,223.069
+mid,Mel,Viktor,29,0.414,379.517,-0.069,-70.207
+mid,Sylas,Aurora,29,0.586,-65.207,-8.931,51.586
+mid,Viktor,Mel,29,0.586,-379.517,0.069,70.207
+mid,Anivia,Annie,28,0.607,165.786,3.929,364.321
+mid,Annie,Anivia,28,0.393,-165.786,-3.929,-364.321
+mid,Syndra,Taliyah,27,0.556,395.074,6.296,297.0
+mid,Taliyah,Syndra,27,0.444,-395.074,-6.296,-297.0
+mid,Annie,Cassiopeia,26,0.462,-650.538,-15.423,-544.615
+mid,Annie,Mel,26,0.654,-865.269,-13.808,-532.769
+mid,Azir,Syndra,26,0.385,21.231,1.346,269.154
+mid,Cassiopeia,Annie,26,0.538,650.538,15.423,544.615
+mid,Mel,Annie,26,0.346,865.269,13.808,532.769
+mid,Syndra,Azir,26,0.615,-21.231,-1.346,-269.154
+mid,Annie,Azir,25,0.64,-458.56,-10.04,-421.56
+mid,Azir,Annie,25,0.36,458.56,10.04,421.56
+mid,Cassiopeia,Taliyah,25,0.56,388.52,11.76,172.4
+mid,Galio,Taliyah,25,0.32,-383.8,-8.92,-265.76
+mid,Locke,Viktor,25,0.4,136.24,-12.2,-241.4
+mid,Syndra,Yone,25,0.48,628.88,10.72,237.12
+mid,Taliyah,Cassiopeia,25,0.44,-388.52,-11.76,-172.4
+mid,Taliyah,Galio,25,0.68,383.8,8.92,265.76
+mid,Viktor,Locke,25,0.6,-136.24,12.2,241.4
+mid,Yone,Syndra,25,0.52,-628.88,-10.72,-237.12
+mid,Akali,Anivia,24,0.5,144.375,-3.042,31.292
+mid,Anivia,Akali,24,0.5,-144.375,3.042,-31.292
+mid,Galio,LeBlanc,24,0.625,-631.208,-9.833,-309.083
+mid,Hwei,Syndra,24,0.417,-240.958,-7.917,111.25
+mid,LeBlanc,Galio,24,0.375,631.208,9.833,309.083
+mid,Syndra,Hwei,24,0.583,240.958,7.917,-111.25
+mid,Cassiopeia,Locke,23,0.522,162.696,12.957,252.217
+mid,Locke,Cassiopeia,23,0.478,-162.696,-12.957,-252.217
+mid,Orianna,Taliyah,23,0.739,133.609,9.0,89.0
+mid,Taliyah,Orianna,23,0.261,-133.609,-9.0,-89.0
+mid,Aurora,Hwei,22,0.5,158.136,-5.455,-3.091
+mid,Hwei,Aurora,22,0.5,-158.136,5.455,3.091
+mid,Mel,Ryze,22,0.273,-110.864,-4.409,-231.409
+mid,Ryze,Mel,22,0.727,110.864,4.409,231.409
+mid,Anivia,Viktor,21,0.714,-152.857,-7.143,-109.333
+mid,Annie,Syndra,21,0.476,-358.048,-9.238,-105.905
+mid,Azir,Ziggs,21,0.429,-257.333,-0.952,-54.857
+mid,Ryze,Tristana,21,0.429,-537.286,0.286,-136.857
+mid,Syndra,Annie,21,0.524,358.048,9.238,105.905
+mid,Tristana,Ryze,21,0.571,537.286,-0.286,136.857
+mid,Viktor,Anivia,21,0.286,152.857,7.143,109.333
+mid,Ziggs,Azir,21,0.571,257.333,0.952,54.857
+mid,Akali,Twisted Fate,20,0.45,-924.35,-1.15,-123.7
+mid,Twisted Fate,Akali,20,0.55,924.35,1.15,123.7
+mid,Ahri,Locke,19,0.632,5.211,5.263,219.158
+mid,Akali,LeBlanc,19,0.474,-462.474,-7.105,22.526
+mid,LeBlanc,Akali,19,0.526,462.474,7.105,-22.526
+mid,Locke,Ahri,19,0.368,-5.211,-5.263,-219.158
+mid,Sylas,Taliyah,19,0.474,-135.579,-10.053,-225.579
+mid,Taliyah,Sylas,19,0.526,135.579,10.053,225.579
+mid,Annie,Orianna,18,0.611,-445.722,-11.722,-427.611
+mid,Orianna,Annie,18,0.389,445.722,11.722,427.611
+mid,Akali,Taliyah,17,0.588,366.529,-0.294,323.941
+mid,Aurora,Zoe,17,0.647,62.824,-1.235,193.118
+mid,Taliyah,Akali,17,0.412,-366.529,0.294,-323.941
+mid,Zoe,Aurora,17,0.353,-62.824,1.235,-193.118
+mid,Ahri,Hwei,16,0.5,336.0,-1.75,125.875
+mid,Akali,Lissandra,16,0.688,96.0,-0.75,66.188
+mid,Akali,Locke,16,0.5,-194.812,7.0,-4.0
+mid,Anivia,Syndra,16,0.625,-143.125,-5.062,63.0
+mid,Hwei,Ahri,16,0.5,-336.0,1.75,-125.875
+mid,Lissandra,Akali,16,0.312,-96.0,0.75,-66.188
+mid,Locke,Akali,16,0.5,194.812,-7.0,4.0
+mid,Syndra,Anivia,16,0.375,143.125,5.062,-63.0
+mid,Ahri,Twisted Fate,15,0.4,-404.467,11.467,449.067
+mid,Akali,Sylas,15,0.467,393.2,11.8,444.133
+mid,Anivia,Taliyah,15,0.667,317.933,6.267,432.467
+mid,Aurelion Sol,Orianna,15,0.6,-407.133,-13.2,-607.467
+mid,Azir,Sylas,15,0.333,-148.133,11.2,167.133
+mid,LeBlanc,Viktor,15,0.4,363.333,1.467,39.4
+mid,Orianna,Aurelion Sol,15,0.4,407.133,13.2,607.467
+mid,Orianna,Yone,15,0.533,151.867,9.8,255.067
+mid,Ryze,Sylas,15,0.533,291.4,9.6,122.133
+mid,Ryze,Zoe,15,0.467,-434.067,2.0,-151.667
+mid,Sylas,Akali,15,0.533,-393.2,-11.8,-444.133
+mid,Sylas,Azir,15,0.667,148.133,-11.2,-167.133
+mid,Sylas,Ryze,15,0.467,-291.4,-9.6,-122.133
+mid,Syndra,Zoe,15,0.667,154.467,7.333,83.467
+mid,Taliyah,Anivia,15,0.333,-317.933,-6.267,-432.467
+mid,Twisted Fate,Ahri,15,0.6,404.467,-11.467,-449.067
+mid,Viktor,LeBlanc,15,0.6,-363.333,-1.467,-39.4
+mid,Yone,Orianna,15,0.467,-151.867,-9.8,-255.067
+mid,Zoe,Ryze,15,0.533,434.067,-2.0,151.667
+mid,Zoe,Syndra,15,0.333,-154.467,-7.333,-83.467
+mid,Akali,Hwei,14,0.5,-100.286,-7.286,-28.214
+mid,Anivia,Orianna,14,0.143,-624.571,-13.643,-386.571
+mid,Hwei,Akali,14,0.5,100.286,7.286,28.214
+mid,Hwei,Taliyah,14,0.5,-240.929,4.214,-106.286
+mid,Mel,Syndra,14,0.286,233.357,2.5,87.286
+mid,Mel,Twisted Fate,14,0.286,282.857,22.143,542.786
+mid,Orianna,Anivia,14,0.857,624.571,13.643,386.571
+mid,Syndra,Mel,14,0.714,-233.357,-2.5,-87.286
+mid,Taliyah,Hwei,14,0.5,240.929,-4.214,106.286
+mid,Taliyah,Yone,14,0.357,-661.357,-13.429,-640.5
+mid,Twisted Fate,Mel,14,0.714,-282.857,-22.143,-542.786
+mid,Yone,Taliyah,14,0.643,661.357,13.429,640.5
+mid,Ahri,Veigar,13,0.462,-140.462,1.923,-44.385
+mid,Anivia,Hwei,13,0.462,-379.615,-5.077,-32.769
+mid,Aurelion Sol,Ryze,13,0.538,-687.692,-12.385,-363.154
+mid,Azir,Mel,13,0.538,-304.692,-7.692,-75.462
+mid,Galio,Sylas,13,0.615,222.692,5.231,326.077
+mid,Hwei,Anivia,13,0.538,379.615,5.077,32.769
+mid,Hwei,Orianna,13,0.308,-500.769,-7.462,-367.308
+mid,Mel,Azir,13,0.462,304.692,7.692,75.462
+mid,Orianna,Hwei,13,0.692,500.769,7.462,367.308
+mid,Ryze,Aurelion Sol,13,0.462,687.692,12.385,363.154
+mid,Sylas,Galio,13,0.385,-222.692,-5.231,-326.077
+mid,Veigar,Ahri,13,0.538,140.462,-1.923,44.385
+mid,Viktor,Zoe,13,0.692,-367.154,6.385,-81.231
+mid,Zoe,Viktor,13,0.308,367.154,-6.385,81.231
+mid,Galio,Swain,12,0.333,-835.75,-16.333,-443.917
+mid,LeBlanc,Lissandra,12,0.5,-67.833,-8.25,-329.75
+mid,LeBlanc,Taliyah,12,0.667,373.167,6.083,251.5
+mid,Lissandra,LeBlanc,12,0.5,67.833,8.25,329.75
+mid,Swain,Galio,12,0.667,835.75,16.333,443.917
+mid,Taliyah,LeBlanc,12,0.333,-373.167,-6.083,-251.5
+mid,Akali,Yone,11,0.636,650.909,15.0,399.545
+mid,Annie,Sylas,11,0.455,-62.273,3.273,-49.636
+mid,Annie,Twisted Fate,11,0.455,-861.545,5.273,-251.818
+mid,Aurelion Sol,Viktor,11,0.727,-231.364,-11.364,-305.364
+mid,Ekko,Syndra,11,0.364,-203.182,-8.0,-164.273
+mid,Galio,Smolder,11,0.545,-922.091,-21.091,-214.455
+mid,Galio,Yone,11,0.273,-830.273,-19.636,-583.636
+mid,Locke,Sylas,11,0.455,685.636,5.636,114.091
+mid,Smolder,Galio,11,0.455,922.091,21.091,214.455
+mid,Sylas,Annie,11,0.545,62.273,-3.273,49.636
+mid,Sylas,Locke,11,0.545,-685.636,-5.636,-114.091
+mid,Syndra,Ekko,11,0.636,203.182,8.0,164.273
+mid,Taliyah,Twisted Fate,11,0.636,-849.182,3.727,106.0
+mid,Twisted Fate,Annie,11,0.545,861.545,-5.273,251.818
+mid,Twisted Fate,Taliyah,11,0.364,849.182,-3.727,-106.0
+mid,Viktor,Aurelion Sol,11,0.273,231.364,11.364,305.364
+mid,Yone,Akali,11,0.364,-650.909,-15.0,-399.545
+mid,Yone,Galio,11,0.727,830.273,19.636,583.636
+mid,Akali,Mel,10,0.6,143.3,-2.7,209.0
+mid,Anivia,Azir,10,0.7,200.7,1.6,58.2
+mid,Aurora,Locke,10,0.3,-1050.6,0.3,-433.9
+mid,Aurora,Yone,10,0.7,297.2,4.2,256.3
+mid,Azir,Anivia,10,0.3,-200.7,-1.6,-58.2
+mid,Azir,Cassiopeia,10,0.4,-117.7,-2.6,-6.2
+mid,Azir,Ekko,10,0.5,-246.0,1.9,-358.8
+mid,Azir,Galio,10,0.5,423.8,10.7,186.8
+mid,Cassiopeia,Azir,10,0.6,117.7,2.6,6.2
+mid,Cassiopeia,Yone,10,0.6,61.1,8.5,-73.3
+mid,Ekko,Azir,10,0.5,246.0,-1.9,358.8
+mid,Galio,Azir,10,0.5,-423.8,-10.7,-186.8
+mid,Lissandra,Locke,10,0.8,39.4,9.6,435.9
+mid,Locke,Aurora,10,0.7,1050.6,-0.3,433.9
+mid,Locke,Lissandra,10,0.2,-39.4,-9.6,-435.9
+mid,Mel,Akali,10,0.4,-143.3,2.7,-209.0
+mid,Orianna,Sion,10,0.7,69.8,3.5,-78.1
+mid,Sion,Orianna,10,0.3,-69.8,-3.5,78.1
+mid,Sylas,Twisted Fate,10,0.5,-751.2,-7.4,-72.7
+mid,Twisted Fate,Sylas,10,0.5,751.2,7.4,72.7
+mid,Yone,Aurora,10,0.3,-297.2,-4.2,-256.3
+mid,Yone,Cassiopeia,10,0.4,-61.1,-8.5,73.3
+mid,Ahri,Zoe,9,0.556,41.889,0.778,71.889
+mid,Akali,Vex,9,0.222,-871.0,-15.667,-434.889
+mid,Anivia,Twisted Fate,9,0.556,-797.0,4.222,-122.222
+mid,Hwei,Mel,9,0.444,-628.889,-11.333,-301.667
+mid,Kog'Maw,Ryze,9,0.333,411.0,3.556,115.111
+mid,LeBlanc,Twisted Fate,9,0.333,-145.778,12.556,198.444
+mid,Malzahar,Ryze,9,0.556,-103.444,-5.667,-17.111
+mid,Mel,Hwei,9,0.556,628.889,11.333,301.667
+mid,Ryze,Kog'Maw,9,0.667,-411.0,-3.556,-115.111
+mid,Ryze,Malzahar,9,0.444,103.444,5.667,17.111
+mid,Sylas,Yone,9,0.333,-1070.444,-20.778,-781.667
+mid,Tristana,Viktor,9,0.222,18.444,-14.333,-668.667
+mid,Twisted Fate,Anivia,9,0.444,797.0,-4.222,122.222
+mid,Twisted Fate,LeBlanc,9,0.667,145.778,-12.556,-198.444
+mid,Vex,Akali,9,0.778,871.0,15.667,434.889
+mid,Viktor,Tristana,9,0.778,-18.444,14.333,668.667
+mid,Yone,Sylas,9,0.667,1070.444,20.778,781.667
+mid,Zoe,Ahri,9,0.444,-41.889,-0.778,-71.889
+mid,Ahri,Jayce,8,0.75,-583.125,-5.625,-110.75
+mid,Annie,LeBlanc,8,0.5,-769.0,-5.125,-421.625
+mid,Azir,Kog'Maw,8,0.25,-736.625,-1.375,-45.125
+mid,Azir,Zoe,8,0.0,-616.875,-2.375,-155.0
+mid,Galio,Hwei,8,0.625,-230.875,2.125,243.0
+mid,Galio,Mel,8,0.5,-1012.25,-13.25,-94.25
+mid,Galio,Twisted Fate,8,0.625,-762.375,2.125,150.625
+mid,Hwei,Galio,8,0.375,230.875,-2.125,-243.0
+mid,Hwei,LeBlanc,8,0.125,-554.125,-10.75,-470.375
+mid,Jayce,Ahri,8,0.25,583.125,5.625,110.75
+mid,Jayce,Viktor,8,0.25,-392.625,-6.125,-336.0
+mid,Kog'Maw,Azir,8,0.75,736.625,1.375,45.125
+mid,LeBlanc,Annie,8,0.5,769.0,5.125,421.625
+mid,LeBlanc,Hwei,8,0.875,554.125,10.75,470.375
+mid,LeBlanc,Ryze,8,0.375,326.625,6.5,531.875
+mid,Mel,Galio,8,0.5,1012.25,13.25,94.25
+mid,Ryze,LeBlanc,8,0.625,-326.625,-6.5,-531.875
+mid,Syndra,Twisted Fate,8,0.625,226.5,25.375,604.0
+mid,Twisted Fate,Galio,8,0.375,762.375,-2.125,-150.625
+mid,Twisted Fate,Syndra,8,0.375,-226.5,-25.375,-604.0
+mid,Viktor,Jayce,8,0.75,392.625,6.125,336.0
+mid,Zoe,Azir,8,1.0,616.875,2.375,155.0
+sup,Nautilus,Rell,274,0.449,-47.839,-0.158,14.707
+sup,Rell,Nautilus,274,0.551,47.839,0.158,-14.707
+sup,Bard,Karma,247,0.538,-43.126,-1.833,-64.264
+sup,Karma,Bard,247,0.462,43.126,1.833,64.264
+sup,Lulu,Milio,234,0.526,-1.528,0.768,38.987
+sup,Milio,Lulu,234,0.474,1.528,-0.768,-38.987
+sup,Lulu,Nami,215,0.498,9.958,0.293,58.484
+sup,Nami,Lulu,215,0.502,-9.958,-0.293,-58.484
+sup,Bard,Nautilus,207,0.565,89.256,-4.208,149.198
+sup,Nautilus,Bard,207,0.435,-89.256,4.208,-149.198
+sup,Leona,Nautilus,200,0.63,118.735,1.065,29.65
+sup,Nautilus,Leona,200,0.37,-118.735,-1.065,-29.65
+sup,Karma,Seraphine,189,0.45,5.556,-2.401,-170.588
+sup,Seraphine,Karma,189,0.55,-5.556,2.401,170.588
+sup,Lulu,Seraphine,185,0.476,-139.876,1.389,-12.33
+sup,Seraphine,Lulu,185,0.524,139.876,-1.389,12.33
+sup,Karma,Nautilus,183,0.366,81.59,-2.978,76.104
+sup,Nautilus,Karma,183,0.634,-81.59,2.978,-76.104
+sup,Bard,Seraphine,171,0.532,-51.012,-2.386,-173.661
+sup,Seraphine,Bard,171,0.468,51.012,2.386,173.661
+sup,Braum,Nautilus,169,0.497,21.787,-3.391,-8.538
+sup,Nautilus,Braum,169,0.503,-21.787,3.391,8.538
+sup,Bard,Neeko,168,0.542,-40.899,-1.238,164.53
+sup,Neeko,Bard,168,0.458,40.899,1.238,-164.53
+sup,Alistar,Nautilus,164,0.573,-12.945,-1.732,22.104
+sup,Nautilus,Alistar,164,0.427,12.945,1.732,-22.104
+sup,Alistar,Rakan,155,0.561,-23.406,-1.032,-22.555
+sup,Rakan,Alistar,155,0.439,23.406,1.032,22.555
+sup,Milio,Seraphine,148,0.473,-153.558,-3.007,-16.905
+sup,Seraphine,Milio,148,0.527,153.558,3.007,16.905
+sup,Lulu,Nautilus,144,0.444,-12.597,-2.333,235.938
+sup,Nautilus,Lulu,144,0.556,12.597,2.333,-235.938
+sup,Bard,Lulu,137,0.547,91.431,-2.409,-133.226
+sup,Lulu,Bard,137,0.453,-91.431,2.409,133.226
+sup,Karma,Nami,131,0.481,106.931,0.542,23.008
+sup,Nami,Karma,131,0.519,-106.931,-0.542,-23.008
+sup,Lulu,Neeko,129,0.465,-46.178,-0.302,235.946
+sup,Neeko,Lulu,129,0.535,46.178,0.302,-235.946
+sup,Alistar,Rell,124,0.508,-33.323,-0.992,100.944
+sup,Rell,Alistar,124,0.492,33.323,0.992,-100.944
+sup,Nautilus,Seraphine,122,0.443,-196.074,1.331,-256.711
+sup,Seraphine,Nautilus,122,0.557,196.074,-1.331,256.711
+sup,Alistar,Leona,118,0.568,-1.924,-2.398,108.737
+sup,Camille,Shen,118,0.508,291.161,-3.042,-167.915
+sup,Leona,Alistar,118,0.432,1.924,2.398,-108.737
+sup,Shen,Camille,118,0.492,-291.161,3.042,167.915
+sup,Karma,Lulu,115,0.504,80.496,-0.957,-238.687
+sup,Lulu,Karma,115,0.496,-80.496,0.957,238.687
+sup,Nami,Neeko,111,0.495,-52.279,-1.82,300.243
+sup,Neeko,Nami,111,0.505,52.279,1.82,-300.243
+sup,Karma,Neeko,110,0.509,-19.6,-0.991,78.273
+sup,Milio,Nautilus,110,0.491,110.091,-4.055,208.091
+sup,Nautilus,Milio,110,0.509,-110.091,4.055,-208.091
+sup,Neeko,Karma,110,0.491,19.6,0.991,-78.273
+sup,Bard,Rakan,107,0.561,64.364,-4.308,201.047
+sup,Rakan,Bard,107,0.439,-64.364,4.308,-201.047
+sup,Leona,Rell,106,0.434,-36.604,0.283,39.802
+sup,Milio,Rakan,106,0.425,-34.971,-3.552,152.143
+sup,Rakan,Milio,106,0.575,34.971,3.552,-152.143
+sup,Rell,Leona,106,0.566,36.604,-0.283,-39.802
+sup,Alistar,Neeko,101,0.455,-282.96,0.663,-190.683
+sup,Neeko,Alistar,101,0.545,282.96,-0.663,190.683
+sup,Karma,Milio,99,0.535,124.778,1.697,-103.081
+sup,Milio,Karma,99,0.465,-124.778,-1.697,103.081
+sup,Bard,Milio,98,0.52,129.48,-1.592,-220.735
+sup,Milio,Bard,98,0.48,-129.48,1.592,220.735
+sup,Nami,Seraphine,89,0.36,-228.393,-1.169,-220.427
+sup,Nautilus,Rakan,89,0.483,39.494,0.798,-19.865
+sup,Rakan,Nautilus,89,0.517,-39.494,-0.798,19.865
+sup,Seraphine,Nami,89,0.64,228.393,1.169,220.427
+sup,Bard,Nami,85,0.388,7.753,-0.388,-173.671
+sup,Nami,Bard,85,0.612,-7.753,0.388,173.671
+sup,Rakan,Rell,85,0.529,44.965,0.024,79.129
+sup,Rell,Rakan,85,0.471,-44.965,-0.024,-79.129
+sup,Nautilus,Neeko,83,0.506,-144.494,0.988,-61.59
+sup,Neeko,Nautilus,83,0.494,144.494,-0.988,61.59
+sup,Milio,Nami,82,0.537,76.378,0.317,117.073
+sup,Nami,Milio,82,0.463,-76.378,-0.317,-117.073
+sup,Bard,Leona,81,0.642,255.691,-2.494,388.333
+sup,Leona,Bard,81,0.358,-255.691,2.494,-388.333
+sup,Bard,Rell,80,0.538,199.862,-4.662,314.638
+sup,Rell,Bard,80,0.462,-199.862,4.662,-314.638
+sup,Leona,Rakan,76,0.408,-101.092,0.842,-46.776
+sup,Lulu,Rakan,76,0.395,30.211,-1.434,359.829
+sup,Rakan,Leona,76,0.592,101.092,-0.842,46.776
+sup,Rakan,Lulu,76,0.605,-30.211,1.434,-359.829
+sup,Camille,Leona,75,0.467,364.987,0.787,-176.76
+sup,Leona,Camille,75,0.533,-364.987,-0.787,176.76
+sup,Neeko,Rakan,73,0.507,159.411,-2.342,147.055
+sup,Rakan,Neeko,73,0.493,-159.411,2.342,-147.055
+sup,Alistar,Bard,70,0.4,-210.101,2.203,-131.681
+sup,Alistar,Braum,70,0.643,-43.571,0.743,-83.186
+sup,Bard,Alistar,70,0.6,210.101,-2.203,131.681
+sup,Braum,Alistar,70,0.357,43.571,-0.743,83.186
+sup,Karma,Rakan,70,0.514,27.929,-2.286,-58.443
+sup,Rakan,Karma,70,0.486,-27.929,2.286,58.443
+sup,Neeko,Seraphine,68,0.382,-69.515,-1.676,-380.647
+sup,Seraphine,Neeko,68,0.618,69.515,1.676,380.647
+sup,Alistar,Karma,62,0.5,-249.295,0.902,-66.016
+sup,Karma,Alistar,62,0.5,249.295,-0.902,66.016
+sup,Rell,Shen,59,0.525,-122.678,-3.322,-125.966
+sup,Shen,Rell,59,0.475,122.678,3.322,125.966
+sup,Bard,Pyke,57,0.491,-129.947,-1.281,289.895
+sup,Karma,Rell,57,0.509,363.86,-4.123,310.561
+sup,Pyke,Bard,57,0.509,129.947,1.281,-289.895
+sup,Rell,Karma,57,0.491,-363.86,4.123,-310.561
+sup,Rell,Seraphine,56,0.482,-69.911,1.375,-239.875
+sup,Seraphine,Rell,56,0.518,69.911,-1.375,239.875
+sup,Alistar,Shen,52,0.462,-219.865,-5.385,-140.269
+sup,Nami,Nautilus,52,0.596,0.192,-2.481,185.538
+sup,Nautilus,Nami,52,0.404,-0.192,2.481,-185.538
+sup,Shen,Alistar,52,0.538,219.865,5.385,140.269
+sup,Bard,Shen,50,0.4,-2.08,-5.46,81.72
+sup,Braum,Rell,50,0.52,-1.4,-2.58,146.96
+sup,Lulu,Rell,50,0.64,68.7,-2.58,310.34
+sup,Rell,Braum,50,0.48,1.4,2.58,-146.96
+sup,Rell,Lulu,50,0.36,-68.7,2.58,-310.34
+sup,Shen,Bard,50,0.6,2.08,5.46,-81.72
+sup,Camille,Rell,49,0.571,363.224,-0.245,10.898
+sup,Neeko,Rell,49,0.551,211.51,-2.898,134.449
+sup,Rell,Camille,49,0.429,-363.224,0.245,-10.898
+sup,Rell,Neeko,49,0.449,-211.51,2.898,-134.449
+sup,Seraphine,Yuumi,49,0.592,119.102,8.857,-355.857
+sup,Yuumi,Seraphine,49,0.408,-119.102,-8.857,355.857
+sup,Leona,Shen,48,0.417,-96.75,-2.104,-108.5
+sup,Shen,Leona,48,0.583,96.75,2.104,108.5
+sup,Alistar,Poppy,47,0.574,-143.66,1.553,126.66
+sup,Poppy,Alistar,47,0.426,143.66,-1.553,-126.66
+sup,Lulu,Renata Glasc,46,0.457,-169.022,-0.283,-260.174
+sup,Rakan,Renata Glasc,46,0.63,23.435,3.913,-285.87
+sup,Renata Glasc,Lulu,46,0.543,169.022,0.283,260.174
+sup,Renata Glasc,Rakan,46,0.37,-23.435,-3.913,285.87
+sup,Lulu,Thresh,44,0.432,11.75,-4.841,-21.273
+sup,Milio,Renata Glasc,44,0.409,-21.386,0.864,-69.795
+sup,Nami,Rakan,44,0.5,31.705,-3.545,202.182
+sup,Pyke,Seraphine,44,0.455,155.568,-4.386,-516.932
+sup,Rakan,Nami,44,0.5,-31.705,3.545,-202.182
+sup,Renata Glasc,Milio,44,0.591,21.386,-0.864,69.795
+sup,Seraphine,Pyke,44,0.545,-155.568,4.386,516.932
+sup,Thresh,Lulu,44,0.568,-11.75,4.841,21.273
+sup,Braum,Leona,43,0.512,-159.372,-2.977,43.395
+sup,Leona,Braum,43,0.488,159.372,2.977,-43.395
+sup,Alistar,Lulu,41,0.39,-229.366,-1.415,-371.659
+sup,Lulu,Alistar,41,0.61,229.366,1.415,371.659
+sup,Milio,Neeko,41,0.537,-70.049,-0.854,273.732
+sup,Neeko,Milio,41,0.463,70.049,0.854,-273.732
+sup,Karma,Leona,39,0.462,82.615,-3.205,104.231
+sup,Leona,Karma,39,0.538,-82.615,3.205,-104.231
+sup,Neeko,Renata Glasc,39,0.487,129.0,-0.179,-214.564
+sup,Renata Glasc,Neeko,39,0.513,-129.0,0.179,214.564
+sup,Renata Glasc,Seraphine,36,0.556,-203.714,0.057,-193.657
+sup,Seraphine,Renata Glasc,36,0.444,203.714,-0.057,193.657
+sup,Bard,Camille,34,0.441,-173.647,-5.029,294.294
+sup,Camille,Bard,34,0.559,173.647,5.029,-294.294
+sup,Leona,Lulu,34,0.412,-94.118,3.088,-406.765
+sup,Lulu,Leona,34,0.588,94.118,-3.088,406.765
+sup,Camille,Nautilus,33,0.667,436.576,-0.515,-74.97
+sup,Nautilus,Camille,33,0.333,-436.576,0.515,74.97
+sup,Nautilus,Renata Glasc,33,0.333,-259.303,2.545,-409.758
+sup,Nautilus,Shen,33,0.485,-89.97,-1.485,3.455
+sup,Renata Glasc,Nautilus,33,0.667,259.303,-2.545,409.758
+sup,Shen,Nautilus,33,0.515,89.97,1.485,-3.455
+sup,Alistar,Milio,32,0.562,-52.5,1.094,-274.156
+sup,Milio,Alistar,32,0.438,52.5,-1.094,274.156
+sup,Poppy,Rakan,32,0.406,-2.406,-1.656,-131.656
+sup,Poppy,Rell,32,0.625,191.875,-2.594,-36.969
+sup,Rakan,Poppy,32,0.594,2.406,1.656,131.656
+sup,Rell,Poppy,32,0.375,-191.875,2.594,36.969
+sup,Alistar,Renata Glasc,29,0.552,-122.759,-0.069,-245.034
+sup,Renata Glasc,Alistar,29,0.448,122.759,0.069,245.034
+sup,Alistar,Nami,28,0.571,-223.036,0.036,-289.714
+sup,Leona,Nami,28,0.643,-83.321,4.536,-60.393
+sup,Leona,Neeko,28,0.357,-250.179,-1.607,-69.393
+sup,Nami,Alistar,28,0.429,223.036,-0.036,289.714
+sup,Nami,Leona,28,0.357,83.321,-4.536,60.393
+sup,Neeko,Leona,28,0.643,250.179,1.607,69.393
+sup,Blitzcrank,Lulu,25,0.48,-56.88,-3.52,-320.6
+sup,Leona,Poppy,25,0.44,-66.64,1.6,49.4
+sup,Leona,Seraphine,25,0.44,-239.16,0.28,-554.0
+sup,Lulu,Blitzcrank,25,0.52,56.88,3.52,320.6
+sup,Poppy,Leona,25,0.56,66.64,-1.6,-49.4
+sup,Rakan,Seraphine,25,0.44,-219.6,1.96,-354.56
+sup,Seraphine,Leona,25,0.56,239.16,-0.28,554.0
+sup,Seraphine,Rakan,25,0.56,219.6,-1.96,354.56
+sup,Milio,Rell,24,0.625,84.292,-1.833,430.917
+sup,Rell,Milio,24,0.375,-84.292,1.833,-430.917
+sup,Nami,Rell,23,0.609,120.913,-3.391,235.478
+sup,Rell,Nami,23,0.391,-120.913,3.391,-235.478
+sup,Bard,Thresh,22,0.682,14.682,-3.909,6.864
+sup,Karma,Pyke,22,0.409,-326.0,2.318,122.364
+sup,Karma,Yuumi,22,0.545,280.636,5.455,-527.182
+sup,Pyke,Karma,22,0.591,326.0,-2.318,-122.364
+sup,Rakan,Shen,22,0.455,-191.773,-3.136,-21.091
+sup,Shen,Rakan,22,0.545,191.773,3.136,21.091
+sup,Thresh,Bard,22,0.318,-14.682,3.909,-6.864
+sup,Yuumi,Karma,22,0.455,-280.636,-5.455,527.182
+sup,Braum,Rakan,21,0.333,-82.286,0.905,184.429
+sup,Lulu,Pyke,21,0.571,-168.714,2.381,407.476
+sup,Pyke,Lulu,21,0.429,168.714,-2.381,-407.476
+sup,Rakan,Braum,21,0.667,82.286,-0.905,-184.429
+sup,Rell,Renata Glasc,21,0.476,-257.238,3.0,-509.0
+sup,Renata Glasc,Rell,21,0.524,257.238,-3.0,509.0
+sup,Alistar,Seraphine,19,0.526,-256.737,-0.263,-413.368
+sup,Anivia,Neeko,19,0.579,189.158,1.211,123.421
+sup,Neeko,Anivia,19,0.421,-189.158,-1.211,-123.421
+sup,Seraphine,Alistar,19,0.474,256.737,0.263,413.368
+sup,Bard,Elise,18,0.389,-388.667,-1.667,287.556
+sup,Blitzcrank,Seraphine,18,0.667,-296.0,-1.222,-411.222
+sup,Elise,Bard,18,0.611,388.667,1.667,-287.556
+sup,Nautilus,Thresh,18,0.611,-90.111,-1.333,-234.222
+sup,Seraphine,Blitzcrank,18,0.333,296.0,1.222,411.222
+sup,Thresh,Nautilus,18,0.389,90.111,1.333,234.222
+sup,Anivia,Seraphine,17,0.588,-3.765,-3.176,-269.176
+sup,Bard,Renata Glasc,17,0.647,106.882,-0.412,-88.941
+sup,Camille,Seraphine,17,0.412,97.5,-2.5,-628.375
+sup,Karma,Renata Glasc,17,0.471,-60.353,-0.647,-325.118
+sup,Leona,Thresh,17,0.471,-114.647,-0.588,-296.118
+sup,Nautilus,Poppy,17,0.353,-348.765,-1.824,-83.471
+sup,Poppy,Nautilus,17,0.647,348.765,1.824,83.471
+sup,Rakan,Thresh,17,0.588,-112.882,-3.353,-228.0
+sup,Renata Glasc,Bard,17,0.353,-106.882,0.412,88.941
+sup,Renata Glasc,Karma,17,0.529,60.353,0.647,325.118
+sup,Seraphine,Anivia,17,0.412,3.765,3.176,269.176
+sup,Seraphine,Camille,17,0.588,-97.5,2.5,628.375
+sup,Thresh,Leona,17,0.529,114.647,0.588,296.118
+sup,Thresh,Rakan,17,0.412,112.882,3.353,228.0
+sup,Anivia,Karma,16,0.5,278.5,3.188,88.062
+sup,Blitzcrank,Thresh,16,0.562,8.688,0.812,83.438
+sup,Karma,Anivia,16,0.5,-278.5,-3.188,-88.062
+sup,Seraphine,Shen,16,0.688,241.312,-4.562,353.625
+sup,Shen,Seraphine,16,0.312,-241.312,4.562,-353.625
+sup,Thresh,Blitzcrank,16,0.438,-8.688,-0.812,-83.438
+sup,Alistar,Thresh,15,0.533,-110.533,-3.867,-93.2
+sup,Nautilus,Pyke,15,0.533,-70.867,3.0,167.533
+sup,Neeko,Thresh,15,0.533,219.867,-2.4,12.6
+sup,Neeko,Yuumi,15,0.333,110.267,5.133,-688.0
+sup,Pyke,Nautilus,15,0.467,70.867,-3.0,-167.533
+sup,Thresh,Alistar,15,0.467,110.533,3.867,93.2
+sup,Thresh,Neeko,15,0.467,-219.867,2.4,-12.6
+sup,Yuumi,Neeko,15,0.667,-110.267,-5.133,688.0
+sup,Camille,Milio,14,0.5,26.5,1.643,-527.357
+sup,Lulu,Soraka,14,0.357,245.929,2.929,219.429
+sup,Milio,Camille,14,0.5,-26.5,-1.643,527.357
+sup,Milio,Yuumi,14,0.429,-78.571,3.857,-320.714
+sup,Soraka,Lulu,14,0.643,-245.929,-2.929,-219.429
+sup,Yuumi,Milio,14,0.571,78.571,-3.857,320.714
+sup,Alistar,Camille,13,0.462,-377.308,-0.385,93.077
+sup,Anivia,Bard,13,0.385,55.538,0.538,-21.692
+sup,Bard,Anivia,13,0.615,-55.538,-0.538,21.692
+sup,Blitzcrank,Milio,13,0.615,-75.077,-0.077,-314.231
+sup,Camille,Alistar,13,0.538,377.308,0.385,-93.077
+sup,Karma,Shen,13,0.385,62.077,-3.615,153.0
+sup,Lulu,Lux,13,0.231,-465.308,3.231,-72.0
+sup,Lux,Lulu,13,0.769,465.308,-3.231,72.0
+sup,Milio,Blitzcrank,13,0.385,75.077,0.077,314.231
+sup,Nami,Renata Glasc,13,0.462,110.462,0.846,44.308
+sup,Renata Glasc,Nami,13,0.538,-110.462,-0.846,-44.308
+sup,Shen,Karma,13,0.615,-62.077,3.615,-153.0
+sup,Bard,Blitzcrank,12,0.833,146.917,-3.25,124.917
+sup,Blitzcrank,Bard,12,0.167,-146.917,3.25,-124.917
+sup,Braum,Thresh,12,0.5,88.917,-3.0,-22.5
+sup,Leona,Renata Glasc,12,0.5,-291.833,5.167,-401.583
+sup,Lux,Milio,12,0.667,324.909,2.727,331.182
+sup,Milio,Lux,12,0.333,-324.909,-2.727,-331.182
+sup,Renata Glasc,Leona,12,0.5,291.833,-5.167,401.583
+sup,Thresh,Braum,12,0.5,-88.917,3.0,22.5
+sup,Anivia,Lulu,11,0.545,171.727,-0.727,-323.818
+sup,Braum,Lulu,11,0.364,-207.818,2.818,57.364
+sup,Lulu,Anivia,11,0.455,-171.727,0.727,323.818
+sup,Lulu,Braum,11,0.636,207.818,-2.818,-57.364
+sup,Neeko,Pyke,11,0.364,-70.182,5.818,232.545
+sup,Pyke,Neeko,11,0.636,70.182,-5.818,-232.545
+sup,Bard,Lux,10,0.1,-496.6,0.9,-189.6
+sup,Camille,Rakan,10,0.3,307.0,2.7,22.6
+sup,Karma,Lux,10,0.5,-232.3,0.1,-243.2
+sup,Lux,Bard,10,0.9,496.6,-0.9,189.6
+sup,Lux,Karma,10,0.5,232.3,-0.1,243.2
+sup,Lux,Neeko,10,0.6,145.9,0.3,214.5
+sup,Neeko,Lux,10,0.4,-145.9,-0.3,-214.5
+sup,Rakan,Camille,10,0.7,-307.0,-2.7,-22.6
+sup,Braum,Seraphine,9,0.222,-295.111,-1.667,163.778
+sup,Camille,Karma,9,0.444,281.556,3.667,-299.778
+sup,Elise,Neeko,9,0.222,244.556,-0.778,-296.778
+sup,Karma,Camille,9,0.556,-281.556,-3.667,299.778
+sup,Leona,Milio,9,0.556,81.889,-2.0,-160.667
+sup,Lulu,Yuumi,9,0.556,-72.444,9.444,-457.889
+sup,Milio,Leona,9,0.444,-81.889,2.0,160.667
+sup,Neeko,Elise,9,0.778,-244.556,0.778,296.778
+sup,Pyke,Rell,9,0.556,311.889,-5.556,-106.222
+sup,Rell,Pyke,9,0.444,-311.889,5.556,106.222
+sup,Renata Glasc,Thresh,9,0.444,-19.889,-0.111,57.556
+sup,Seraphine,Braum,9,0.778,295.111,1.667,-163.778
+sup,Thresh,Renata Glasc,9,0.556,19.889,0.111,-57.556
+sup,Yuumi,Lulu,9,0.444,72.444,-9.444,457.889
+sup,Alistar,Yuumi,8,0.5,-269.5,2.125,-985.5
+sup,Bard,Poppy,8,0.625,388.25,-4.125,163.5
+sup,Blitzcrank,Karma,8,0.5,-205.75,-1.0,-491.75
+sup,Blitzcrank,Renata Glasc,8,0.5,-29.625,-5.375,-313.0
+sup,Camille,Neeko,8,0.625,424.625,3.625,11.375
+sup,Camille,Poppy,8,0.625,161.625,-0.625,-40.625
+sup,Karma,Blitzcrank,8,0.5,205.75,1.0,491.75
+sup,Lulu,Shen,8,0.625,5.625,-3.375,323.75
+sup,Neeko,Camille,8,0.375,-424.625,-3.625,-11.375
+sup,Poppy,Bard,8,0.375,-388.25,4.125,-163.5
+sup,Poppy,Camille,8,0.375,-161.625,0.625,40.625
+sup,Pyke,Rakan,8,0.375,248.0,-0.25,269.125
+sup,Rakan,Pyke,8,0.625,-248.0,0.25,-269.125
+sup,Rakan,Yuumi,8,0.75,99.75,5.25,-423.875
+sup,Renata Glasc,Blitzcrank,8,0.5,29.625,5.375,313.0
+sup,Shen,Lulu,8,0.375,-5.625,3.375,-323.75
+sup,Yuumi,Alistar,8,0.5,269.5,-2.125,985.5
+sup,Yuumi,Rakan,8,0.25,-99.75,-5.25,423.875
+top,K'Sante,Rumble,593,0.476,-36.798,5.573,189.6
+top,Rumble,K'Sante,593,0.524,36.798,-5.573,-189.6
+top,Ambessa,Rumble,310,0.465,-69.097,-4.135,-81.594
+top,Rumble,Ambessa,310,0.535,69.097,4.135,81.594
+top,Ornn,Rumble,269,0.494,-641.286,-10.45,-249.613
+top,Rumble,Ornn,269,0.506,641.286,10.45,249.613
+top,Gnar,Renekton,247,0.514,40.818,-0.502,-13.057
+top,Renekton,Gnar,247,0.486,-40.818,0.502,13.057
+top,Ambessa,Gnar,221,0.425,-308.19,-8.584,-219.353
+top,Gnar,Ambessa,221,0.575,308.19,8.584,219.353
+top,Gnar,K'Sante,198,0.586,472.581,12.49,231.52
+top,K'Sante,Gnar,198,0.414,-472.581,-12.49,-231.52
+top,Jayce,K'Sante,197,0.492,452.386,8.259,-61.096
+top,K'Sante,Jayce,197,0.508,-452.386,-8.259,61.096
+top,Rumble,Sion,196,0.541,244.158,0.964,6.005
+top,Sion,Rumble,196,0.459,-244.158,-0.964,-6.005
+top,Jayce,Yorick,185,0.497,463.0,9.63,54.875
+top,Yorick,Jayce,185,0.503,-463.0,-9.63,-54.875
+top,Jayce,Sion,170,0.518,767.106,16.129,102.806
+top,Sion,Jayce,170,0.482,-767.106,-16.129,-102.806
+top,Gwen,Sion,165,0.564,353.533,11.988,64.152
+top,Sion,Gwen,165,0.436,-353.533,-11.988,-64.152
+top,Ambessa,K'Sante,155,0.587,36.168,0.845,-44.297
+top,K'Sante,Ambessa,155,0.413,-36.168,-0.845,44.297
+top,K'Sante,Renekton,152,0.467,-221.026,-5.026,-43.079
+top,Renekton,K'Sante,152,0.533,221.026,5.026,43.079
+top,Galio,Rumble,148,0.453,-458.651,-12.144,-335.411
+top,Rumble,Galio,148,0.547,458.651,12.144,335.411
+top,Gnar,Sion,137,0.547,643.788,15.241,344.139
+top,Sion,Gnar,137,0.453,-643.788,-15.241,-344.139
+top,Ambessa,Sion,121,0.545,128.612,2.884,146.628
+top,Sion,Ambessa,121,0.455,-128.612,-2.884,-146.628
+top,Ambessa,Renekton,109,0.44,-677.101,-15.743,-490.844
+top,Renekton,Ambessa,109,0.56,677.101,15.743,490.844
+top,Renekton,Sion,101,0.485,402.97,8.733,66.554
+top,Sion,Renekton,101,0.515,-402.97,-8.733,-66.554
+top,Gwen,K'Sante,99,0.667,227.0,7.102,102.49
+top,K'Sante,Gwen,99,0.333,-227.0,-7.102,-102.49
+top,Aatrox,Sion,95,0.537,527.674,12.811,266.747
+top,Sion,Aatrox,95,0.463,-527.674,-12.811,-266.747
+top,Sion,Zaahen,93,0.409,-291.032,-1.097,-13.204
+top,Zaahen,Sion,93,0.591,291.032,1.097,13.204
+top,Ambessa,Zaahen,90,0.467,161.944,7.967,241.2
+top,Zaahen,Ambessa,90,0.533,-161.944,-7.967,-241.2
+top,Renekton,Zaahen,87,0.494,446.448,12.805,276.057
+top,Zaahen,Renekton,87,0.506,-446.448,-12.805,-276.057
+top,Gnar,Yorick,80,0.562,527.35,10.712,357.0
+top,Yorick,Gnar,80,0.438,-527.35,-10.712,-357.0
+top,Gnar,Rumble,76,0.447,206.658,2.553,83.513
+top,Rumble,Gnar,76,0.553,-206.658,-2.553,-83.513
+top,K'Sante,Sion,75,0.427,316.16,6.573,305.907
+top,Ornn,Renekton,75,0.48,-781.733,-17.827,-310.48
+top,Renekton,Ornn,75,0.52,781.733,17.827,310.48
+top,Sion,K'Sante,75,0.573,-316.16,-6.573,-305.907
+top,Rumble,Yorick,74,0.595,-228.189,-3.595,-10.878
+top,Yorick,Rumble,74,0.405,228.189,3.595,10.878
+top,Jayce,Rumble,72,0.444,318.319,6.444,-172.653
+top,Rumble,Jayce,72,0.556,-318.319,-6.444,172.653
+top,Gnar,Vayne,66,0.348,-331.152,-7.318,-119.803
+top,Vayne,Gnar,66,0.652,331.152,7.318,119.803
+top,Aurora,Rumble,61,0.475,517.967,12.836,362.967
+top,Jax,Olaf,61,0.426,-130.295,-7.0,-312.393
+top,Olaf,Jax,61,0.574,130.295,7.0,312.393
+top,Rumble,Aurora,61,0.525,-517.967,-12.836,-362.967
+top,Ambessa,Olaf,60,0.533,103.033,6.85,444.667
+top,Gnar,Jax,60,0.6,396.533,12.267,268.617
+top,Jax,Gnar,60,0.4,-396.533,-12.267,-268.617
+top,Olaf,Ambessa,60,0.467,-103.033,-6.85,-444.667
+top,Aatrox,Ambessa,59,0.475,146.339,2.492,124.153
+top,Ambessa,Aatrox,59,0.525,-146.339,-2.492,-124.153
+top,Jax,Renekton,59,0.373,-188.525,-11.373,-347.915
+top,Renekton,Jax,59,0.627,188.525,11.373,347.915
+top,Gnar,Malphite,58,0.466,429.828,13.052,-67.81
+top,Gnar,Olaf,58,0.466,-153.207,2.845,-49.534
+top,K'Sante,Vayne,58,0.345,-600.655,-16.69,-351.362
+top,K'Sante,Zaahen,58,0.466,-35.414,3.655,208.052
+top,Malphite,Gnar,58,0.534,-429.828,-13.052,67.81
+top,Olaf,Gnar,58,0.534,153.207,-2.845,49.534
+top,Vayne,K'Sante,58,0.655,600.655,16.69,351.362
+top,Zaahen,K'Sante,58,0.534,35.414,-3.655,-208.052
+top,Jayce,Olaf,56,0.321,-3.804,7.339,-321.196
+top,Olaf,Jayce,56,0.679,3.804,-7.339,321.196
+top,Dr. Mundo,Renekton,55,0.636,-477.382,-8.236,-155.055
+top,Renekton,Dr. Mundo,55,0.364,477.382,8.236,155.055
+top,K'Sante,Olaf,51,0.333,20.245,5.0,354.98
+top,Olaf,K'Sante,51,0.667,-20.245,-5.0,-354.98
+top,Camille,Olaf,50,0.66,59.04,-0.88,264.54
+top,Olaf,Camille,50,0.34,-59.04,0.88,-264.54
+top,Ambessa,Gwen,47,0.404,53.872,-0.723,215.234
+top,Gwen,Ambessa,47,0.596,-53.872,0.723,-215.234
+top,Kennen,Renekton,46,0.435,441.196,17.565,293.587
+top,Renekton,Kennen,46,0.565,-441.196,-17.565,-293.587
+top,Ambessa,Camille,45,0.533,193.422,6.044,285.956
+top,Camille,Ambessa,45,0.467,-193.422,-6.044,-285.956
+top,Jayce,Renekton,44,0.5,658.523,14.568,60.841
+top,Renekton,Jayce,44,0.5,-658.523,-14.568,-60.841
+top,Aatrox,Renekton,43,0.395,-582.442,-8.93,-407.023
+top,Ambessa,Jax,43,0.535,-106.744,7.14,361.326
+top,Gnar,Jayce,43,0.558,-458.744,-12.977,-35.14
+top,Jax,Ambessa,43,0.465,106.744,-7.14,-361.326
+top,Jayce,Gnar,43,0.442,458.744,12.977,35.14
+top,Renekton,Aatrox,43,0.605,582.442,8.93,407.023
+top,Renekton,Vayne,43,0.395,-512.395,-15.116,-73.093
+top,Rumble,Varus,43,0.535,-966.357,-18.714,-533.405
+top,Varus,Rumble,43,0.465,966.357,18.714,533.405
+top,Vayne,Renekton,43,0.605,512.395,15.116,73.093
+top,Ambessa,Jayce,42,0.5,-326.619,-13.524,103.69
+top,Jayce,Ambessa,42,0.5,326.619,13.524,-103.69
+top,Aatrox,Rumble,41,0.488,-218.829,-4.512,-157.561
+top,Rumble,Aatrox,41,0.512,218.829,4.512,157.561
+top,Ambessa,Yorick,40,0.45,-141.675,-2.75,77.7
+top,Yorick,Ambessa,40,0.55,141.675,2.75,-77.7
+top,Ambessa,Volibear,38,0.474,-207.474,-4.921,-161.158
+top,Olaf,Renekton,38,0.447,42.868,-2.605,-250.763
+top,Renekton,Olaf,38,0.553,-42.868,2.605,250.763
+top,Volibear,Ambessa,38,0.526,207.474,4.921,161.158
+top,Gnar,Kennen,37,0.459,-302.135,-10.378,-298.73
+top,Kennen,Gnar,37,0.541,302.135,10.378,298.73
+top,Kled,Olaf,37,0.568,137.0,-3.083,228.0
+top,Olaf,Kled,37,0.432,-137.0,3.083,-228.0
+top,Shen,Sion,37,0.378,-482.865,-12.324,-308.514
+top,Sion,Shen,37,0.622,482.865,12.324,308.514
+top,Aatrox,K'Sante,35,0.486,-217.514,-3.657,-201.6
+top,Ambessa,Vayne,35,0.343,-292.4,-9.457,-100.343
+top,K'Sante,Aatrox,35,0.514,217.514,3.657,201.6
+top,Vayne,Ambessa,35,0.657,292.4,9.457,100.343
+top,Gnar,Ornn,34,0.618,1256.118,26.559,660.294
+top,Gnar,Tristana,34,0.618,-627.559,-9.529,-19.206
+top,Gnar,Twisted Fate,34,0.471,-803.706,-1.353,68.735
+top,Ornn,Gnar,34,0.382,-1256.118,-26.559,-660.294
+top,Tristana,Gnar,34,0.382,627.559,9.529,19.206
+top,Twisted Fate,Gnar,34,0.529,803.706,1.353,-68.735
+top,Camille,Gnar,33,0.424,-29.061,-12.0,-83.576
+top,Gnar,Camille,33,0.576,29.061,12.0,83.576
+top,Gnar,Sylas,32,0.531,608.719,14.938,448.406
+top,Sylas,Gnar,32,0.469,-608.719,-14.938,-448.406
+top,Jax,K'Sante,31,0.516,25.032,-4.71,-324.968
+top,K'Sante,Jax,31,0.484,-25.032,4.71,324.968
+top,Olaf,Trundle,30,0.367,71.567,2.5,-62.667
+top,Trundle,Olaf,30,0.633,-71.567,-2.5,62.667
+top,Jayce,Malphite,29,0.586,648.069,14.897,-37.103
+top,Malphite,Jayce,29,0.414,-648.069,-14.897,37.103
+top,Rek'Sai,Sion,29,0.69,412.31,6.241,276.034
+top,Sion,Rek'Sai,29,0.31,-412.31,-6.241,-276.034
+top,Anivia,Rumble,28,0.679,612.571,13.75,455.179
+top,Rumble,Anivia,28,0.321,-612.571,-13.75,-455.179
+top,Aurora,Renekton,27,0.519,155.778,16.296,-30.222
+top,Cho'Gath,Sion,27,0.407,86.926,2.63,-132.444
+top,Jax,Zaahen,27,0.519,200.37,4.889,74.148
+top,Jayce,Vayne,27,0.519,421.333,12.185,257.815
+top,Renekton,Aurora,27,0.481,-155.778,-16.296,30.222
+top,Sion,Cho'Gath,27,0.593,-86.926,-2.63,132.444
+top,Vayne,Jayce,27,0.481,-421.333,-12.185,-257.815
+top,Zaahen,Jax,27,0.481,-200.37,-4.889,-74.148
+top,Camille,K'Sante,26,0.577,-421.96,-9.48,-442.08
+top,Gragas,Jayce,26,0.462,-467.48,-15.72,124.8
+top,Jayce,Gragas,26,0.538,467.48,15.72,-124.8
+top,K'Sante,Camille,26,0.423,421.96,9.48,442.08
+top,Ambessa,Ornn,25,0.56,743.4,18.96,642.72
+top,Dr. Mundo,Sion,25,0.6,-330.92,-5.12,-100.76
+top,Ornn,Ambessa,25,0.44,-743.4,-18.96,-642.72
+top,Sion,Dr. Mundo,25,0.4,330.92,5.12,100.76
+top,Ambessa,Rek'Sai,23,0.522,-169.87,2.0,-20.13
+top,Gnar,Irelia,23,0.478,-1123.87,-22.609,-800.0
+top,Irelia,Gnar,23,0.522,1123.87,22.609,800.0
+top,Olaf,Rumble,23,0.261,60.591,3.409,-320.5
+top,Rek'Sai,Ambessa,23,0.478,169.87,-2.0,20.13
+top,Renekton,Rumble,23,0.435,-143.739,-4.87,-253.087
+top,Rumble,Olaf,23,0.739,-60.591,-3.409,320.5
+top,Rumble,Renekton,23,0.565,143.739,4.87,253.087
+top,Aatrox,Ornn,22,0.591,1104.364,27.818,511.773
+top,Ambessa,Poppy,22,0.636,444.409,7.818,342.727
+top,Aurora,Gnar,22,0.273,-176.045,-2.318,-441.227
+top,Gnar,Aurora,22,0.727,176.045,2.318,441.227
+top,Jayce,Ornn,22,0.409,1488.455,24.909,677.955
+top,K'Sante,Ornn,22,0.455,1016.045,27.409,596.727
+top,Ornn,Aatrox,22,0.409,-1104.364,-27.818,-511.773
+top,Ornn,Jayce,22,0.591,-1488.455,-24.909,-677.955
+top,Ornn,K'Sante,22,0.545,-1016.045,-27.409,-596.727
+top,Poppy,Ambessa,22,0.364,-444.409,-7.818,-342.727
+top,Ambessa,Shen,21,0.429,527.381,14.286,292.333
+top,Gnar,Varus,21,0.476,-549.095,-18.333,-173.238
+top,Gwen,Ornn,21,0.667,786.429,17.095,282.857
+top,Ornn,Gwen,21,0.333,-786.429,-17.095,-282.857
+top,Ornn,Sion,21,0.381,-869.143,-16.286,-453.095
+top,Renekton,Varus,21,0.381,-1167.286,-34.571,-664.429
+top,Shen,Ambessa,21,0.571,-527.381,-14.286,-292.333
+top,Sion,Ornn,21,0.619,869.143,16.286,453.095
+top,Varus,Gnar,21,0.524,549.095,18.333,173.238
+top,Varus,Renekton,21,0.619,1167.286,34.571,664.429
+top,Gnar,Yasuo,20,0.6,-119.5,-2.75,259.7
+top,Gwen,Renekton,20,0.55,-319.55,-10.3,-256.5
+top,K'Sante,Poppy,20,0.35,-141.7,-2.25,-107.9
+top,K'Sante,Twisted Fate,20,0.35,-1146.75,-4.1,28.9
+top,Olaf,Vayne,20,0.7,-142.55,-12.45,10.55
+top,Poppy,K'Sante,20,0.65,141.7,2.25,107.9
+top,Renekton,Gwen,20,0.45,319.55,10.3,256.5
+top,Sion,Yone,20,0.4,-662.25,-20.9,-360.95
+top,Twisted Fate,K'Sante,20,0.65,1146.75,4.1,-28.9
+top,Vayne,Olaf,20,0.3,142.55,12.45,-10.55
+top,Yasuo,Gnar,20,0.4,119.5,2.75,-259.7
+top,Yone,Sion,20,0.6,662.25,20.9,360.95
+top,Aatrox,Gnar,19,0.316,-512.368,-9.947,-380.632
+top,Dr. Mundo,K'Sante,19,0.526,-584.421,-12.895,-406.947
+top,Gnar,Aatrox,19,0.684,512.368,9.947,380.632
+top,Gnar,Zaahen,19,0.632,202.0,7.737,309.895
+top,Jax,Sion,19,0.579,295.368,-4.0,-38.211
+top,K'Sante,Dr. Mundo,19,0.474,584.421,12.895,406.947
+top,Kled,Sion,19,0.526,461.316,4.263,169.263
+top,Olaf,Zaahen,19,0.737,533.158,7.0,238.263
+top,Sion,Jax,19,0.421,-295.368,4.0,38.211
+top,Sion,Kled,19,0.474,-461.316,-4.263,-169.263
+top,Zaahen,Gnar,19,0.368,-202.0,-7.737,-309.895
+top,Zaahen,Olaf,19,0.263,-533.158,-7.0,-238.263
+top,Renekton,Volibear,18,0.389,-199.889,-5.556,-282.667
+top,Sion,Vayne,18,0.444,-218.333,-7.278,-6.944
+top,Vayne,Sion,18,0.556,218.333,7.278,6.944
+top,Volibear,Renekton,18,0.611,199.889,5.556,282.667
+top,Camille,Jax,17,0.588,-220.824,-9.353,-213.529
+top,Camille,Jayce,17,0.588,-387.0,-12.353,53.059
+top,Jax,Camille,17,0.412,220.824,9.353,213.529
+top,Jayce,Camille,17,0.412,387.0,12.353,-53.059
+top,Dr. Mundo,Jayce,16,0.5,-748.625,-13.438,54.438
+top,Gragas,Jax,16,0.688,283.625,6.688,566.188
+top,Jax,Gragas,16,0.312,-283.625,-6.688,-566.188
+top,Jayce,Dr. Mundo,16,0.5,748.625,13.438,-54.438
+top,K'Sante,Yorick,16,0.5,237.062,1.875,304.0
+top,Olaf,Sion,16,0.625,175.562,0.688,-206.875
+top,Sion,Olaf,16,0.375,-175.562,-0.688,206.875
+top,Yorick,K'Sante,16,0.5,-237.062,-1.875,-304.0
+top,Anivia,Jayce,15,0.533,-594.8,-8.533,-17.467
+top,Fiora,K'Sante,15,0.6,1034.867,21.667,264.267
+top,Garen,K'Sante,15,0.333,35.4,1.2,-43.067
+top,Gnar,Gragas,15,0.6,920.2,22.667,385.6
+top,Gnar,Gwen,15,0.533,1136.8,15.933,923.8
+top,Gragas,Gnar,15,0.4,-920.2,-22.667,-385.6
+top,Gwen,Gnar,15,0.467,-1136.8,-15.933,-923.8
+top,Gwen,Rumble,15,0.4,-897.267,-17.267,-893.8
+top,Jayce,Anivia,15,0.467,594.8,8.533,17.467
+top,K'Sante,Fiora,15,0.4,-1034.867,-21.667,-264.267
+top,K'Sante,Garen,15,0.667,-35.4,-1.2,43.067
+top,K'Sante,Shen,15,0.333,729.933,20.2,659.667
+top,Renekton,Shen,15,0.333,711.4,21.067,523.267
+top,Rumble,Gwen,15,0.6,897.267,17.267,893.8
+top,Shen,K'Sante,15,0.667,-729.933,-20.2,-659.667
+top,Shen,Renekton,15,0.667,-711.4,-21.067,-523.267
+top,Sion,Varus,15,0.467,-558.267,-18.533,287.733
+top,Varus,Sion,15,0.533,558.267,18.533,-287.733
+top,Aatrox,Gwen,14,0.286,-460.5,-6.5,-364.143
+top,Ambessa,Varus,14,0.429,-954.571,-30.286,-293.643
+top,Fiora,Sion,14,0.357,799.429,14.286,332.214
+top,Gragas,Renekton,14,0.357,-506.0,-10.357,-259.857
+top,Gwen,Aatrox,14,0.714,460.5,6.5,364.143
+top,Irelia,Jayce,14,0.714,119.357,8.071,61.429
+top,Jayce,Irelia,14,0.286,-119.357,-8.071,-61.429
+top,Rek'Sai,Renekton,14,0.429,-668.286,-10.143,-351.714
+top,Renekton,Gragas,14,0.643,506.0,10.357,259.857
+top,Renekton,Rek'Sai,14,0.571,668.286,10.143,351.714
+top,Sion,Fiora,14,0.643,-799.429,-14.286,-332.214
+top,Varus,Ambessa,14,0.571,954.571,30.286,293.643
+top,Varus,Yorick,14,0.714,390.214,13.857,169.429
+top,Yorick,Varus,14,0.286,-390.214,-13.857,-169.429
+top,Ambessa,Kennen,13,0.308,-537.923,-13.231,-555.462
+top,Gwen,Jax,13,0.538,-352.231,-2.615,-164.231
+top,Gwen,Kennen,13,0.385,-550.692,-9.538,-290.846
+top,Jax,Gwen,13,0.462,352.231,2.615,164.231
+top,Jax,Varus,13,0.769,-600.846,-23.769,-196.154
+top,K'Sante,Rek'Sai,13,0.308,-324.154,2.0,-317.692
+top,Kennen,Ambessa,13,0.692,537.923,13.231,555.462
+top,Kennen,Gwen,13,0.615,550.692,9.538,290.846
+top,Ornn,Zaahen,13,0.692,-509.231,-9.846,-320.923
+top,Rek'Sai,K'Sante,13,0.692,324.154,-2.0,317.692
+top,Renekton,Yorick,13,0.538,416.538,8.154,320.923
+top,Rumble,Ryze,13,0.692,-502.385,-10.615,-18.154
+top,Ryze,Rumble,13,0.308,502.385,10.615,18.154
+top,Varus,Jax,13,0.231,600.846,23.769,196.154
+top,Yorick,Renekton,13,0.462,-416.538,-8.154,-320.923
+top,Zaahen,Ornn,13,0.308,509.231,9.846,320.923
+top,Camille,Rumble,12,0.667,24.0,-13.417,-86.75
+top,Camille,Sion,12,0.5,99.333,-2.667,0.167
+top,Gragas,Rumble,12,0.5,-810.75,-20.917,-794.167
+top,Gwen,Zaahen,12,0.417,727.167,16.917,651.667
+top,Jax,Kennen,12,0.417,-981.833,-21.583,-709.0
+top,Kennen,Jax,12,0.583,981.833,21.583,709.0
+top,Mordekaiser,Sion,12,0.417,247.583,6.167,147.583
+top,Rumble,Camille,12,0.333,-24.0,13.417,86.75
+top,Rumble,Gragas,12,0.5,810.75,20.917,794.167
+top,Sion,Camille,12,0.5,-99.333,2.667,-0.167
+top,Sion,Mordekaiser,12,0.583,-247.583,-6.167,-147.583
+top,Zaahen,Gwen,12,0.583,-727.167,-16.917,-651.667
+top,Aatrox,Jax,11,0.182,-223.545,4.636,196.818
+top,Aatrox,Zaahen,11,0.545,484.727,18.182,412.0
+top,Ambessa,Irelia,11,0.364,-1900.091,-37.0,-1383.182
+top,Camille,Gwen,11,0.273,-901.545,-17.545,-679.545
+top,Dr. Mundo,Jax,11,0.273,-615.909,-5.0,-100.818
+top,Gwen,Camille,11,0.727,901.545,17.545,679.545
+top,Gwen,Yorick,11,0.182,-41.455,6.545,-30.182
+top,Irelia,Ambessa,11,0.636,1900.091,37.0,1383.182
+top,Jax,Aatrox,11,0.818,223.545,-4.636,-196.818
+top,Jax,Dr. Mundo,11,0.727,615.909,5.0,100.818
+top,K'Sante,Kayle,11,0.818,-0.545,-1.182,328.273
+top,K'Sante,Varus,11,0.455,-275.0,-13.636,165.545
+top,Kayle,K'Sante,11,0.182,0.545,1.182,-328.273
+top,Varus,K'Sante,11,0.545,275.0,13.636,-165.545
+top,Yorick,Gwen,11,0.818,41.455,-6.545,30.182
+top,Zaahen,Aatrox,11,0.455,-484.727,-18.182,-412.0
+top,Aatrox,Gragas,10,0.5,112.4,15.5,229.9
+top,Aatrox,Jayce,10,0.4,-976.8,-17.9,-163.0
+top,Akali,Gnar,10,0.6,549.8,12.4,369.5
+top,Aurora,K'Sante,10,0.4,586.1,15.0,392.0
+top,Aurora,Ornn,10,0.4,647.1,21.7,419.1
+top,Aurora,Sion,10,0.3,283.4,3.4,-124.9
+top,Fiora,Olaf,10,0.4,-156.9,-1.4,-367.4
+top,Fiora,Ornn,10,0.5,985.2,25.5,265.6
+top,Gangplank,Gnar,10,0.8,136.9,-8.8,-182.2
+top,Gnar,Akali,10,0.4,-549.8,-12.4,-369.5
+top,Gnar,Gangplank,10,0.2,-136.9,8.8,182.2
+top,Gragas,Aatrox,10,0.5,-112.4,-15.5,-229.9
+top,Irelia,Rumble,10,0.5,442.6,12.5,-364.3
+top,Jayce,Aatrox,10,0.6,976.8,17.9,163.0
+top,Jayce,Varus,10,0.3,-120.3,-3.1,-57.9
+top,K'Sante,Aurora,10,0.6,-586.1,-15.0,-392.0
+top,Kennen,Rumble,10,0.3,46.6,0.0,-461.1
+top,Naafiri,Varus,10,0.8,5.0,5.4,355.3
+top,Olaf,Fiora,10,0.6,156.9,1.4,367.4
+top,Ornn,Aurora,10,0.6,-647.1,-21.7,-419.1
+top,Ornn,Fiora,10,0.5,-985.2,-25.5,-265.6
+top,Rumble,Irelia,10,0.5,-442.6,-12.5,364.3
+top,Rumble,Kennen,10,0.7,-46.6,0.0,461.1
+top,Rumble,Vayne,10,0.6,-612.5,-11.4,-313.1
+top,Sett,Sion,10,0.6,303.3,5.0,-203.8
+top,Sion,Aurora,10,0.7,-283.4,-3.4,124.9
+top,Sion,Sett,10,0.4,-303.3,-5.0,203.8
+top,Sion,Yorick,10,0.6,-140.9,-2.2,56.3
+top,Varus,Jayce,10,0.7,120.3,3.1,57.9
+top,Varus,Naafiri,10,0.2,-5.0,-5.4,-355.3
+top,Varus,Yasuo,10,0.5,497.2,14.1,297.5
+top,Vayne,Rumble,10,0.4,612.5,11.4,313.1
+top,Yasuo,Varus,10,0.5,-497.2,-14.1,-297.5
+top,Yorick,Sion,10,0.4,140.9,2.2,-56.3
+top,Ambessa,Aurora,9,0.778,49.667,-3.222,170.778
+top,Aurora,Ambessa,9,0.222,-49.667,3.222,-170.778
+top,Camille,Renekton,9,0.667,-565.667,-15.889,-301.778
+top,Camille,Zaahen,9,0.222,-344.0,1.778,-339.111
+top,Gnar,Poppy,9,0.556,558.111,14.444,173.0
+top,Gragas,Olaf,9,0.111,-736.333,-16.556,-258.889
+top,Jax,Ornn,9,0.778,1043.889,13.889,440.556
+top,Mordekaiser,Renekton,9,0.0,-284.889,-10.556,-93.333
+top,Mordekaiser,Rumble,9,0.556,-657.556,-9.0,-729.444
+top,Olaf,Gragas,9,0.889,736.333,16.556,258.889
+top,Ornn,Jax,9,0.222,-1043.889,-13.889,-440.556
+top,Poppy,Gnar,9,0.444,-558.111,-14.444,-173.0
+top,Renekton,Camille,9,0.333,565.667,15.889,301.778
+top,Renekton,Mordekaiser,9,1.0,284.889,10.556,93.333
+top,Rumble,Mordekaiser,9,0.444,657.556,9.0,729.444
+top,Vayne,Zaahen,9,0.556,454.333,17.667,122.333
+top,Zaahen,Camille,9,0.778,344.0,-1.778,339.111
+top,Zaahen,Vayne,9,0.444,-454.333,-17.667,-122.333
+top,Ambessa,Kled,8,0.625,83.875,0.75,83.5
+top,Ambessa,Mordekaiser,8,0.875,-105.0,-4.0,-180.375
+top,Anivia,Gnar,8,0.375,-228.125,0.125,-546.125
+top,Anivia,Olaf,8,0.375,-416.0,0.125,20.125
+top,Darius,Sion,8,0.5,230.25,2.125,-279.375
+top,Gangplank,Sion,8,0.625,430.125,-4.5,-131.375
+top,Gnar,Anivia,8,0.625,228.125,-0.125,546.125
+top,Gragas,Ornn,8,0.75,-12.5,-10.75,-48.125
+top,Jax,Poppy,8,0.25,467.75,10.5,388.25
+top,Kennen,Yorick,8,0.5,3.375,1.875,58.0
+top,Kled,Ambessa,8,0.375,-83.875,-0.75,-83.5
+top,Malphite,Renekton,8,0.125,-862.75,-26.0,-384.375
+top,Mordekaiser,Ambessa,8,0.125,105.0,4.0,180.375
+top,Olaf,Anivia,8,0.625,416.0,-0.125,-20.125
+top,Ornn,Gragas,8,0.25,12.5,10.75,48.125
+top,Poppy,Jax,8,0.75,-467.75,-10.5,-388.25
+top,Poppy,Renekton,8,0.5,-941.5,-24.125,-659.25
+top,Renekton,Malphite,8,0.875,862.75,26.0,384.375
+top,Renekton,Poppy,8,0.5,941.5,24.125,659.25
+top,Renekton,Skarner,8,0.375,456.875,8.125,33.75
+top,Sion,Darius,8,0.5,-230.25,-2.125,279.375
+top,Sion,Gangplank,8,0.375,-430.125,4.5,131.375
+top,Skarner,Renekton,8,0.625,-456.875,-8.125,-33.75
+top,Yorick,Kennen,8,0.5,-3.375,-1.875,-58.0

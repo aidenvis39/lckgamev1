@@ -1,0 +1,6 @@
+node_modules/
+__pycache__/
+.DS_Store
+# Oracle's Elixir 원본 CSV (약 600MB) — docs/DATA.md 참고해서 받기
+raw/oe_drive/
+raw/leaguepedia/cache/

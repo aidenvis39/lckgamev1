@@ -1,0 +1,3892 @@
+[
+ {
+  "id": "Orianna",
+  "name": "Orianna",
+  "nameKo": "오리아나",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "mid": 0.99
+  },
+  "meta": 0.9063,
+  "early": 0.3191,
+  "late": -0.825,
+  "presence": 0.756,
+  "winrate": 0.5266,
+  "damage": {
+   "physical": 4,
+   "magic": 9
+  },
+  "toughness": 3,
+  "proPicks": 1796
+ },
+ {
+  "id": "JarvanIV",
+  "name": "Jarvan IV",
+  "nameKo": "자르반 4세",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.8425,
+  "early": -0.2493,
+  "late": -0.0286,
+  "presence": 0.565,
+  "winrate": 0.5145,
+  "damage": {
+   "physical": 6,
+   "magic": 3
+  },
+  "toughness": 8,
+  "proPicks": 2400
+ },
+ {
+  "id": "Nocturne",
+  "name": "Nocturne",
+  "nameKo": "녹턴",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.6717,
+  "early": 0.0582,
+  "late": -0.3275,
+  "presence": 0.567,
+  "winrate": 0.4708,
+  "damage": {
+   "physical": 9,
+   "magic": 2
+  },
+  "toughness": 5,
+  "proPicks": 1244
+ },
+ {
+  "id": "Rumble",
+  "name": "Rumble",
+  "nameKo": "럼블",
+  "tags": [
+   "Fighter",
+   "Mage"
+  ],
+  "positions": {
+   "top": 0.99
+  },
+  "meta": 0.9545,
+  "early": 0.3434,
+  "late": 0.0,
+  "presence": 0.599,
+  "winrate": 0.5406,
+  "damage": {
+   "physical": 3,
+   "magic": 8
+  },
+  "toughness": 6,
+  "proPicks": 2187
+ },
+ {
+  "id": "Nautilus",
+  "name": "Nautilus",
+  "nameKo": "노틸러스",
+  "tags": [
+   "Tank",
+   "Support"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.5727,
+  "early": -0.2754,
+  "late": 0.1131,
+  "presence": 0.496,
+  "winrate": 0.4473,
+  "damage": {
+   "physical": 4,
+   "magic": 6
+  },
+  "toughness": 6,
+  "proPicks": 2032
+ },
+ {
+  "id": "Vi",
+  "name": "Vi",
+  "nameKo": "바이",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.9805,
+  "early": -0.2646,
+  "late": -0.0282,
+  "presence": 0.539,
+  "winrate": 0.5594,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 5,
+  "proPicks": 1894
+ },
+ {
+  "id": "Varus",
+  "name": "Varus",
+  "nameKo": "바루스",
+  "tags": [
+   "Marksman",
+   "Mage"
+  ],
+  "positions": {
+   "bot": 0.83,
+   "top": 0.17
+  },
+  "meta": 0.7995,
+  "early": 0.3476,
+  "late": -0.8136,
+  "presence": 0.606,
+  "winrate": 0.5008,
+  "damage": {
+   "physical": 7,
+   "magic": 4
+  },
+  "toughness": 3,
+  "proPicks": 1386
+ },
+ {
+  "id": "Ryze",
+  "name": "Ryze",
+  "nameKo": "라이즈",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.99
+  },
+  "meta": 0.8631,
+  "early": -0.1292,
+  "late": -0.1048,
+  "presence": 0.47,
+  "winrate": 0.5245,
+  "damage": {
+   "physical": 2,
+   "magic": 10
+  },
+  "toughness": 2,
+  "proPicks": 2428
+ },
+ {
+  "id": "Ezreal",
+  "name": "Ezreal",
+  "nameKo": "이즈리얼",
+  "tags": [
+   "Marksman",
+   "Mage"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.7395,
+  "early": -0.1058,
+  "late": -0.6114,
+  "presence": 0.446,
+  "winrate": 0.4946,
+  "damage": {
+   "physical": 7,
+   "magic": 6
+  },
+  "toughness": 2,
+  "proPicks": 2539
+ },
+ {
+  "id": "Karma",
+  "name": "Karma",
+  "nameKo": "카르마",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "sup": 0.99
+  },
+  "meta": 0.7256,
+  "early": 0.1768,
+  "late": -0.2124,
+  "presence": 0.401,
+  "winrate": 0.4941,
+  "damage": {
+   "physical": 1,
+   "magic": 8
+  },
+  "toughness": 7,
+  "proPicks": 1490
+ },
+ {
+  "id": "Bard",
+  "name": "Bard",
+  "nameKo": "바드",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.8252,
+  "early": 0.0955,
+  "late": -0.6733,
+  "presence": 0.477,
+  "winrate": 0.5141,
+  "damage": {
+   "physical": 4,
+   "magic": 5
+  },
+  "toughness": 4,
+  "proPicks": 1767
+ },
+ {
+  "id": "Ambessa",
+  "name": "Ambessa",
+  "nameKo": "암베사",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "top": 0.86,
+   "jng": 0.14
+  },
+  "meta": 0.5969,
+  "early": -0.2964,
+  "late": 0.3295,
+  "presence": 0.364,
+  "winrate": 0.4638,
+  "damage": {
+   "physical": 9,
+   "magic": 0
+  },
+  "toughness": 2,
+  "proPicks": 1983
+ },
+ {
+  "id": "Jayce",
+  "name": "Jayce",
+  "nameKo": "제이스",
+  "tags": [
+   "Fighter",
+   "Marksman"
+  ],
+  "positions": {
+   "top": 0.78,
+   "jng": 0.16
+  },
+  "meta": 0.5766,
+  "early": 1.0,
+  "late": -0.6991,
+  "presence": 0.5,
+  "winrate": 0.4195,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 4,
+  "proPicks": 1401
+ },
+ {
+  "id": "Pantheon",
+  "name": "Pantheon",
+  "nameKo": "판테온",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 0.97
+  },
+  "meta": 0.7394,
+  "early": 0.0022,
+  "late": -0.0,
+  "presence": 0.415,
+  "winrate": 0.4956,
+  "damage": {
+   "physical": 9,
+   "magic": 3
+  },
+  "toughness": 4,
+  "proPicks": 1769
+ },
+ {
+  "id": "Cassiopeia",
+  "name": "Cassiopeia",
+  "nameKo": "카시오페아",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.91
+  },
+  "meta": 0.9532,
+  "early": 0.3684,
+  "late": -0.1169,
+  "presence": 0.408,
+  "winrate": 0.5535,
+  "damage": {
+   "physical": 2,
+   "magic": 9
+  },
+  "toughness": 3,
+  "proPicks": 1113
+ },
+ {
+  "id": "Akali",
+  "name": "Akali",
+  "nameKo": "아칼리",
+  "tags": [
+   "Assassin"
+  ],
+  "positions": {
+   "mid": 0.93
+  },
+  "meta": 0.9093,
+  "early": 0.1208,
+  "late": -0.0444,
+  "presence": 0.388,
+  "winrate": 0.541,
+  "damage": {
+   "physical": 5,
+   "magic": 8
+  },
+  "toughness": 3,
+  "proPicks": 1042
+ },
+ {
+  "id": "XinZhao",
+  "name": "Xin Zhao",
+  "nameKo": "신 짜오",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.6908,
+  "early": -0.3814,
+  "late": -0.208,
+  "presence": 0.351,
+  "winrate": 0.4892,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 6,
+  "proPicks": 2245
+ },
+ {
+  "id": "Syndra",
+  "name": "Syndra",
+  "nameKo": "신드라",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.91
+  },
+  "meta": 0.5267,
+  "early": 0.3706,
+  "late": -0.3227,
+  "presence": 0.202,
+  "winrate": 0.4697,
+  "damage": {
+   "physical": 2,
+   "magic": 9
+  },
+  "toughness": 3,
+  "proPicks": 1426
+ },
+ {
+  "id": "KSante",
+  "name": "K'Sante",
+  "nameKo": "크산테",
+  "tags": [
+   "Tank",
+   "Fighter"
+  ],
+  "positions": {
+   "top": 0.99
+  },
+  "meta": 0.5527,
+  "early": -0.4361,
+  "late": 0.3011,
+  "presence": 0.283,
+  "winrate": 0.4596,
+  "damage": {
+   "physical": 8,
+   "magic": 7
+  },
+  "toughness": 8,
+  "proPicks": 2042
+ },
+ {
+  "id": "Lucian",
+  "name": "Lucian",
+  "nameKo": "루시안",
+  "tags": [
+   "Marksman",
+   "Assassin"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.5639,
+  "early": 0.4124,
+  "late": 0.5442,
+  "presence": 0.353,
+  "winrate": 0.4566,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 5,
+  "proPicks": 1417
+ },
+ {
+  "id": "Yunara",
+  "name": "Yunara",
+  "nameKo": "유나라",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.662,
+  "early": 0.2445,
+  "late": 0.1414,
+  "presence": 0.296,
+  "winrate": 0.485,
+  "damage": {
+   "physical": 9,
+   "magic": 0
+  },
+  "toughness": 2,
+  "proPicks": 2066
+ },
+ {
+  "id": "Gnar",
+  "name": "Gnar",
+  "nameKo": "나르",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 1.0
+  },
+  "meta": 0.8916,
+  "early": 0.6855,
+  "late": -0.9337,
+  "presence": 0.335,
+  "winrate": 0.5414,
+  "damage": {
+   "physical": 6,
+   "magic": 5
+  },
+  "toughness": 5,
+  "proPicks": 1749
+ },
+ {
+  "id": "MonkeyKing",
+  "name": "Wukong",
+  "nameKo": "오공",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.4714,
+  "early": -0.153,
+  "late": 0.4305,
+  "presence": 0.231,
+  "winrate": 0.4372,
+  "damage": {
+   "physical": 8,
+   "magic": 2
+  },
+  "toughness": 5,
+  "proPicks": 1869
+ },
+ {
+  "id": "Caitlyn",
+  "name": "Caitlyn",
+  "nameKo": "케이틀린",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.7876,
+  "early": 0.8846,
+  "late": -0.4648,
+  "presence": 0.267,
+  "winrate": 0.5232,
+  "damage": {
+   "physical": 8,
+   "magic": 2
+  },
+  "toughness": 2,
+  "proPicks": 1292
+ },
+ {
+  "id": "Lulu",
+  "name": "Lulu",
+  "nameKo": "룰루",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.6478,
+  "early": -0.0999,
+  "late": 0.1018,
+  "presence": 0.279,
+  "winrate": 0.4853,
+  "damage": {
+   "physical": 4,
+   "magic": 7
+  },
+  "toughness": 5,
+  "proPicks": 1623
+ },
+ {
+  "id": "Sion",
+  "name": "Sion",
+  "nameKo": "사이온",
+  "tags": [
+   "Tank",
+   "Fighter"
+  ],
+  "positions": {
+   "top": 0.96
+  },
+  "meta": 0.5567,
+  "early": -1.0,
+  "late": 0.2225,
+  "presence": 0.241,
+  "winrate": 0.4684,
+  "damage": {
+   "physical": 5,
+   "magic": 3
+  },
+  "toughness": 9,
+  "proPicks": 1639
+ },
+ {
+  "id": "LeeSin",
+  "name": "Lee Sin",
+  "nameKo": "리 신",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.8985,
+  "early": 0.6473,
+  "late": -0.5032,
+  "presence": 0.277,
+  "winrate": 0.549,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 5,
+  "proPicks": 1275
+ },
+ {
+  "id": "Neeko",
+  "name": "Neeko",
+  "nameKo": "니코",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "sup": 0.99
+  },
+  "meta": 0.7809,
+  "early": 0.2335,
+  "late": -0.4939,
+  "presence": 0.291,
+  "winrate": 0.5157,
+  "damage": {
+   "physical": 1,
+   "magic": 9
+  },
+  "toughness": 1,
+  "proPicks": 1165
+ },
+ {
+  "id": "Seraphine",
+  "name": "Seraphine",
+  "nameKo": "세라핀",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 0.95
+  },
+  "meta": 0.887,
+  "early": 0.2319,
+  "late": -0.4288,
+  "presence": 0.259,
+  "winrate": 0.5581,
+  "damage": {
+   "physical": 0,
+   "magic": 0
+  },
+  "toughness": 0,
+  "proPicks": 1448
+ },
+ {
+  "id": "Renekton",
+  "name": "Renekton",
+  "nameKo": "레넥톤",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.99
+  },
+  "meta": 0.5915,
+  "early": 0.594,
+  "late": 0.2292,
+  "presence": 0.266,
+  "winrate": 0.4752,
+  "damage": {
+   "physical": 8,
+   "magic": 2
+  },
+  "toughness": 5,
+  "proPicks": 1410
+ },
+ {
+  "id": "Ahri",
+  "name": "Ahri",
+  "nameKo": "아리",
+  "tags": [
+   "Mage",
+   "Assassin"
+  ],
+  "positions": {
+   "mid": 1.0
+  },
+  "meta": 0.8539,
+  "early": 0.1381,
+  "late": -0.1198,
+  "presence": 0.208,
+  "winrate": 0.568,
+  "damage": {
+   "physical": 3,
+   "magic": 8
+  },
+  "toughness": 4,
+  "proPicks": 1448
+ },
+ {
+  "id": "Aurora",
+  "name": "Aurora",
+  "nameKo": "오로라",
+  "tags": [
+   "Mage",
+   "Assassin"
+  ],
+  "positions": {
+   "mid": 0.85,
+   "top": 0.15
+  },
+  "meta": 0.4675,
+  "early": 0.127,
+  "late": -0.0639,
+  "presence": 0.224,
+  "winrate": 0.4244,
+  "damage": {
+   "physical": 3,
+   "magic": 8
+  },
+  "toughness": 4,
+  "proPicks": 1339
+ },
+ {
+  "id": "Poppy",
+  "name": "Poppy",
+  "nameKo": "뽀삐",
+  "tags": [
+   "Tank",
+   "Fighter"
+  ],
+  "positions": {
+   "sup": 0.45,
+   "jng": 0.36,
+   "top": 0.19
+  },
+  "meta": 0.8344,
+  "early": -0.2857,
+  "late": -0.3163,
+  "presence": 0.339,
+  "winrate": 0.5261,
+  "damage": {
+   "physical": 6,
+   "magic": 2
+  },
+  "toughness": 7,
+  "proPicks": 470
+ },
+ {
+  "id": "Ashe",
+  "name": "Ashe",
+  "nameKo": "애쉬",
+  "tags": [
+   "Marksman",
+   "Support"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.9104,
+  "early": -0.424,
+  "late": -0.3438,
+  "presence": 0.281,
+  "winrate": 0.5923,
+  "damage": {
+   "physical": 7,
+   "magic": 2
+  },
+  "toughness": 3,
+  "proPicks": 1338
+ },
+ {
+  "id": "Viktor",
+  "name": "Viktor",
+  "nameKo": "빅토르",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.89,
+   "bot": 0.11
+  },
+  "meta": 0.7127,
+  "early": -0.2488,
+  "late": 0.2767,
+  "presence": 0.174,
+  "winrate": 0.5205,
+  "damage": {
+   "physical": 2,
+   "magic": 10
+  },
+  "toughness": 4,
+  "proPicks": 1487
+ },
+ {
+  "id": "Naafiri",
+  "name": "Naafiri",
+  "nameKo": "나피리",
+  "tags": [
+   "Assassin",
+   "Fighter"
+  ],
+  "positions": {
+   "jng": 0.98
+  },
+  "meta": 0.6257,
+  "early": 0.4665,
+  "late": -0.3593,
+  "presence": 0.239,
+  "winrate": 0.4866,
+  "damage": {
+   "physical": 9,
+   "magic": 0
+  },
+  "toughness": 5,
+  "proPicks": 1072
+ },
+ {
+  "id": "Azir",
+  "name": "Azir",
+  "nameKo": "아지르",
+  "tags": [
+   "Mage",
+   "Marksman"
+  ],
+  "positions": {
+   "mid": 1.0
+  },
+  "meta": 0.4987,
+  "early": -0.3561,
+  "late": 0.674,
+  "presence": 0.271,
+  "winrate": 0.4436,
+  "damage": {
+   "physical": 6,
+   "magic": 8
+  },
+  "toughness": 3,
+  "proPicks": 1011
+ },
+ {
+  "id": "Corki",
+  "name": "Corki",
+  "nameKo": "코르키",
+  "tags": [
+   "Marksman",
+   "Mage"
+  ],
+  "positions": {
+   "bot": 0.98
+  },
+  "meta": 0.4956,
+  "early": -0.4054,
+  "late": 0.5054,
+  "presence": 0.208,
+  "winrate": 0.4604,
+  "damage": {
+   "physical": 8,
+   "magic": 6
+  },
+  "toughness": 3,
+  "proPicks": 1466
+ },
+ {
+  "id": "Jhin",
+  "name": "Jhin",
+  "nameKo": "진",
+  "tags": [
+   "Marksman",
+   "Mage"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.4636,
+  "early": -0.5522,
+  "late": 0.4487,
+  "presence": 0.222,
+  "winrate": 0.4393,
+  "damage": {
+   "physical": 10,
+   "magic": 6
+  },
+  "toughness": 2,
+  "proPicks": 1431
+ },
+ {
+  "id": "Alistar",
+  "name": "Alistar",
+  "nameKo": "알리스타",
+  "tags": [
+   "Tank",
+   "Support"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.7374,
+  "early": -0.3547,
+  "late": -0.4708,
+  "presence": 0.201,
+  "winrate": 0.5233,
+  "damage": {
+   "physical": 6,
+   "magic": 5
+  },
+  "toughness": 9,
+  "proPicks": 1226
+ },
+ {
+  "id": "Anivia",
+  "name": "Anivia",
+  "nameKo": "애니비아",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.74,
+   "top": 0.15,
+   "sup": 0.11
+  },
+  "meta": 0.5085,
+  "early": 0.0171,
+  "late": -0.4741,
+  "presence": 0.192,
+  "winrate": 0.468,
+  "damage": {
+   "physical": 1,
+   "magic": 10
+  },
+  "toughness": 4,
+  "proPicks": 938
+ },
+ {
+  "id": "Olaf",
+  "name": "Olaf",
+  "nameKo": "올라프",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.84,
+   "jng": 0.16
+  },
+  "meta": 0.7914,
+  "early": 0.3008,
+  "late": -0.8865,
+  "presence": 0.174,
+  "winrate": 0.5402,
+  "damage": {
+   "physical": 9,
+   "magic": 3
+  },
+  "toughness": 5,
+  "proPicks": 737
+ },
+ {
+  "id": "Sivir",
+  "name": "Sivir",
+  "nameKo": "시비르",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.8403,
+  "early": 0.1477,
+  "late": 0.5905,
+  "presence": 0.197,
+  "winrate": 0.5584,
+  "damage": {
+   "physical": 9,
+   "magic": 1
+  },
+  "toughness": 3,
+  "proPicks": 1114
+ },
+ {
+  "id": "Kaisa",
+  "name": "Kai'Sa",
+  "nameKo": "카이사",
+  "tags": [
+   "Marksman",
+   "Mage"
+  ],
+  "positions": {
+   "bot": 0.99
+  },
+  "meta": 0.7832,
+  "early": 0.1637,
+  "late": -0.0266,
+  "presence": 0.142,
+  "winrate": 0.5469,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 5,
+  "proPicks": 1006
+ },
+ {
+  "id": "Galio",
+  "name": "Galio",
+  "nameKo": "갈리오",
+  "tags": [
+   "Tank",
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.81,
+   "top": 0.16
+  },
+  "meta": 0.5501,
+  "early": -1.0,
+  "late": 0.7412,
+  "presence": 0.152,
+  "winrate": 0.4853,
+  "damage": {
+   "physical": 1,
+   "magic": 6
+  },
+  "toughness": 10,
+  "proPicks": 967
+ },
+ {
+  "id": "Rell",
+  "name": "Rell",
+  "nameKo": "렐",
+  "tags": [
+   "Tank",
+   "Support"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.3834,
+  "early": -0.2495,
+  "late": 0.4433,
+  "presence": 0.113,
+  "winrate": 0.4553,
+  "damage": {
+   "physical": 0,
+   "magic": 0
+  },
+  "toughness": 0,
+  "proPicks": 1206
+ },
+ {
+  "id": "Taliyah",
+  "name": "Taliyah",
+  "nameKo": "탈리야",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "mid": 0.91
+  },
+  "meta": 0.5331,
+  "early": -0.563,
+  "late": -0.3102,
+  "presence": 0.16,
+  "winrate": 0.479,
+  "damage": {
+   "physical": 1,
+   "magic": 8
+  },
+  "toughness": 7,
+  "proPicks": 1004
+ },
+ {
+  "id": "Rakan",
+  "name": "Rakan",
+  "nameKo": "라칸",
+  "tags": [
+   "Support"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.8247,
+  "early": -0.1016,
+  "late": 0.4695,
+  "presence": 0.164,
+  "winrate": 0.5581,
+  "damage": {
+   "physical": 2,
+   "magic": 8
+  },
+  "toughness": 4,
+  "proPicks": 1142
+ },
+ {
+  "id": "Vayne",
+  "name": "Vayne",
+  "nameKo": "베인",
+  "tags": [
+   "Marksman",
+   "Assassin"
+  ],
+  "positions": {
+   "top": 0.88
+  },
+  "meta": 0.812,
+  "early": 0.5403,
+  "late": -0.0454,
+  "presence": 0.234,
+  "winrate": 0.5342,
+  "damage": {
+   "physical": 10,
+   "magic": 1
+  },
+  "toughness": 1,
+  "proPicks": 381
+ },
+ {
+  "id": "Camille",
+  "name": "Camille",
+  "nameKo": "카밀",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "sup": 0.6,
+   "top": 0.4
+  },
+  "meta": 0.6495,
+  "early": 0.4075,
+  "late": -0.3146,
+  "presence": 0.161,
+  "winrate": 0.5072,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 6,
+  "proPicks": 714
+ },
+ {
+  "id": "Leona",
+  "name": "Leona",
+  "nameKo": "레오나",
+  "tags": [
+   "Tank",
+   "Support"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.6261,
+  "early": -0.2024,
+  "late": -0.2598,
+  "presence": 0.093,
+  "winrate": 0.5247,
+  "damage": {
+   "physical": 4,
+   "magic": 3
+  },
+  "toughness": 8,
+  "proPicks": 1023
+ },
+ {
+  "id": "Annie",
+  "name": "Annie",
+  "nameKo": "애니",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "mid": 0.99
+  },
+  "meta": 0.6597,
+  "early": -0.7442,
+  "late": 0.0689,
+  "presence": 0.217,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 2,
+   "magic": 10
+  },
+  "toughness": 3,
+  "proPicks": 783
+ },
+ {
+  "id": "Gwen",
+  "name": "Gwen",
+  "nameKo": "그웬",
+  "tags": [
+   "Fighter"
+  ],
+  "positions": {
+   "top": 0.95
+  },
+  "meta": 0.698,
+  "early": 0.3153,
+  "late": 0.0661,
+  "presence": 0.121,
+  "winrate": 0.5325,
+  "damage": {
+   "physical": 7,
+   "magic": 5
+  },
+  "toughness": 4,
+  "proPicks": 548
+ },
+ {
+  "id": "Nami",
+  "name": "Nami",
+  "nameKo": "나미",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.5202,
+  "early": -0.1469,
+  "late": 0.0,
+  "presence": 0.15,
+  "winrate": 0.4787,
+  "damage": {
+   "physical": 4,
+   "magic": 7
+  },
+  "toughness": 3,
+  "proPicks": 963
+ },
+ {
+  "id": "Locke",
+  "name": "Locke",
+  "nameKo": "로크",
+  "tags": [
+   "Assassin",
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.93
+  },
+  "meta": 0.3756,
+  "early": 1.0,
+  "late": -0.4937,
+  "presence": 0.107,
+  "winrate": 0.4572,
+  "damage": {
+   "physical": 6,
+   "magic": 2
+  },
+  "toughness": 4,
+  "proPicks": 397
+ },
+ {
+  "id": "Skarner",
+  "name": "Skarner",
+  "nameKo": "스카너",
+  "tags": [
+   "Tank",
+   "Fighter"
+  ],
+  "positions": {
+   "jng": 0.95
+  },
+  "meta": 0.6171,
+  "early": -0.9799,
+  "late": 0.1285,
+  "presence": 0.138,
+  "winrate": 0.5083,
+  "damage": {
+   "physical": 7,
+   "magic": 5
+  },
+  "toughness": 8,
+  "proPicks": 791
+ },
+ {
+  "id": "Aatrox",
+  "name": "Aatrox",
+  "nameKo": "아트록스",
+  "tags": [
+   "Fighter"
+  ],
+  "positions": {
+   "top": 0.53,
+   "jng": 0.47
+  },
+  "meta": 0.4268,
+  "early": 0.3056,
+  "late": 0.1744,
+  "presence": 0.077,
+  "winrate": 0.4788,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 4,
+  "proPicks": 866
+ },
+ {
+  "id": "Milio",
+  "name": "Milio",
+  "nameKo": "밀리오",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.4356,
+  "early": -0.12,
+  "late": 1.0,
+  "presence": 0.138,
+  "winrate": 0.463,
+  "damage": {
+   "physical": 2,
+   "magic": 8
+  },
+  "toughness": 4,
+  "proPicks": 1140
+ },
+ {
+  "id": "Sylas",
+  "name": "Sylas",
+  "nameKo": "사일러스",
+  "tags": [
+   "Mage",
+   "Assassin"
+  ],
+  "positions": {
+   "mid": 0.82
+  },
+  "meta": 0.374,
+  "early": -0.6546,
+  "late": 0.2914,
+  "presence": 0.122,
+  "winrate": 0.433,
+  "damage": {
+   "physical": 3,
+   "magic": 8
+  },
+  "toughness": 4,
+  "proPicks": 615
+ },
+ {
+  "id": "Ziggs",
+  "name": "Ziggs",
+  "nameKo": "직스",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "bot": 0.88,
+   "mid": 0.12
+  },
+  "meta": 0.3779,
+  "early": -0.6423,
+  "late": -0.2165,
+  "presence": 0.134,
+  "winrate": 0.4472,
+  "damage": {
+   "physical": 2,
+   "magic": 9
+  },
+  "toughness": 4,
+  "proPicks": 559
+ },
+ {
+  "id": "Leblanc",
+  "name": "LeBlanc",
+  "nameKo": "르블랑",
+  "tags": [
+   "Assassin",
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.99
+  },
+  "meta": 0.5665,
+  "early": 1.0,
+  "late": -0.3802,
+  "presence": 0.108,
+  "winrate": 0.5035,
+  "damage": {
+   "physical": 1,
+   "magic": 10
+  },
+  "toughness": 4,
+  "proPicks": 398
+ },
+ {
+  "id": "Zaahen",
+  "name": "Zaahen",
+  "nameKo": "자헨",
+  "tags": [
+   "Fighter"
+  ],
+  "positions": {
+   "top": 0.64,
+   "jng": 0.36
+  },
+  "meta": 0.458,
+  "early": -0.1547,
+  "late": -0.14,
+  "presence": 0.096,
+  "winrate": 0.4812,
+  "damage": {
+   "physical": 8,
+   "magic": 1
+  },
+  "toughness": 6,
+  "proPicks": 833
+ },
+ {
+  "id": "DrMundo",
+  "name": "Dr. Mundo",
+  "nameKo": "문도 박사",
+  "tags": [
+   "Tank",
+   "Fighter"
+  ],
+  "positions": {
+   "jng": 0.7,
+   "top": 0.29
+  },
+  "meta": 0.4369,
+  "early": -0.7052,
+  "late": 0.4956,
+  "presence": 0.09,
+  "winrate": 0.4794,
+  "damage": {
+   "physical": 5,
+   "magic": 6
+  },
+  "toughness": 7,
+  "proPicks": 624
+ },
+ {
+  "id": "Qiyana",
+  "name": "Qiyana",
+  "nameKo": "키아나",
+  "tags": [
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 0.99
+  },
+  "meta": 0.5331,
+  "early": 1.0,
+  "late": -0.0565,
+  "presence": 0.096,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 0,
+   "magic": 4
+  },
+  "toughness": 2,
+  "proPicks": 499
+ },
+ {
+  "id": "Trundle",
+  "name": "Trundle",
+  "nameKo": "트런들",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "jng": 0.94
+  },
+  "meta": 0.7871,
+  "early": -0.3116,
+  "late": 0.2487,
+  "presence": 0.159,
+  "winrate": 0.5435,
+  "damage": {
+   "physical": 7,
+   "magic": 2
+  },
+  "toughness": 6,
+  "proPicks": 669
+ },
+ {
+  "id": "Yorick",
+  "name": "Yorick",
+  "nameKo": "요릭",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 1.0
+  },
+  "meta": 0.6942,
+  "early": -0.6421,
+  "late": 0.5473,
+  "presence": 0.149,
+  "winrate": 0.5232,
+  "damage": {
+   "physical": 6,
+   "magic": 4
+  },
+  "toughness": 6,
+  "proPicks": 550
+ },
+ {
+  "id": "Malphite",
+  "name": "Malphite",
+  "nameKo": "말파이트",
+  "tags": [
+   "Tank",
+   "Mage"
+  ],
+  "positions": {
+   "top": 0.55,
+   "jng": 0.44
+  },
+  "meta": 0.6256,
+  "early": -1.0,
+  "late": 0.8319,
+  "presence": 0.141,
+  "winrate": 0.509,
+  "damage": {
+   "physical": 5,
+   "magic": 7
+  },
+  "toughness": 9,
+  "proPicks": 296
+ },
+ {
+  "id": "Jax",
+  "name": "Jax",
+  "nameKo": "잭스",
+  "tags": [
+   "Fighter"
+  ],
+  "positions": {
+   "top": 0.89,
+   "jng": 0.1
+  },
+  "meta": 0.6482,
+  "early": -0.1052,
+  "late": 0.0905,
+  "presence": 0.108,
+  "winrate": 0.5239,
+  "damage": {
+   "physical": 7,
+   "magic": 7
+  },
+  "toughness": 5,
+  "proPicks": 554
+ },
+ {
+  "id": "Shen",
+  "name": "Shen",
+  "nameKo": "쉔",
+  "tags": [
+   "Tank"
+  ],
+  "positions": {
+   "sup": 0.71,
+   "top": 0.25
+  },
+  "meta": 0.7642,
+  "early": -0.6714,
+  "late": 0.0,
+  "presence": 0.121,
+  "winrate": 0.549,
+  "damage": {
+   "physical": 3,
+   "magic": 3
+  },
+  "toughness": 9,
+  "proPicks": 656
+ },
+ {
+  "id": "Ornn",
+  "name": "Ornn",
+  "nameKo": "오른",
+  "tags": [
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.99
+  },
+  "meta": 0.6307,
+  "early": -1.0,
+  "late": 1.0,
+  "presence": 0.056,
+  "winrate": 0.5327,
+  "damage": {
+   "physical": 5,
+   "magic": 3
+  },
+  "toughness": 9,
+  "proPicks": 660
+ },
+ {
+  "id": "Mel",
+  "name": "Mel",
+  "nameKo": "멜",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "mid": 0.62,
+   "bot": 0.37
+  },
+  "meta": 0.3509,
+  "early": 1.0,
+  "late": 0.312,
+  "presence": 0.091,
+  "winrate": 0.4569,
+  "damage": {
+   "physical": 2,
+   "magic": 9
+  },
+  "toughness": 4,
+  "proPicks": 500
+ },
+ {
+  "id": "Xayah",
+  "name": "Xayah",
+  "nameKo": "자야",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.7156,
+  "early": 0.3228,
+  "late": 0.4296,
+  "presence": 0.086,
+  "winrate": 0.5842,
+  "damage": {
+   "physical": 10,
+   "magic": 1
+  },
+  "toughness": 6,
+  "proPicks": 642
+ },
+ {
+  "id": "Braum",
+  "name": "Braum",
+  "nameKo": "브라움",
+  "tags": [
+   "Tank",
+   "Support"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.4794,
+  "early": -0.1426,
+  "late": 0.8192,
+  "presence": 0.054,
+  "winrate": 0.4963,
+  "damage": {
+   "physical": 3,
+   "magic": 4
+  },
+  "toughness": 9,
+  "proPicks": 453
+ },
+ {
+  "id": "Yone",
+  "name": "Yone",
+  "nameKo": "요네",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "mid": 0.85,
+   "top": 0.15
+  },
+  "meta": 0.5749,
+  "early": 0.3527,
+  "late": 0.8198,
+  "presence": 0.106,
+  "winrate": 0.508,
+  "damage": {
+   "physical": 8,
+   "magic": 4
+  },
+  "toughness": 4,
+  "proPicks": 473
+ },
+ {
+  "id": "Kalista",
+  "name": "Kalista",
+  "nameKo": "칼리스타",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.3486,
+  "early": 0.3642,
+  "late": 0.0296,
+  "presence": 0.074,
+  "winrate": 0.4602,
+  "damage": {
+   "physical": 8,
+   "magic": 4
+  },
+  "toughness": 2,
+  "proPicks": 438
+ },
+ {
+  "id": "Aphelios",
+  "name": "Aphelios",
+  "nameKo": "아펠리오스",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.4614,
+  "early": 0.3195,
+  "late": -0.3626,
+  "presence": 0.098,
+  "winrate": 0.4806,
+  "damage": {
+   "physical": 6,
+   "magic": 1
+  },
+  "toughness": 2,
+  "proPicks": 497
+ },
+ {
+  "id": "Pyke",
+  "name": "Pyke",
+  "nameKo": "파이크",
+  "tags": [
+   "Support",
+   "Assassin"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.4942,
+  "early": 0.5966,
+  "late": -0.0863,
+  "presence": 0.054,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 9,
+   "magic": 1
+  },
+  "toughness": 3,
+  "proPicks": 238
+ },
+ {
+  "id": "TwistedFate",
+  "name": "Twisted Fate",
+  "nameKo": "트위스티드 페이트",
+  "tags": [
+   "Mage",
+   "Marksman"
+  ],
+  "positions": {
+   "mid": 0.8,
+   "top": 0.2
+  },
+  "meta": 0.758,
+  "early": 1.0,
+  "late": 0.2554,
+  "presence": 0.142,
+  "winrate": 0.5406,
+  "damage": {
+   "physical": 6,
+   "magic": 6
+  },
+  "toughness": 2,
+  "proPicks": 354
+ },
+ {
+  "id": "MissFortune",
+  "name": "Miss Fortune",
+  "nameKo": "미스 포츈",
+  "tags": [
+   "Marksman",
+   "Mage"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.4965,
+  "early": 0.2401,
+  "late": 0.3907,
+  "presence": 0.111,
+  "winrate": 0.4845,
+  "damage": {
+   "physical": 8,
+   "magic": 5
+  },
+  "toughness": 2,
+  "proPicks": 439
+ },
+ {
+  "id": "Tristana",
+  "name": "Tristana",
+  "nameKo": "트리스타나",
+  "tags": [
+   "Marksman",
+   "Assassin"
+  ],
+  "positions": {
+   "bot": 0.67,
+   "mid": 0.23,
+   "top": 0.1
+  },
+  "meta": 0.2896,
+  "early": 0.2192,
+  "late": -0.0072,
+  "presence": 0.027,
+  "winrate": 0.4562,
+  "damage": {
+   "physical": 9,
+   "magic": 5
+  },
+  "toughness": 3,
+  "proPicks": 388
+ },
+ {
+  "id": "Hwei",
+  "name": "Hwei",
+  "nameKo": "흐웨이",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "mid": 0.93
+  },
+  "meta": 0.3821,
+  "early": -0.2655,
+  "late": 1.0,
+  "presence": 0.021,
+  "winrate": 0.4842,
+  "damage": {
+   "physical": 7,
+   "magic": 8
+  },
+  "toughness": 1,
+  "proPicks": 386
+ },
+ {
+  "id": "Renata",
+  "name": "Renata Glasc",
+  "nameKo": "레나타 글라스크",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.3039,
+  "early": 0.0573,
+  "late": -0.1419,
+  "presence": 0.071,
+  "winrate": 0.4411,
+  "damage": {
+   "physical": 2,
+   "magic": 9
+  },
+  "toughness": 6,
+  "proPicks": 423
+ },
+ {
+  "id": "Zeri",
+  "name": "Zeri",
+  "nameKo": "제리",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "bot": 0.98
+  },
+  "meta": 0.3744,
+  "early": 0.5555,
+  "late": 0.7812,
+  "presence": 0.036,
+  "winrate": 0.4744,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 5,
+  "proPicks": 332
+ },
+ {
+  "id": "Zoe",
+  "name": "Zoe",
+  "nameKo": "조이",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 1.0
+  },
+  "meta": 0.5657,
+  "early": 0.7142,
+  "late": -0.7911,
+  "presence": 0.026,
+  "winrate": 0.5262,
+  "damage": {
+   "physical": 1,
+   "magic": 8
+  },
+  "toughness": 7,
+  "proPicks": 136
+ },
+ {
+  "id": "Kennen",
+  "name": "Kennen",
+  "nameKo": "케넨",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "top": 0.99
+  },
+  "meta": 0.4644,
+  "early": 0.8754,
+  "late": 0.3358,
+  "presence": 0.043,
+  "winrate": 0.495,
+  "damage": {
+   "physical": 6,
+   "magic": 7
+  },
+  "toughness": 4,
+  "proPicks": 191
+ },
+ {
+  "id": "Maokai",
+  "name": "Maokai",
+  "nameKo": "마오카이",
+  "tags": [
+   "Tank",
+   "Support"
+  ],
+  "positions": {
+   "jng": 0.89
+  },
+  "meta": 0.4728,
+  "early": -0.6766,
+  "late": 1.0,
+  "presence": 0.049,
+  "winrate": 0.4961,
+  "damage": {
+   "physical": 3,
+   "magic": 6
+  },
+  "toughness": 8,
+  "proPicks": 254
+ },
+ {
+  "id": "Sejuani",
+  "name": "Sejuani",
+  "nameKo": "세주아니",
+  "tags": [
+   "Tank"
+  ],
+  "positions": {
+   "jng": 0.97
+  },
+  "meta": 0.4505,
+  "early": -0.8269,
+  "late": 0.137,
+  "presence": 0.028,
+  "winrate": 0.4954,
+  "damage": {
+   "physical": 5,
+   "magic": 6
+  },
+  "toughness": 7,
+  "proPicks": 272
+ },
+ {
+  "id": "Fiora",
+  "name": "Fiora",
+  "nameKo": "피오라",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "top": 1.0
+  },
+  "meta": 0.192,
+  "early": 0.9092,
+  "late": 0.2081,
+  "presence": 0.001,
+  "winrate": 0.4839,
+  "damage": {
+   "physical": 10,
+   "magic": 2
+  },
+  "toughness": 4,
+  "proPicks": 92
+ },
+ {
+  "id": "Thresh",
+  "name": "Thresh",
+  "nameKo": "쓰레쉬",
+  "tags": [
+   "Support",
+   "Tank"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.4653,
+  "early": 0.0081,
+  "late": 0.661,
+  "presence": 0.039,
+  "winrate": 0.4962,
+  "damage": {
+   "physical": 5,
+   "magic": 6
+  },
+  "toughness": 6,
+  "proPicks": 239
+ },
+ {
+  "id": "Chogath",
+  "name": "Cho'Gath",
+  "nameKo": "초가스",
+  "tags": [
+   "Tank",
+   "Mage"
+  ],
+  "positions": {
+   "jng": 0.61,
+   "top": 0.38
+  },
+  "meta": 0.4481,
+  "early": -0.6589,
+  "late": 0.6438,
+  "presence": 0.017,
+  "winrate": 0.5055,
+  "damage": {
+   "physical": 3,
+   "magic": 7
+  },
+  "toughness": 7,
+  "proPicks": 214
+ },
+ {
+  "id": "Irelia",
+  "name": "Irelia",
+  "nameKo": "이렐리아",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "top": 0.75,
+   "mid": 0.25
+  },
+  "meta": 0.387,
+  "early": 1.0,
+  "late": 0.0115,
+  "presence": 0.009,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 7,
+   "magic": 5
+  },
+  "toughness": 4,
+  "proPicks": 125
+ },
+ {
+  "id": "Jinx",
+  "name": "Jinx",
+  "nameKo": "징크스",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.4457,
+  "early": -0.3788,
+  "late": 1.0,
+  "presence": 0.015,
+  "winrate": 0.5059,
+  "damage": {
+   "physical": 9,
+   "magic": 4
+  },
+  "toughness": 2,
+  "proPicks": 247
+ },
+ {
+  "id": "Viego",
+  "name": "Viego",
+  "nameKo": "비에고",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 0.99
+  },
+  "meta": 0.2571,
+  "early": 0.7383,
+  "late": 0.749,
+  "presence": 0.007,
+  "winrate": 0.4714,
+  "damage": {
+   "physical": 6,
+   "magic": 2
+  },
+  "toughness": 4,
+  "proPicks": 144
+ },
+ {
+  "id": "Yasuo",
+  "name": "Yasuo",
+  "nameKo": "야스오",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "top": 0.4,
+   "mid": 0.39,
+   "bot": 0.2
+  },
+  "meta": 0.3742,
+  "early": -0.1722,
+  "late": 0.5515,
+  "presence": 0.012,
+  "winrate": 0.4934,
+  "damage": {
+   "physical": 8,
+   "magic": 4
+  },
+  "toughness": 4,
+  "proPicks": 122
+ },
+ {
+  "id": "Senna",
+  "name": "Senna",
+  "nameKo": "세나",
+  "tags": [
+   "Support",
+   "Marksman"
+  ],
+  "positions": {
+   "bot": 0.86,
+   "sup": 0.14
+  },
+  "meta": 0.3485,
+  "early": -0.504,
+  "late": 0.576,
+  "presence": 0.022,
+  "winrate": 0.4748,
+  "damage": {
+   "physical": 7,
+   "magic": 6
+  },
+  "toughness": 2,
+  "proPicks": 209
+ },
+ {
+  "id": "RekSai",
+  "name": "Rek'Sai",
+  "nameKo": "렉사이",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.61,
+   "jng": 0.39
+  },
+  "meta": 0.5588,
+  "early": 0.1687,
+  "late": -0.9429,
+  "presence": 0.033,
+  "winrate": 0.5215,
+  "damage": {
+   "physical": 8,
+   "magic": 2
+  },
+  "toughness": 5,
+  "proPicks": 168
+ },
+ {
+  "id": "Gragas",
+  "name": "Gragas",
+  "nameKo": "그라가스",
+  "tags": [
+   "Fighter",
+   "Mage"
+  ],
+  "positions": {
+   "top": 0.95
+  },
+  "meta": 0.434,
+  "early": -0.9606,
+  "late": -0.7237,
+  "presence": 0.013,
+  "winrate": 0.5059,
+  "damage": {
+   "physical": 4,
+   "magic": 6
+  },
+  "toughness": 7,
+  "proPicks": 191
+ },
+ {
+  "id": "Smolder",
+  "name": "Smolder",
+  "nameKo": "스몰더",
+  "tags": [
+   "Marksman",
+   "Mage"
+  ],
+  "positions": {
+   "bot": 0.83,
+   "mid": 0.12
+  },
+  "meta": 0.3502,
+  "early": -1.0,
+  "late": -0.0314,
+  "presence": 0.008,
+  "winrate": 0.4932,
+  "damage": {
+   "physical": 8,
+   "magic": 5
+  },
+  "toughness": 2,
+  "proPicks": 145
+ },
+ {
+  "id": "Lissandra",
+  "name": "Lissandra",
+  "nameKo": "리산드라",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.97
+  },
+  "meta": 0.5191,
+  "early": -0.3067,
+  "late": 1.0,
+  "presence": 0.023,
+  "winrate": 0.516,
+  "damage": {
+   "physical": 2,
+   "magic": 8
+  },
+  "toughness": 5,
+  "proPicks": 153
+ },
+ {
+  "id": "Draven",
+  "name": "Draven",
+  "nameKo": "드레이븐",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.4923,
+  "early": 1.0,
+  "late": -0.8628,
+  "presence": 0.013,
+  "winrate": 0.5205,
+  "damage": {
+   "physical": 9,
+   "magic": 1
+  },
+  "toughness": 3,
+  "proPicks": 71
+ },
+ {
+  "id": "Shyvana",
+  "name": "Shyvana",
+  "nameKo": "쉬바나",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "jng": 0.79,
+   "top": 0.21
+  },
+  "meta": 0.3665,
+  "early": 0.5397,
+  "late": -0.7304,
+  "presence": 0.014,
+  "winrate": 0.4871,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 6,
+  "proPicks": 122
+ },
+ {
+  "id": "Yuumi",
+  "name": "Yuumi",
+  "nameKo": "유미",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.2766,
+  "early": -0.2532,
+  "late": 1.0,
+  "presence": 0.023,
+  "winrate": 0.4553,
+  "damage": {
+   "physical": 5,
+   "magic": 8
+  },
+  "toughness": 1,
+  "proPicks": 159
+ },
+ {
+  "id": "Blitzcrank",
+  "name": "Blitzcrank",
+  "nameKo": "블리츠크랭크",
+  "tags": [
+   "Tank",
+   "Support"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.5299,
+  "early": -0.2732,
+  "late": -1.0,
+  "presence": 0.018,
+  "winrate": 0.525,
+  "damage": {
+   "physical": 4,
+   "magic": 5
+  },
+  "toughness": 8,
+  "proPicks": 128
+ },
+ {
+  "id": "Kled",
+  "name": "Kled",
+  "nameKo": "클레드",
+  "tags": [
+   "Fighter"
+  ],
+  "positions": {
+   "top": 1.0
+  },
+  "meta": 0.6326,
+  "early": 0.3178,
+  "late": -0.3912,
+  "presence": 0.02,
+  "winrate": 0.5483,
+  "damage": {
+   "physical": 8,
+   "magic": 2
+  },
+  "toughness": 2,
+  "proPicks": 108
+ },
+ {
+  "id": "Lux",
+  "name": "Lux",
+  "nameKo": "럭스",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "sup": 0.71,
+   "mid": 0.22
+  },
+  "meta": 0.6338,
+  "early": 0.5657,
+  "late": -0.9663,
+  "presence": 0.019,
+  "winrate": 0.57,
+  "damage": {
+   "physical": 2,
+   "magic": 9
+  },
+  "toughness": 4,
+  "proPicks": 116
+ },
+ {
+  "id": "Volibear",
+  "name": "Volibear",
+  "nameKo": "볼리베어",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.7,
+   "jng": 0.3
+  },
+  "meta": 0.4904,
+  "early": 0.2259,
+  "late": -0.0218,
+  "presence": 0.013,
+  "winrate": 0.52,
+  "damage": {
+   "physical": 7,
+   "magic": 4
+  },
+  "toughness": 7,
+  "proPicks": 116
+ },
+ {
+  "id": "Darius",
+  "name": "Darius",
+  "nameKo": "다리우스",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.78,
+   "jng": 0.22
+  },
+  "meta": 0.1828,
+  "early": 0.3163,
+  "late": 1.0,
+  "presence": 0.0,
+  "winrate": 0.4918,
+  "damage": {
+   "physical": 9,
+   "magic": 1
+  },
+  "toughness": 5,
+  "proPicks": 63
+ },
+ {
+  "id": "Nasus",
+  "name": "Nasus",
+  "nameKo": "나서스",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.47,
+   "jng": 0.43
+  },
+  "meta": 0.431,
+  "early": -1.0,
+  "late": 0.4785,
+  "presence": 0.008,
+  "winrate": 0.5134,
+  "damage": {
+   "physical": 7,
+   "magic": 6
+  },
+  "toughness": 5,
+  "proPicks": 89
+ },
+ {
+  "id": "Khazix",
+  "name": "Kha'Zix",
+  "nameKo": "카직스",
+  "tags": [
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.4423,
+  "early": 1.0,
+  "late": 0.6514,
+  "presence": 0.009,
+  "winrate": 0.5138,
+  "damage": {
+   "physical": 9,
+   "magic": 3
+  },
+  "toughness": 4,
+  "proPicks": 101
+ },
+ {
+  "id": "Ivern",
+  "name": "Ivern",
+  "nameKo": "아이번",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.2,
+  "early": -0.3603,
+  "late": -0.5192,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 3,
+   "magic": 7
+  },
+  "toughness": 5,
+  "proPicks": 53
+ },
+ {
+  "id": "Zyra",
+  "name": "Zyra",
+  "nameKo": "자이라",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "jng": 0.89
+  },
+  "meta": 0.2464,
+  "early": 0.5427,
+  "late": 0.5397,
+  "presence": 0.006,
+  "winrate": 0.4697,
+  "damage": {
+   "physical": 4,
+   "magic": 8
+  },
+  "toughness": 3,
+  "proPicks": 80
+ },
+ {
+  "id": "Rengar",
+  "name": "Rengar",
+  "nameKo": "렝가",
+  "tags": [
+   "Assassin",
+   "Fighter"
+  ],
+  "positions": {
+   "jng": 0.95
+  },
+  "meta": 0.2,
+  "early": 0.598,
+  "late": 0.0548,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 7,
+   "magic": 2
+  },
+  "toughness": 4,
+  "proPicks": 20
+ },
+ {
+  "id": "Swain",
+  "name": "Swain",
+  "nameKo": "스웨인",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "mid": 0.55,
+   "top": 0.33,
+   "bot": 0.11
+  },
+  "meta": 0.4052,
+  "early": 0.4911,
+  "late": -1.0,
+  "presence": 0.004,
+  "winrate": 0.5143,
+  "damage": {
+   "physical": 2,
+   "magic": 9
+  },
+  "toughness": 6,
+  "proPicks": 76
+ },
+ {
+  "id": "KogMaw",
+  "name": "Kog'Maw",
+  "nameKo": "코그모",
+  "tags": [
+   "Marksman",
+   "Mage"
+  ],
+  "positions": {
+   "bot": 0.62,
+   "mid": 0.38
+  },
+  "meta": 0.4948,
+  "early": 0.112,
+  "late": 0.0978,
+  "presence": 0.011,
+  "winrate": 0.525,
+  "damage": {
+   "physical": 8,
+   "magic": 5
+  },
+  "toughness": 2,
+  "proPicks": 104
+ },
+ {
+  "id": "Vladimir",
+  "name": "Vladimir",
+  "nameKo": "블라디미르",
+  "tags": [
+   "Mage",
+   "Fighter"
+  ],
+  "positions": {
+   "mid": 0.45,
+   "top": 0.34,
+   "bot": 0.22
+  },
+  "meta": 0.3912,
+  "early": 0.0163,
+  "late": 0.6667,
+  "presence": 0.003,
+  "winrate": 0.5152,
+  "damage": {
+   "physical": 2,
+   "magic": 8
+  },
+  "toughness": 6,
+  "proPicks": 74
+ },
+ {
+  "id": "Xerath",
+  "name": "Xerath",
+  "nameKo": "제라스",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "mid": 0.66,
+   "bot": 0.34
+  },
+  "meta": 0.3333,
+  "early": -0.148,
+  "late": 0.0392,
+  "presence": 0.009,
+  "winrate": 0.4866,
+  "damage": {
+   "physical": 1,
+   "magic": 10
+  },
+  "toughness": 3,
+  "proPicks": 61
+ },
+ {
+  "id": "AurelionSol",
+  "name": "Aurelion Sol",
+  "nameKo": "아우렐리온 솔",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 1.0
+  },
+  "meta": 0.3597,
+  "early": -0.7167,
+  "late": 0.5864,
+  "presence": 0.005,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 2,
+   "magic": 8
+  },
+  "toughness": 3,
+  "proPicks": 59
+ },
+ {
+  "id": "Zed",
+  "name": "Zed",
+  "nameKo": "제드",
+  "tags": [
+   "Assassin"
+  ],
+  "positions": {
+   "mid": 0.59,
+   "jng": 0.4
+  },
+  "meta": 0.2695,
+  "early": 0.7004,
+  "late": 0.0676,
+  "presence": 0.002,
+  "winrate": 0.492,
+  "damage": {
+   "physical": 9,
+   "magic": 1
+  },
+  "toughness": 2,
+  "proPicks": 58
+ },
+ {
+  "id": "Nidalee",
+  "name": "Nidalee",
+  "nameKo": "니달리",
+  "tags": [
+   "Assassin",
+   "Mage"
+  ],
+  "positions": {
+   "jng": 0.81,
+   "top": 0.14
+  },
+  "meta": 0.5276,
+  "early": 1.0,
+  "late": -0.5887,
+  "presence": 0.012,
+  "winrate": 0.5317,
+  "damage": {
+   "physical": 5,
+   "magic": 7
+  },
+  "toughness": 4,
+  "proPicks": 80
+ },
+ {
+  "id": "Elise",
+  "name": "Elise",
+  "nameKo": "엘리스",
+  "tags": [
+   "Assassin",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 0.97
+  },
+  "meta": 0.4396,
+  "early": 0.9779,
+  "late": 0.6734,
+  "presence": 0.02,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 6,
+   "magic": 7
+  },
+  "toughness": 5,
+  "proPicks": 74
+ },
+ {
+  "id": "Kindred",
+  "name": "Kindred",
+  "nameKo": "킨드레드",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.299,
+  "early": -0.2238,
+  "late": 0.0346,
+  "presence": 0.005,
+  "winrate": 0.4848,
+  "damage": {
+   "physical": 8,
+   "magic": 2
+  },
+  "toughness": 2,
+  "proPicks": 44
+ },
+ {
+  "id": "Mordekaiser",
+  "name": "Mordekaiser",
+  "nameKo": "모데카이저",
+  "tags": [
+   "Fighter",
+   "Mage"
+  ],
+  "positions": {
+   "top": 0.97
+  },
+  "meta": 0.2094,
+  "early": 0.1651,
+  "late": 0.3974,
+  "presence": 0.003,
+  "winrate": 0.4697,
+  "damage": {
+   "physical": 4,
+   "magic": 7
+  },
+  "toughness": 6,
+  "proPicks": 78
+ },
+ {
+  "id": "Gangplank",
+  "name": "Gangplank",
+  "nameKo": "갱플랭크",
+  "tags": [
+   "Fighter"
+  ],
+  "positions": {
+   "top": 1.0
+  },
+  "meta": 0.2698,
+  "early": 0.3384,
+  "late": 0.2446,
+  "presence": 0.003,
+  "winrate": 0.4848,
+  "damage": {
+   "physical": 7,
+   "magic": 4
+  },
+  "toughness": 6,
+  "proPicks": 55
+ },
+ {
+  "id": "Diana",
+  "name": "Diana",
+  "nameKo": "다이애나",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 0.63,
+   "mid": 0.35
+  },
+  "meta": 0.3331,
+  "early": 0.5471,
+  "late": -0.5049,
+  "presence": 0.002,
+  "winrate": 0.508,
+  "damage": {
+   "physical": 7,
+   "magic": 8
+  },
+  "toughness": 6,
+  "proPicks": 43
+ },
+ {
+  "id": "Hecarim",
+  "name": "Hecarim",
+  "nameKo": "헤카림",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.192,
+  "early": 0.6177,
+  "late": 0.0433,
+  "presence": 0.001,
+  "winrate": 0.4839,
+  "damage": {
+   "physical": 8,
+   "magic": 4
+  },
+  "toughness": 6,
+  "proPicks": 47
+ },
+ {
+  "id": "Garen",
+  "name": "Garen",
+  "nameKo": "가렌",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.98
+  },
+  "meta": 0.321,
+  "early": 0.1527,
+  "late": 0.1667,
+  "presence": 0.001,
+  "winrate": 0.5161,
+  "damage": {
+   "physical": 7,
+   "magic": 1
+  },
+  "toughness": 7,
+  "proPicks": 45
+ },
+ {
+  "id": "Graves",
+  "name": "Graves",
+  "nameKo": "그레이브즈",
+  "tags": [
+   "Marksman"
+  ],
+  "positions": {
+   "jng": 0.95
+  },
+  "meta": 0.3331,
+  "early": 0.9966,
+  "late": -0.1177,
+  "presence": 0.002,
+  "winrate": 0.508,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 5,
+  "proPicks": 44
+ },
+ {
+  "id": "Urgot",
+  "name": "Urgot",
+  "nameKo": "우르곳",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.89,
+   "jng": 0.11
+  },
+  "meta": 0.3613,
+  "early": 0.4536,
+  "late": 0.3067,
+  "presence": 0.003,
+  "winrate": 0.5077,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 5,
+  "proPicks": 28
+ },
+ {
+  "id": "Zac",
+  "name": "Zac",
+  "nameKo": "자크",
+  "tags": [
+   "Tank",
+   "Fighter"
+  ],
+  "positions": {
+   "jng": 0.6,
+   "top": 0.32
+  },
+  "meta": 0.2883,
+  "early": -0.5473,
+  "late": 0.0387,
+  "presence": 0.001,
+  "winrate": 0.508,
+  "damage": {
+   "physical": 3,
+   "magic": 7
+  },
+  "toughness": 7,
+  "proPicks": 25
+ },
+ {
+  "id": "Kassadin",
+  "name": "Kassadin",
+  "nameKo": "카사딘",
+  "tags": [
+   "Assassin",
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.93
+  },
+  "meta": 0.2,
+  "early": -0.4481,
+  "late": 0.0,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 3,
+   "magic": 8
+  },
+  "toughness": 5,
+  "proPicks": 28
+ },
+ {
+  "id": "Veigar",
+  "name": "Veigar",
+  "nameKo": "베이가",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.84,
+   "bot": 0.11
+  },
+  "meta": 0.2237,
+  "early": -0.2817,
+  "late": 0.106,
+  "presence": 0.001,
+  "winrate": 0.4918,
+  "damage": {
+   "physical": 2,
+   "magic": 10
+  },
+  "toughness": 2,
+  "proPicks": 45
+ },
+ {
+  "id": "Lillia",
+  "name": "Lillia",
+  "nameKo": "릴리아",
+  "tags": [
+   "Fighter",
+   "Mage"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.2565,
+  "early": 0.3362,
+  "late": 0.2092,
+  "presence": 0.001,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 0,
+   "magic": 10
+  },
+  "toughness": 2,
+  "proPicks": 36
+ },
+ {
+  "id": "Riven",
+  "name": "Riven",
+  "nameKo": "리븐",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "top": 1.0
+  },
+  "meta": 0.1828,
+  "early": 0.2998,
+  "late": -0.1136,
+  "presence": 0.0,
+  "winrate": 0.4918,
+  "damage": {
+   "physical": 8,
+   "magic": 1
+  },
+  "toughness": 5,
+  "proPicks": 18
+ },
+ {
+  "id": "Ekko",
+  "name": "Ekko",
+  "nameKo": "에코",
+  "tags": [
+   "Assassin",
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.93
+  },
+  "meta": 0.2388,
+  "early": -0.0093,
+  "late": -0.5106,
+  "presence": 0.002,
+  "winrate": 0.4844,
+  "damage": {
+   "physical": 5,
+   "magic": 7
+  },
+  "toughness": 3,
+  "proPicks": 30
+ },
+ {
+  "id": "Soraka",
+  "name": "Soraka",
+  "nameKo": "소라카",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 0.96
+  },
+  "meta": 0.3184,
+  "early": -0.328,
+  "late": 1.0,
+  "presence": 0.004,
+  "winrate": 0.4926,
+  "damage": {
+   "physical": 2,
+   "magic": 7
+  },
+  "toughness": 5,
+  "proPicks": 51
+ },
+ {
+  "id": "Udyr",
+  "name": "Udyr",
+  "nameKo": "우디르",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.55,
+   "jng": 0.45
+  },
+  "meta": 0.2421,
+  "early": -0.1738,
+  "late": -0.07,
+  "presence": 0.005,
+  "winrate": 0.4706,
+  "damage": {
+   "physical": 8,
+   "magic": 4
+  },
+  "toughness": 7,
+  "proPicks": 31
+ },
+ {
+  "id": "Heimerdinger",
+  "name": "Heimerdinger",
+  "nameKo": "하이머딩거",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "bot": 0.57,
+   "sup": 0.29,
+   "top": 0.14
+  },
+  "meta": 0.2,
+  "early": -0.2174,
+  "late": 0.0,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 2,
+   "magic": 8
+  },
+  "toughness": 6,
+  "proPicks": 7
+ },
+ {
+  "id": "Malzahar",
+  "name": "Malzahar",
+  "nameKo": "말자하",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.96
+  },
+  "meta": 0.2998,
+  "early": -0.6834,
+  "late": 0.4036,
+  "presence": 0.003,
+  "winrate": 0.4923,
+  "damage": {
+   "physical": 2,
+   "magic": 9
+  },
+  "toughness": 2,
+  "proPicks": 25
+ },
+ {
+  "id": "Vex",
+  "name": "Vex",
+  "nameKo": "벡스",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "mid": 0.92
+  },
+  "meta": 0.3305,
+  "early": 0.4117,
+  "late": -1.0,
+  "presence": 0.003,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 0,
+   "magic": 0
+  },
+  "toughness": 0,
+  "proPicks": 36
+ },
+ {
+  "id": "TahmKench",
+  "name": "Tahm Kench",
+  "nameKo": "탐 켄치",
+  "tags": [
+   "Tank",
+   "Support"
+  ],
+  "positions": {
+   "sup": 0.83
+  },
+  "meta": 0.2586,
+  "early": -0.5123,
+  "late": 0.53,
+  "presence": 0.004,
+  "winrate": 0.4776,
+  "damage": {
+   "physical": 3,
+   "magic": 6
+  },
+  "toughness": 9,
+  "proPicks": 41
+ },
+ {
+  "id": "Kayle",
+  "name": "Kayle",
+  "nameKo": "케일",
+  "tags": [
+   "Marksman",
+   "Mage"
+  ],
+  "positions": {
+   "top": 0.96
+  },
+  "meta": 0.2,
+  "early": 0.0327,
+  "late": -0.0812,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 6,
+   "magic": 7
+  },
+  "toughness": 6,
+  "proPicks": 24
+ },
+ {
+  "id": "Nunu",
+  "name": "Nunu & Willump",
+  "nameKo": "누누와 윌럼프",
+  "tags": [
+   "Tank",
+   "Mage"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.2,
+  "early": -0.3549,
+  "late": -0.0795,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 4,
+   "magic": 7
+  },
+  "toughness": 6,
+  "proPicks": 13
+ },
+ {
+  "id": "Illaoi",
+  "name": "Illaoi",
+  "nameKo": "일라오이",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 1.0
+  },
+  "meta": 0.3638,
+  "early": 0.1904,
+  "late": -0.073,
+  "presence": 0.002,
+  "winrate": 0.5156,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 6,
+  "proPicks": 22
+ },
+ {
+  "id": "Tryndamere",
+  "name": "Tryndamere",
+  "nameKo": "트린다미어",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "top": 0.85,
+   "jng": 0.12
+  },
+  "meta": 0.2388,
+  "early": 0.9414,
+  "late": -0.1533,
+  "presence": 0.002,
+  "winrate": 0.4844,
+  "damage": {
+   "physical": 10,
+   "magic": 2
+  },
+  "toughness": 5,
+  "proPicks": 26
+ },
+ {
+  "id": "Belveth",
+  "name": "Bel'Veth",
+  "nameKo": "벨베스",
+  "tags": [
+   "Fighter"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.1828,
+  "early": -0.2356,
+  "late": 0.4762,
+  "presence": 0.0,
+  "winrate": 0.4918,
+  "damage": {
+   "physical": 4,
+   "magic": 7
+  },
+  "toughness": 2,
+  "proPicks": 9
+ },
+ {
+  "id": "Sett",
+  "name": "Sett",
+  "nameKo": "세트",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.8,
+   "sup": 0.1
+  },
+  "meta": 0.3965,
+  "early": 0.2684,
+  "late": -0.2633,
+  "presence": 0.002,
+  "winrate": 0.5238,
+  "damage": {
+   "physical": 8,
+   "magic": 1
+  },
+  "toughness": 5,
+  "proPicks": 30
+ },
+ {
+  "id": "Morgana",
+  "name": "Morgana",
+  "nameKo": "모르가나",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 0.41,
+   "mid": 0.37,
+   "jng": 0.22
+  },
+  "meta": 0.2883,
+  "early": 0.2064,
+  "late": -0.2645,
+  "presence": 0.001,
+  "winrate": 0.508,
+  "damage": {
+   "physical": 1,
+   "magic": 8
+  },
+  "toughness": 6,
+  "proPicks": 27
+ },
+ {
+  "id": "Samira",
+  "name": "Samira",
+  "nameKo": "사미라",
+  "tags": [
+   "Marksman",
+   "Assassin"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.3517,
+  "early": 0.1481,
+  "late": -0.0909,
+  "presence": 0.001,
+  "winrate": 0.5238,
+  "damage": {
+   "physical": 8,
+   "magic": 3
+  },
+  "toughness": 5,
+  "proPicks": 24
+ },
+ {
+  "id": "Amumu",
+  "name": "Amumu",
+  "nameKo": "아무무",
+  "tags": [
+   "Tank",
+   "Support"
+  ],
+  "positions": {
+   "sup": 0.71,
+   "jng": 0.29
+  },
+  "meta": 0.2883,
+  "early": -0.1812,
+  "late": -0.1057,
+  "presence": 0.001,
+  "winrate": 0.508,
+  "damage": {
+   "physical": 2,
+   "magic": 8
+  },
+  "toughness": 6,
+  "proPicks": 28
+ },
+ {
+  "id": "Taric",
+  "name": "Taric",
+  "nameKo": "타릭",
+  "tags": [
+   "Support",
+   "Tank"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.2247,
+  "early": -0.179,
+  "late": -0.1735,
+  "presence": 0.001,
+  "winrate": 0.492,
+  "damage": {
+   "physical": 4,
+   "magic": 5
+  },
+  "toughness": 8,
+  "proPicks": 21
+ },
+ {
+  "id": "Zilean",
+  "name": "Zilean",
+  "nameKo": "질리언",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 0.73,
+   "top": 0.2
+  },
+  "meta": 0.2,
+  "early": -0.3659,
+  "late": -0.0327,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 2,
+   "magic": 8
+  },
+  "toughness": 5,
+  "proPicks": 15
+ },
+ {
+  "id": "Singed",
+  "name": "Singed",
+  "nameKo": "신지드",
+  "tags": [
+   "Tank",
+   "Mage"
+  ],
+  "positions": {
+   "top": 1.0
+  },
+  "meta": 0.2,
+  "early": -0.5642,
+  "late": -0.6491,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 4,
+   "magic": 7
+  },
+  "toughness": 8,
+  "proPicks": 15
+ },
+ {
+  "id": "Velkoz",
+  "name": "Vel'Koz",
+  "nameKo": "벨코즈",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "mid": 0.46,
+   "bot": 0.35,
+   "sup": 0.19
+  },
+  "meta": 0.4263,
+  "early": 0.0751,
+  "late": -0.1143,
+  "presence": 0.002,
+  "winrate": 0.5312,
+  "damage": {
+   "physical": 2,
+   "magic": 10
+  },
+  "toughness": 2,
+  "proPicks": 26
+ },
+ {
+  "id": "Talon",
+  "name": "Talon",
+  "nameKo": "탈론",
+  "tags": [
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.1828,
+  "early": 0.9563,
+  "late": -0.3258,
+  "presence": 0.0,
+  "winrate": 0.4918,
+  "damage": {
+   "physical": 9,
+   "magic": 1
+  },
+  "toughness": 3,
+  "proPicks": 10
+ },
+ {
+  "id": "Warwick",
+  "name": "Warwick",
+  "nameKo": "워윅",
+  "tags": [
+   "Fighter",
+   "Tank"
+  ],
+  "positions": {
+   "top": 0.9,
+   "jng": 0.1
+  },
+  "meta": 0.3331,
+  "early": 0.7805,
+  "late": -0.2381,
+  "presence": 0.002,
+  "winrate": 0.508,
+  "damage": {
+   "physical": 9,
+   "magic": 3
+  },
+  "toughness": 5,
+  "proPicks": 10
+ },
+ {
+  "id": "Brand",
+  "name": "Brand",
+  "nameKo": "브랜드",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "bot": 0.4,
+   "jng": 0.25,
+   "mid": 0.2,
+   "top": 0.15
+  },
+  "meta": 0.2247,
+  "early": -0.4874,
+  "late": -0.1448,
+  "presence": 0.001,
+  "winrate": 0.492,
+  "damage": {
+   "physical": 2,
+   "magic": 9
+  },
+  "toughness": 2,
+  "proPicks": 20
+ },
+ {
+  "id": "Karthus",
+  "name": "Karthus",
+  "nameKo": "카서스",
+  "tags": [
+   "Mage"
+  ],
+  "positions": {
+   "jng": 0.79,
+   "bot": 0.14
+  },
+  "meta": 0.2,
+  "early": 0.1514,
+  "late": -0.0909,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 2,
+   "magic": 10
+  },
+  "toughness": 2,
+  "proPicks": 14
+ },
+ {
+  "id": "Kayn",
+  "name": "Kayn",
+  "nameKo": "케인",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 0.91
+  },
+  "meta": 0.2,
+  "early": 0.0975,
+  "late": -0.2381,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 10,
+   "magic": 1
+  },
+  "toughness": 6,
+  "proPicks": 11
+ },
+ {
+  "id": "Sona",
+  "name": "Sona",
+  "nameKo": "소나",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.2484,
+  "early": 0.0541,
+  "late": 0.0928,
+  "presence": 0.0,
+  "winrate": 0.5082,
+  "damage": {
+   "physical": 5,
+   "magic": 8
+  },
+  "toughness": 2,
+  "proPicks": 17
+ },
+ {
+  "id": "Janna",
+  "name": "Janna",
+  "nameKo": "잔나",
+  "tags": [
+   "Support",
+   "Mage"
+  ],
+  "positions": {
+   "sup": 1.0
+  },
+  "meta": 0.2247,
+  "early": 0.082,
+  "late": 0.2273,
+  "presence": 0.001,
+  "winrate": 0.492,
+  "damage": {
+   "physical": 3,
+   "magic": 7
+  },
+  "toughness": 5,
+  "proPicks": 11
+ },
+ {
+  "id": "MasterYi",
+  "name": "Master Yi",
+  "nameKo": "마스터 이",
+  "tags": [
+   "Fighter",
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 1.0
+  },
+  "meta": 0.2,
+  "early": -0.0994,
+  "late": -0.122,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 10,
+   "magic": 2
+  },
+  "toughness": 4,
+  "proPicks": 5
+ },
+ {
+  "id": "Shaco",
+  "name": "Shaco",
+  "nameKo": "샤코",
+  "tags": [
+   "Assassin"
+  ],
+  "positions": {
+   "jng": 0.83,
+   "sup": 0.17
+  },
+  "meta": 0.2,
+  "early": -0.1247,
+  "late": 0.2381,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 8,
+   "magic": 6
+  },
+  "toughness": 4,
+  "proPicks": 6
+ },
+ {
+  "id": "Twitch",
+  "name": "Twitch",
+  "nameKo": "트위치",
+  "tags": [
+   "Marksman",
+   "Assassin"
+  ],
+  "positions": {
+   "bot": 1.0
+  },
+  "meta": 0.1828,
+  "early": 0.0579,
+  "late": 0.3182,
+  "presence": 0.0,
+  "winrate": 0.4918,
+  "damage": {
+   "physical": 9,
+   "magic": 3
+  },
+  "toughness": 2,
+  "proPicks": 12
+ },
+ {
+  "id": "Fiddlesticks",
+  "name": "Fiddlesticks",
+  "nameKo": "피들스틱",
+  "tags": [
+   "Mage",
+   "Support"
+  ],
+  "positions": {
+   "jng": 0.5,
+   "sup": 0.5
+  },
+  "meta": 0.2,
+  "early": -0.1628,
+  "late": 0.1951,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 2,
+   "magic": 9
+  },
+  "toughness": 3,
+  "proPicks": 8
+ },
+ {
+  "id": "Rammus",
+  "name": "Rammus",
+  "nameKo": "람머스",
+  "tags": [
+   "Tank"
+  ],
+  "positions": {
+   "jng": 0.8,
+   "sup": 0.2
+  },
+  "meta": 0.192,
+  "early": -0.0916,
+  "late": -0.2381,
+  "presence": 0.001,
+  "winrate": 0.4839,
+  "damage": {
+   "physical": 4,
+   "magic": 5
+  },
+  "toughness": 10,
+  "proPicks": 5
+ },
+ {
+  "id": "Fizz",
+  "name": "Fizz",
+  "nameKo": "피즈",
+  "tags": [
+   "Assassin",
+   "Fighter"
+  ],
+  "positions": {
+   "mid": 0.89,
+   "jng": 0.11
+  },
+  "meta": 0.2565,
+  "early": 0.3021,
+  "late": 0.1393,
+  "presence": 0.001,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 6,
+   "magic": 7
+  },
+  "toughness": 4,
+  "proPicks": 9
+ },
+ {
+  "id": "Katarina",
+  "name": "Katarina",
+  "nameKo": "카타리나",
+  "tags": [
+   "Assassin",
+   "Mage"
+  ],
+  "positions": {
+   "mid": 1.0
+  },
+  "meta": 0.2,
+  "early": 0.2723,
+  "late": 0.2439,
+  "presence": 0.0,
+  "winrate": 0.5,
+  "damage": {
+   "physical": 4,
+   "magic": 9
+  },
+  "toughness": 3,
+  "proPicks": 5
+ },
+ {
+  "id": "Quinn",
+  "name": "Quinn",
+  "nameKo": "퀸",
+  "tags": [
+   "Marksman",
+   "Assassin"
+  ],
+  "positions": {
+   "top": 0.83,
+   "mid": 0.17
+  },
+  "meta": 0.2484,
+  "early": -0.052,
+  "late": 0.2439,
+  "presence": 0.0,
+  "winrate": 0.5082,
+  "damage": {
+   "physical": 9,
+   "magic": 2
+  },
+  "toughness": 4,
+  "proPicks": 6
+ }
+]

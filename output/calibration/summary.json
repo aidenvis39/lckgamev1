@@ -1,0 +1,682 @@
+{
+  "sources": {
+    "oracles_elixir_2020": {
+      "rows": 116952,
+      "date_range": [
+        "2020-01-03 07:33:26",
+        "2020-12-27 11:06:48"
+      ]
+    },
+    "oracles_elixir_2021": {
+      "rows": 147576,
+      "date_range": [
+        "2021-01-02 07:40:39",
+        "2021-12-26 13:22:45"
+      ]
+    },
+    "oracles_elixir_2022": {
+      "rows": 150228,
+      "date_range": [
+        "2022-01-10 07:44:08",
+        "2022-12-27 12:43:43"
+      ]
+    },
+    "oracles_elixir_2023": {
+      "rows": 133176,
+      "date_range": [
+        "2023-01-10 17:07:16",
+        "2023-12-31 11:48:06"
+      ]
+    },
+    "oracles_elixir_2024": {
+      "rows": 122448,
+      "date_range": [
+        "2024-01-01 05:13:15",
+        "2024-12-08 09:03:13"
+      ]
+    },
+    "oracles_elixir_2025": {
+      "rows": 120528,
+      "date_range": [
+        "2025-01-11 11:11:24",
+        "2025-12-29 10:52:27"
+      ]
+    },
+    "oracles_elixir_2026": {
+      "rows": 117036,
+      "date_range": [
+        "2026-01-01 09:14:49",
+        "2026-10-18 19:48:36"
+      ]
+    }
+  },
+  "2025": {
+    "lck_games": 555,
+    "per_game": {
+      "kills": {
+        "n": 555,
+        "mean": 28.81,
+        "std": 7.65,
+        "p10": 19.0,
+        "p25": 23.0,
+        "median": 28.0,
+        "p75": 33.0,
+        "p90": 39.0
+      },
+      "dragons": {
+        "n": 555,
+        "mean": 4.41,
+        "std": 1.06,
+        "p10": 3.0,
+        "p25": 4.0,
+        "median": 4.0,
+        "p75": 5.0,
+        "p90": 6.0
+      },
+      "elementaldrakes": {
+        "n": 555,
+        "mean": 4.33,
+        "std": 0.98,
+        "p10": 3.0,
+        "p25": 4.0,
+        "median": 4.0,
+        "p75": 5.0,
+        "p90": 6.0
+      },
+      "elders": {
+        "n": 555,
+        "mean": 0.08,
+        "std": 0.29,
+        "p10": 0.0,
+        "p25": 0.0,
+        "median": 0.0,
+        "p75": 0.0,
+        "p90": 0.0
+      },
+      "barons": {
+        "n": 555,
+        "mean": 1.05,
+        "std": 0.64,
+        "p10": 0.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "p75": 1.0,
+        "p90": 2.0
+      },
+      "heralds": {
+        "n": 555,
+        "mean": 1.0,
+        "std": 0.0,
+        "p10": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      },
+      "void_grubs": {
+        "n": 555,
+        "mean": 4.24,
+        "std": 1.49,
+        "p10": 3.0,
+        "p25": 3.0,
+        "median": 3.0,
+        "p75": 6.0,
+        "p90": 6.0
+      },
+      "atakhans": {
+        "n": 555,
+        "mean": 0.99,
+        "std": 0.11,
+        "p10": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      },
+      "towers": {
+        "n": 555,
+        "mean": 11.43,
+        "std": 1.98,
+        "p10": 9.0,
+        "p25": 10.0,
+        "median": 11.0,
+        "p75": 13.0,
+        "p90": 14.0
+      },
+      "inhibitors": {
+        "n": 555,
+        "mean": 1.57,
+        "std": 0.84,
+        "p10": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "p75": 2.0,
+        "p90": 3.0
+      },
+      "turretplates": {
+        "n": 555,
+        "mean": 7.03,
+        "std": 3.22,
+        "p10": 3.0,
+        "p25": 5.0,
+        "median": 6.0,
+        "p75": 9.0,
+        "p90": 11.0
+      },
+      "gamelength_min": {
+        "n": 555,
+        "mean": 32.26,
+        "std": 4.97,
+        "p10": 27.06,
+        "p25": 28.57,
+        "median": 31.07,
+        "p75": 34.92,
+        "p90": 39.3
+      },
+      "kills_per_min": {
+        "n": 555,
+        "mean": 0.9,
+        "std": 0.23,
+        "p10": 0.63,
+        "p25": 0.74,
+        "median": 0.89,
+        "p75": 1.05,
+        "p90": 1.19
+      }
+    },
+    "side": {
+      "blue_winrate": 0.51,
+      "tier1_blue_winrate": 0.529
+    },
+    "gold_diff_fit": {
+      "LCK": {
+        "at10": {
+          "logit_coef_per_1k_gold": 0.8516,
+          "fitted_winrate": {
+            "+1k": 0.701,
+            "+2k": 0.846,
+            "+3k": 0.928,
+            "+5k": 0.986,
+            "+8k": 0.999
+          },
+          "comeback_rate_behind_3k_plus": 0.0,
+          "comeback_rate_behind_5k_plus": null,
+          "n": 1110
+        },
+        "at15": {
+          "logit_coef_per_1k_gold": 0.7295,
+          "fitted_winrate": {
+            "+1k": 0.675,
+            "+2k": 0.811,
+            "+3k": 0.899,
+            "+5k": 0.975,
+            "+8k": 0.997
+          },
+          "comeback_rate_behind_3k_plus": 0.038,
+          "comeback_rate_behind_5k_plus": 0.0,
+          "n": 1110
+        },
+        "at20": {
+          "logit_coef_per_1k_gold": 0.6539,
+          "fitted_winrate": {
+            "+1k": 0.658,
+            "+2k": 0.787,
+            "+3k": 0.877,
+            "+5k": 0.963,
+            "+8k": 0.995
+          },
+          "comeback_rate_behind_3k_plus": 0.043,
+          "comeback_rate_behind_5k_plus": 0.033,
+          "n": 1110
+        },
+        "at25": {
+          "logit_coef_per_1k_gold": 0.5477,
+          "fitted_winrate": {
+            "+1k": 0.634,
+            "+2k": 0.749,
+            "+3k": 0.838,
+            "+5k": 0.939,
+            "+8k": 0.988
+          },
+          "comeback_rate_behind_3k_plus": 0.05,
+          "comeback_rate_behind_5k_plus": 0.01,
+          "n": 1096
+        }
+      },
+      "Tier1": {
+        "at10": {
+          "logit_coef_per_1k_gold": 0.8558,
+          "fitted_winrate": {
+            "+1k": 0.702,
+            "+2k": 0.847,
+            "+3k": 0.929,
+            "+5k": 0.986,
+            "+8k": 0.999
+          },
+          "comeback_rate_behind_3k_plus": 0.071,
+          "comeback_rate_behind_5k_plus": null,
+          "n": 3724
+        },
+        "at15": {
+          "logit_coef_per_1k_gold": 0.6484,
+          "fitted_winrate": {
+            "+1k": 0.657,
+            "+2k": 0.785,
+            "+3k": 0.875,
+            "+5k": 0.962,
+            "+8k": 0.994
+          },
+          "comeback_rate_behind_3k_plus": 0.083,
+          "comeback_rate_behind_5k_plus": 0.0,
+          "n": 3724
+        },
+        "at20": {
+          "logit_coef_per_1k_gold": 0.5928,
+          "fitted_winrate": {
+            "+1k": 0.644,
+            "+2k": 0.766,
+            "+3k": 0.855,
+            "+5k": 0.951,
+            "+8k": 0.991
+          },
+          "comeback_rate_behind_3k_plus": 0.061,
+          "comeback_rate_behind_5k_plus": 0.027,
+          "n": 3724
+        },
+        "at25": {
+          "logit_coef_per_1k_gold": 0.5391,
+          "fitted_winrate": {
+            "+1k": 0.632,
+            "+2k": 0.746,
+            "+3k": 0.834,
+            "+5k": 0.937,
+            "+8k": 0.987
+          },
+          "comeback_rate_behind_3k_plus": 0.053,
+          "comeback_rate_behind_5k_plus": 0.013,
+          "n": 3690
+        }
+      }
+    },
+    "series": {
+      "LCK": {
+        "BO3": {
+          "series": 180,
+          "p_series_win_if_won_game1": 0.817,
+          "p_same_team_wins_next_game": 0.529,
+          "score_distribution": {
+            "2-0": 0.572,
+            "2-1": 0.428
+          }
+        },
+        "BO5": {
+          "series": 29,
+          "p_series_win_if_won_game1": 0.793,
+          "p_same_team_wins_next_game": 0.506,
+          "score_distribution": {
+            "3-2": 0.379,
+            "3-1": 0.31,
+            "3-0": 0.31
+          },
+          "reverse_sweeps_0_2_to_3_2": 1
+        }
+      },
+      "Tier1": {
+        "BO3": {
+          "series": 654,
+          "p_series_win_if_won_game1": 0.818,
+          "p_same_team_wins_next_game": 0.529,
+          "score_distribution": {
+            "2-0": 0.573,
+            "2-1": 0.427
+          }
+        },
+        "BO5": {
+          "series": 229,
+          "p_series_win_if_won_game1": 0.738,
+          "p_same_team_wins_next_game": 0.521,
+          "score_distribution": {
+            "3-1": 0.41,
+            "3-0": 0.328,
+            "3-2": 0.262
+          },
+          "reverse_sweeps_0_2_to_3_2": 3
+        }
+      }
+    },
+    "strength_logit_coef_per_10pct_winrate_gap": 0.549,
+    "champion_length_buckets_min": {
+      "short_lt": 29.1,
+      "long_gt": 33.5
+    },
+    "patch_volatility_tier1": {
+      "mean_rank_corr": 0.876,
+      "mean_top10_kept": 6.89
+    },
+    "unique_champions_picked_lck": 138
+  },
+  "2026": {
+    "lck_games": 502,
+    "per_game": {
+      "kills": {
+        "n": 502,
+        "mean": 29.39,
+        "std": 8.1,
+        "p10": 20.0,
+        "p25": 24.0,
+        "median": 29.0,
+        "p75": 35.0,
+        "p90": 41.0
+      },
+      "dragons": {
+        "n": 502,
+        "mean": 4.48,
+        "std": 1.04,
+        "p10": 3.0,
+        "p25": 4.0,
+        "median": 4.0,
+        "p75": 5.0,
+        "p90": 6.0
+      },
+      "elementaldrakes": {
+        "n": 502,
+        "mean": 4.39,
+        "std": 0.97,
+        "p10": 3.0,
+        "p25": 4.0,
+        "median": 4.0,
+        "p75": 5.0,
+        "p90": 6.0
+      },
+      "elders": {
+        "n": 502,
+        "mean": 0.09,
+        "std": 0.33,
+        "p10": 0.0,
+        "p25": 0.0,
+        "median": 0.0,
+        "p75": 0.0,
+        "p90": 0.0
+      },
+      "barons": {
+        "n": 502,
+        "mean": 1.31,
+        "std": 0.69,
+        "p10": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "p75": 2.0,
+        "p90": 2.0
+      },
+      "heralds": {
+        "n": 502,
+        "mean": 0.99,
+        "std": 0.12,
+        "p10": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      },
+      "void_grubs": {
+        "n": 502,
+        "mean": 2.88,
+        "std": 0.54,
+        "p10": 3.0,
+        "p25": 3.0,
+        "median": 3.0,
+        "p75": 3.0,
+        "p90": 3.0
+      },
+      "atakhans": {
+        "n": 502,
+        "mean": 0.0,
+        "std": 0.0,
+        "p10": 0.0,
+        "p25": 0.0,
+        "median": 0.0,
+        "p75": 0.0,
+        "p90": 0.0
+      },
+      "towers": {
+        "n": 502,
+        "mean": 11.29,
+        "std": 2.28,
+        "p10": 9.0,
+        "p25": 10.0,
+        "median": 11.0,
+        "p75": 13.0,
+        "p90": 15.0
+      },
+      "inhibitors": {
+        "n": 502,
+        "mean": 1.58,
+        "std": 0.86,
+        "p10": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "p75": 2.0,
+        "p90": 3.0
+      },
+      "turretplates": {
+        "n": 502,
+        "mean": 33.98,
+        "std": 13.7,
+        "p10": 23.0,
+        "p25": 26.0,
+        "median": 29.0,
+        "p75": 30.0,
+        "p90": 57.0
+      },
+      "gamelength_min": {
+        "n": 502,
+        "mean": 32.21,
+        "std": 5.31,
+        "p10": 25.87,
+        "p25": 28.4,
+        "median": 31.28,
+        "p75": 35.53,
+        "p90": 39.37
+      },
+      "kills_per_min": {
+        "n": 502,
+        "mean": 0.92,
+        "std": 0.25,
+        "p10": 0.61,
+        "p25": 0.74,
+        "median": 0.91,
+        "p75": 1.08,
+        "p90": 1.22
+      }
+    },
+    "side": {
+      "blue_winrate": 0.564,
+      "tier1_blue_winrate": 0.55
+    },
+    "gold_diff_fit": {
+      "LCK": {
+        "at10": {
+          "logit_coef_per_1k_gold": 0.7471,
+          "fitted_winrate": {
+            "+1k": 0.679,
+            "+2k": 0.817,
+            "+3k": 0.904,
+            "+5k": 0.977,
+            "+8k": 0.997
+          },
+          "comeback_rate_behind_3k_plus": 0.091,
+          "comeback_rate_behind_5k_plus": null,
+          "n": 1004
+        },
+        "at15": {
+          "logit_coef_per_1k_gold": 0.5338,
+          "fitted_winrate": {
+            "+1k": 0.63,
+            "+2k": 0.744,
+            "+3k": 0.832,
+            "+5k": 0.935,
+            "+8k": 0.986
+          },
+          "comeback_rate_behind_3k_plus": 0.099,
+          "comeback_rate_behind_5k_plus": 0.0,
+          "n": 1004
+        },
+        "at20": {
+          "logit_coef_per_1k_gold": 0.4745,
+          "fitted_winrate": {
+            "+1k": 0.616,
+            "+2k": 0.721,
+            "+3k": 0.806,
+            "+5k": 0.915,
+            "+8k": 0.978
+          },
+          "comeback_rate_behind_3k_plus": 0.091,
+          "comeback_rate_behind_5k_plus": 0.027,
+          "n": 1004
+        },
+        "at25": {
+          "logit_coef_per_1k_gold": 0.459,
+          "fitted_winrate": {
+            "+1k": 0.613,
+            "+2k": 0.715,
+            "+3k": 0.799,
+            "+5k": 0.908,
+            "+8k": 0.975
+          },
+          "comeback_rate_behind_3k_plus": 0.077,
+          "comeback_rate_behind_5k_plus": 0.03,
+          "n": 982
+        }
+      },
+      "Tier1": {
+        "at10": {
+          "logit_coef_per_1k_gold": 0.6568,
+          "fitted_winrate": {
+            "+1k": 0.659,
+            "+2k": 0.788,
+            "+3k": 0.878,
+            "+5k": 0.964,
+            "+8k": 0.995
+          },
+          "comeback_rate_behind_3k_plus": 0.088,
+          "comeback_rate_behind_5k_plus": 0.0,
+          "n": 4168
+        },
+        "at15": {
+          "logit_coef_per_1k_gold": 0.5214,
+          "fitted_winrate": {
+            "+1k": 0.627,
+            "+2k": 0.739,
+            "+3k": 0.827,
+            "+5k": 0.931,
+            "+8k": 0.985
+          },
+          "comeback_rate_behind_3k_plus": 0.108,
+          "comeback_rate_behind_5k_plus": 0.037,
+          "n": 4170
+        },
+        "at20": {
+          "logit_coef_per_1k_gold": 0.4501,
+          "fitted_winrate": {
+            "+1k": 0.611,
+            "+2k": 0.711,
+            "+3k": 0.794,
+            "+5k": 0.905,
+            "+8k": 0.973
+          },
+          "comeback_rate_behind_3k_plus": 0.108,
+          "comeback_rate_behind_5k_plus": 0.029,
+          "n": 4168
+        },
+        "at25": {
+          "logit_coef_per_1k_gold": 0.4175,
+          "fitted_winrate": {
+            "+1k": 0.603,
+            "+2k": 0.697,
+            "+3k": 0.778,
+            "+5k": 0.89,
+            "+8k": 0.966
+          },
+          "comeback_rate_behind_3k_plus": 0.09,
+          "comeback_rate_behind_5k_plus": 0.048,
+          "n": 4080
+        }
+      }
+    },
+    "series": {
+      "LCK": {
+        "BO3": {
+          "series": 153,
+          "p_series_win_if_won_game1": 0.837,
+          "p_same_team_wins_next_game": 0.584,
+          "score_distribution": {
+            "2-0": 0.634,
+            "2-1": 0.366
+          }
+        },
+        "BO5": {
+          "series": 34,
+          "p_series_win_if_won_game1": 0.676,
+          "p_same_team_wins_next_game": 0.571,
+          "score_distribution": {
+            "3-1": 0.382,
+            "3-2": 0.353,
+            "3-0": 0.265
+          },
+          "reverse_sweeps_0_2_to_3_2": 4
+        }
+      },
+      "Tier1": {
+        "BO3": {
+          "series": 595,
+          "p_series_win_if_won_game1": 0.808,
+          "p_same_team_wins_next_game": 0.565,
+          "score_distribution": {
+            "2-0": 0.6,
+            "2-1": 0.4
+          }
+        },
+        "BO5": {
+          "series": 187,
+          "p_series_win_if_won_game1": 0.77,
+          "p_same_team_wins_next_game": 0.597,
+          "score_distribution": {
+            "3-0": 0.433,
+            "3-1": 0.31,
+            "3-2": 0.257
+          },
+          "reverse_sweeps_0_2_to_3_2": 8
+        }
+      }
+    },
+    "strength_logit_coef_per_10pct_winrate_gap": 0.593,
+    "champion_length_buckets_min": {
+      "short_lt": 28.7,
+      "long_gt": 33.2
+    },
+    "patch_volatility_tier1": {
+      "mean_rank_corr": 0.885,
+      "mean_top10_kept": 7.64
+    },
+    "unique_champions_picked_lck": 127
+  },
+  "champion_name_unmatched": [],
+  "aging": {
+    "pairs": 317,
+    "age_coverage_by_league_year": {
+      "LCK 2020": 0.378,
+      "LCK 2021": 0.544,
+      "LCK 2022": 0.614,
+      "LCK 2023": 0.797,
+      "LCK 2024": 0.79,
+      "LCK 2025": 1.0,
+      "LCK 2026": 1.0,
+      "LCKC 2021": 0.277,
+      "LCKC 2022": 0.47,
+      "LCKC 2023": 0.591,
+      "LCKC 2024": 0.69,
+      "LCKC 2025": 1.0,
+      "LCKC 2026": 1.0
+    }
+  }
+}
