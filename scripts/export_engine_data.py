@@ -199,6 +199,7 @@ def export_players(by_name):
     intang = intang.drop_duplicates("playerid").set_index("playerid")
     bio_lck, bio_ov = leaguepedia_bio()
     players, teams, used_ids = [], [], set()
+    oe_ids = {}  # 엔진 id → OE playerid (2025 시작 상태를 만들 때 씀)
 
     def bio(r, overseas):
         """(생년월일, 국적, 계약 만료 시즌)"""
@@ -216,6 +217,7 @@ def export_players(by_name):
         if pid in used_ids:
             pid = f"{pid}-{team.lower()}"
         used_ids.add(pid)
+        oe_ids[pid] = r["playerid"]
         known = r["playerid"] in intang.index
         birth, country, contract = bio(r, overseas)
         (players if out is None else out).append({
@@ -267,7 +269,7 @@ def export_players(by_name):
     c = c[(c["playerid"].map(league_now).fillna("LCKC") == "LCKC") & ~c["playerid"].isin(main_ids)]
     for _, r in c.sort_values(["team", "games"], ascending=[True, False]).iterrows():
         add_player(r, ACADEMY_PARENT[r["team"]], "LCKCL", False, out=academy)
-    return players, teams, academy
+    return players, teams, academy, oe_ids
 
 
 def export_world():
@@ -355,7 +357,7 @@ def export_targets():
 def main():
     by_name, ko = champion_ids()
     champions = export_champions(by_name, ko)
-    players, teams, academy = export_players(by_name)
+    players, teams, academy, _ = export_players(by_name)
     dump(clean(champions), "champions.json")
     dump(clean(players), "players.json")
     dump(clean(academy), "academy.json")
