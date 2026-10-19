@@ -50,23 +50,36 @@ export function simulateGame(
   let soul: Side | null = null;
   let firstBlood: Side | null = null;
   let firstBaron: Side | null = null;
+  const deadUntil = Object.fromEntries(SIDES.map((s) => [s,
+    Object.fromEntries(POSITIONS.map((pos) => [pos, 0])),
+  ])) as Record<Side, Record<Position, number>>;
+  const living = (s: Side, t: number) => POSITIONS.filter((pos) => deadUntil[s][pos] <= round1(t));
 
-  const pickWeighted = (w: Record<Position, number>): Position => {
-    let r = rng.next() * POSITIONS.reduce((s, pos) => s + w[pos], 0);
-    for (const pos of POSITIONS) if ((r -= w[pos]) <= 0) return pos;
-    return "sup";
+  const pickWeighted = (w: Record<Position, number>, candidates: readonly Position[] = POSITIONS): Position => {
+    let r = rng.next() * candidates.reduce((s, pos) => s + w[pos], 0);
+    for (const pos of candidates) if ((r -= w[pos]) <= 0) return pos;
+    return candidates[candidates.length - 1];
   };
-  const addKill = (t: number, s: Side, killer: Position = pickWeighted(KILL_SHARE)) => {
-    const victim = pickWeighted(DEATH_SHARE);
+  const addKill = (t: number, s: Side, preferredKiller?: Position): boolean => {
+    const attackers = living(s, t);
+    const victims = living(other(s), t);
+    if (!attackers.length || !victims.length) return false;
+    const killer = preferredKiller && attackers.includes(preferredKiller) ? preferredKiller : pickWeighted(KILL_SHARE, attackers);
+    const victim = pickWeighted(DEATH_SHARE, victims);
+    // 레벨·개별 스킬을 풀 시뮬하지 않는 모델: 경기 시간에 따라 약 20~60초 뒤 복귀.
+    const respawnAt = round1(round1(t) + Math.min(60, 20 + t) / 60);
+    deadUntil[other(s)][victim] = respawnAt;
     lines[s][killer].kills++;
     lines[other(s)][victim].deaths++;
     kills[s]++;
-    mark(t, s, "kill");
-    for (const pos of POSITIONS) if (pos !== killer && rng.next() < ASSIST_RATE[pos]) lines[s][pos].assists++;
+    const assists = attackers.filter((pos) => pos !== killer && rng.next() < ASSIST_RATE[pos]);
+    for (const pos of assists) lines[s][pos].assists++;
+    timeline.push({ t: round1(t), side: s, kind: "kill", kill: { killer, victim, assists, respawnAt } });
     if (!firstBlood) {
       firstBlood = s;
       say(t, s, `퍼스트 블러드! ${who(s, killer)} → ${who(other(s), victim)}`);
     }
+    return true;
   };
 
   // 경기마다 선수 컨디션이 조금씩 흔들린다
@@ -171,10 +184,19 @@ export function simulateGame(
     let swing = Math.max(150, p.swingMean + p.swingSd * rng.normal());
     let wonTowers = 1;
 
-    const kw = rng.poisson(p.killsPerFight);
-    const kl = rng.poisson(p.killsPerFight * p.loserKillRatio);
-    for (let i = 0; i < kw; i++) addKill(t, w);
-    for (let i = 0; i < kl; i++) addKill(t, other(w));
+    // 한 교전은 한 시각의 사건이며 부활은 없다. 승리 팀은 오브젝트를 취할 생존자가 남아야 한다.
+    let remainingW = Math.min(rng.poisson(p.killsPerFight), living(other(w), t).length);
+    let remainingL = Math.min(rng.poisson(p.killsPerFight * p.loserKillRatio), Math.max(0, living(w, t).length - 1));
+    let kw = 0;
+    let kl = 0;
+    while (remainingW + remainingL > 0) {
+      // 전멸시킬 마지막 킬은 상대가 예정된 킬을 끝낸 뒤에 처리한다.
+      const winnerKills = remainingW > 0 && (remainingL === 0 ||
+        (living(other(w), t).length > 1 && rng.next() < remainingW / (remainingW + remainingL)));
+      if (!addKill(t, winnerKills ? w : other(w))) break;
+      if (winnerKills) { remainingW--; kw++; }
+      else { remainingL--; kl++; }
+    }
     let what = "";
     if (soul && t >= nextElder) {
       elders[w]++;
