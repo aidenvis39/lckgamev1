@@ -1,14 +1,13 @@
 {
  "growth": {
   "ageCoef": [
-   [19, 0.55],
-   [20, 0.4],
-   [21, 0.4],
-   [22, 0.25],
-   [23, 0.25],
-   [24, 0.1]
+   [17, 0.608],
+   [19, 0.432],
+   [21, 0.295],
+   [23, 0.096],
+   [25, 0.003]
   ],
-  "maxYearGain": 6,
+  "maxYearGain": 7.442,
   "noise": 0.4,
   "focus": 1.5,
   "playMin": 0.4,
@@ -24,12 +23,11 @@
  },
  "decline": {
   "byAge": [
-   [23, 0],
-   [24, 0.5],
-   [25, 1],
-   [26, 1.5],
-   [27, 2],
-   [28, 2.5]
+   [21, 0],
+   [23, 1.139],
+   [25, 1.139],
+   [27, 1.556],
+   [29, 1.608]
   ],
   "weights": {
    "laning": 1.2,
@@ -45,18 +43,14 @@
  },
  "potential": {
   "headroom": [
-   [16, 17],
-   [17, 16],
-   [18, 13],
-   [19, 10],
-   [20, 7],
-   [21, 5],
-   [22, 3],
-   [23, 1.5],
+   [16, 22.492],
+   [18, 9.289],
+   [20, 3.831],
+   [22, 0.584],
    [24, 0.5]
   ],
   "sd": 4,
-  "prodigyP": 0.12,
+  "prodigyP": 0.019,
   "prodigyMin": 8,
   "prodigyRange": 10,
   "prodigyMaxAge": 19
@@ -70,21 +64,21 @@
    "LCP": 46,
    "CBLOL": 47
   },
-  "meanShift": 0,
+  "meanShift": -3.464,
   "sd": 5,
   "replacementSd": 4,
   "cap": 62,
   "extra": 1
  },
  "replacement": {
-  "gap": 8,
-  "gain": 4,
+  "gap": 7.642,
+  "gain": 5.192,
   "lo": -4,
   "hi": 6
  },
  "retire": {
   "startAge": 26,
-  "perYear": 0.05,
+  "perYear": 0.021,
   "lowOvr": 70,
   "lowRate": 0.02,
   "oldAge": 30,
@@ -98,5 +92,34 @@
  },
  "opening": {
   "preBonus": 0.45
+ },
+ "macro": {
+  "newMean": {
+   "LCK": 0.059,
+   "LPL": -0.05,
+   "LEC": -0.05,
+   "LCS": -0.05,
+   "LCP": -0.05,
+   "CBLOL": -0.05
+  },
+  "newSd": 0.12,
+  "maxAbs": 0.35,
+  "obsSd": 1.5,
+  "knownSe": 0.1,
+  "learn": 0.05,
+  "learnGames": 400,
+  "price": 0.6,
+  "priceCap": 10
+ },
+ "fame": {
+  "weights": {
+   "worlds": 1,
+   "msi": 0.6,
+   "lck": 0.5,
+   "split": 0.35
+  },
+  "decay": 0.85,
+  "rate": 0.15,
+  "cap": 0.6
  }
 }

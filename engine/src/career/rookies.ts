@@ -39,7 +39,7 @@ export function makeRookie(
   opts: { replacement?: boolean; salary?: number } = {},
 ): PlayerState {
   const rk = world.cp.rookies;
-  const age = opts.replacement ? 19 + rng.int(5) : 17 + rng.int(3);
+  const age = opts.replacement ? 18 + rng.int(4) : 17 + rng.int(3);
   // 2군 신인도 대체 선수 수준을 따라 오르내린다 (세계 수준 유지 보정이 신인에게도 걸림)
   const drift = (world.replacement[league] ?? 0) - ((world.baseline[league] ?? 0) - world.cp.replacement.gap);
   const mean = opts.replacement ? (world.replacement[league] ?? 60) : Math.min(rk.cap, (rk.mean[league] ?? 50) + rk.meanShift + drift);
