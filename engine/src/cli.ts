@@ -8,15 +8,14 @@
 //   node src/cli.ts calibrate --intl                      (해외 리그 팀 승률 + 국제전 리그 쌍 승률 비교)
 //   node src/cli.ts year [--runs 100] [--seed 1]          (LCK·MSI·월즈 한 해 전체. 우승 분포)
 //   node src/cli.ts career [--years 10] [--runs 3]        (다년 커리어 AI끼리: 리그 실력 유지, 성장 곡선, 이적·은퇴)
+//   node src/cli.ts tune --career [--stage A|B] [--iters 60] [--years 3] [--runs 4]  (다년 커리어 조절값 튜닝 → data/careerParams.json)
 //   --params <파일> 로 다른 조절값 파일을 쓸 수 있다 (실험용)
 import { readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import type { Row } from "./calibrate.ts";
-import { loadAcademy, loadCareerParams, loadParams, loadRaw, loadStart2025, loadTargets, loadUniverse, loadWorldTargets, saveParams } from "./data.ts";
-import { aiOffseason, aiOpening, playCareerSeason } from "./career/play.ts";
-import { initWorld, mainRoster, starterMeans, validateWorld } from "./career/world.ts";
-import { overall, payroll } from "./career/value.ts";
-import type { WorldState } from "./career/types.ts";
+import { loadCareerParams, loadParams, loadTargets, loadUniverse, loadWorldTargets, saveCareerParams, saveParams } from "./data.ts";
+import { ageTable, LEAGUES6 } from "./career/metrics.ts";
+import { CareerPool, careerSeeds, evaluateCareer, loadAgeTarget, tuneCareer } from "./careerTune.ts";
 import { playYear } from "./competition/play.ts";
 import { champion, OVERSEAS } from "./competition/year.ts";
 import { fitLeagueOffsets, fitOverseasTeamwork, makeInternationalProbe, simulateLeague } from "./worldTune.ts";
@@ -46,6 +45,8 @@ const { values, positionals } = parseArgs({
     intl: { type: "boolean", default: false },
     games: { type: "string", default: "6" },
     years: { type: "string", default: "10" },
+    career: { type: "boolean", default: false },
+    stage: { type: "string", default: "A" },
     params: { type: "string" },
   },
 });
@@ -66,13 +67,14 @@ switch (command) {
     values.intl ? calibrateWorld() : calibrate();
     break;
   case "tune":
-    values.intl ? tuneWorld() : runTune();
+    if (values.career) await careerTuneCli(values.stage, Number(values.iters === "300" ? 60 : values.iters), Number(values.years === "10" ? 3 : values.years), Number(values.runs === "1" ? 4 : values.runs));
+    else values.intl ? tuneWorld() : runTune();
     break;
   case "year":
     year(Number(values.runs === "1" ? 100 : values.runs));
     break;
   case "career":
-    career(Number(values.years), Number(values.runs === "1" ? 3 : values.runs));
+    await career(Number(values.years), Number(values.runs === "1" ? 3 : values.runs));
     break;
   case "transfer":
     transfer(rest[0], rest[1], Number(values.runs === "1" ? 300 : values.runs));
@@ -258,88 +260,46 @@ function year(runs: number) {
 }
 
 // 다년 커리어를 AI끼리 돌려 세계가 안정적인지 본다
-function career(years: number, runs: number) {
-  const raw = loadRaw();
-  const base = loadUniverse();
-  const LG = ["LCK", "LPL", "LEC", "LCS", "LCP", "CBLOL"];
-  const rows: Array<Record<string, number | string>> = [];
-  const ageDelta = new Map<number, number[]>();
-  const worldsRegion = new Map<string, number>();
+// 다년 커리어 AI끼리 (worker_threads로 나란히): 리그 수준 유지, 나이별 변화(LCK·CL, 실제와 같은 조건), 은퇴·FA·신인, 월즈 우승 지역
+async function career(years: number, runs: number) {
+  const pool = new CareerPool();
+  const cp = loadCareerParams();
+  const target = loadAgeTarget();
   const started = Date.now();
-  for (let run = 0; run < runs; run++) {
-    const init = initWorld({ ...raw, academy: loadAcademy(), params, world: loadWorldTargets(), start: loadStart2025(), cp: loadCareerParams(), seed: hashSeed(seed, "career", run) });
-    let w: WorldState = aiOpening(init, base); // 첫 스토브리그 (실제 2026 이적 재현)
-    for (let yr = 0; yr < years; yr++) {
-      const startOvr = new Map(Object.values(w.players).filter((p) => !p.retired).map((p) => [p.id, [p.age ?? 22, overall(p.ratings)] as const]));
-      const leagueAvg = starterMeans(w.players, w.teams, w.macroWeight);
-      const season = w.season;
-      const res = playCareerSeason(w, base, params);
-      const y = res.year;
-      const lckGames = new Map<string, [number, number]>();
-      for (const m of y.matches.filter((x) => x.event === "LCK")) {
-        const o = y.results[m.id];
-        for (const [t, g, l] of [[m.home, o.score[0], o.score[1]], [m.away, o.score[1], o.score[0]]] as const) {
-          const a = lckGames.get(t) ?? [0, 0];
-          lckGames.set(t, [a[0] + g, a[1] + g + l]);
-        }
-      }
-      const wrs = [...lckGames.values()].map(([g, n]) => g / n);
-      const mean = wrs.reduce((a, b) => a + b, 0) / wrs.length;
-      const std = Math.sqrt(wrs.reduce((a, b) => a + (b - mean) ** 2, 0) / wrs.length);
-      const worldsChamp = y.finals.WORLDS.find(([p]) => p === 1)![1];
-      const region = w.teams[worldsChamp].league;
-      worldsRegion.set(region, (worldsRegion.get(region) ?? 0) + 1);
-      const retiredBefore = Object.values(w.players).filter((p) => p.retired).length;
-      w = aiOffseason(res.world, y, res.stats, base);
-      const errs = validateWorld(w);
-      if (errs.length) console.log(`  [run ${run} ${season}] 로스터 오류 ${errs.length}: ${errs.slice(0, 3).join(" / ")}`);
-      for (const p of Object.values(w.players)) {
-        const s = startOvr.get(p.id);
-        if (!s || p.retired) continue;
-        const list = ageDelta.get(s[0]) ?? [];
-        list.push(overall(p.ratings) - s[1]);
-        ageDelta.set(s[0], list);
-      }
-      const overCap = Object.values(w.teams).filter((t) => payroll(w.players, mainRoster(t)) > t.cap + 0.05).length;
-      rows.push({
-        run,
-        season,
-        ...Object.fromEntries(LG.map((lg) => [lg, leagueAvg[lg]])),
-        lckStd: std,
-        worlds: `${worldsChamp}(${region})`,
-        retired: Object.values(w.players).filter((p) => p.retired).length - retiredBefore,
-        fa: w.freeAgents.length,
-        rookies: Object.values(w.players).filter((p) => p.virtual && !p.retired).length,
-        overCap,
-      });
-    }
-    console.log(`  ${run + 1}/${runs} (${((Date.now() - started) / 1000).toFixed(0)}초)`);
-  }
-  console.log(`\n다년 커리어 ${runs}회 × ${years}년 (AI끼리)\n`);
+  const res = await evaluateCareer(pool, cp, careerSeeds(seed, runs), years, target);
+  pool.close();
+  const LG = LEAGUES6;
+  console.log(`\n다년 커리어 ${runs}회 × ${years}년 (AI끼리, ${((Date.now() - started) / 1000).toFixed(0)}초)\n`);
   console.log("시즌   " + LG.map((lg) => pad(lg, 7)).join("") + "LCK퍼짐  은퇴  FA   신인  상한초과  월즈 우승");
+  const avg = (f: (r: (typeof res.runs)[0]) => number) => res.runs.reduce((s, r) => s + f(r), 0) / res.runs.length;
   for (let yr = 0; yr < years; yr++) {
-    const list = rows.filter((r) => (r.season as number) === 2026 + yr);
-    const avg = (k: string) => list.reduce((s, r) => s + (r[k] as number), 0) / list.length;
     console.log(
-      `${2026 + yr}  ` + LG.map((lg) => pad(avg(lg).toFixed(1), 7)).join("") +
-        `${pad(pct(avg("lckStd")), 9)}${pad(avg("retired").toFixed(0), 6)}${pad(avg("fa").toFixed(0), 5)}${pad(avg("rookies").toFixed(0), 6)}${pad(avg("overCap").toFixed(1), 10)}${list.map((r) => r.worlds).join(" ")}`,
+      `${res.runs[0].seasons[yr]}  ` +
+        LG.map((lg) => pad(avg((r) => r.leagueMeans[yr][lg]).toFixed(1), 7)).join("") +
+        `${pad(pct(avg((r) => r.lckSpread[yr])), 9)}${pad(avg((r) => r.retired[yr]).toFixed(0), 6)}${pad(avg((r) => r.fa[yr]).toFixed(0), 5)}${pad(avg((r) => r.rookies[yr]).toFixed(0), 6)}${pad(avg((r) => r.overCap[yr]).toFixed(1), 10)}${res.runs.map((r) => r.worlds[yr]).join(" ")}`,
     );
   }
-  console.log("  (리그 칸 = 시즌 시작 때 주전 평균 실효 실력(능력 + 운영 기여), LCK퍼짐 = LCK 팀 세트 승률 표준편차. 실제 2026: 15.2%)");
-  console.log(`\n월즈 우승 리그: ${[...worldsRegion].sort((a, b) => b[1] - a[1]).map(([lg, n]) => `${lg} ${pct(n / (runs * years))}`).join("  ")}`);
-  const curve = readFileSync(new URL("../../output/players/aging_curve_delta.csv", import.meta.url), "utf8")
-    .replace(/^\uFEFF/, "")
-    .trim()
-    .split("\n")
-    .slice(1)
-    .map((l) => l.split(","))
-    .map((c) => [Number(c[0]), Number(c[7])] as const);
-  console.log("\n나이별 한 해 실력 변화 (시뮬 평균 vs 실제 2020~2026 백분위 변화)");
-  for (const [age, real] of curve) {
-    const list = ageDelta.get(age) ?? [];
-    if (!list.length) continue;
-    console.log(`  ${age}세  시뮬 ${signedFix(list.reduce((a, b) => a + b, 0) / list.length)} (${list.length}명)   실제 ${signedFix(real)}`);
+  const b = res.runs[0].baseline;
+  console.log(`기준   ${LG.map((lg) => pad(b[lg].toFixed(1), 7)).join("")}15.2%  (2026 실제 로스터)`);
+  console.log("  (리그 칸 = 시즌 시작 때 주전 평균 실효 실력(능력 + 운영 기여), LCK퍼짐 = LCK 팀 세트 승률 표준편차)");
+  const regions = new Map<string, number>();
+  for (const r of res.runs) for (const w of r.worlds) { const lg = w.slice(w.indexOf("(") + 1, -1); regions.set(lg, (regions.get(lg) ?? 0) + 1); }
+  console.log(`\n월즈 우승 리그: ${[...regions].sort((a, b) => b[1] - a[1]).map(([lg, n]) => `${lg} ${pct(n / (runs * years))}`).join("  ")}`);
+  const sim = ageTable(res.runs);
+  console.log("\n나이별 한 해 실력 변화 (LCK 1군 두 해 15세트 이상 · LCK CL 2군, 실제 = 2020~2026 백분위 변화를 부드럽게)");
+  for (const t of target) {
+    const x = sim.get(t.age);
+    if (x) console.log(`  ${t.age}세  시뮬 ${signedFix(x.mean)} (${x.n}쌍)   실제 ${signedFix(t.delta)} (${t.n}쌍)`);
   }
+  const l = res.loss;
+  console.log(`\n손실 ${l.total.toFixed(3)}: 리그 하락 ${l.drift.toFixed(2)} (LCK 최대 ${l.lckMaxDrift.toFixed(1)}점) · 퍼짐 ${l.spread.toFixed(2)} · 나이 RMSE ${l.ageRmse.toFixed(2)}점 · 격차 ${l.gaps.toFixed(2)} · 모양 ${l.shape.toFixed(2)}`);
+  if (res.runs.some((r) => r.rosterErrors)) console.log(`로스터 오류 ${res.runs.reduce((s, r) => s + r.rosterErrors, 0)}건`);
+}
+
+async function careerTuneCli(stage: string, iters: number, years: number, runs: number) {
+  const best = await tuneCareer(loadCareerParams(), { stage, iters, years, runs, seed, log: (m) => console.log(m) });
+  saveCareerParams(best);
+  console.log("저장: data/careerParams.json");
 }
 
 function transfer(aId: string, bId: string, runs: number) {
