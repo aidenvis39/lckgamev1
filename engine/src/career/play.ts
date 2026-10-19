@@ -5,6 +5,7 @@ import type { Params } from "../params.ts";
 import { createRng, hashSeed } from "../rng.ts";
 import type { Universe } from "../types.ts";
 import { crossedCheckpoints, developAt } from "./develop.ts";
+import { beginOpening } from "./opening.ts";
 import { beginOffseason, closeSeason, finishOffseason, runAiMarket } from "./rollover.ts";
 import { recordSeries } from "./stats.ts";
 import { emptyStats, type SeasonStats, type WorldState } from "./types.ts";
@@ -53,4 +54,11 @@ export function aiOffseason(world: WorldState, y: YearState, stats: SeasonStats,
   const market = runAiMarket(begun.world, begun.expiring, 4, null, createRng(hashSeed(w.seed, w.season, "market")));
   w = finishOffseason(market.world, stats, base.champions);
   return w;
+}
+
+// 첫 스토브리그(2025 → 2026)를 AI만으로: 실제 은퇴 → 계약 끝난 선수 FA → 사전 합의대로 실제 2026 팀에 → 2026 시즌 시작
+export function aiOpening(world: WorldState, base: Universe): WorldState {
+  const begun = beginOpening(world);
+  const market = runAiMarket(begun.world, begun.expiring, 4, null, createRng(hashSeed(world.seed, world.season, "market")));
+  return finishOffseason(market.world, emptyStats(), base.champions);
 }

@@ -1,14 +1,15 @@
 // 세계 상태 만들기, 엔진 Universe로 바꾸기, 로스터 검사.
 import type { Params } from "../params.ts";
 import { createRng, hashSeed, type Rng } from "../rng.ts";
-import type { Targets, WorldTargets } from "../targets.ts";
+import type { WorldTargets } from "../targets.ts";
 import type { Champion, Player, Ratings, TeamInfo, Universe } from "../types.ts";
 import { POSITIONS } from "../types.ts";
 import { DEFAULT_CAREER_PARAMS, knot, type CareerParams } from "./params.ts";
-import type { PlayerState, SeasonStats, TeamState, WorldState } from "./types.ts";
-import { payroll, salaryDemand } from "./value.ts";
+import type { PlayerState, PreAgreement, SeasonStats, Start2025, StartEntry, TeamState, WorldState } from "./types.ts";
+import { contractYears, payroll, salaryDemand } from "./value.ts";
 
-export const START_SEASON = 2026;
+export const OPENING_SEASON = 2025; // 커리어는 2025 시즌이 끝난 스토브리그에서 시작
+export const FIRST_SEASON = 2026; // 처음 치르는 시즌
 export const MAX_MAIN_ROSTER = 10; // 1군 최대 인원 (2026 실제 로스터 최대치)
 // 리그별 연봉 상한 최소치 (C)
 const CAP_FLOOR: Record<string, number> = { LCK: 18, LPL: 18, LEC: 14, LCS: 14, LCP: 10, CBLOL: 10 };
@@ -41,85 +42,113 @@ const shiftRatings = (r: Ratings, d: number): Ratings => ({
 });
 
 export interface WorldInput {
-  players: Player[];
-  academy: Player[];
-  teams: TeamInfo[];
+  players: Player[]; // 실제 2026 1군 (능력치·챔피언 풀은 2026 값)
+  academy: Player[]; // 실제 2026 2군
+  teams: TeamInfo[]; // 실제 2026 로스터 (첫 스토브리그 AI 목표, 세계 수준 기준선)
   champions: Champion[];
   params: Params;
   world: WorldTargets;
-  targets: Targets; // 2026 LCK 팀 승률 (명성 초기값)
+  start: Start2025; // 2025 시즌 끝 소속·계약·실제 이적
   seed: number;
   cp?: CareerParams; // 커리어 조절값 (없으면 기본값)
 }
 
+// 커리어 시작 = 2025 시즌이 끝난 스토브리그. 능력치는 2026 값 그대로라 첫 시즌(2026) 캘리브레이션이 유지된다.
+// 계약이 끝난 선수(실제로 팀을 옮긴 선수)는 이번 스토브리그에 FA가 되고, 실제 2026 팀과 사전 합의한 상태다.
 export function initWorld(input: WorldInput): WorldState {
   const cp = input.cp ?? DEFAULT_CAREER_PARAMS;
+  const st = input.start;
   const rng = createRng(hashSeed(input.seed, "world-init"));
   const offset = (lg: string) => (lg === "LCKCL" ? input.world.academyOffset : (input.params.leagueOffset[lg] ?? 0));
   const players: Record<string, PlayerState> = {};
-  const add = (p: Player, academy: boolean) => {
+  const pre: Record<string, PreAgreement> = {};
+  const retire: string[] = [];
+  const add = (p: Player, e: StartEntry) => {
     const age = p.age ?? 22;
     const ratings = shiftRatings(p.ratings, offset(p.ratingLeague));
     const base: PlayerState = {
       ...p,
+      team: e.team ?? "",
       age,
       ratings,
       ratingLeague: "GLOBAL",
       potential: rollPotential(cp, ratings, age, rng),
       contract: null,
-      academy,
+      academy: Boolean(e.team) && e.academy,
       virtual: false,
       faSeasons: 0,
       retired: false,
-      careerTitles: [],
+      careerTitles: [...e.titles],
+      careerGames: e.careerGames,
     };
-    const end = Math.max(START_SEASON, p.contractEnd ?? START_SEASON + rng.int(2));
-    base.contract = { team: p.team, endSeason: end, salary: academy ? 0.3 : salaryDemand(base), role: p.starter ? "starter" : "bench", generated: p.contractEnd == null };
+    if (e.team) {
+      const stays = e.team === e.dest;
+      const end = e.contractEnd == null ? FIRST_SEASON + rng.int(2) : stays ? Math.max(FIRST_SEASON, e.contractEnd) : e.contractEnd;
+      base.contract = { team: e.team, endSeason: end, salary: base.academy ? 0.3 : salaryDemand(base), role: e.starter ? "starter" : "bench", generated: e.contractEnd == null };
+    }
+    if (e.dest && e.dest !== e.team)
+      pre[p.id] = { team: e.dest, academy: e.destAcademy, starter: e.destStarter, years: Math.min(3, Math.max(1, e.destYears ?? contractYears(age))) };
+    if (e.retire) retire.push(p.id);
     players[p.id] = base;
   };
-  for (const p of input.players) add(p, false);
-  for (const p of input.academy) add(p, true);
+  for (const p of [...input.players, ...input.academy]) add(p, st.entries[p.id]);
+  for (const x of st.extra) {
+    const { academy, dest, destAcademy, destStarter, destYears, retire: r, titles, careerGames, contractEnd, ...p } = x;
+    add({ ...p, contractEnd } as Player, { team: p.team || null, academy, starter: p.starter, contractEnd, dest, destAcademy, destStarter, destYears, retire: r, titles, careerGames });
+  }
 
-  const real: Record<string, number> = { ...input.targets.team_regular_winrate };
-  for (const lg of Object.values(input.world.teamWinrate)) Object.assign(real, lg);
+  // 실제 2026 로스터: 세계 수준 기준선, 연봉 상한(실제 영입이 상한 안에 들게), 첫 스토브리그 목표
+  const realTeams: Record<string, TeamState> = {};
   const teams: Record<string, TeamState> = {};
   for (const t of input.teams) {
-    const main = [...POSITIONS.map((pos) => t.starters[pos]), ...t.bench];
-    const cap = Math.max(CAP_FLOOR[t.league] ?? 10, Math.ceil(payroll(players, main) * 1.1));
-    teams[t.id] = {
+    const r = st.teams[t.id];
+    const main2025 = [...POSITIONS.map((pos) => r.starters[pos]), ...r.bench].filter(Boolean);
+    const main2026 = [...POSITIONS.map((pos) => t.starters[pos]), ...t.bench];
+    const real = Math.round(main2026.reduce((sum, id) => sum + salaryDemand(players[id]), 0) * 10) / 10;
+    const cap = Math.max(CAP_FLOOR[t.league] ?? 10, Math.ceil(Math.max(payroll(players, main2025), real) * 1.1));
+    const state: TeamState = {
       id: t.id,
       name: t.name,
       league: t.league,
-      starters: { ...t.starters },
-      bench: [...t.bench],
-      academy: input.academy.filter((p) => p.team === t.id).map((p) => p.id),
+      starters: { ...r.starters },
+      bench: [...r.bench],
+      academy: [...r.academy],
       cap,
       transferBudget: Math.round(cap * 0.3),
       teamwork: input.params.teamwork[t.id] ?? 0,
-      prestige: Math.round((real[t.id] ?? 0.5) * 100) / 100,
-      seasonStarters: POSITIONS.map((pos) => t.starters[pos]),
+      prestige: Math.round((r.winrate2025 ?? 0.4) * 100) / 100,
+      seasonStarters: POSITIONS.map((pos) => r.starters[pos]).filter(Boolean),
       focus: [],
     };
+    teams[t.id] = state;
+    realTeams[t.id] = { ...state, starters: { ...t.starters }, bench: [...t.bench] };
   }
   const meta = Object.fromEntries(input.champions.map((c) => [c.id, c.meta]));
-  const baseline = starterMeans(players, teams, input.params.macroWeight);
+  const baseline = starterMeans(players, realTeams, input.params.macroWeight);
   const replacement = Object.fromEntries(Object.entries(baseline).map(([lg, m]) => [lg, Math.round((m - cp.replacement.gap) * 10) / 10]));
+  const freeAgents = Object.values(players).filter((p) => !p.contract).map((p) => p.id);
   return {
     version: 1,
     seed: input.seed,
-    season: START_SEASON,
+    season: OPENING_SEASON,
     players,
     teams,
-    freeAgents: [],
+    freeAgents,
     champMeta: { ...meta },
     baseMeta: meta,
-    history: [],
+    history: [{ ...st.history, places: {}, moves: [] }],
     lastGrowth: null,
     nextRookie: 1,
     replacement,
     baseline,
     macroWeight: input.params.macroWeight,
     cp,
+    opening: {
+      pre,
+      retire,
+      realStarters: Object.fromEntries(input.teams.map((t) => [t.id, { ...t.starters }])),
+      tunedTeamwork: Object.fromEntries(input.teams.map((t) => [t.id, input.params.teamwork[t.id] ?? 0])),
+    },
   };
 }
 

@@ -6,12 +6,14 @@ import worldTargets from "../../engine/data/world.json";
 import matchups from "../../engine/data/matchups.json";
 import tuned from "../../engine/data/params.json";
 import players from "../../engine/data/players.json";
+import start2025 from "../../engine/data/start2025.json";
 import targets from "../../engine/data/targets.json";
 import teams from "../../engine/data/teams.json";
 import { DEFAULT_PARAMS, type Params } from "../../engine/src/params.ts";
 import type { Champion, Player, TeamInfo, Universe } from "../../engine/src/types.ts";
 import type { Targets, WorldTargets } from "../../engine/src/targets.ts";
 import { withDefaults, type CareerParams } from "../../engine/src/career/params.ts";
+import type { Start2025 } from "../../engine/src/career/types.ts";
 import { initWorld } from "../../engine/src/career/world.ts";
 import { applyLeagueOffsets, createUniverse, leagueUniverse, type RawData } from "../../engine/src/universe.ts";
 
@@ -89,14 +91,14 @@ export function newWorld(seed: number) {
     champions: champions as unknown as Champion[],
     params,
     world: worldTargets as unknown as WorldTargets,
-    targets: (targets as unknown as Record<string, Targets>)["2026"],
+    start: start2025 as unknown as Start2025,
     seed,
     cp: careerParams,
   });
 }
-export { mainRoster, toUniverse, validateWorld, worldParams, MAX_MAIN_ROSTER, START_SEASON } from "../../engine/src/career/world.ts";
+export { mainRoster, toUniverse, validateWorld, worldParams, MAX_MAIN_ROSTER, OPENING_SEASON, FIRST_SEASON } from "../../engine/src/career/world.ts";
 export { CHECKPOINTS, crossedCheckpoints, developAt } from "../../engine/src/career/develop.ts";
-export { newYearFor } from "../../engine/src/career/play.ts";
+export { aiOpening, newYearFor } from "../../engine/src/career/play.ts";
 export { beginOffseason, closeSeason, finishOffseason, positionTop } from "../../engine/src/career/rollover.ts";
 export { makeRookie, seedPool } from "../../engine/src/career/rookies.ts";
 export { goalsFor } from "../../engine/src/career/owner.ts";

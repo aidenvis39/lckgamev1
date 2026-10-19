@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { loadAcademy, loadParams, loadRaw, loadTargets, loadUniverse, loadWorldTargets } from "../src/data.ts";
+import { loadAcademy, loadCareerParams, loadParams, loadRaw, loadStart2025, loadUniverse, loadWorldTargets } from "../src/data.ts";
 import { CHECKPOINTS, crossedCheckpoints, type Checkpoint } from "../src/career/develop.ts";
-import { aiOffseason, newYearFor, playCareerSeason } from "../src/career/play.ts";
+import { aiOffseason, aiOpening, newYearFor, playCareerSeason } from "../src/career/play.ts";
 import { canAfford, completeBid, playerAcceptsMove, sellerVerdict, type Bid } from "../src/career/market.ts";
 import { initWorld, mainRoster, validateWorld } from "../src/career/world.ts";
 import { applyTrade, bidFor, demote, evaluateTrade, promote, resignMine, salaryNeeded, setStarter, toggleFocus } from "../src/career/userMarket.ts";
@@ -13,12 +13,14 @@ import { POSITIONS } from "../src/types.ts";
 
 const base = loadUniverse();
 const params = loadParams();
-const fresh = (seed = 1) => initWorld({ ...loadRaw(), academy: loadAcademy(), params, world: loadWorldTargets(), targets: loadTargets("2026"), seed });
+// 2025 시즌 끝 세계 (첫 스토브리그 전)와, AI가 첫 스토브리그를 마친 2026 시즌 시작 세계
+const opening = (seed = 1) => initWorld({ ...loadRaw(), academy: loadAcademy(), params, world: loadWorldTargets(), start: loadStart2025(), cp: loadCareerParams(), seed });
+const fresh = (seed = 1) => aiOpening(opening(seed), base);
 
 test("커리어 시작: 로스터 불변식, 세계 공통 능력치, 2군 포함, 연봉 합 ≤ 상한", () => {
   const w = fresh();
   assert.deepEqual(validateWorld(w), []);
-  assert.ok(Object.values(w.players).every((p) => p.ratingLeague === "GLOBAL" && p.contract));
+  assert.ok(Object.values(w.players).every((p) => p.ratingLeague === "GLOBAL" && (p.retired || p.contract || w.freeAgents.includes(p.id))));
   assert.ok(Object.values(w.teams).filter((t) => t.league === "LCK").every((t) => t.academy.length > 0));
   // LCK 2군 선수는 LCK CL 보정만큼 낮아짐
   const acad = Object.values(w.players).filter((p) => p.academy);
@@ -60,7 +62,7 @@ test("두 시즌 진행: 시즌마다 로스터 불변식 유지, 나이 +1, 계
         assert.equal(p.age, (old.age ?? 22) + 1, p.id);
         if (p.contract) assert.ok(p.contract.endSeason >= w.season, `${p.id} 계약 ${p.contract.endSeason} < ${w.season}`);
       }
-      assert.equal(w.history.length, i + 1);
+      assert.equal(w.history.length, i + 2); // 2025 실제 기록 + 치른 시즌
       snapshots.push(w);
     }
     return snapshots[1];

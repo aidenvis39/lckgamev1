@@ -58,6 +58,9 @@ export interface CareerParams {
     contracted: number; // 다음 시즌 계약이 남았으면 배율
     faSeasons: number; // FA로 이만큼 못 뛰면 은퇴
   };
+  opening: {
+    preBonus: number; // 첫 스토브리그: 실제 2026 팀 제안에 더하는 효용 (사전 합의)
+  };
 }
 
 export const DEFAULT_CAREER_PARAMS: CareerParams = {
@@ -109,6 +112,7 @@ export const DEFAULT_CAREER_PARAMS: CareerParams = {
     contracted: 0.2,
     faSeasons: 2,
   },
+  opening: { preBonus: 0.45 },
 };
 
 // 나이 표 읽기: 점 사이는 직선, 범위 밖은 끝 값

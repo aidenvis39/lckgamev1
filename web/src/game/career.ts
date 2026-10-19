@@ -3,6 +3,7 @@
 // 한 해: LCK 1~2라운드 → Road to MSI → MSI → LCK 3~4라운드 → LCK 플레이인·플레이오프 → 월즈 → 스토브리그 → 다음 해
 import {
   acceptance,
+  aiOpening,
   applyTrade,
   baseUniverse,
   beginOffseason,
@@ -134,7 +135,7 @@ const DETAILED = new Set(["LCK", "RTM", "MSI", "LCKPO", "WORLDS"]);
 export const isOverseasLeague = (m: Match) => OVERSEAS.includes(m.event);
 
 export function newCareer(teamId: string, seed = Math.floor(Math.random() * 1e9)): Career {
-  const world = newWorld(seed);
+  const world = aiOpening(newWorld(seed), baseUniverse);
   return {
     version: 3,
     teamId,
@@ -517,7 +518,7 @@ interface CareerV2 {
 }
 
 export function fromV2(old: CareerV2): Career {
-  let world = newWorld(old.seed);
+  let world = aiOpening(newWorld(old.seed), baseUniverse);
   for (const pos of POSITIONS) {
     const id = old.starters[pos];
     if (id && world.players[id] && world.teams[old.teamId].starters[pos] !== id) {

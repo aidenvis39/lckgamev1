@@ -12,8 +12,8 @@
 import { readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import type { Row } from "./calibrate.ts";
-import { loadAcademy, loadParams, loadRaw, loadTargets, loadUniverse, loadWorldTargets, saveParams } from "./data.ts";
-import { aiOffseason, playCareerSeason } from "./career/play.ts";
+import { loadAcademy, loadCareerParams, loadParams, loadRaw, loadStart2025, loadTargets, loadUniverse, loadWorldTargets, saveParams } from "./data.ts";
+import { aiOffseason, aiOpening, playCareerSeason } from "./career/play.ts";
 import { initWorld, mainRoster, starterMeans, validateWorld } from "./career/world.ts";
 import { overall, payroll } from "./career/value.ts";
 import type { WorldState } from "./career/types.ts";
@@ -267,7 +267,8 @@ function career(years: number, runs: number) {
   const worldsRegion = new Map<string, number>();
   const started = Date.now();
   for (let run = 0; run < runs; run++) {
-    let w: WorldState = initWorld({ ...raw, academy: loadAcademy(), params, world: loadWorldTargets(), targets: loadTargets("2026"), seed: hashSeed(seed, "career", run) });
+    const init = initWorld({ ...raw, academy: loadAcademy(), params, world: loadWorldTargets(), start: loadStart2025(), cp: loadCareerParams(), seed: hashSeed(seed, "career", run) });
+    let w: WorldState = aiOpening(init, base); // 첫 스토브리그 (실제 2026 이적 재현)
     for (let yr = 0; yr < years; yr++) {
       const startOvr = new Map(Object.values(w.players).filter((p) => !p.retired).map((p) => [p.id, [p.age ?? 22, overall(p.ratings)] as const]));
       const leagueAvg = starterMeans(w.players, w.teams, w.macroWeight);

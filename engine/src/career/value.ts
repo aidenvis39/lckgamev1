@@ -31,5 +31,8 @@ export function transferFee(p: PlayerState, season: number): number {
   return Math.round(salaryDemand(p) * (0.8 + 0.7 * years) * 10) / 10;
 }
 
+// 나이에 따른 계약 기간
+export const contractYears = (age: number) => (age <= 22 ? 3 : age <= 26 ? 2 : 1);
+
 export const payroll = (players: Record<string, PlayerState>, ids: string[]) =>
   Math.round(ids.reduce((s, id) => s + (players[id]?.contract?.salary ?? 0), 0) * 10) / 10;

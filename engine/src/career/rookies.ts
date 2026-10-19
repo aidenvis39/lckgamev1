@@ -72,6 +72,7 @@ export function makeRookie(
     faSeasons: 0,
     retired: false,
     careerTitles: [],
+    careerGames: 0,
   };
 }
 

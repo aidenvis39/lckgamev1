@@ -9,6 +9,7 @@ import type { Champion, Position } from "../types.ts";
 import { POSITIONS } from "../types.ts";
 import { seasonEndDevelop } from "./develop.ts";
 import { aiBuyouts, aiOffers, aiResign, aiSetLineups, fillRosters, release, resolveOffers, type Offer } from "./market.ts";
+import { expiringOf, finishOpening } from "./opening.ts";
 import { evaluateGoals, type Goal } from "./owner.ts";
 import type { CareerParams } from "./params.ts";
 import { makeRookie, seedPool } from "./rookies.ts";
@@ -104,10 +105,7 @@ export function beginOffseason(world: WorldState, stats: SeasonStats, champions:
       w = { ...w, players: { ...w.players, [r.id]: r }, freeAgents: [...w.freeAgents, r.id], nextRookie: w.nextRookie + 1 };
     }
   }
-  const expiring: Record<string, string[]> = {};
-  for (const t of Object.values(w.teams))
-    expiring[t.id] = [...mainRoster(t), ...t.academy].filter((id) => (w.players[id].contract?.endSeason ?? 0) <= w.season);
-  return { world: w, expiring };
+  return { world: w, expiring: expiringOf(w) };
 }
 
 // AI만 시장 진행 (CLI·사용자가 맡기지 않은 팀): 재계약 → FA 라운드
@@ -126,6 +124,7 @@ export function runAiMarket(world: WorldState, expiring: Record<string, string[]
 }
 
 export function finishOffseason(world: WorldState, stats: SeasonStats, champions: Map<string, Champion>, userTeam: string | null = null): WorldState {
+  if (world.opening) return finishOpening(world, stats, champions, userTeam, positionTop);
   const rng = createRng(hashSeed(world.seed, world.season, "finish-offseason"));
   let w = fillRosters(world, rng, positionTop(champions, world.champMeta));
   w = aiSetLineups(w, userTeam);

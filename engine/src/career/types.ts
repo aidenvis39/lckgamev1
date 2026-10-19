@@ -21,7 +21,8 @@ export interface PlayerState extends Player {
   virtual: boolean; // 게임이 만든 신인
   faSeasons: number; // 무소속으로 보낸 스토브리그 수 (2번이면 은퇴)
   retired: boolean;
-  careerTitles: string[]; // "2027 LCK", "2028 월즈" ...
+  careerTitles: string[]; // "2027 LCK", "2028 월즈" ... (2020~2025는 실제 우승)
+  careerGames: number; // 통산 출전 세트 (2020~2025 실제 + 커리어 중 출전)
 }
 
 export interface TeamState {
@@ -71,6 +72,43 @@ export interface WorldState {
   baseline: Record<string, number>; // 2026 리그별 주전 평균 '실효' 실력 (세계 수준 유지 목표)
   macroWeight: number; // 운영 기여를 실력 점수로 바꿀 때 씀 (엔진 params.macroWeight)
   cp: CareerParams; // 성장·노쇠·신인·은퇴 조절값 (저장을 불러올 때 최신 값으로 바꿀 수 있음)
+  opening: Opening | null; // 첫 스토브리그(2025 → 2026) 동안만: 실제 2026 이적 재현용
+}
+
+// ── 커리어 시작: 2025 시즌이 끝난 스토브리그 (engine/data/start2025.json) ──
+export interface StartEntry {
+  team: string | null; // 2025 시즌 끝 소속 (null = FA)
+  academy: boolean;
+  starter: boolean;
+  contractEnd: number | null; // 2025 = 이번 스토브리그에 끝남, null = 모름(게임이 정함)
+  dest: string | null; // 실제 2026 팀
+  destAcademy: boolean;
+  destStarter: boolean;
+  destYears: number | null;
+  retire: boolean; // 2025 시즌 뒤 실제 은퇴
+  titles: string[];
+  careerGames: number;
+}
+export interface Start2025 {
+  season: number;
+  entries: Record<string, StartEntry>; // players.json + academy.json 선수
+  extra: Array<Player & StartEntry & { academy: boolean }>; // 2025에만 뛴 선수
+  teams: Record<string, { starters: Record<Position, string>; bench: string[]; academy: string[]; winrate2025: number | null }>;
+  history: SeasonRecord;
+}
+
+// 실제 2026 계약 (사전 합의): 이 팀 제안엔 선수가 효용 보너스를 준다. 사용자가 더 좋은 조건으로 뺏을 수 있다
+export interface PreAgreement {
+  team: string;
+  academy: boolean;
+  starter: boolean;
+  years: number;
+}
+export interface Opening {
+  pre: Record<string, PreAgreement>; // 선수 → 실제 2026 팀
+  retire: string[]; // 2025 시즌 뒤 실제 은퇴
+  realStarters: Record<string, Record<Position, string>>; // 팀 → 실제 2026 주전
+  tunedTeamwork: Record<string, number>; // 실제 2026 로스터에 맞춘 팀워크
 }
 
 // 시즌 중 쌓는 기록 (성장·챔피언 풀용). 시즌이 바뀌면 비운다

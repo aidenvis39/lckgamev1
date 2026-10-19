@@ -1,6 +1,7 @@
 // data/*.json 로더 (Node 전용). 엔진 코어(draft, match, series, season)는 fs에 의존하지 않는다.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { withDefaults, type CareerParams } from "./career/params.ts";
+import type { Start2025 } from "./career/types.ts";
 import { DEFAULT_PARAMS, type Params } from "./params.ts";
 import type { Targets, WorldTargets } from "./targets.ts";
 import type { Champion, Player, TeamInfo, Universe } from "./types.ts";
@@ -55,6 +56,11 @@ export function loadWorldTargets(): WorldTargets {
 // LCK 팀별 2군(LCK CL) 선수. team = 1군 팀 약칭, 능력치는 LCK CL 안 백분위
 export function loadAcademy(): Player[] {
   return read<Player[]>("academy.json");
+}
+
+// 커리어 시작 상태: 2025 시즌이 끝난 스토브리그 (소속·계약·실제 2026 이적·실제 우승)
+export function loadStart2025(): Start2025 {
+  return read<Start2025>("start2025.json");
 }
 
 // 다년 커리어 시작용 원본 (세계 상태를 만들 때 씀)

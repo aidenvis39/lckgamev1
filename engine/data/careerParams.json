@@ -95,5 +95,8 @@
   "eliteLoMult": 0.6,
   "contracted": 0.2,
   "faSeasons": 2
+ },
+ "opening": {
+  "preBonus": 0.45
  }
 }

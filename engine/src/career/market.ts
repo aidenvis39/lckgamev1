@@ -5,7 +5,7 @@ import type { Position } from "../types.ts";
 import { POSITIONS } from "../types.ts";
 import { makeRookie, REGION_NATION, seedPool } from "./rookies.ts";
 import type { PlayerState, TeamState, WorldState } from "./types.ts";
-import { overall, payroll, playerValue, salaryDemand, transferFee } from "./value.ts";
+import { contractYears, overall, payroll, playerValue, salaryDemand, transferFee } from "./value.ts";
 import { mainRoster, MAX_MAIN_ROSTER } from "./world.ts";
 
 export interface Offer {
@@ -14,6 +14,7 @@ export interface Offer {
   salary: number;
   years: number; // 1~3
   role: "starter" | "bench";
+  academy?: boolean; // 2군 계약 (첫 스토브리그 실제 2026 2군 영입)
 }
 
 // 국적 → 선호 지역 (같은 지역 팀 제안을 더 좋게 본다)
@@ -37,18 +38,23 @@ export function homeRegion(p: PlayerState, world: WorldState): string {
   return world.teams[team]?.league ?? (p.nationality ? "LEC" : "LCK"); // 유럽 각국 국적은 LEC로 본다
 }
 
-// 제안 효용: 요구 대비 연봉 + 팀 명성 + 주전 약속 + 같은 지역 + 원소속 우대
+// 제안 효용: 요구 대비 연봉 + 팀 명성 + 주전 약속 + 같은 지역 + 원소속 우대 (+ 첫 스토브리그 사전 합의)
 export function offerUtility(world: WorldState, p: PlayerState, o: Offer): number {
   const t = world.teams[o.team];
   const demand = Math.max(0.3, salaryDemand(p));
   return (
+    (isPreAgreed(world, p.id, o.team) ? world.cp.opening.preBonus : 0) +
     Math.min(1.6, o.salary / demand) +
+    0.5 * Math.max(0, Math.min(0.8, o.salary / demand - 1.6)) + // 요구의 1.6배를 넘는 몫은 절반만 (2.4배까지)
     0.5 * (t?.prestige ?? 0.5) +
     (o.role === "starter" ? 0.25 : 0) +
     (homeRegion(p, world) === t?.league ? 0.3 : 0) +
     (p.contract?.team === o.team || p.team === o.team ? 0.15 : 0)
   );
 }
+// 첫 스토브리그: 실제 2026 팀과 사전 합의한 선수인가
+export const isPreAgreed = (world: WorldState, player: string, team: string) => world.opening?.pre[player]?.team === team;
+
 export const ACCEPT = 1.45; // 이 이상이면 바로 수락 (요구 연봉 그대로 + 보통 팀 + 같은 지역이면 넘음)
 export const ACCEPT_LAST = 1.0; // 마지막 라운드엔 이 정도면 수락
 
@@ -94,6 +100,11 @@ export function sign(world: WorldState, o: Offer): WorldState {
   const academy = t0.academy.filter((x) => x !== p.id);
   const pos = p.position;
   const current = starters[pos];
+  if (o.academy) {
+    w = setTeam(w, o.team, { ...t0, starters, bench, academy: [...academy, p.id] });
+    w = setPlayer(w, { ...p, team: o.team, academy: true, faSeasons: 0, contract: { team: o.team, endSeason: w.season + o.years, salary: round1(o.salary), role: "bench", generated: false } });
+    return { ...w, freeAgents: w.freeAgents.filter((x) => x !== o.player) };
+  }
   if (current === p.id) {
     // 이미 주전 (재계약)
   } else if (o.role === "starter" || !current) {
@@ -122,13 +133,17 @@ export const capRoom = (world: WorldState, teamId: string, without: string[] = [
   return round1(t.cap - payroll(world.players, mainRoster(t).filter((id) => !without.includes(id))));
 };
 
-// 나이에 따른 계약 기간
-export const contractYears = (age: number) => (age <= 22 ? 3 : age <= 26 ? 2 : 1);
+export { contractYears };
 
 // ── AI 재계약 ─────────────────────────────────────────
 // 계약이 끝나는 선수: 주전이거나 쓸 만한 후보면 요구 연봉으로 재계약. 상한을 넘으면 가치 낮은 순으로 포기
 export function aiResign(world: WorldState, teamId: string, expiring: string[], rng: Rng): WorldState {
   let w = world;
+  // 첫 스토브리그: 계약이 끝난 선수는 실제로 팀을 옮긴 선수뿐이라 모두 내보낸다
+  if (w.opening) {
+    for (const id of expiring) if (w.players[id].contract?.team === teamId) w = release(w, id);
+    return w;
+  }
   const t = w.teams[teamId];
   const starterIds = new Set(POSITIONS.map((pos) => t.starters[pos]));
   const ranked = [...expiring].sort((a, b) => playerValue(w.players[b]) - playerValue(w.players[a]));
@@ -166,12 +181,37 @@ export function needsOf(world: WorldState, teamId: string): Need[] {
   return out.sort((a, b) => b.weight - a.weight);
 }
 
-// 팀 하나의 이번 라운드 제안 (최대 2개): 공백 포지션 → 주전 업그레이드 → 후보 보강
+// 첫 스토브리그: 이 팀과 사전 합의한 FA에게 실제 조건(역할·2군·기간)으로 낼 제안
+export function preOffers(world: WorldState, teamId: string): Offer[] {
+  if (!world.opening) return [];
+  return Object.entries(world.opening.pre)
+    .filter(([id, a]) => a.team === teamId && world.freeAgents.includes(id) && !world.players[id].retired)
+    .map(([id, a]) => ({ team: teamId, player: id, salary: a.academy ? 0.3 : salaryDemand(world.players[id]), years: a.years, role: a.starter ? "starter" : "bench", academy: a.academy }));
+}
+
+// 사전 합의한 선수 중 다른 팀과 계약했거나 은퇴한 선수가 있으면 계획이 깨진 것
+export function planBroken(world: WorldState, teamId: string): boolean {
+  if (!world.opening) return false;
+  return Object.entries(world.opening.pre).some(([id, a]) => a.team === teamId && (world.players[id].retired || (world.players[id].contract && world.players[id].contract!.team !== teamId)));
+}
+
+// 팀 하나의 이번 라운드 제안 (최대 2개, 첫 스토브리그는 사전 합의 제안 + 2개): 공백 포지션 → 주전 업그레이드 → 후보 보강
 export function aiOffers(world: WorldState, teamId: string, rng: Rng): Offer[] {
   const t = world.teams[teamId];
   const offers: Offer[] = [];
   let room = capRoom(world, teamId);
-  const pool = world.freeAgents.map((id) => world.players[id]).filter((p) => p && !p.retired);
+  let pool = world.freeAgents.map((id) => world.players[id]).filter((p) => p && !p.retired);
+  let covered = new Set<Position>();
+  if (world.opening) {
+    // 첫 스토브리그: 실제 2026 영입 선수에게 먼저 제안. 계획이 깨졌을 때(다른 팀이 데려감·은퇴)만 아래 보통 영입으로
+    const pre = preOffers(world, teamId);
+    if (!planBroken(world, teamId)) return pre;
+    offers.push(...pre);
+    room -= pre.filter((o) => !o.academy).reduce((s, o) => s + o.salary, 0);
+    covered = new Set(pre.filter((o) => o.role === "starter" && !o.academy).map((o) => world.players[o.player].position));
+    pool = pool.filter((p) => !world.opening!.pre[p.id]); // 다른 팀과 합의한 선수는 건드리지 않는다
+  }
+  const limit = offers.length + 2;
   const want = (pos: Position, role: "starter" | "bench", minOvr: number) => {
     const cands = pool
       .filter((p) => p.position === pos && overall(p.ratings) >= minOvr && !offers.some((o) => o.player === p.id))
@@ -184,10 +224,10 @@ export function aiOffers(world: WorldState, teamId: string, rng: Rng): Offer[] {
     room -= pick.demand;
   };
   for (const need of needsOf(world, teamId)) {
-    if (offers.length >= 2) break;
-    want(need.pos, need.role, 0);
+    if (offers.length >= limit) break;
+    if (!covered.has(need.pos)) want(need.pos, need.role, 0);
   }
-  if (offers.length < 2 && mainRoster(t).length < MAX_MAIN_ROSTER) {
+  if (offers.length < limit && mainRoster(t).length < MAX_MAIN_ROSTER) {
     // 주전보다 4점 이상 좋은 FA가 있고 연봉이 되면 업그레이드
     const weakest = POSITIONS.filter((pos) => t.starters[pos]).sort((a, b) => overall(world.players[t.starters[a]].ratings) - overall(world.players[t.starters[b]].ratings))[0];
     if (weakest) want(weakest, "starter", overall(world.players[t.starters[weakest]].ratings) + 4);
@@ -208,10 +248,11 @@ export function resolveOffers(world: WorldState, offers: Offer[], last: boolean)
     if (!w.freeAgents.includes(id) && !p.contract) continue;
     const valid = byPlayer
       .get(id)!
-      .filter((o) => o.salary <= capRoom(w, o.team, [id]) + 0.05 && mainRoster(w.teams[o.team]).filter((x) => x !== id).length < MAX_MAIN_ROSTER);
+      .filter((o) => o.academy || (o.salary <= capRoom(w, o.team, [id]) + 0.05 && mainRoster(w.teams[o.team]).filter((x) => x !== id).length < MAX_MAIN_ROSTER));
     if (!valid.length) continue;
     const best = valid.map((o) => ({ o, u: offerUtility(w, p, o) })).sort((a, b) => b.u - a.u)[0];
-    if (best.u < (last ? ACCEPT_LAST : ACCEPT)) continue;
+    // 사전 합의 팀 제안이 가장 좋으면 기준과 상관없이 계약 (실제 2026 이적)
+    if (best.u < (last ? ACCEPT_LAST : ACCEPT) && !isPreAgreed(w, id, best.o.team)) continue;
     w = sign(w, best.o);
     signed.push(best.o);
   }
@@ -352,6 +393,7 @@ export function completeBid(world: WorldState, bid: Bid): WorldState {
 export function aiBuyouts(world: WorldState, rng: Rng, skipTeam: string | null): { world: WorldState; done: Bid[] } {
   let w = world;
   const done: Bid[] = [];
+  if (w.opening) return { world: w, done }; // 첫 스토브리그엔 실제 이적만
   const order = Object.values(w.teams).filter((t) => t.id !== skipTeam).sort((a, b) => b.prestige - a.prestige + 0.1 * (rng.next() - 0.5));
   for (const buyer of order) {
     const t = w.teams[buyer.id];
