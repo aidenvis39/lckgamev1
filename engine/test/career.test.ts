@@ -5,6 +5,7 @@ import { CHECKPOINTS, crossedCheckpoints, type Checkpoint } from "../src/career/
 import { aiOffseason, newYearFor, playCareerSeason } from "../src/career/play.ts";
 import { canAfford, completeBid, playerAcceptsMove, sellerVerdict, type Bid } from "../src/career/market.ts";
 import { initWorld, mainRoster, validateWorld } from "../src/career/world.ts";
+import { applyTrade, bidFor, demote, evaluateTrade, promote, resignMine, salaryNeeded, setStarter, toggleFocus } from "../src/career/userMarket.ts";
 import { overall, salaryDemand, transferFee } from "../src/career/value.ts";
 import { endDay, recordResult, todayMatches } from "../src/competition/year.ts";
 import { hashSeed } from "../src/rng.ts";
@@ -95,4 +96,45 @@ test("이적료 영입 규칙: 몸값 미만이면 거절, 대체 없는 주전�
   assert.equal(typeof playerAcceptsMove(w, bid(fee)), "boolean");
   assert.ok(POSITIONS.every((pos) => after.teams.T1.starters[pos] !== p.id));
   assert.ok(hashSeed(1) > 0);
+});
+
+test("사용자 시장: 재계약 최소 연봉, 트레이드 평가·적용, 2군 승격·강등, 집중 육성 2명", () => {
+  const w = fresh();
+  // 재계약: 필요한 연봉보다 낮으면 거절, 이상이면 수락
+  const keria = w.players[w.teams.T1.starters.sup];
+  const need = salaryNeeded(w, keria, "T1", "starter");
+  assert.equal(resignMine(w, keria.id, Math.max(0.3, need - 0.5), 2).ok, need - 0.5 < 0.3);
+  const re = resignMine({ ...w, teams: { ...w.teams, T1: { ...w.teams.T1, cap: 200 } } }, keria.id, need, 2);
+  assert.ok(re.ok, re.reason);
+  assert.equal(re.world.players[keria.id].contract!.endSeason, w.season + 2);
+  // 트레이드: 같은 포지션 1:1, 가치가 모자라면 거절 이유, 넉넉하면 수락 후 주전 자리가 채워짐
+  const give = w.teams.DNS.starters.top;
+  const get = w.teams.GEN.starters.top; // Kiin
+  const low = evaluateTrade(w, { from: "DNS", to: "GEN", give: [give], get: [get], fee: 0 });
+  assert.equal(low.ok, false);
+  assert.match(low.reason, /가치|상한|예산/);
+  const rich = { ...w, teams: { ...w.teams, DNS: { ...w.teams.DNS, transferBudget: 500, cap: 500 } } };
+  const big = applyTrade(rich, { from: "DNS", to: "GEN", give: [give], get: [get], fee: 60 });
+  assert.ok(big.ok, big.reason);
+  assert.equal(big.world.players[get].contract!.team, "DNS");
+  assert.equal(big.world.players[give].contract!.team, "GEN");
+  assert.deepEqual(validateWorld(big.world), []);
+  assert.ok(POSITIONS.every((pos) => big.world.teams.GEN.starters[pos] && big.world.teams.DNS.starters[pos]));
+  // 2군 승격 → 주전 → 강등은 후보만
+  const acad = w.teams.T1.academy[0];
+  const pos = w.players[acad].position;
+  const t1 = { ...w, teams: { ...w.teams, T1: { ...w.teams.T1, cap: 200, bench: w.teams.T1.bench.slice(0, 2) } } };
+  const cut = w.teams.T1.bench.slice(2);
+  const t1w = { ...t1, players: { ...t1.players, ...Object.fromEntries(cut.map((id) => [id, { ...t1.players[id], contract: null }])) }, freeAgents: [...t1.freeAgents, ...cut] };
+  const up = promote(t1w, "T1", acad);
+  assert.ok(up.ok, up.reason);
+  const st = setStarter(up.world, "T1", pos, acad);
+  assert.ok(st.ok, st.reason);
+  assert.equal(demote(st.world, "T1", acad).ok, false); // 주전은 못 내림
+  assert.deepEqual(validateWorld(st.world), []);
+  // 집중 육성은 2명까지
+  let f = toggleFocus(w, "T1", w.teams.T1.starters.top).world;
+  f = toggleFocus(f, "T1", w.teams.T1.starters.mid).world;
+  assert.equal(toggleFocus(f, "T1", w.teams.T1.starters.bot).ok, false);
+  assert.ok(bidFor(w, { team: "T1", player: w.teams.T1.starters.mid, fee: 1, salary: 1, years: 1, role: "starter" }).reason.includes("이미 우리 선수"));
 });
