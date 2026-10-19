@@ -1,6 +1,6 @@
 // 대회 탭: Road to MSI, MSI, LCK 포스트시즌, 월즈의 대진표·스위스 기록·최종 순위
 import { useMemo, useState } from "react";
-import { bracketDefOf, bracketView, resolveSlot, swissTable, type BracketDef, type BracketView, type Match, type PhaseId, type Slot } from "../engine.ts";
+import { bracketDefOf, bracketView, champion, resolveSlot, RULES, swissTable, type BracketDef, type BracketView, type Match, type PhaseId, type Slot } from "../engine.ts";
 import { type Career } from "../game/career.ts";
 import { clock, EVENT_NAME, placeName, TEAM_STYLE } from "../game/meta.ts";
 import { LeagueTag, TeamBadge } from "../ui/bits.tsx";
@@ -53,6 +53,7 @@ export function Events({ career }: { career: Career }) {
           <BracketSection career={career} phase="MSI_PI" title="플레이인" />
           <BracketSection career={career} phase="MSI_BR" title="브래킷" />
           <Finals career={career} event="MSI" />
+          <MsiBonus career={career} />
         </>
       )}
       {tab === "LCKPO" && (
@@ -65,7 +66,8 @@ export function Events({ career }: { career: Career }) {
       )}
       {tab === "WORLDS" && (
         <>
-          <Intro text="19팀. 플레이인 4팀 중 1팀이 스위스로. 스위스 16팀은 3승 진출·3패 탈락, 진출·탈락이 걸린 경기만 BO3이고 나머지는 단판. 8강부터 BO5 단판 토너먼트." />
+          <Intro text="19팀 = 지역 기본 17장 + MSI 성적 2장. 플레이인 4팀 중 1팀이 스위스로. 스위스 16팀은 3승 진출·3패 탈락, 진출·탈락이 걸린 경기만 BO3이고 나머지는 단판. 8강부터 BO5 단판 토너먼트." />
+          <MsiBonus career={career} />
           <Qualified career={career} event="worlds" />
           <BracketSection career={career} phase="WLD_PI" title="플레이인" />
           <Swiss career={career} />
@@ -100,8 +102,51 @@ function Qualified({ career, event }: { career: Career; event: "msi" | "worlds" 
             <span>{TEAM_STYLE[e.team].name}</span>
             <LeagueTag league={e.league} />
             <span className="faint num">{e.seed}시드</span>
+            {e.stage === "PI" && <span className="faint">플레이인</span>}
+            {e.via && <span className="chip gold">{e.via}</span>}
           </div>
         ))}
+      </div>
+    </section>
+  );
+}
+
+// MSI 성적으로 생기는 월즈 출전권. 확정 전(월즈 플레이인 전)엔 예상으로 보여준다
+function MsiBonus({ career }: { career: Career }) {
+  const y = career.year;
+  const msi = y.finals.MSI;
+  if (!msi) return null;
+  const leagueOf = (t: string) => Object.entries(y.leagues).find(([, ts]) => ts.includes(t))![0];
+  const champ = champion(y, "MSI")!;
+  const b = y.worldsBonus;
+  const runnerUp = [...msi].sort((a, c) => a[0] - c[0]).find(([, t]) => leagueOf(t) !== leagueOf(champ));
+  return (
+    <section className="panel">
+      <h2>
+        MSI 성적과 월즈 출전권 <span className="label">{b ? "확정" : "예상"}</span>
+      </h2>
+      <div className="stack" style={{ gap: 8, fontSize: 14 }}>
+        <div className="row" style={{ flexWrap: "wrap" }}>
+          <TeamBadge team={champ} size={20} />
+          <span>
+            MSI 우승 {TEAM_STYLE[champ].name}: 자국 최종 {RULES.playoffLine[leagueOf(champ)]}위(플레이오프선) 안에 들면 월즈 직행, {leagueOf(champ)} +1장
+          </span>
+          {b && <span className={`chip ${b.championEligible ? "good" : "bad"}`}>{b.championEligible ? "직행 확정" : "조건 미달"}</span>}
+        </div>
+        {runnerUp && (
+          <div className="row" style={{ flexWrap: "wrap" }}>
+            <TeamBadge team={runnerUp[1]} size={20} />
+            <span>
+              다음으로 잘한 지역 {leagueOf(runnerUp[1])} +1장 ({TEAM_STYLE[runnerUp[1]].name} {runnerUp[0]}위)
+            </span>
+          </div>
+        )}
+        {b && (
+          <span className="muted">
+            확정: {b.leagues.map((lg) => `${lg} +1`).join(", ")}
+            {!b.championEligible && " (우승팀이 조건을 못 채워 다음 지역으로 넘어감)"}
+          </span>
+        )}
       </div>
     </section>
   );

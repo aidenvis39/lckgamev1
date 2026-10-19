@@ -27,6 +27,9 @@ export interface Entrant {
   team: string;
   league: string;
   seed: number; // 지역 시드 (1이 가장 높음)
+  stage?: "SW" | "PI"; // 월즈: 스위스 직행 / 플레이인
+  bonusSeat?: boolean; // 월즈: MSI 성적으로 생긴 스위스 4풀 자리
+  via?: string; // "MSI 우승", "MSI 지역 추가"
 }
 
 export const loserOf = (m: Match, o: Outcome): string => (o.winner === m.home ? m.away : m.home);

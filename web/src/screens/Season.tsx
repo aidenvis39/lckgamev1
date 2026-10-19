@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { lckGroupStandings, lckSpringStandings, LEAGUES, leagueStandings, RULES, type Standing } from "../engine.ts";
+import { lckGroupStandings, lckSpringStandings, LEAGUES, leagueStandings, RULES, worldsSlotsOf, type Standing } from "../engine.ts";
 import { isMine, type Career } from "../game/career.ts";
 import { LEAGUE_STYLE, TEAM_STYLE } from "../game/meta.ts";
 import { FormPill, TeamBadge } from "../ui/bits.tsx";
@@ -155,13 +155,14 @@ function Overseas({ career, league }: { career: Career; league: string }) {
   const played = y.matches.filter((m) => m.event === league && y.results[m.id]).length;
   const total = y.matches.filter((m) => m.event === league).length;
   const msiSlots = RULES.msiOverseas[league];
-  const worldsSlots = RULES.worldsSlots[league];
+  const worldsSlots = worldsSlotsOf(y, league);
+  const bonusDecided = Boolean(y.worldsBonus);
   const second = y.phaseStart.SUMMER !== undefined;
   return (
     <>
       <p className="muted" style={{ margin: 0, maxWidth: "72ch" }}>
         해외 리그는 게임용 단순 규칙으로 뒤에서 진행됨: 전반·후반 각각 더블 라운드로빈 BO3. 전반 상위 {msiSlots}팀이 MSI, 전·후반 합산 상위{" "}
-        {worldsSlots}팀이 월즈에 나감. 실제 각 리그의 컵·플레이오프는 아직 없음.
+        {worldsSlots}팀이 월즈에 나감{bonusDecided ? "" : " (MSI 성적에 따라 1장 늘 수 있음)"}. 실제 각 리그의 컵·플레이오프는 아직 없음.
       </p>
       <div className={second ? "grid-2" : ""}>
         {second && (

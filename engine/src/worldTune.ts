@@ -12,7 +12,7 @@ import type { Targets, WorldTargets } from "./targets.ts";
 import { buildDraftPool } from "./tune.ts";
 import type { DraftResult, Universe } from "./types.ts";
 import { applyLeagueOffsets, leagueUniverse } from "./universe.ts";
-import { OVERSEAS, RULES } from "./competition/year.ts";
+import { OVERSEAS } from "./competition/year.ts";
 
 const clampLogit = (x: number) => {
   const v = Math.min(0.98, Math.max(0.02, x));
@@ -63,11 +63,12 @@ export function fitOverseasTeamwork(world: Universe, wt: WorldTargets, start: Pa
   return p;
 }
 
-// 리그 대표: 실제 승률 상위 (월즈 출전권 수만큼)
+// 리그 대표: 실제 승률 상위 (월즈 출전권 수만큼. 2026 실제 배분: LCK·LPL이 MSI로 1장씩 더 받음)
+const REPRESENTATIVES: Record<string, number> = { LCK: 4, LPL: 4, LEC: 3, LCS: 3, LCP: 3, CBLOL: 2 };
 export function representatives(world: Universe, targets: Targets, wt: WorldTargets): Record<string, string[]> {
   const real: Record<string, Record<string, number>> = { LCK: targets.team_regular_winrate, ...wt.teamWinrate };
   return Object.fromEntries(
-    Object.entries(RULES.worldsSlots).map(([lg, n]) => [
+    Object.entries(REPRESENTATIVES).map(([lg, n]) => [
       lg,
       [...world.teams.values()]
         .filter((t) => t.league === lg)
@@ -121,7 +122,7 @@ export function makeInternationalProbe(world: Universe, targets: Targets, wt: Wo
 
 export function fitLeagueOffsets(world: Universe, targets: Targets, wt: WorldTargets, start: Params, gamesPerPair: number, seed: number, rounds = 10, log?: (msg: string) => void): Params {
   const probe = makeInternationalProbe(world, targets, wt, start, gamesPerPair, seed);
-  const leagues = Object.keys(RULES.worldsSlots).filter((lg) => lg !== "LCK");
+  const leagues = Object.keys(REPRESENTATIVES).filter((lg) => lg !== "LCK");
   let p: Params = { ...start, leagueOffset: { LCK: 0, ...start.leagueOffset } as Record<string, number> };
   // 능력치 1점이 국제전 로짓을 얼마나 바꾸는지: 해외 전체를 +4점 올렸을 때 LCK 상대 로짓 변화
   const lckLogit = (q: Params) => {

@@ -48,6 +48,7 @@ export {
   swissTable,
   teamsByLeague,
   todayMatches,
+  worldsSlotsOf,
 } from "../../engine/src/competition/year.ts";
 export type { PhaseId, YearState } from "../../engine/src/competition/year.ts";
 export { resolveSlot } from "../../engine/src/competition/bracket.ts";

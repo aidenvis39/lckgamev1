@@ -4,6 +4,7 @@ import { loadUniverse } from "../src/data.ts";
 import { hashSeed } from "../src/rng.ts";
 import type { Match, Outcome } from "../src/competition/types.ts";
 import {
+  allocateWorlds,
   champion,
   choose,
   createYear,
@@ -15,6 +16,7 @@ import {
   swissTable,
   teamsByLeague,
   todayMatches,
+  worldsSlotsOf,
   type YearState,
 } from "../src/competition/year.ts";
 
@@ -75,16 +77,23 @@ test("출전권: MSI 11팀, 월즈 19팀, 리그별 수가 규칙대로이고 �
     const worlds = st.qualified.worlds;
     assert.equal(worlds.length, 19);
     assert.equal(new Set(worlds.map((e) => e.team)).size, 19);
-    for (const [lg, n] of Object.entries(RULES.worldsSlots)) {
+    const bonus = st.worldsBonus!;
+    assert.equal(bonus.leagues.length, 2);
+    assert.equal(new Set(bonus.leagues).size, 2);
+    for (const lg of Object.keys(RULES.worldsBase)) {
       const list = worlds.filter((e) => e.league === lg);
-      assert.equal(list.length, n, lg);
+      assert.equal(list.length, worldsSlotsOf(st, lg), lg);
       assert.ok(list.every((e) => leagues[lg].includes(e.team)));
     }
+    assert.equal(worlds.filter((e) => e.stage === "PI").length, 4);
+    if (bonus.championEligible) assert.ok(worlds.some((e) => e.team === bonus.champion));
     for (const ev of ["LCK", "MSI", "WORLDS", "RTM"]) assert.equal(st.finals[ev].filter(([p]) => p === 1).length, 1, ev);
     assert.equal(st.finals.WORLDS.length, 19);
     assert.equal(new Set(st.finals.LCK.map(([, t]) => t)).size, 10);
-    // LCK 월즈 시드 = 플레이오프 1~4위
-    assert.deepEqual(worlds.filter((e) => e.league === "LCK").map((e) => e.team), st.finals.LCK.slice(0, 4).map(([, t]) => t));
+    // LCK 월즈 팀은 플레이오프 순위 순서 (MSI 우승팀 직행이 끼면 그 팀이 들어감)
+    const lckTeams = worlds.filter((e) => e.league === "LCK").map((e) => e.team);
+    const lckOrder = st.finals.LCK.map(([, t]) => t);
+    assert.deepEqual(lckTeams, [...lckTeams].sort((a, b) => lckOrder.indexOf(a) - lckOrder.indexOf(b)));
     // LCK MSI 시드 = Road to MSI 1시드 결정전 승자, 2시드 결정전 승자
     const rtm = (key: string) => st.results[`RTM:${key}`].winner;
     assert.deepEqual(msi.filter((e) => e.league === "LCK").map((e) => e.team), [rtm("R3"), rtm("R5")]);
@@ -153,4 +162,50 @@ test("결과 검증: 참가팀이 아니거나 점수가 BO와 안 맞으면 거
   assert.throws(() => endDay(st));
   const ok = recordResult(st, m.id, { winner: m.away, score: [1, 2] });
   assert.throws(() => recordResult(ok, m.id, { winner: m.away, score: [1, 2] }));
+});
+
+// 출전권 계산만 따로: 리그 최종 순위와 MSI 순위만 넣은 가짜 상태
+function fakeYear(msi: string[], lckOrder?: string[]): YearState {
+  const st = createYear(leagues, 1);
+  const finals: Record<string, Array<[number, string]>> = {};
+  for (const lg of Object.keys(leagues)) {
+    const order = lg === "LCK" && lckOrder ? lckOrder : [...leagues[lg]];
+    finals[lg] = order.map((t, i) => [i + 1, t]);
+  }
+  finals.MSI = msi.map((t, i) => [i + 1, t]);
+  return { ...st, finals };
+}
+
+test("MSI 출전권: 2026 실제(HLE 우승·BLG 2위)면 LCK·LPL이 4장, 4풀에 LCK4·LPL4", () => {
+  const lck = ["GEN", "HLE", "T1", "DK", "KT", "BRO", "NS", "BFX", "DRX", "DNS"];
+  const st = fakeYear(["HLE", "BLG", "G2", "LYON"], lck);
+  const a = allocateWorlds(st);
+  assert.deepEqual(a.bonus.leagues, ["LCK", "LPL"]);
+  assert.equal(a.entrants.length, 19);
+  assert.deepEqual(a.entrants.filter((e) => e.league === "LCK").map((e) => e.team), ["GEN", "HLE", "T1", "DK"]);
+  assert.equal(a.entrants.find((e) => e.team === "HLE")!.via, "MSI 우승");
+  const bonusSeats = a.entrants.filter((e) => e.bonusSeat).map((e) => `${e.league}${e.seed}`);
+  assert.deepEqual(bonusSeats, ["LCK4", "LPL4"]);
+  assert.deepEqual(a.entrants.filter((e) => e.stage === "PI").map((e) => `${e.league}${e.seed}`), ["LEC3", "LCS3", "LCP3", "CBLOL2"]);
+});
+
+test("MSI 출전권: 1·2위가 같은 리그면 두 번째 장은 3위 이하 다른 리그로", () => {
+  const st = fakeYear(["GEN", "HLE", "KC", "BLG"]);
+  assert.deepEqual(allocateWorlds(st).bonus.leagues, ["LCK", "LEC"]);
+  // LEC가 보너스면 LEC3이 스위스 4풀, LEC4가 플레이인
+  const lec = allocateWorlds(st).entrants.filter((e) => e.league === "LEC");
+  assert.deepEqual(lec.map((e) => [e.seed, e.stage, !!e.bonusSeat]), [[1, "SW", false], [2, "SW", false], [3, "SW", true], [4, "PI", false]]);
+});
+
+test("MSI 출전권: 우승팀이 자국 플레이오프선 밖이면 직행 없음, 보너스는 다음 지역", () => {
+  const lck = ["GEN", "T1", "DK", "KT", "BRO", "NS", "BFX", "HLE", "DRX", "DNS"]; // HLE 8위
+  const a = allocateWorlds(fakeYear(["HLE", "BLG", "TL", "KC"], lck));
+  assert.equal(a.bonus.championEligible, false);
+  assert.deepEqual(a.bonus.leagues, ["LPL", "LCS"]);
+  assert.ok(!a.entrants.some((e) => e.team === "HLE"));
+  assert.equal(a.entrants.filter((e) => e.league === "LCK").length, 3);
+  // 우승팀이 플레이오프선 안이지만 자국 순위로는 못 들어오는 경우: 마지막 자리를 가진다
+  const lck2 = ["GEN", "T1", "DK", "KT", "BRO", "HLE", "NS", "BFX", "DRX", "DNS"]; // HLE 6위
+  const b = allocateWorlds(fakeYear(["HLE", "BLG", "TL", "KC"], lck2));
+  assert.deepEqual(b.entrants.filter((e) => e.league === "LCK").map((e) => e.team), ["GEN", "T1", "DK", "HLE"]);
 });

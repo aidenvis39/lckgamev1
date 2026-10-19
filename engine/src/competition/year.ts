@@ -33,7 +33,8 @@ export const phaseName = (id: PhaseId) => PHASES.find((p) => p.id === id)!.name;
 
 type Seat = [string, number]; // [리그, 지역 시드]
 
-// 2026 출전권 (게임용 고정)
+// 2026 출전권 (게임용)
+// 월즈: 기본 17장 + MSI 성적으로 2장. MSI 우승팀은 자국 플레이오프에 들면 직행(그 지역 +1), 그다음으로 잘한 다른 지역도 +1.
 export const RULES = {
   springDays: 18,
   summerDays: 10,
@@ -41,15 +42,24 @@ export const RULES = {
   msiPoolA: [["LPL", 1], ["LCK", 1], ["LEC", 1], ["LCS", 1]] as Seat[],
   msiPoolB: [["LPL", 2], ["LCP", 1], ["CBLOL", 1]] as Seat[], // + 플레이인 승자
   msiOverseas: { LPL: 2, LEC: 2, LCS: 2, LCP: 2, CBLOL: 1 } as Record<string, number>,
-  worldsSlots: { LCK: 4, LPL: 4, LEC: 3, LCS: 3, LCP: 3, CBLOL: 2 } as Record<string, number>,
-  worldsPlayIn: [["LEC", 3], ["LCS", 3], ["LCP", 3], ["CBLOL", 2]] as Seat[],
+  worldsBase: { LCK: 3, LPL: 3, LEC: 3, LCS: 3, LCP: 3, CBLOL: 2 } as Record<string, number>,
+  swissBase: { LCK: 3, LPL: 3, LEC: 2, LCS: 2, LCP: 2, CBLOL: 1 } as Record<string, number>, // 나머지 기본 자리는 플레이인
+  msiBonusSlots: 2,
+  // MSI 우승팀 직행 조건: 자국 최종 순위가 이 안 (LCK는 플레이오프 6팀, 해외는 게임용 기준)
+  playoffLine: { LCK: 6, LPL: 8, LEC: 6, LCS: 6, LCP: 6, CBLOL: 6 } as Record<string, number>,
+  // 스위스 풀. BONUS = MSI로 얻은 자리(각 지역의 스위스 기본 자리 다음 시드), PI = 플레이인 승자
   worldsPools: [
     [["LCK", 1], ["LPL", 1], ["LCS", 1], ["LEC", 1]],
     [["CBLOL", 1], ["LCP", 1], ["LCK", 2], ["LPL", 2]],
     [["LCS", 2], ["LEC", 2], ["LCK", 3], ["LPL", 3]],
-    [["LCP", 2], ["LPL", 4], ["LCK", 4], ["PI", 1]], // PI = 플레이인 승자
+    [["LCP", 2], ["BONUS", 1], ["BONUS", 2], ["PI", 1]],
   ] as Seat[][],
 };
+
+// 한 해 국제대회 출전권 수 (화면·튜닝용): 기본 + MSI 보너스가 걸린 지역은 1장 더
+export const worldsSlotsOf = (st: YearState | null, league: string) =>
+  RULES.worldsBase[league] + (st?.worldsBonus?.leagues.includes(league) ? 1 : 0);
+export const worldsBonusDecided = (st: YearState) => Boolean(st.worldsBonus);
 
 // 대진표 단계 → 대진표 정의, 대회, 화면 이름
 const BRACKET_PHASES: Partial<Record<PhaseId, { def: string; event: string; stage: string }>> = {
@@ -78,6 +88,8 @@ export interface YearState {
   groups: { legend: string[]; rise: string[] } | null;
   swiss: SwissTeam[] | null;
   qualified: { msi: Entrant[]; worlds: Entrant[] };
+  // MSI 성적으로 정해지는 월즈 보너스 (월즈 플레이인 시작 때 확정)
+  worldsBonus: { leagues: string[]; champion: string | null; championEligible: boolean } | null;
   finals: Record<string, Array<[number, string]>>; // 대회·리그별 최종 순위
 }
 
@@ -100,6 +112,7 @@ export function createYear(leagues: Record<string, string[]>, seed: number, user
     groups: null,
     swiss: null,
     qualified: { msi: [], worlds: [] },
+    worldsBonus: null,
     finals: {},
   };
   return settle(startPhase(st, "SPRING"));
@@ -242,14 +255,24 @@ function startPhase(st: YearState, phase: PhaseId): YearState {
       return { ...s, seeds: { ...s.seeds, LCK_PO: [...g.legend.slice(0, 4).map((x) => x.team), at(1), at(2)] } };
     }
     case "WLD_PI": {
-      const teams = RULES.worldsPlayIn.map(([lg, n]) => entrant(s.qualified.worlds, lg, n).team);
-      return { ...s, seeds: { ...s.seeds, WLD_PI: shuffled(teams, rngFor(s, "draw", "WLD_PI")) } };
+      const a = allocateWorlds(s);
+      const teams = a.entrants.filter((e) => e.stage === "PI").map((e) => e.team);
+      return {
+        ...s,
+        worldsBonus: a.bonus,
+        qualified: { ...s.qualified, worlds: a.entrants },
+        seeds: { ...s.seeds, WLD_PI: shuffled(teams, rngFor(s, "draw", "WLD_PI")) },
+      };
     }
     case "WLD_SW": {
       const piWinner = placements(BRACKETS.DE4, bracketView(s, "WLD_PI")).find(([p]) => p === 1)![1];
+      // 이 규칙 전에 저장된 해(월즈 진행 중)는 LCK4·LPL4가 4풀이었다
+      const marked = s.qualified.worlds.filter((e) => e.bonusSeat);
+      const bonusSeats = marked.length ? marked : [entrant(s.qualified.worlds, "LCK", 4), entrant(s.qualified.worlds, "LPL", 4)];
       const swiss: SwissTeam[] = RULES.worldsPools.flatMap((pool, i) =>
         pool.map(([lg, n]) => {
-          const e = lg === "PI" ? s.qualified.worlds.find((x) => x.team === piWinner)! : entrant(s.qualified.worlds, lg, n);
+          const e =
+            lg === "PI" ? s.qualified.worlds.find((x) => x.team === piWinner)! : lg === "BONUS" ? bonusSeats[n - 1] : entrant(s.qualified.worlds, lg, n);
           return { team: e.team, league: e.league, seed: e.seed, pool: i + 1 };
         }),
       );
@@ -260,6 +283,53 @@ function startPhase(st: YearState, phase: PhaseId): YearState {
     case "DONE":
       return s;
   }
+}
+
+// 월즈 출전 팀 정하기 (월즈 플레이인 시작 때, 모든 자국 리그가 끝난 뒤)
+//  1) MSI 최종 순위를 1위부터 보며 아직 보너스를 안 받은 지역에 1장씩, 2지역까지.
+//     1위(우승팀) 몫은 우승팀이 자국 플레이오프선 안일 때만 준다. 아니면 다음 순위 지역으로.
+//  2) 지역별 = 기본 + 보너스 장수만큼 자국 최종 순위 상위 팀. 직행 자격이 있는 MSI 우승팀은 순위가 밀려도 마지막 자리를 가진다.
+//  3) 지역 안 시드 순서대로 스위스 기본 자리 → (보너스면) 스위스 4풀 자리 → 플레이인 자리.
+export function allocateWorlds(st: YearState): { bonus: NonNullable<YearState["worldsBonus"]>; entrants: Entrant[] } {
+  const leagueOf = (t: string) => LEAGUES.find((lg) => st.leagues[lg].includes(t))!;
+  const domesticPlace = (t: string) => st.finals[leagueOf(t)]?.find(([, x]) => x === t)?.[0] ?? 99;
+  const eligible = (t: string) => domesticPlace(t) <= RULES.playoffLine[leagueOf(t)];
+  const msi = [...(st.finals.MSI ?? [])].sort((a, b) => a[0] - b[0]);
+  const champion = msi.find(([p]) => p === 1)?.[1] ?? null;
+  const championEligible = champion !== null && eligible(champion);
+  const leagues: string[] = [];
+  for (const [place, t] of msi) {
+    const lg = leagueOf(t);
+    if (leagues.includes(lg) || (place === 1 && !championEligible)) continue;
+    leagues.push(lg);
+    if (leagues.length === RULES.msiBonusSlots) break;
+  }
+  const entrants: Entrant[] = [];
+  for (const lg of LEAGUES) {
+    const bonus = leagues.includes(lg);
+    const count = RULES.worldsBase[lg] + (bonus ? 1 : 0);
+    const order = (st.finals[lg] ?? []).map(([, t]) => t);
+    let picked = order.slice(0, count);
+    if (championEligible && champion && leagueOf(champion) === lg && !picked.includes(champion))
+      picked = [...picked.slice(0, count - 1), champion].sort((a, b) => order.indexOf(a) - order.indexOf(b));
+    const swiss = RULES.swissBase[lg] + (bonus ? 1 : 0);
+    picked.forEach((team, i) =>
+      entrants.push({
+        team,
+        league: lg,
+        seed: i + 1,
+        stage: i < swiss ? "SW" : "PI",
+        bonusSeat: bonus && i === RULES.swissBase[lg],
+        via:
+          team === champion && championEligible
+            ? "MSI 우승"
+            : bonus && i === count - 1 && !(championEligible && champion && leagueOf(champion) === lg)
+              ? "MSI 지역 추가"
+              : undefined,
+      }),
+    );
+  }
+  return { bonus: { leagues, champion, championEligible }, entrants };
 }
 
 // MSI 브래킷 추첨: A풀(LPL1·LCK1·LEC1·LCS1)이 1~4시드, B풀이 5~8시드. 첫 경기(1-8, 4-5, 2-7, 3-6)에 같은 리그가 없게 다시 뽑는다
@@ -312,12 +382,6 @@ function finishPhase(st: YearState): YearState {
       break;
     }
     case "SUMMER": {
-      const worlds = OVERSEAS.flatMap((lg) =>
-        leagueStandings(s, lg, "all")
-          .slice(0, RULES.worldsSlots[lg])
-          .map((x, i): Entrant => ({ team: x.team, league: lg, seed: i + 1 })),
-      );
-      s.qualified = { ...s.qualified, worlds: [...s.qualified.worlds, ...worlds] };
       s.finals = { ...s.finals, ...Object.fromEntries(OVERSEAS.map((lg) => [lg, leagueStandings(s, lg).map((x, i): [number, string] => [i + 1, x.team])])) };
       break;
     }
@@ -330,8 +394,6 @@ function finishPhase(st: YearState): YearState {
         ...s.finals,
         LCK: [...po, [7, at(pi, 3)], [8, at(pi, 4)], [9, rise[3].team], [10, rise[4].team]],
       };
-      const lck = [1, 2, 3, 4].map((n): Entrant => ({ team: at(po, n), league: "LCK", seed: n }));
-      s.qualified = { ...s.qualified, worlds: [...lck, ...s.qualified.worlds] };
       break;
     }
     case "WLD_KO": {
