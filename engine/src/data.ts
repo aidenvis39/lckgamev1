@@ -2,7 +2,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { DEFAULT_PARAMS, type Params } from "./params.ts";
 import type { Targets, WorldTargets } from "./targets.ts";
-import type { Player, Universe } from "./types.ts";
+import type { Champion, Player, TeamInfo, Universe } from "./types.ts";
 import { createUniverse, type RawData } from "./universe.ts";
 
 export type { Targets, WorldTargets } from "./targets.ts";
@@ -43,4 +43,9 @@ export function loadWorldTargets(): WorldTargets {
 // LCK 팀별 2군(LCK CL) 선수. team = 1군 팀 약칭, 능력치는 LCK CL 안 백분위
 export function loadAcademy(): Player[] {
   return read<Player[]>("academy.json");
+}
+
+// 다년 커리어 시작용 원본 (세계 상태를 만들 때 씀)
+export function loadRaw(): { players: Player[]; teams: TeamInfo[]; champions: Champion[] } {
+  return { players: read<Player[]>("players.json"), teams: read<TeamInfo[]>("teams.json"), champions: read<Champion[]>("champions.json") };
 }

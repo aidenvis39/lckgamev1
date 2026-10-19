@@ -13,6 +13,7 @@
     "calibrate": "node src/cli.ts calibrate",
     "tune": "node src/cli.ts tune",
     "year": "node src/cli.ts year",
+    "career": "node src/cli.ts career",
     "typecheck": "tsc --noEmit",
     "test": "node --test \"test/**/*.test.ts\""
   },
