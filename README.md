@@ -6,7 +6,9 @@ LCK 구단의 단장 겸 감독이 되어 밴픽, 로스터, 운영으로 우승
 
 ## 웹 게임
 
-팀을 고르고, 내 경기는 직접 밴픽하고, 중계를 보며 LCK 2026 정규시즌을 치른다. 로스터 교체와 이적 실험실도 있음.
+팀을 고르고, 내 경기는 직접 밴픽하고, 중계를 보며 한 해를 치른다.
+LCK 정규시즌 → Road to MSI → MSI → LCK 플레이오프 → 월즈까지 이어지고, 해외 5개 리그(LPL·LEC·LCS·LCP·CBLOL, 46팀)도 뒤에서 같이 진행되어 대표가 매번 새로 정해짐.
+로스터 교체와 이적 실험실(해외 선수 영입 포함)도 있음.
 
 ```bash
 cd web
@@ -46,10 +48,13 @@ npm run season -- --runs 500        # 500시즌 평균: 팀별 1위·6위 안 �
 npm run calibrate                   # 시뮬 vs 실제 LCK 2026 통계 비교
 npm run tune                        # 조절값 자동 튜닝 → data/params.json
 npm run transfer -- faker clozer    # 같은 포지션 두 선수 맞트레이드 전후 비교 (시즌 300회)
+npm run year -- --runs 100          # LCK·MSI·월즈 한 해 전체 100회: 대회별 우승 팀·리그 분포
+npm run calibrate -- --intl         # 해외 리그 팀 승률 + 국제전 리그 쌍 승률 비교
+npm run tune -- --intl              # 해외 팀워크 + 리그 보정만 다시 맞춤
 npm test && npm run typecheck
 ```
 
-팀 약칭: GEN, HLE, T1, DK, KT, BRO, NS, BFX, DRX, DNS
+팀 약칭: GEN, HLE, T1, DK, KT, BRO, NS, BFX, DRX, DNS (해외 팀은 `npm run match` 도움말에 전부 나옴. 예: `npm run match -- GEN BLG --bo 5`)
 
 ## 저장소 구조
 
@@ -57,7 +62,7 @@ npm test && npm run typecheck
 |---|---|
 | `web/` | 웹 게임 (Vite + React). 엔진을 브라우저에서 그대로 돌림. 설명은 [docs/WEB.md](docs/WEB.md) |
 | `engine/` | 경기 시뮬 엔진 (TypeScript). 설명은 [docs/ENGINE.md](docs/ENGINE.md) |
-| `scripts/` | 데이터 파이프라인 (Python, pandas)<br>`build_all.py`: 원본 → 분석 결과<br>`player_intangibles.py`: 선수 운영 기여 회귀분석<br>`export_engine_data.py`: 분석 결과 → 엔진 입력<br>`fetch_leaguepedia.py`: Leaguepedia 수집 |
+| `scripts/` | 데이터 파이프라인 (Python, pandas)<br>`build_all.py`: 원본 → 분석 결과<br>`build_world.py`: 해외 5개 리그와 국제전 기준값<br>`player_intangibles.py`: 선수 운영 기여 회귀분석<br>`export_engine_data.py`: 분석 결과 → 엔진 입력<br>`fetch_leaguepedia.py`: Leaguepedia 수집 |
 | `output/` | 분석 결과: 튜닝 기준값, 챔피언·메타, 선수·팀 통계, 성장 곡선. 설명은 [docs/DATA.md](docs/DATA.md) |
 | `raw/` | 원본 중 용량이 작은 것: Leaguepedia, 나무위키 대조표, Data Dragon<br>Oracle's Elixir CSV(600MB)는 넣지 않았음. 받는 법은 DATA.md 참고 |
 | `docs/` | 데이터·엔진·웹 문서 |
@@ -69,6 +74,7 @@ npm test && npm run typecheck
   - 2020~2026 LCK 3,465경기와 이적한 선수 85명을 이용한 회귀분석으로 추정함
   - **이적하면 선수를 따라감.** 예: Faker ↔ Clozer 맞트레이드 시 T1 -5.5%p, DNS +4.5%p
   - 자세한 내용은 [docs/ENGINE.md](docs/ENGINE.md) 5절
+- **해외 선수**: 리그 안 백분위에 리그 보정을 더해 LCK 기준으로 맞춤. 보정값은 2024~2026 국제전 541경기에 맞췄음 ([docs/ENGINE.md](docs/ENGINE.md) 8절)
 
 ## 캘리브레이션 요약 (튜닝에 쓰지 않은 시드, 50시즌·15,993경기)
 

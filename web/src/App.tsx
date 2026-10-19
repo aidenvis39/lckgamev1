@@ -1,6 +1,19 @@
 import { useEffect, useState } from "react";
-import { finishDay, loadCareer, newCareer, saveCareer, swapStarter, type Career, type SeriesRecord } from "./game/career.ts";
+import {
+  advanceToMine,
+  finishDay,
+  loadCareer,
+  matchById,
+  newCareer,
+  pickOpponent,
+  recordMine,
+  saveCareer,
+  saveProgress,
+  swapStarter,
+  type Career,
+} from "./game/career.ts";
 import { TEAM_STYLE } from "./game/meta.ts";
+import { Events } from "./screens/Events.tsx";
 import { Home } from "./screens/Home.tsx";
 import { Lab } from "./screens/Lab.tsx";
 import { MatchFlow } from "./screens/match/MatchFlow.tsx";
@@ -9,18 +22,26 @@ import { Season } from "./screens/Season.tsx";
 import { TeamSelect } from "./screens/TeamSelect.tsx";
 import { Icon, TeamBadge } from "./ui/bits.tsx";
 
-type Tab = "home" | "season" | "roster" | "lab";
+export type Tab = "home" | "league" | "events" | "roster" | "lab";
 const TABS: Array<{ id: Tab; label: string; icon: string }> = [
   { id: "home", label: "홈", icon: "home" },
-  { id: "season", label: "순위·일정", icon: "table" },
+  { id: "league", label: "리그", icon: "table" },
+  { id: "events", label: "대회", icon: "trophy" },
   { id: "roster", label: "로스터", icon: "roster" },
   { id: "lab", label: "이적 실험실", icon: "lab" },
 ];
+const SHORT: Partial<Record<Tab, string>> = { lab: "실험실" }; // 모바일 탭바용
+
+const initial = loadCareer();
 
 export function App() {
-  const [career, setCareer] = useState<Career | null>(() => loadCareer());
-  const [tab, setTab] = useState<Tab>(() => (location.hash.slice(1) as Tab) || "home");
-  const [playing, setPlaying] = useState<SeriesRecord | null>(null);
+  const [career, setCareer] = useState<Career | null>(initial.career);
+  const [notice, setNotice] = useState(initial.droppedOld);
+  const [tab, setTab] = useState<Tab>(() => {
+    const h = location.hash.slice(1) as Tab;
+    return TABS.some((t) => t.id === h) ? h : "home";
+  });
+  const [playing, setPlaying] = useState<string | null>(null);
   const [resetArmed, setResetArmed] = useState(false);
 
   useEffect(() => saveCareer(career), [career]);
@@ -32,19 +53,29 @@ export function App() {
   if (!career) {
     return (
       <main className="main">
+        {notice && (
+          <div className="notice" role="status">
+            MSI·월즈가 들어간 새 버전이라 예전 저장은 이어서 할 수 없어서 지웠음. 팀을 다시 골라줘.
+            <button className="btn small ghost" onClick={() => setNotice(false)}>
+              닫기
+            </button>
+          </div>
+        )}
         <TeamSelect onPick={(id) => setCareer(newCareer(id))} />
       </main>
     );
   }
 
-  if (playing) {
+  const match = playing ? matchById(career, playing) : null;
+  if (match) {
     return (
       <MatchFlow
         career={career}
-        series={playing}
+        match={match}
         onLeave={() => setPlaying(null)}
-        onDone={(record) => {
-          setCareer(finishDay(career, record));
+        onProgress={(p) => setCareer((c) => (c ? saveProgress(c, p) : c))}
+        onDone={(games) => {
+          setCareer(finishDay(recordMine(career, match.id, games)));
           setPlaying(null);
           setTab("home");
         }}
@@ -52,11 +83,11 @@ export function App() {
     );
   }
 
-  const nav = (cls: string) =>
+  const nav = (short: boolean) =>
     TABS.map((t) => (
-      <button key={t.id} aria-current={tab === t.id ? "page" : undefined} onClick={() => setTab(t.id)} className={cls}>
+      <button key={t.id} aria-current={tab === t.id ? "page" : undefined} onClick={() => setTab(t.id)} aria-label={t.label}>
         <Icon name={t.icon} />
-        {t.label}
+        {short ? (SHORT[t.id] ?? t.label) : t.label}
       </button>
     ));
 
@@ -68,7 +99,7 @@ export function App() {
           <span>{career.season}</span>
         </div>
         <nav className="nav" aria-label="메뉴">
-          {nav("")}
+          {nav(false)}
         </nav>
         <div className="rail-foot">
           <div className="row">
@@ -98,19 +129,21 @@ export function App() {
             career={career}
             onPlay={setPlaying}
             onAutoDay={() => setCareer(finishDay(career))}
+            onAdvance={() => setCareer(advanceToMine(career))}
+            onChoose={(id, team) => setCareer(pickOpponent(career, id, team))}
             onNewSeason={() => setCareer(newCareer(career.teamId, undefined, career.season))}
-            onOpenSeason={() => setTab("season")}
+            onOpen={setTab}
           />
         )}
-        {tab === "season" && <Season career={career} />}
+        {tab === "league" && <Season career={career} />}
+        {tab === "events" && <Events career={career} />}
         {tab === "roster" && <Roster career={career} onSwap={(pos, id) => setCareer(swapStarter(career, pos, id))} />}
         {tab === "lab" && <Lab />}
       </main>
 
       <nav className="tabbar" aria-label="메뉴">
-        {nav("")}
+        {nav(true)}
       </nav>
-
     </div>
   );
 }

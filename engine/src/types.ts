@@ -5,7 +5,8 @@ export const POSITIONS: readonly Position[] = ["top", "jng", "mid", "bot", "sup"
 export const SIDES: readonly Side[] = ["blue", "red"];
 export const other = (s: Side): Side => (s === "blue" ? "red" : "blue");
 
-// 같은 리그·시즌·포지션 안의 백분위를 40~99로 바꾼 값 (데이터 파이프라인 rating_*)
+// 같은 리그·시즌·포지션 안의 백분위를 40~99로 바꾼 값 (데이터 파이프라인 rating_*).
+// 리그마다 기준이 달라서 다른 리그 선수끼리 비교하려면 leagueOffset을 더해야 한다 (applyLeagueOffsets)
 export interface Ratings {
   laning: number;
   teamfight: number;
@@ -22,10 +23,13 @@ export interface Player {
   age: number | null;
   games2026: number;
   starter: boolean;
+  ratingLeague: string; // 능력치 백분위를 낸 리그
+  lowSample: boolean; // 15경기 미만: 가진 경기로 추정하고 중앙값 쪽으로 당긴 능력치
   ratings: Ratings;
   // 운영·콜처럼 개인 기록에 안 잡히는 기여 (경기 승리 로짓 단위, 2020~2026 LCK 회귀 추정). 이적하면 따라간다
   intangible: number;
   intangibleSe: number;
+  intangibleKnown: boolean; // 해외 선수는 추정치가 없어서 0 (모름)
   champions: Record<string, number>; // 챔피언 id → 출전 경기 수 (2025는 0.5배)
 }
 
@@ -48,6 +52,7 @@ export interface Champion {
 export interface TeamInfo {
   id: string;
   name: string;
+  league: string; // LCK, LPL, LEC, LCS, LCP, CBLOL
   starters: Record<Position, string>;
   bench: string[];
 }

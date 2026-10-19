@@ -20,3 +20,13 @@ export interface Targets {
   regular_season_team_winrate_std: number;
   team_regular_winrate: Record<string, number>; // 팀 약칭 → 정규시즌 세트 승률
 }
+
+// 해외 리그와 국제전 기준값 (data/world.json, scripts/build_world.py)
+export interface WorldTargets {
+  teamWinrate: Record<string, Record<string, number>>; // 리그 → 팀 → 최근 정규 스플릿 2개 세트 승률
+  teamGames: Record<string, Record<string, number>>;
+  international: {
+    strength: Record<string, number>; // 브래들리-테리 리그 강도 (로짓, LCK = 0)
+    pairs: Array<[string, string, number, number, number | null]>; // [리그 a, 리그 b, 가중 경기 수, 모델 승률, 실제 승률]
+  };
+}

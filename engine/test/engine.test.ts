@@ -8,8 +8,10 @@ import { createRng } from "../src/rng.ts";
 import { playSeason } from "../src/season.ts";
 import { playSeries } from "../src/series.ts";
 import { POSITIONS, type Side } from "../src/types.ts";
+import { leagueUniverse } from "../src/universe.ts";
 
-const u = loadUniverse();
+const world = loadUniverse();
+const u = leagueUniverse(world, "LCK");
 const p = loadParams();
 const lineups = { blue: lineupOf(u, "GEN"), red: lineupOf(u, "T1") };
 
@@ -112,4 +114,21 @@ test("타임라인: 킬 수와 용 수가 결과와 맞는다", () => {
   assert.equal(count("dragon", "red"), r.dragons.red);
   assert.equal(count("tower", "blue"), r.towers.blue);
   assert.equal(count("tower", "red"), r.towers.red);
+});
+
+test("세계 데이터: 56팀 모두 주전 5명이 자기 팀 소속, 선수는 한 팀에만", () => {
+  assert.equal(world.teams.size, 56);
+  assert.equal(u.teams.size, 10);
+  const seen = new Set<string>();
+  for (const t of world.teams.values()) {
+    for (const id of [...Object.values(t.starters), ...t.bench]) {
+      const pl = world.players.get(id);
+      assert.ok(pl, `${t.id} ${id}`);
+      assert.equal(pl.team, t.id);
+      assert.ok(!seen.has(id), `중복 ${id}`);
+      seen.add(id);
+    }
+    for (const pos of POSITIONS) assert.equal(world.players.get(t.starters[pos])!.position, pos);
+  }
+  assert.equal(seen.size, world.players.size);
 });

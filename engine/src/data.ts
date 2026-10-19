@@ -1,11 +1,11 @@
 // data/*.json 로더 (Node 전용). 엔진 코어(draft, match, series, season)는 fs에 의존하지 않는다.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { DEFAULT_PARAMS, type Params } from "./params.ts";
-import type { Targets } from "./targets.ts";
+import type { Targets, WorldTargets } from "./targets.ts";
 import type { Universe } from "./types.ts";
 import { createUniverse, type RawData } from "./universe.ts";
 
-export type { Targets } from "./targets.ts";
+export type { Targets, WorldTargets } from "./targets.ts";
 
 const DATA_DIR = new URL("../data/", import.meta.url);
 const read = <T>(name: string): T => JSON.parse(readFileSync(new URL(name, DATA_DIR), "utf8")) as T;
@@ -34,4 +34,8 @@ export function loadTargets(year: string): Targets {
   const all = read<Record<string, Targets>>("targets.json");
   if (!all[year]) throw new Error(`targets.json 에 ${year} 시즌이 없음`);
   return all[year];
+}
+
+export function loadWorldTargets(): WorldTargets {
+  return read<WorldTargets>("world.json");
 }

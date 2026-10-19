@@ -43,7 +43,7 @@ export function Roster({ career, onSwap }: { career: Career; onSwap: (pos: Posit
 
 function PlayerCard({ player, action }: { player: Player; action?: ReactNode }) {
   const r = player.ratings;
-  const macro = macroGrade(player.intangible);
+  const macro = player.intangibleKnown ? macroGrade(player.intangible) : { label: "추정 없음", tone: "neutral" as const };
   const pool = Object.entries(player.champions).slice(0, 6);
   return (
     <article className="panel player-card">
@@ -53,6 +53,7 @@ function PlayerCard({ player, action }: { player: Player; action?: ReactNode }) 
           <span className="name">{player.name}</span>
           <span className="muted" style={{ fontSize: 13 }}>
             {player.age ? `${player.age}세 · ` : ""}2026 {player.games2026}경기
+            {player.lowSample && <span className="chip" title="15경기 미만이라 가진 경기로 추정하고 중간값 쪽으로 당긴 능력치" style={{ marginLeft: 6 }}>자료 부족</span>}
           </span>
         </div>
       </div>

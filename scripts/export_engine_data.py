@@ -1,8 +1,9 @@
 """output/ 과 raw/ 에서 시뮬 엔진이 읽을 JSON(engine/data/)을 만든다.
 
-- players.json     LCK 2026 로스터: 닉네임, 팀, 포지션, 나이(정수), 능력치, 챔피언 숙련(출전 경기 수),
-                   운영 기여(intangible, scripts/player_intangibles.py 결과)
-- teams.json       팀 이름·약칭·주전/후보
+- players.json     LCK + 해외 5개 리그 2026 로스터: 닉네임, 팀, 포지션, 나이(정수, LCK만), 능력치(리그 안 백분위),
+                   챔피언 숙련(출전 경기 수), 운영 기여(intangible, LCK만 추정. scripts/player_intangibles.py 결과)
+- teams.json       팀 이름·약칭·리그·주전/후보 (LCK 10팀 + 해외 46팀, 해외는 마지막 정규 스플릿 기준)
+- world.json       해외 리그 팀별 실제 승률, 국제전 리그 쌍 승률 (scripts/build_world.py 결과)
 - champions.json   드래프트 가능한 챔피언: 포지션 비중, 메타 점수, 초반/후반 성향, 딜 구성
 - matchups.json    라인 상성(같은 라인 맞대결 15분 골드차), 바텀 조합 승률
 - targets.json     엔진이 맞춰야 할 실제 LCK 통계 (2025, 2026)
@@ -31,6 +32,30 @@ TEAM_SHORT = {"Gen.G": "GEN", "Hanwha Life Esports": "HLE", "T1": "T1", "Dplus K
               "HANJIN BRION": "BRO", "Nongshim RedForce": "NS", "BNK FEARX": "BFX", "Kiwoom DRX": "DRX",
               "DN SOOPers": "DNS"}
 TEAM_SHORT_ALIASES = {**TEAM_SHORT, "DRX": "DRX"}  # 2025엔 Kiwoom 없이 DRX
+OVERSEAS = ["LPL", "LEC", "LCS", "LCP", "CBLOL"]
+OVERSEAS_SHORT = {
+    "Ninjas in Pyjamas": "NIP", "Bilibili Gaming": "BLG", "Anyone's Legend": "AL", "Invictus Gaming": "IG",
+    "Top Esports": "TES", "JD Gaming": "JDG", "Team WE": "WE", "LGD Gaming": "LGD", "Weibo Gaming": "WBG",
+    "ThunderTalk Gaming": "TT", "EDward Gaming": "EDG", "LNG Esports": "LNG",
+    "Karmine Corp": "KC", "G2 Esports": "G2", "Team Vitality": "VIT", "GiantX": "GX", "Natus Vincere": "NAVI",
+    "Fnatic": "FNC", "Movistar KOI": "MKOI", "SK Gaming": "SK", "Shifters": "SHFT", "Team Heretics": "TH",
+    "LYON": "LYON", "Team Liquid": "TL", "Cloud9": "C9", "Sentinels": "SEN", "Shopify Rebellion": "SR",
+    "FlyQuest": "FLY", "Disguised": "DSG", "Dignitas": "DIG",
+    "Team Secret Whales": "TSW", "CTBC Flying Oyster": "CFO", "Ground Zero Gaming": "GZ", "GAM Esports": "GAM",
+    "MVK Esports": "MVK", "Deep Cross Gaming": "DCG", "DetonatioN FocusMe": "DFM",
+    "Fukuoka SoftBank HAWKS gaming": "SHG",
+    "LOUD": "LOUD", "LØS": "LOS", "FURIA": "FUR", "Vivo Keyd Stars": "VKS", "RED Canids": "RED",
+    "paiN Gaming": "PNG", "Fluxo W7M": "FXW7", "Leviatan": "LEV",
+}
+RATING_COLS = {  # build_all.RATING_GROUPS 와 같은 지표
+    "rating_laning": ["csdiffat15", "golddiffat15", "xpdiffat15"],
+    "rating_teamfight": ["dpm", "damageshare", "kp"],
+    "rating_vision": ["vspm", "wcpm"],
+    "rating_survival": ["neg_deaths_pg"],
+    "rating_champ_pool": ["unique_champs"],
+}
+MIN_GAMES = 15
+MEDIAN_RATING = 69.5  # 백분위 50% → 40 + 59 × 0.5
 
 
 def dump(obj, name):
@@ -93,14 +118,26 @@ def export_champions(by_name, ko):
     return out
 
 
-def export_players(by_name):
-    p = pd.read_csv(OUT / f"players/players_lck{SEASON}.csv")
-    birth = pd.to_datetime(p["birth_date"], errors="coerce")
-    p["age"] = ((AS_OF - birth).dt.days // 365.25).astype("Int64")
-    for col in RATINGS:
-        p[col] = p[col].fillna(50)  # 15경기 미만 후보 선수
-    # 챔피언 숙련: 2026 출전 1경기 = 1, 2025 = 0.5 (모든 리그·국제대회)
-    # 이름이 아니라 OE playerid로 묶는다. 다른 지역의 동명이인 기록이 섞이지 않게.
+def fill_low_sample(p):
+    """15경기 미만 선수: 가진 경기로 같은 리그·포지션 백분위를 내고, 표본이 적은 만큼 중앙값(69.5) 쪽으로 당긴다.
+    예전엔 50으로 고정해서 '확실히 못하는 선수'처럼 다뤘다. 경기 기록이 아예 없으면 중앙값."""
+    p = p.copy()
+    p["neg_deaths_pg"] = -p["deaths"] / p["games"].clip(lower=1)
+    p["low_sample"] = p["games"] < MIN_GAMES
+    ok = p[~p["low_sample"]]
+    for rating, cols in RATING_COLS.items():
+        for i in p.index[p["low_sample"]]:
+            ref = ok[ok["position"] == p.at[i, "position"]]
+            pcts = [(ref[c] <= p.at[i, c]).mean() for c in cols if pd.notna(p.at[i, c]) and len(ref)]
+            raw = 40 + 59 * float(np.mean(pcts)) if pcts else MEDIAN_RATING
+            w = p.at[i, "games"] / (p.at[i, "games"] + MIN_GAMES)
+            p.at[i, rating] = round(MEDIAN_RATING + (raw - MEDIAN_RATING) * w)
+    return p
+
+
+def champion_pools(by_name):
+    """챔피언 숙련: 2026 출전 1경기 = 1, 2025 = 0.5 (모든 리그·국제대회).
+    이름이 아니라 OE playerid로 묶는다. 다른 지역의 동명이인 기록이 섞이지 않게."""
     pools = {}
     for year, weight in ((SEASON, 1.0), (SEASON - 1, 0.5)):
         df = pd.read_csv(RAW / f"{year}_LoL_esports_match_data_from_OraclesElixir.csv", low_memory=False,
@@ -110,28 +147,90 @@ def export_players(by_name):
             if champ in by_name:
                 d = pools.setdefault(player, {})
                 d[by_name[champ]] = d.get(by_name[champ], 0) + n * weight
+    return pools
+
+
+def last_league():
+    """선수별 2026 마지막 출전 리그 (LCK + 해외 5개). 시즌 중 이적한 선수는 마지막 리그 팀에만 둔다."""
+    df = pd.read_csv(RAW / f"{SEASON}_LoL_esports_match_data_from_OraclesElixir.csv", low_memory=False,
+                     usecols=["playerid", "league", "date", "position"])
+    df = df[df["position"].isin(POSITIONS) & df["league"].isin(["LCK", *OVERSEAS])]
+    return df.sort_values("date").groupby("playerid")["league"].last()
+
+
+def export_players(by_name):
+    pools = champion_pools(by_name)
+    league_now = last_league()
     intang = pd.read_csv(OUT / "players/player_intangibles.csv")
     intang = intang.drop_duplicates("playerid").set_index("playerid")
-    starters = p.sort_values("games", ascending=False).drop_duplicates(["team", "position"])
-    players = []
-    for _, r in p.iterrows():
+    players, teams, used_ids = [], [], set()
+
+    def add_player(r, team, league, starter, age):
+        pid = r["player"].lower()
+        if pid in used_ids:
+            pid = f"{pid}-{team.lower()}"
+        used_ids.add(pid)
+        known = r["playerid"] in intang.index
         players.append({
-            "id": r["player"].lower(), "name": r["player"], "team": TEAM_SHORT[r["team"]], "position": r["position"],
-            "age": None if pd.isna(r["age"]) else int(r["age"]), "games2026": int(r["games"]),
-            "starter": bool(((starters["player"] == r["player"]) & (starters["team"] == r["team"])).any()),
+            "id": pid, "name": r["player"], "team": team, "position": r["position"],
+            "age": age, "games2026": int(r["games"]), "starter": starter,
+            "ratingLeague": league, "lowSample": bool(r["low_sample"]),
             "ratings": {v: float(r[k]) for k, v in RATINGS.items()},
             "intangible": float(intang["intangible"].get(r["playerid"], 0.0)),
             "intangibleSe": float(intang["intangible_se"].get(r["playerid"], 0.0)),
+            "intangibleKnown": bool(known),
             "champions": dict(sorted(pools.get(r["playerid"], {}).items(), key=lambda kv: -kv[1])),
         })
-    teams = []
-    for name, short in TEAM_SHORT.items():
-        roster = [x for x in players if x["team"] == short]
-        teams.append({"id": short, "name": name,
+        return pid
+
+    def add_team(short, name, league, roster):
+        teams.append({"id": short, "name": name, "league": league,
                       "starters": {pos: next(x["id"] for x in roster if x["starter"] and x["position"] == pos)
                                    for pos in POSITIONS},
                       "bench": [x["id"] for x in roster if not x["starter"]]})
+
+    # LCK: 2026 LCK 전체 출전 수가 가장 많은 선수가 주전 (기존 방식 그대로)
+    p = fill_low_sample(pd.read_csv(OUT / f"players/players_lck{SEASON}.csv"))
+    p = p[p["playerid"].map(league_now).fillna("LCK") == "LCK"]
+    birth = pd.to_datetime(p["birth_date"], errors="coerce")
+    p["age"] = ((AS_OF - birth).dt.days // 365.25).astype("Int64")
+    starters = p.sort_values("games", ascending=False).drop_duplicates(["team", "position"])
+    for _, r in p.iterrows():
+        add_player(r, TEAM_SHORT[r["team"]], "LCK",
+                   bool(((starters["player"] == r["player"]) & (starters["team"] == r["team"])).any()),
+                   None if pd.isna(r["age"]) else int(r["age"]))
+    for name, short in TEAM_SHORT.items():
+        add_team(short, name, "LCK", [x for x in players if x["team"] == short])
+
+    # 해외: 마지막 정규 스플릿에 그 팀으로 가장 많이 나온 선수가 주전. 능력치는 그 리그 안 백분위
+    for league in OVERSEAS:
+        p = fill_low_sample(pd.read_csv(OUT / f"players/players_{league.lower()}{SEASON}.csv"))
+        p = p[p["playerid"].map(league_now) == league]
+        starters = p.sort_values("games_last_split", ascending=False).drop_duplicates(["team_last_split", "position"])
+        start_ids = set(starters["playerid"])
+        for _, r in p.sort_values(["team_last_split", "games_last_split"], ascending=[True, False]).iterrows():
+            add_player(r, OVERSEAS_SHORT[r["team_last_split"]], league, r["playerid"] in start_ids, None)
+        for name in sorted(p["team_last_split"].unique()):
+            short = OVERSEAS_SHORT[name]
+            add_team(short, name, league, [x for x in players if x["team"] == short])
     return players, teams
+
+
+def export_world():
+    teams = pd.read_csv(OUT / f"teams/overseas_teams{SEASON}.csv")
+    intl = json.loads((OUT / "calibration/international_strength.json").read_text())
+    return {
+        "teamWinrate": {lg: {OVERSEAS_SHORT[r.team]: r.regular_winrate for r in g.itertuples()}
+                        for lg, g in teams.groupby("league")},
+        "teamGames": {lg: {OVERSEAS_SHORT[r.team]: int(r.games) for r in g.itertuples()}
+                      for lg, g in teams.groupby("league")},
+        "international": {
+            "strength": intl["strength_logit"],
+            # [리그 a, 리그 b, 가중 경기 수, 모델 승률(a 기준), 실제 승률]
+            "pairs": [[x["a"], x["b"], x["weighted_games"], x["model_winrate"], x["raw_winrate"]]
+                      for x in intl["pairs"]],
+        },
+    }
 
 
 def export_matchups(by_name):
@@ -207,6 +306,7 @@ def main():
     dump(clean(teams), "teams.json")
     dump(clean(export_matchups(by_name)), "matchups.json")
     dump(clean(export_targets()), "targets.json")
+    dump(clean(export_world()), "world.json")
     print(f"champions={len(champions)} players={len(players)} teams={len(teams)}")
 
 

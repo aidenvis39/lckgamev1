@@ -77,8 +77,10 @@ export function fitTeamwork(u: Universe, targets: Targets, start: Params, season
       if (real === undefined) continue;
       tw[team] = (tw[team] ?? 0) + (0.25 * (logit(real) - logit(sim[team]))) / Math.max(0.2, p.fightSkill);
     }
-    const avg = Object.values(tw).reduce((a, b) => a + b, 0) / Object.keys(tw).length;
-    for (const team of Object.keys(tw)) tw[team] -= avg;
+    // 이 리그 팀끼리만 평균 0으로 맞춘다 (다른 리그 팀워크는 건드리지 않음)
+    const ids = [...u.teams.keys()];
+    const avg = ids.reduce((a, t) => a + (tw[t] ?? 0), 0) / ids.length;
+    for (const team of ids) tw[team] = (tw[team] ?? 0) - avg;
     p = { ...p, teamwork: tw };
   }
   return p;

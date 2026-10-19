@@ -2,6 +2,7 @@
  {
   "id": "GEN",
   "name": "Gen.G",
+  "league": "LCK",
   "starters": {
    "top": "kiin",
    "jng": "canyon",
@@ -14,6 +15,7 @@
  {
   "id": "HLE",
   "name": "Hanwha Life Esports",
+  "league": "LCK",
   "starters": {
    "top": "zeus",
    "jng": "kanavi",
@@ -28,6 +30,7 @@
  {
   "id": "T1",
   "name": "T1",
+  "league": "LCK",
   "starters": {
    "top": "doran",
    "jng": "oner",
@@ -42,6 +45,7 @@
  {
   "id": "DK",
   "name": "Dplus Kia",
+  "league": "LCK",
   "starters": {
    "top": "siwoo",
    "jng": "lucid",
@@ -54,6 +58,7 @@
  {
   "id": "KT",
   "name": "KT Rolster",
+  "league": "LCK",
   "starters": {
    "top": "perfect",
    "jng": "cuzz",
@@ -70,6 +75,7 @@
  {
   "id": "BRO",
   "name": "HANJIN BRION",
+  "league": "LCK",
   "starters": {
    "top": "casting",
    "jng": "gideon",
@@ -77,13 +83,12 @@
    "bot": "teddy",
    "sup": "namgung"
   },
-  "bench": [
-   "loki"
-  ]
+  "bench": []
  },
  {
   "id": "NS",
   "name": "Nongshim RedForce",
+  "league": "LCK",
   "starters": {
    "top": "kingen",
    "jng": "sponge",
@@ -98,6 +103,7 @@
  {
   "id": "BFX",
   "name": "BNK FEARX",
+  "league": "LCK",
   "starters": {
    "top": "clear",
    "jng": "raptor",
@@ -113,6 +119,7 @@
  {
   "id": "DRX",
   "name": "Kiwoom DRX",
+  "league": "LCK",
   "starters": {
    "top": "rich",
    "jng": "willer",
@@ -129,6 +136,7 @@
  {
   "id": "DNS",
   "name": "DN SOOPers",
+  "league": "LCK",
   "starters": {
    "top": "dudu",
    "jng": "pyosik",
@@ -142,6 +150,627 @@
    "enosh",
    "quantum",
    "life"
+  ]
+ },
+ {
+  "id": "AL",
+  "name": "Anyone's Legend",
+  "league": "LPL",
+  "starters": {
+   "top": "breathe",
+   "jng": "tarzan",
+   "mid": "shanks",
+   "bot": "hope",
+   "sup": "kael"
+  },
+  "bench": []
+ },
+ {
+  "id": "BLG",
+  "name": "Bilibili Gaming",
+  "league": "LPL",
+  "starters": {
+   "top": "wenbo",
+   "jng": "xun",
+   "mid": "knight",
+   "bot": "viper",
+   "sup": "on"
+  },
+  "bench": [
+   "flandre",
+   "bin"
+  ]
+ },
+ {
+  "id": "EDG",
+  "name": "EDward Gaming",
+  "league": "LPL",
+  "starters": {
+   "top": "zdz",
+   "jng": "jiejie",
+   "mid": "bulldog",
+   "bot": "leave",
+   "sup": "parukia"
+  },
+  "bench": [
+   "sinian"
+  ]
+ },
+ {
+  "id": "IG",
+  "name": "Invictus Gaming",
+  "league": "LPL",
+  "starters": {
+   "top": "theshy",
+   "jng": "wei",
+   "mid": "rookie",
+   "bot": "assum",
+   "sup": "meiko"
+  },
+  "bench": [
+   "jiaqi"
+  ]
+ },
+ {
+  "id": "JDG",
+  "name": "JD Gaming",
+  "league": "LPL",
+  "starters": {
+   "top": "xiaoxu",
+   "jng": "junjia",
+   "mid": "hongq",
+   "bot": "gala",
+   "sup": "vampire"
+  },
+  "bench": [
+   "xiaofang"
+  ]
+ },
+ {
+  "id": "LGD",
+  "name": "LGD Gaming",
+  "league": "LPL",
+  "starters": {
+   "top": "burdol",
+   "jng": "heng",
+   "mid": "tangyuan",
+   "bot": "shaoye",
+   "sup": "crisp"
+  },
+  "bench": []
+ },
+ {
+  "id": "LNG",
+  "name": "LNG Esports",
+  "league": "LPL",
+  "starters": {
+   "top": "sheer",
+   "jng": "weiwei",
+   "mid": "nia",
+   "bot": "1xn",
+   "sup": "ycx"
+  },
+  "bench": [
+   "missing"
+  ]
+ },
+ {
+  "id": "NIP",
+  "name": "Ninjas in Pyjamas",
+  "league": "LPL",
+  "starters": {
+   "top": "hoya",
+   "jng": "guwon",
+   "mid": "care",
+   "bot": "photic",
+   "sup": "fengyue"
+  },
+  "bench": []
+ },
+ {
+  "id": "WE",
+  "name": "Team WE",
+  "league": "LPL",
+  "starters": {
+   "top": "cube",
+   "jng": "monki",
+   "mid": "karis",
+   "bot": "about",
+   "sup": "erha"
+  },
+  "bench": []
+ },
+ {
+  "id": "TT",
+  "name": "ThunderTalk Gaming",
+  "league": "LPL",
+  "starters": {
+   "top": "keshi",
+   "jng": "junhao",
+   "mid": "heru",
+   "bot": "ahn",
+   "sup": "feather"
+  },
+  "bench": []
+ },
+ {
+  "id": "TES",
+  "name": "Top Esports",
+  "league": "LPL",
+  "starters": {
+   "top": "zuian",
+   "jng": "tian",
+   "mid": "creme",
+   "bot": "jackeylove",
+   "sup": "zhuo"
+  },
+  "bench": []
+ },
+ {
+  "id": "WBG",
+  "name": "Weibo Gaming",
+  "league": "LPL",
+  "starters": {
+   "top": "zika",
+   "jng": "xiaohao",
+   "mid": "xiaohu",
+   "bot": "elk",
+   "sup": "moham"
+  },
+  "bench": [
+   "jwei"
+  ]
+ },
+ {
+  "id": "FNC",
+  "name": "Fnatic",
+  "league": "LEC",
+  "starters": {
+   "top": "soboro",
+   "jng": "razork",
+   "mid": "vladi",
+   "bot": "upset",
+   "sup": "lospa"
+  },
+  "bench": []
+ },
+ {
+  "id": "G2",
+  "name": "G2 Esports",
+  "league": "LEC",
+  "starters": {
+   "top": "brokenblade",
+   "jng": "skewmond",
+   "mid": "caps",
+   "bot": "hans sama",
+   "sup": "labrov"
+  },
+  "bench": []
+ },
+ {
+  "id": "GX",
+  "name": "GiantX",
+  "league": "LEC",
+  "starters": {
+   "top": "oscarinin",
+   "jng": "isma",
+   "mid": "jackies",
+   "bot": "flakked",
+   "sup": "jun"
+  },
+  "bench": []
+ },
+ {
+  "id": "KC",
+  "name": "Karmine Corp",
+  "league": "LEC",
+  "starters": {
+   "top": "canna",
+   "jng": "yike",
+   "mid": "kyeahoo",
+   "bot": "caliste",
+   "sup": "busio"
+  },
+  "bench": []
+ },
+ {
+  "id": "MKOI",
+  "name": "Movistar KOI",
+  "league": "LEC",
+  "starters": {
+   "top": "myrwn",
+   "jng": "elyoya",
+   "mid": "jojopyun",
+   "bot": "supa",
+   "sup": "alvaro"
+  },
+  "bench": []
+ },
+ {
+  "id": "NAVI",
+  "name": "Natus Vincere",
+  "league": "LEC",
+  "starters": {
+   "top": "maynter",
+   "jng": "rhilech",
+   "mid": "poby",
+   "bot": "samd",
+   "sup": "parus"
+  },
+  "bench": []
+ },
+ {
+  "id": "SK",
+  "name": "SK Gaming",
+  "league": "LEC",
+  "starters": {
+   "top": "wunder",
+   "jng": "skeanz",
+   "mid": "slowq",
+   "bot": "jopa",
+   "sup": "mikyx"
+  },
+  "bench": []
+ },
+ {
+  "id": "SHFT",
+  "name": "Shifters",
+  "league": "LEC",
+  "starters": {
+   "top": "rooster",
+   "jng": "sheo",
+   "mid": "nuc",
+   "bot": "paduck",
+   "sup": "stend"
+  },
+  "bench": []
+ },
+ {
+  "id": "TH",
+  "name": "Team Heretics",
+  "league": "LEC",
+  "starters": {
+   "top": "tracyn",
+   "jng": "daglas",
+   "mid": "serin",
+   "bot": "hype",
+   "sup": "way"
+  },
+  "bench": []
+ },
+ {
+  "id": "VIT",
+  "name": "Team Vitality",
+  "league": "LEC",
+  "starters": {
+   "top": "naak nako",
+   "jng": "lyncas",
+   "mid": "fiesta",
+   "bot": "carzzy",
+   "sup": "fleshy"
+  },
+  "bench": []
+ },
+ {
+  "id": "C9",
+  "name": "Cloud9",
+  "league": "LCS",
+  "starters": {
+   "top": "thanatos",
+   "jng": "blaber",
+   "mid": "loki",
+   "bot": "tactical",
+   "sup": "vulcan"
+  },
+  "bench": []
+ },
+ {
+  "id": "DIG",
+  "name": "Dignitas",
+  "league": "LCS",
+  "starters": {
+   "top": "denathor",
+   "jng": "dardoch",
+   "mid": "palafox",
+   "bot": "fbi",
+   "sup": "ignar"
+  },
+  "bench": [
+   "exyu"
+  ]
+ },
+ {
+  "id": "DSG",
+  "name": "Disguised",
+  "league": "LCS",
+  "starters": {
+   "top": "srtty",
+   "jng": "kryra",
+   "mid": "callme",
+   "bot": "sajed",
+   "sup": "lyonz"
+  },
+  "bench": []
+ },
+ {
+  "id": "FLY",
+  "name": "FlyQuest",
+  "league": "LCS",
+  "starters": {
+   "top": "gakgos",
+   "jng": "gryffinn",
+   "mid": "quad",
+   "bot": "massu",
+   "sup": "cryogen"
+  },
+  "bench": []
+ },
+ {
+  "id": "LYON",
+  "name": "LYON",
+  "league": "LCS",
+  "starters": {
+   "top": "dhokla",
+   "jng": "armao",
+   "mid": "saint",
+   "bot": "berserker",
+   "sup": "isles"
+  },
+  "bench": [
+   "inspired"
+  ]
+ },
+ {
+  "id": "SEN",
+  "name": "Sentinels",
+  "league": "LCS",
+  "starters": {
+   "top": "impact",
+   "jng": "hambak",
+   "mid": "darkwings",
+   "bot": "rahel",
+   "sup": "huhi"
+  },
+  "bench": []
+ },
+ {
+  "id": "SR",
+  "name": "Shopify Rebellion",
+  "league": "LCS",
+  "starters": {
+   "top": "fudge",
+   "jng": "contractz",
+   "mid": "zinie",
+   "bot": "bvoy",
+   "sup": "zeyzal"
+  },
+  "bench": []
+ },
+ {
+  "id": "TL",
+  "name": "Team Liquid",
+  "league": "LCS",
+  "starters": {
+   "top": "morgan",
+   "jng": "josedeodo",
+   "mid": "quid",
+   "bot": "yeon",
+   "sup": "corejj"
+  },
+  "bench": []
+ },
+ {
+  "id": "CFO",
+  "name": "CTBC Flying Oyster",
+  "league": "LCP",
+  "starters": {
+   "top": "rest",
+   "jng": "shad0w",
+   "mid": "pout",
+   "bot": "doggo",
+   "sup": "kino"
+  },
+  "bench": []
+ },
+ {
+  "id": "DCG",
+  "name": "Deep Cross Gaming",
+  "league": "LCP",
+  "starters": {
+   "top": "flauren",
+   "jng": "pop9",
+   "mid": "hongsuo",
+   "bot": "feng",
+   "sup": "shiauc"
+  },
+  "bench": []
+ },
+ {
+  "id": "DFM",
+  "name": "DetonatioN FocusMe",
+  "league": "LCP",
+  "starters": {
+   "top": "momo",
+   "jng": "citrus",
+   "mid": "fisher",
+   "bot": "kakkun",
+   "sup": "woody"
+  },
+  "bench": []
+ },
+ {
+  "id": "SHG",
+  "name": "Fukuoka SoftBank HAWKS gaming",
+  "league": "LCP",
+  "starters": {
+   "top": "evi",
+   "jng": "van1",
+   "mid": "aria",
+   "bot": "marble",
+   "sup": "vsta"
+  },
+  "bench": []
+ },
+ {
+  "id": "GAM",
+  "name": "GAM Esports",
+  "league": "LCP",
+  "starters": {
+   "top": "kiaya",
+   "jng": "draktharr",
+   "mid": "gloryy",
+   "bot": "artemis",
+   "sup": "taki"
+  },
+  "bench": []
+ },
+ {
+  "id": "GZ",
+  "name": "Ground Zero Gaming",
+  "league": "LCP",
+  "starters": {
+   "top": "1jiang",
+   "jng": "husha",
+   "mid": "uniboy",
+   "bot": "betty",
+   "sup": "kaiwing"
+  },
+  "bench": []
+ },
+ {
+  "id": "MVK",
+  "name": "MVK Esports",
+  "league": "LCP",
+  "starters": {
+   "top": "kratos",
+   "jng": "gury",
+   "mid": "chika",
+   "bot": "harky",
+   "sup": "siuloong"
+  },
+  "bench": []
+ },
+ {
+  "id": "TSW",
+  "name": "Team Secret Whales",
+  "league": "LCP",
+  "starters": {
+   "top": "pun",
+   "jng": "hizto",
+   "mid": "dire",
+   "bot": "eddie",
+   "sup": "bie"
+  },
+  "bench": []
+ },
+ {
+  "id": "FUR",
+  "name": "FURIA",
+  "league": "CBLOL",
+  "starters": {
+   "top": "guigo",
+   "jng": "tatu",
+   "mid": "tutsz",
+   "bot": "ayu",
+   "sup": "jojo"
+  },
+  "bench": [
+   "luuukz"
+  ]
+ },
+ {
+  "id": "FXW7",
+  "name": "Fluxo W7M",
+  "league": "CBLOL",
+  "starters": {
+   "top": "zothve",
+   "jng": "peach",
+   "mid": "cody",
+   "bot": "bao",
+   "sup": "momochi"
+  },
+  "bench": []
+ },
+ {
+  "id": "LOUD",
+  "name": "LOUD",
+  "league": "CBLOL",
+  "starters": {
+   "top": "xyno",
+   "jng": "sinatra",
+   "mid": "kaze",
+   "bot": "rabelo",
+   "sup": "uzent"
+  },
+  "bench": []
+ },
+ {
+  "id": "LEV",
+  "name": "Leviatan",
+  "league": "CBLOL",
+  "starters": {
+   "top": "devost",
+   "jng": "booki",
+   "mid": "enga",
+   "bot": "strensh",
+   "sup": "shiku"
+  },
+  "bench": []
+ },
+ {
+  "id": "LOS",
+  "name": "LØS",
+  "league": "CBLOL",
+  "starters": {
+   "top": "zest",
+   "jng": "curse",
+   "mid": "feisty",
+   "bot": "duduhh",
+   "sup": "ackerman"
+  },
+  "bench": []
+ },
+ {
+  "id": "RED",
+  "name": "RED Canids",
+  "league": "CBLOL",
+  "starters": {
+   "top": "zynts",
+   "jng": "stepz",
+   "mid": "fuuu",
+   "bot": "morttheus",
+   "sup": "manel"
+  },
+  "bench": [
+   "frosty"
+  ]
+ },
+ {
+  "id": "VKS",
+  "name": "Vivo Keyd Stars",
+  "league": "CBLOL",
+  "starters": {
+   "top": "zekas",
+   "jng": "disamis",
+   "mid": "mireu",
+   "bot": "jeskla",
+   "sup": "scamber"
+  },
+  "bench": []
+ },
+ {
+  "id": "PNG",
+  "name": "paiN Gaming",
+  "league": "CBLOL",
+  "starters": {
+   "top": "boal",
+   "jng": "cariok",
+   "mid": "keine",
+   "bot": "hena",
+   "sup": "ceos"
+  },
+  "bench": [
+   "namiru"
   ]
  }
 ]

@@ -22,6 +22,7 @@ export interface Params {
   roleWeight: Record<Position, number>; // 한타 전투력에서 포지션 비중
   macroWeight: number; // 선수 운영 기여(intangible) 합 1 → 전투력. tune이 '경기 승리 로짓 1'이 되도록 맞춘다
   teamwork: Record<string, number>; // 선수 운영 기여로도 설명 안 되는 그 시즌 팀 고유 효과 (코칭·합, z 단위). tune이 실제 팀 승률에 맞춘다
+  leagueOffset: Record<string, number>; // 리그 백분위 능력치를 LCK 기준으로 옮기는 보정 (능력치 점수, LCK = 0). tune --intl이 국제전 승률에 맞춘다
   fightSkill: number; // 팀 전투력 차이 → 교전 승률 (로짓)
   fightGold: number; // 골드 1,000 차이 → 교전 승률 (로짓)
   sideBonus: number; // 블루 진영 보너스 (로짓)
@@ -72,6 +73,7 @@ export const DEFAULT_PARAMS: Params = {
   roleWeight: { top: 1.0, jng: 1.0, mid: 1.1, bot: 1.2, sup: 0.8 },
   macroWeight: 0,
   teamwork: {},
+  leagueOffset: {},
   fightSkill: 0.9,
   fightGold: 0.35,
   sideBonus: 0.15,

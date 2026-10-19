@@ -7,6 +7,7 @@ export interface TeamProfile {
   survival: number;
   champPool: number;
   macro: number; // 주전 5명 운영 기여 합 (경기 승리 로짓)
+  macroKnown: boolean; // 해외 선수는 운영 기여 추정치가 없다
 }
 
 export function teamProfile(u: Universe, teamId: string): TeamProfile {
@@ -20,5 +21,6 @@ export function teamProfile(u: Universe, teamId: string): TeamProfile {
     survival: avg("survival"),
     champPool: avg("champPool"),
     macro: POSITIONS.reduce((s, pos) => s + lu.players[pos].intangible, 0),
+    macroKnown: POSITIONS.every((pos) => lu.players[pos].intangibleKnown),
   };
 }

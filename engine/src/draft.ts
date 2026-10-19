@@ -145,6 +145,8 @@ function fallback(ctx: DraftContext, s: DraftState, side: Side) {
   const champ = [...ctx.u.champions.values()]
     .filter((c) => !s.taken.has(c.id))
     .sort((a, b) => (b.positions[pos] ?? 0) - (a.positions[pos] ?? 0))[0];
+  // 168개 챔피언에 피어리스 BO5(최대 50픽 + 세트당 밴 10)로는 생기지 않지만, 챔피언 풀을 줄인 데이터에선 날 수 있다
+  if (!champ) throw new Error(`쓸 수 있는 챔피언이 없어 밴픽을 완성할 수 없음 (${side} ${pos})`);
   return { champ, pos, v: 0 };
 }
 

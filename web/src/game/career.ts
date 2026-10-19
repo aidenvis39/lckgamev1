@@ -1,19 +1,31 @@
-// 커리어(시즌 진행) 상태. 순수 함수로만 바꾸고, 화면은 새 Career를 받아 다시 그린다.
-// 정규시즌: 1~2라운드 18일(10팀 더블 라운드로빈) → 3~4라운드 10일(레전드·라이즈 그룹별 더블 라운드로빈). 전부 BO3.
+// 커리어(한 해 진행) 상태. 대진·순위·출전권은 엔진의 YearState가 맡고, 여기선 내 팀·세트 기록·진행 중 시리즈를 더한다.
+// 한 해: LCK 1~2라운드 → Road to MSI → MSI → LCK 3~4라운드 → LCK 플레이인·플레이오프 → 월즈 (해외 5개 리그는 뒤에서 같이 진행)
 import {
   baseUniverse,
   createRng,
+  createYear,
+  endDay,
   hashSeed,
-  lineupOf,
+  OVERSEAS,
   params,
-  playSeries,
+  pendingChoice,
+  phaseName,
   POSITIONS,
+  recordResult,
+  simulateMatch,
+  teamsByLeague,
+  todayMatches,
+  choose,
+  type DraftResult,
+  type GameResult,
+  type Match,
+  type Outcome,
   type Position,
+  type SeriesResult,
   type Side,
   type Universe,
+  type YearState,
 } from "../engine.ts";
-
-export type Stage = "R12" | "R34L" | "R34R";
 
 export interface GameRecord {
   blue: string;
@@ -25,84 +37,51 @@ export interface GameRecord {
   picks: Record<Side, Record<Position, string>>;
 }
 
+// LCK·국제대회 시리즈의 세트 기록 (해외 리그 경기는 점수만 남긴다)
 export interface SeriesRecord {
-  id: string;
-  matchday: number;
-  stage: Stage;
-  home: string; // 1세트 블루
-  away: string;
-  score?: [number, number]; // [home, away]
-  winner?: string;
-  games?: GameRecord[];
+  games: GameRecord[];
   auto?: boolean; // 내 경기를 AI에게 맡겼는지
 }
 
+// 진행 중인 내 시리즈. 세트가 끝날 때마다 저장해서 나갔다 와도 이어서 한다
+export interface PlayedGame {
+  blue: string;
+  red: string;
+  draft: DraftResult;
+  result: GameResult;
+}
+export interface SeriesProgress {
+  matchId: string;
+  games: PlayedGame[];
+  next: { blue: string; red: string } | null; // null이면 진 팀이 진영을 골라야 함
+}
+
 export interface Career {
-  version: 1;
+  version: 2;
   teamId: string;
   seed: number;
   season: number;
-  matchday: number; // 다음에 치를 날 (0부터)
-  series: SeriesRecord[];
-  groups: { legend: string[]; rise: string[] } | null;
+  year: YearState;
+  records: Record<string, SeriesRecord>;
   starters: Record<Position, string>; // 내 팀 주전 (로스터 화면에서 바꿀 수 있음)
+  progress: SeriesProgress | null;
 }
 
-export interface Standing {
-  team: string;
-  sw: number;
-  sl: number;
-  gw: number;
-  gl: number;
-  form: Array<"W" | "L">; // 최근 5시리즈, 오래된 것부터
-}
-
-export const R12_DAYS = 18;
-export const TOTAL_DAYS = 28;
-export const TEAM_IDS = [...baseUniverse.teams.keys()];
+export const LCK_TEAMS = [...baseUniverse.teams.values()].filter((t) => t.league === "LCK").map((t) => t.id);
+const DETAILED = new Set(["LCK", "RTM", "MSI", "LCKPO", "WORLDS"]);
+export const isOverseasLeague = (m: Match) => OVERSEAS.includes(m.event);
 
 export function newCareer(teamId: string, seed = Math.floor(Math.random() * 1e9), season = 2026): Career {
-  const rng = createRng(hashSeed(seed, "schedule"));
-  const order = [...TEAM_IDS];
-  for (let i = order.length - 1; i > 0; i--) {
-    const j = rng.int(i + 1);
-    [order[i], order[j]] = [order[j], order[i]];
-  }
   return {
-    version: 1,
+    version: 2,
     teamId,
     seed,
     season,
-    matchday: 0,
-    series: doubleRoundRobin(order, "R12", 0),
-    groups: null,
+    year: createYear(teamsByLeague(baseUniverse.teams.values()), seed, teamId, season),
+    records: {},
     starters: { ...baseUniverse.teams.get(teamId)!.starters },
+    progress: null,
   };
-}
-
-// 원형 배치법. 홀수 팀이면 매 라운드 한 팀이 쉰다.
-function roundRobin(list: string[]): Array<Array<[string, string]>> {
-  const t = [...list];
-  if (t.length % 2) t.push("");
-  const rounds: Array<Array<[string, string]>> = [];
-  for (let r = 0; r < t.length - 1; r++) {
-    const pairs: Array<[string, string]> = [];
-    for (let i = 0; i < t.length / 2; i++) {
-      const [a, b] = [t[i], t[t.length - 1 - i]];
-      if (a && b) pairs.push(r % 2 === 0 ? [a, b] : [b, a]);
-    }
-    rounds.push(pairs);
-    t.splice(1, 0, t.pop()!);
-  }
-  return rounds;
-}
-
-function doubleRoundRobin(teams: string[], stage: Stage, firstDay: number): SeriesRecord[] {
-  const legs = roundRobin(teams);
-  const rounds = [...legs, ...legs.map((r) => r.map(([a, b]) => [b, a] as [string, string]))];
-  return rounds.flatMap((pairs, i) =>
-    pairs.map(([home, away]) => ({ id: `${stage}-${firstDay + i}-${home}-${away}`, matchday: firstDay + i, stage, home, away })),
-  );
 }
 
 export function universeFor(c: Career): Universe {
@@ -111,41 +90,25 @@ export function universeFor(c: Career): Universe {
   return { ...baseUniverse, teams };
 }
 
-export const seriesOn = (c: Career, day: number) => c.series.filter((s) => s.matchday === day);
-export const isMine = (c: Career, s: SeriesRecord) => s.home === c.teamId || s.away === c.teamId;
-export const mySeriesOn = (c: Career, day: number) => seriesOn(c, day).find((s) => isMine(c, s)) ?? null;
-export const seasonOver = (c: Career) => c.matchday >= TOTAL_DAYS;
-export const seriesRng = (c: Career, s: SeriesRecord, salt = "") => createRng(hashSeed(c.seed, s.id, salt));
+export const isMine = (c: Career, m: Match) => m.home === c.teamId || m.away === c.teamId;
+export const today = (c: Career) => todayMatches(c.year);
+export const myMatchToday = (c: Career) => today(c).find((m) => isMine(c, m) && !c.year.results[m.id]) ?? null;
+export const myPendingChoice = (c: Career) => pendingChoice(c.year);
+export const seasonOver = (c: Career) => c.year.phase === "DONE";
+export const seriesRng = (c: Career, m: Match, salt = "") => createRng(hashSeed(c.seed, m.id, salt));
 
-export function dayLabel(day: number): string {
-  if (day >= TOTAL_DAYS) return "정규시즌 종료";
-  return day < R12_DAYS ? `1~2라운드 ${day + 1}일차` : `3~4라운드 ${day - R12_DAYS + 1}일차`;
+// "LCK 1~2라운드 3일차", "MSI 브래킷 2일차" 같은 오늘 이름
+export function dayLabel(c: Career): string {
+  const y = c.year;
+  if (y.phase === "DONE") return `${c.season} 시즌 종료`;
+  const start = y.phaseStart[y.phase] ?? y.day;
+  return `${phaseName(y.phase)} ${y.day - start + 1}일차`;
 }
 
-export function standings(c: Career): Standing[] {
-  const table = new Map<string, Standing>(TEAM_IDS.map((t) => [t, { team: t, sw: 0, sl: 0, gw: 0, gl: 0, form: [] }]));
-  for (const s of c.series) {
-    if (!s.score || !s.winner) continue;
-    const [h, a] = [table.get(s.home)!, table.get(s.away)!];
-    h.gw += s.score[0];
-    h.gl += s.score[1];
-    a.gw += s.score[1];
-    a.gl += s.score[0];
-    for (const t of [h, a]) {
-      const won = s.winner === t.team;
-      won ? t.sw++ : t.sl++;
-      t.form = [...t.form, won ? ("W" as const) : ("L" as const)].slice(-5);
-    }
-  }
-  return [...table.values()].sort((x, y) => y.sw - x.sw || y.gw - y.gl - (x.gw - x.gl) || y.gw - x.gw);
-}
+export const matchById = (c: Career, id: string) => c.year.matches.find((m) => m.id === id) ?? null;
 
-// 엔진 시리즈 결과 → 저장용 기록
-function recordOf(s: SeriesRecord, games: Array<{ blue: string; red: string; draft: { picks: Record<Side, Record<Position, string>> }; result: { winner: Side; duration: number; kills: Record<Side, number>; gd15: number } }>, score: [number, number], winner: string, auto = false): SeriesRecord {
+function toRecord(games: Array<{ blue: string; red: string; draft: { picks: Record<Side, Record<Position, string>> }; result: GameResult }>, auto = false): SeriesRecord {
   return {
-    ...s,
-    score,
-    winner,
     auto,
     games: games.map((g) => ({
       blue: g.blue,
@@ -159,33 +122,55 @@ function recordOf(s: SeriesRecord, games: Array<{ blue: string; red: string; dra
   };
 }
 
-export function simulateSeries(c: Career, s: SeriesRecord, auto = false): SeriesRecord {
+// 경기 난수는 (커리어 시드, 경기 id)로 고정. 내 팀은 로스터 화면에서 바꾼 주전으로 뛴다
+const simulate = (c: Career, u: Universe, m: Match): { outcome: Outcome; series: SeriesResult } => simulateMatch(u, params, c.seed, m);
+
+// 직접 치른 내 시리즈 결과를 넣는다
+export function recordMine(c: Career, matchId: string, games: PlayedGame[]): Career {
+  const m = matchById(c, matchId)!;
+  const score: [number, number] = [0, 0];
+  for (const g of games) score[(g.result.winner === "blue" ? g.blue : g.red) === m.home ? 0 : 1]++;
+  const winner = score[0] > score[1] ? m.home : m.away;
+  return {
+    ...c,
+    year: recordResult(c.year, m.id, { winner, score }),
+    records: { ...c.records, [m.id]: toRecord(games) },
+    progress: null,
+  };
+}
+
+// 오늘 남은 경기를 모두 시뮬하고 다음 날로. 내 경기가 남아 있으면 AI가 대신 치른다
+export function finishDay(c: Career): Career {
   const u = universeFor(c);
-  const r = playSeries(u, lineupOf(u, s.home), lineupOf(u, s.away), params, seriesRng(c, s), { bestOf: 3 });
-  return recordOf(s, r.games, r.score, r.winner, auto);
-}
-
-export function recordUserSeries(s: SeriesRecord, games: Parameters<typeof recordOf>[1], score: [number, number]): SeriesRecord {
-  return recordOf(s, games, score, score[0] > score[1] ? s.home : s.away);
-}
-
-// 그날의 남은 경기를 모두 시뮬하고 다음 날로. 1~2라운드가 끝나면 3~4라운드 그룹 일정을 만든다.
-export function finishDay(c: Career, mine?: SeriesRecord): Career {
-  const day = c.matchday;
-  let series = c.series.map((s) => (mine && s.id === mine.id ? mine : s));
-  const next = { ...c, series };
-  series = series.map((s) => (s.matchday === day && !s.score ? simulateSeries(next, s, isMine(c, s)) : s));
-  let result: Career = { ...c, series, matchday: day + 1 };
-  if (result.matchday === R12_DAYS && !result.groups) {
-    const order = standings(result).map((s) => s.team);
-    const groups = { legend: order.slice(0, 5), rise: order.slice(5) };
-    result = {
-      ...result,
-      groups,
-      series: [...result.series, ...doubleRoundRobin(groups.legend, "R34L", R12_DAYS), ...doubleRoundRobin(groups.rise, "R34R", R12_DAYS)],
-    };
+  let year = c.year;
+  const records = { ...c.records };
+  for (const m of todayMatches(year)) {
+    if (year.results[m.id]) continue;
+    const r = simulate(c, u, m);
+    year = recordResult(year, m.id, r.outcome);
+    if (DETAILED.has(m.event)) records[m.id] = toRecord(r.series.games, isMine(c, m));
   }
-  return result;
+  const progress = c.progress && year.results[c.progress.matchId] ? null : c.progress;
+  return { ...c, year: endDay(year), records, progress };
+}
+
+// 내 경기나 내 지목 차례가 올 때까지 (또는 시즌 끝까지) 하루씩 넘긴다
+export function advanceToMine(c: Career, limit = 200): Career {
+  let next = c;
+  for (let i = 0; i < limit && !seasonOver(next); i++) {
+    next = finishDay(next);
+    if (myMatchToday(next) || myPendingChoice(next)) break;
+  }
+  return next;
+}
+
+// 플레이오프에서 내 팀이 상대를 지목
+export function pickOpponent(c: Career, id: string, team: string): Career {
+  return { ...c, year: choose(c.year, id, team) };
+}
+
+export function saveProgress(c: Career, progress: SeriesProgress | null): Career {
+  return { ...c, progress };
 }
 
 export function swapStarter(c: Career, position: Position, playerId: string): Career {
@@ -198,16 +183,19 @@ export function rosterOf(c: Career): { starters: Record<Position, string>; bench
   return { starters: c.starters, bench: all.filter((id) => !starterIds.has(id)) };
 }
 
-// ── 저장 ────────────────────────────────────────────────
-const KEY = "lck-manager:career:v1";
+// 저장: v2. 예전(v1, 정규시즌만 있던 버전) 저장은 새 형식과 맞지 않아 버린다
+const KEY = "lck-manager:career:v2";
+const OLD_KEY = "lck-manager:career:v1";
 
-export function loadCareer(): Career | null {
+export function loadCareer(): { career: Career | null; droppedOld: boolean } {
   try {
+    const droppedOld = localStorage.getItem(OLD_KEY) !== null;
+    if (droppedOld) localStorage.removeItem(OLD_KEY);
     const raw = localStorage.getItem(KEY);
     const c = raw ? (JSON.parse(raw) as Career) : null;
-    return c?.version === 1 ? c : null;
+    return { career: c && c.version === 2 ? c : null, droppedOld };
   } catch {
-    return null;
+    return { career: null, droppedOld: false };
   }
 }
 
@@ -216,6 +204,6 @@ export function saveCareer(c: Career | null): void {
     if (c) localStorage.setItem(KEY, JSON.stringify(c));
     else localStorage.removeItem(KEY);
   } catch {
-    // 저장소를 못 쓰는 환경(시크릿 창 등)에선 저장 없이 진행
+    // 저장소를 못 쓰는 환경(사생활 보호 창 등)에선 저장 없이 진행
   }
 }

@@ -12,6 +12,7 @@
     "season": "node src/cli.ts season",
     "calibrate": "node src/cli.ts calibrate",
     "tune": "node src/cli.ts tune",
+    "year": "node src/cli.ts year",
     "typecheck": "tsc --noEmit",
     "test": "node --test \"test/**/*.test.ts\""
   },

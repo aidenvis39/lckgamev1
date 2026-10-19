@@ -4,16 +4,23 @@
 //   node src/cli.ts calibrate [--year 2026] [--seasons 30] [--seed 1] [--full-draft]
 //   node src/cli.ts tune [--year 2026] [--iters 300] [--seasons 8] [--seed 1]
 //   node src/cli.ts transfer faker clozer [--runs 300]   (같은 포지션 두 선수 맞트레이드 전후 비교)
+//   node src/cli.ts tune --intl [--seasons 8]           (해외 팀워크 + 리그 보정만 맞춤. LCK 조절값은 그대로)
+//   node src/cli.ts calibrate --intl                      (해외 리그 팀 승률 + 국제전 리그 쌍 승률 비교)
+//   node src/cli.ts year [--runs 100] [--seed 1]          (LCK·MSI·월즈 한 해 전체. 우승 분포)
 //   --params <파일> 로 다른 조절값 파일을 쓸 수 있다 (실험용)
 import { readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import type { Row } from "./calibrate.ts";
-import { loadParams, loadTargets, loadUniverse, saveParams } from "./data.ts";
+import { loadParams, loadTargets, loadUniverse, loadWorldTargets, saveParams } from "./data.ts";
+import { playYear } from "./competition/play.ts";
+import { champion, OVERSEAS } from "./competition/year.ts";
+import { fitLeagueOffsets, fitOverseasTeamwork, makeInternationalProbe, simulateLeague } from "./worldTune.ts";
+import { applyLeagueOffsets, leagueUniverse } from "./universe.ts";
 import { lineupOf, swapPlayers } from "./lineup.ts";
 import { createRng, hashSeed } from "./rng.ts";
 import { playSeason } from "./season.ts";
 import { playSeries } from "./series.ts";
-import { DEFAULT_PARAMS } from "./params.ts";
+import { DEFAULT_PARAMS, type Params } from "./params.ts";
 import { buildDraftPool, evaluate, tune } from "./tune.ts";
 import type { Position, Side, Universe } from "./types.ts";
 import { POSITIONS } from "./types.ts";
@@ -31,13 +38,16 @@ const { values, positionals } = parseArgs({
     seasons: { type: "string", default: "30" },
     iters: { type: "string", default: "300" },
     "full-draft": { type: "boolean", default: false },
+    intl: { type: "boolean", default: false },
+    games: { type: "string", default: "6" },
     params: { type: "string" },
   },
 });
 const [command, ...rest] = positionals;
 const seed = Number(values.seed);
-const u = loadUniverse();
-const params = values.params ? { ...DEFAULT_PARAMS, ...JSON.parse(readFileSync(values.params, "utf8")) } : loadParams();
+const params: Params = values.params ? { ...DEFAULT_PARAMS, ...JSON.parse(readFileSync(values.params, "utf8")) } : loadParams();
+const world = applyLeagueOffsets(loadUniverse(), params.leagueOffset); // LCK + 해외 5개 리그
+const u = leagueUniverse(world, "LCK"); // 시즌·튜닝·이적 실험은 LCK만
 
 switch (command) {
   case "match":
@@ -47,31 +57,34 @@ switch (command) {
     season(Number(values.runs));
     break;
   case "calibrate":
-    calibrate();
+    values.intl ? calibrateWorld() : calibrate();
     break;
   case "tune":
-    runTune();
+    values.intl ? tuneWorld() : runTune();
+    break;
+  case "year":
+    year(Number(values.runs === "1" ? 100 : values.runs));
     break;
   case "transfer":
     transfer(rest[0], rest[1], Number(values.runs === "1" ? 300 : values.runs));
     break;
   default:
-    console.log("명령: match <팀1> <팀2> | season | calibrate | tune | transfer <선수1> <선수2>   (팀: " + [...u.teams.keys()].join(", ") + ")");
+    console.log("명령: match <팀1> <팀2> | season | calibrate [--intl] | tune [--intl] | year | transfer <선수1> <선수2>   (팀: " + [...world.teams.keys()].join(", ") + ")");
 }
 
 function match(a: string, b: string) {
   const bestOf = Number(values.bo) as 1 | 3 | 5;
   const fearless = !values["no-fearless"];
-  const s = playSeries(u, lineupOf(u, a), lineupOf(u, b), params, createRng(hashSeed(seed, "cli")), {
+  const s = playSeries(world, lineupOf(world, a), lineupOf(world, b), params, createRng(hashSeed(seed, "cli")), {
     bestOf,
     fearless,
     log: true,
   });
-  const champ = (id: string) => u.champions.get(id)!.nameKo;
+  const champ = (id: string) => world.champions.get(id)!.nameKo;
   console.log(`\n${s.teams[0]} vs ${s.teams[1]}  (BO${bestOf}${fearless ? ", 피어리스" : ""}, seed ${seed})`);
   s.games.forEach((g, i) => {
     const ids: Record<Side, string> = { blue: g.blue, red: g.red };
-    const lu = { blue: lineupOf(u, g.blue), red: lineupOf(u, g.red) };
+    const lu = { blue: lineupOf(world, g.blue), red: lineupOf(world, g.red) };
     const r = g.result;
     console.log(`\n━━ ${i + 1}세트 ━━ 블루 ${g.blue} vs 레드 ${g.red}`);
     console.log(`  밴   ${g.blue}: ${g.draft.bans.blue.map(champ).join(", ")}`);
@@ -170,6 +183,69 @@ function runTune() {
   });
   saveParams(result.params);
   console.log(`\n저장: data/params.json (튜닝 손실 ${result.loss.toFixed(2)}). 검증은 npm run calibrate`);
+}
+
+// 해외 리그 팀워크 → 리그 보정. LCK 조절값과 LCK 팀워크는 건드리지 않는다
+function tuneWorld() {
+  const targets = loadTargets(values.year);
+  const wt = loadWorldTargets();
+  const base = loadUniverse();
+  const log = (m: string) => console.log("  " + m);
+  console.log("해외 리그 팀워크");
+  let p = fitOverseasTeamwork(base, wt, params, Number(values.seasons), seed, 12, log);
+  console.log("국제전 리그 보정");
+  p = fitLeagueOffsets(base, targets, wt, p, Number(values.games), seed, 10, log);
+  saveParams(p);
+  console.log("\n저장: data/params.json. 검증은 npm run calibrate -- --intl");
+}
+
+function calibrateWorld() {
+  const targets = loadTargets(values.year);
+  const wt = loadWorldTargets();
+  const base = loadUniverse();
+  const cseed = hashSeed(seed, "calibrate-world");
+  console.log("\n해외 리그 팀별 세트 승률 (더블 라운드로빈 시뮬 vs 실제 2026 최근 정규 스플릿 2개)");
+  for (const lg of OVERSEAS) {
+    const sim = simulateLeague(base, lg, params, Number(values.seasons), cseed);
+    const real = wt.teamWinrate[lg];
+    const ids = Object.keys(real).sort((a, b) => real[b] - real[a]);
+    const rmse = Math.sqrt(ids.reduce((a, id) => a + (sim[id] - real[id]) ** 2, 0) / ids.length);
+    console.log(`  ${pad(lg, 6)} 오차 ${(rmse * 100).toFixed(1)}%p   ` + ids.map((id) => `${id} ${pct(sim[id])}/${pct(real[id])}`).join("  "));
+  }
+  console.log(`\n리그 보정 (능력치 점수, LCK = 0): ${Object.entries(params.leagueOffset).map(([k, v]) => `${k} ${signedFix(v)}`).join("  ")}`);
+  console.log("\n국제전 리그 쌍 승률: 대표팀(월즈 출전권 수만큼 상위 팀)끼리 맞대결");
+  console.log("  (기준 = 2024~2026 국제전 리그 강도 모델, 실제 = 단순 집계. 가중 = 최근 연도 가중 경기 수)");
+  const rows = makeInternationalProbe(base, targets, wt, params, Number(values.games), cseed)(params);
+  for (const r of rows)
+    console.log(`  ${pad(`${r.a} 대 ${r.b}`, 14)} 시뮬 ${pct(r.sim)}   기준 ${pct(r.target)}   실제 ${r.raw === null ? "-" : pct(r.raw)}   가중 ${r.weight.toFixed(1)}`);
+  const err = rows.reduce((s, x) => s + x.weight * (x.sim - x.target) ** 2, 0) / rows.reduce((s, x) => s + x.weight, 0);
+  console.log(`  가중 오차 ${(Math.sqrt(err) * 100).toFixed(1)}%p`);
+}
+
+// 한 해 전체를 여러 번: 대회별 우승 팀·리그 분포
+function year(runs: number) {
+  const draft = buildDraftPool(world, params, seed, 5);
+  const wins: Record<string, Map<string, number>> = { LCK: new Map(), MSI: new Map(), WORLDS: new Map() };
+  const region = new Map<string, Map<string, number>>();
+  const leagueOf = (t: string) => world.teams.get(t)!.league;
+  const started = Date.now();
+  for (let i = 0; i < runs; i++) {
+    const st = playYear(world, params, hashSeed(seed, "year", i), draft);
+    for (const ev of Object.keys(wins)) {
+      const c = champion(st, ev)!;
+      wins[ev].set(c, (wins[ev].get(c) ?? 0) + 1);
+      const r = region.get(ev) ?? new Map<string, number>();
+      r.set(leagueOf(c), (r.get(leagueOf(c)) ?? 0) + 1);
+      region.set(ev, r);
+    }
+    if ((i + 1) % 20 === 0) console.log(`  ${i + 1}/${runs} (${((Date.now() - started) / 1000).toFixed(0)}초)`);
+  }
+  console.log(`\n한 해 ${runs}회 시뮬 (seed ${seed})`);
+  for (const ev of Object.keys(wins)) {
+    const top = [...wins[ev]].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([t, n]) => `${t} ${pct(n / runs)}`).join("  ");
+    const reg = [...region.get(ev)!].sort((a, b) => b[1] - a[1]).map(([lg, n]) => `${lg} ${pct(n / runs)}`).join("  ");
+    console.log(`  ${pad(ev, 7)} 우승 리그: ${reg}\n          우승 팀: ${top}`);
+  }
 }
 
 function transfer(aId: string, bId: string, runs: number) {

@@ -1,0 +1,150 @@
+{
+  "leagues": [
+    "LCK",
+    "LPL",
+    "LEC",
+    "LCS",
+    "LCP",
+    "CBLOL"
+  ],
+  "year_weight": {
+    "2024": 0.35,
+    "2025": 0.6,
+    "2026": 1.0
+  },
+  "games_by_year": {
+    "2024": 171,
+    "2025": 196,
+    "2026": 174
+  },
+  "strength_logit": {
+    "LCK": 0.0,
+    "LPL": -0.216,
+    "LEC": -0.684,
+    "LCS": -0.928,
+    "LCP": -1.225,
+    "CBLOL": -1.507
+  },
+  "pairs": [
+    {
+      "a": "LCK",
+      "b": "LPL",
+      "games": 130,
+      "weighted_games": 76.5,
+      "raw_winrate": 0.577,
+      "model_winrate": 0.554
+    },
+    {
+      "a": "LCK",
+      "b": "LEC",
+      "games": 63,
+      "weighted_games": 44.05,
+      "raw_winrate": 0.714,
+      "model_winrate": 0.665
+    },
+    {
+      "a": "LCK",
+      "b": "LCS",
+      "games": 42,
+      "weighted_games": 26.7,
+      "raw_winrate": 0.81,
+      "model_winrate": 0.717
+    },
+    {
+      "a": "LCK",
+      "b": "LCP",
+      "games": 27,
+      "weighted_games": 19.55,
+      "raw_winrate": 0.889,
+      "model_winrate": 0.773
+    },
+    {
+      "a": "LCK",
+      "b": "CBLOL",
+      "games": 7,
+      "weighted_games": 6.35,
+      "raw_winrate": 1.0,
+      "model_winrate": 0.819
+    },
+    {
+      "a": "LPL",
+      "b": "LEC",
+      "games": 52,
+      "weighted_games": 33.35,
+      "raw_winrate": 0.615,
+      "model_winrate": 0.615
+    },
+    {
+      "a": "LPL",
+      "b": "LCS",
+      "games": 26,
+      "weighted_games": 17.55,
+      "raw_winrate": 0.808,
+      "model_winrate": 0.671
+    },
+    {
+      "a": "LPL",
+      "b": "LCP",
+      "games": 23,
+      "weighted_games": 13.65,
+      "raw_winrate": 0.609,
+      "model_winrate": 0.733
+    },
+    {
+      "a": "LPL",
+      "b": "CBLOL",
+      "games": 9,
+      "weighted_games": 6.9,
+      "raw_winrate": 1.0,
+      "model_winrate": 0.784
+    },
+    {
+      "a": "LEC",
+      "b": "LCS",
+      "games": 32,
+      "weighted_games": 22.15,
+      "raw_winrate": 0.375,
+      "model_winrate": 0.561
+    },
+    {
+      "a": "LEC",
+      "b": "LCP",
+      "games": 54,
+      "weighted_games": 34.15,
+      "raw_winrate": 0.685,
+      "model_winrate": 0.632
+    },
+    {
+      "a": "LEC",
+      "b": "CBLOL",
+      "games": 8,
+      "weighted_games": 4.95,
+      "raw_winrate": 0.75,
+      "model_winrate": 0.695
+    },
+    {
+      "a": "LCS",
+      "b": "LCP",
+      "games": 25,
+      "weighted_games": 13.9,
+      "raw_winrate": 0.6,
+      "model_winrate": 0.573
+    },
+    {
+      "a": "LCS",
+      "b": "CBLOL",
+      "games": 19,
+      "weighted_games": 16.5,
+      "raw_winrate": 0.579,
+      "model_winrate": 0.641
+    },
+    {
+      "a": "LCP",
+      "b": "CBLOL",
+      "games": 24,
+      "weighted_games": 15.2,
+      "raw_winrate": 0.625,
+      "model_winrate": 0.57
+    }
+  ]
+}

@@ -1,16 +1,25 @@
 import { useEffect, useId, useRef, useState } from "react";
 import type { Side } from "../engine.ts";
-import { champImage, TEAM_STYLE } from "../game/meta.ts";
+import { champImage, LEAGUE_STYLE, TEAM_STYLE } from "../game/meta.ts";
 
 export function TeamBadge({ team, size = 28 }: { team: string; size?: number }) {
   const s = TEAM_STYLE[team];
   return (
     <span
       className="badge"
-      style={{ width: size * 1.45, height: size, background: s?.color ?? "var(--ink-3)", color: s?.ink ?? "var(--fg)", fontSize: size * 0.48 }}
+      style={{ width: size * 1.45, height: size, background: s?.color ?? "var(--ink-3)", color: s?.ink ?? "var(--fg)", fontSize: size * (team.length >= 4 ? 0.34 : 0.48) }}
       title={s?.name ?? team}
     >
       {team}
+    </span>
+  );
+}
+
+export function LeagueTag({ league }: { league: string }) {
+  const s = LEAGUE_STYLE[league];
+  return (
+    <span className="league-tag" style={{ color: s?.color, borderColor: s?.color }}>
+      {s?.name ?? league}
     </span>
   );
 }
@@ -132,6 +141,7 @@ const ICONS: Record<string, string> = {
   table: "M4 4h16v16H4zM4 9h16M4 14h16M10 4v16",
   roster: "M8 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm8 1a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM1 21c0-4 3-7 7-7s7 3 7 7zm14.5 0c0-2.5-1-4.6-2.6-5.9A6 6 0 0 1 23 21z",
   lab: "M9 3h6M10 3v6L4 20a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 20L14 9V3M7 15h10",
+  trophy: "M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v3M8 21h8M9 21l1-4h4l1 4",
 };
 
 export function Icon({ name }: { name: keyof typeof ICONS | string }) {

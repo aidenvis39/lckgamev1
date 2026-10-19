@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { baseUniverse, POSITIONS, type Player, type Position } from "../engine.ts";
+import { baseUniverse, LEAGUES, lckUniverse, POSITIONS, type Player, type Position } from "../engine.ts";
 import { macroGrade, pct, POS_KO, TEAM_STYLE } from "../game/meta.ts";
 import { TeamBadge } from "../ui/bits.tsx";
 import type { LabMessage, TeamOutcome } from "../workers/lab.worker.ts";
@@ -8,10 +8,16 @@ const RUNS = 100;
 
 export function Lab() {
   const [pos, setPos] = useState<Position>("mid");
-  const players = useMemo(
-    () => [...baseUniverse.players.values()].filter((p) => p.position === pos).sort((a, b) => a.team.localeCompare(b.team) || b.games2026 - a.games2026),
+  // A는 LCK 선수, B는 해외 선수까지 (해외 능력치는 리그 보정을 더한 값이라 LCK와 비교 가능)
+  const leagueOf = (p: Player) => baseUniverse.teams.get(p.team)!.league;
+  const all = useMemo(
+    () =>
+      [...baseUniverse.players.values()]
+        .filter((p) => p.position === pos)
+        .sort((a, b) => LEAGUES.indexOf(leagueOf(a)) - LEAGUES.indexOf(leagueOf(b)) || a.team.localeCompare(b.team) || b.games2026 - a.games2026),
     [pos],
   );
+  const players = useMemo(() => all.filter((p) => lckUniverse.teams.has(p.team)), [all]);
   const [a, setA] = useState("faker");
   const [b, setB] = useState("clozer");
   const [progress, setProgress] = useState<number | null>(null);
@@ -21,8 +27,8 @@ export function Lab() {
   useEffect(() => () => worker.current?.terminate(), []);
   useEffect(() => {
     if (!players.some((p) => p.id === a)) setA(players[0]?.id ?? "");
-    if (!players.some((p) => p.id === b)) setB(players.find((p) => p.team !== players[0]?.team)?.id ?? "");
-  }, [players, a, b]);
+    if (!all.some((p) => p.id === b)) setB(players.find((p) => p.team !== players[0]?.team)?.id ?? "");
+  }, [players, all, a, b]);
 
   const pa = baseUniverse.players.get(a);
   const pb = baseUniverse.players.get(b);
@@ -55,8 +61,8 @@ export function Lab() {
         </div>
       </div>
       <p className="muted" style={{ margin: 0, maxWidth: "70ch" }}>
-        같은 포지션 두 선수를 맞트레이드한 뒤 정규시즌을 {RUNS}번씩 돌려 전후 성적을 비교함. 개인 능력치와 챔피언 숙련도,
-        운영 기여가 모두 선수를 따라감.
+        같은 포지션 두 선수를 맞트레이드한 뒤 LCK 정규시즌을 {RUNS}번씩 돌려 전후 성적을 비교함. 개인 능력치와 챔피언 숙련도,
+        운영 기여가 모두 선수를 따라감. 선수 B는 해외 선수도 고를 수 있음 (능력치는 리그 보정을 더한 값).
       </p>
       <section className="panel stack">
         <div className="seg" role="group" aria-label="포지션">
@@ -71,7 +77,7 @@ export function Lab() {
           <span className="muted" style={{ paddingBottom: 10, textAlign: "center" }}>
             ⇄
           </span>
-          <PlayerSelect id="lab-b" label="선수 B" value={b} onChange={setB} players={players} />
+          <PlayerSelect id="lab-b" label="선수 B" value={b} onChange={setB} players={all} />
         </div>
         {sameTeam && <p className="chip bad" style={{ alignSelf: "start" }}>같은 팀 선수끼리는 바꿀 수 없음</p>}
         <div className="row" style={{ flexWrap: "wrap" }}>
@@ -108,7 +114,7 @@ export function Lab() {
                 </tr>
               </thead>
               <tbody>
-                {[result.a.team, result.b.team].map((t) => {
+                {[result.a.team, result.b.team].filter((t) => result.before[t]).map((t) => {
                   const [x, y] = [result.before[t], result.after[t]];
                   const d = y.winrate - x.winrate;
                   return (
@@ -152,16 +158,23 @@ function PlayerSelect({ id, label, value, onChange, players }: { id: string; lab
         {label}
       </label>
       <select id={id} value={value} onChange={(e) => onChange(e.target.value)}>
-        {players.map((x) => (
-          <option key={x.id} value={x.id}>
-            {x.team} · {x.name}
-            {x.starter ? "" : " (후보)"}
-          </option>
-        ))}
+        {LEAGUES.map((lg) => {
+          const list = players.filter((x) => baseUniverse.teams.get(x.team)!.league === lg);
+          return list.length ? (
+            <optgroup key={lg} label={lg}>
+              {list.map((x) => (
+                <option key={x.id} value={x.id}>
+                  {x.team} · {x.name}
+                  {x.starter ? "" : " (후보)"}
+                </option>
+              ))}
+            </optgroup>
+          ) : null;
+        })}
       </select>
       {p && (
         <span className="muted" style={{ fontSize: 12 }}>
-          라인전 {Math.round(p.ratings.laning)} · 한타 {Math.round(p.ratings.teamfight)} · 운영 {macroGrade(p.intangible).label}
+          라인전 {Math.round(p.ratings.laning)} · 한타 {Math.round(p.ratings.teamfight)} · 운영 {p.intangibleKnown ? macroGrade(p.intangible).label : "추정 없음"}
         </span>
       )}
     </div>

@@ -3,8 +3,24 @@
 ```bash
 python3 -I scripts/build_all.py .            # raw/ → output/ 전체 재생성 (약 25초)
 python3 -I scripts/player_intangibles.py .   # 선수 운영 기여 회귀분석 (약 15초)
+python3 -I scripts/build_world.py .          # 해외 5개 리그 선수·팀, 국제전 리그 쌍 기준값 (약 5초)
 python3 -I scripts/export_engine_data.py .   # output/ → engine/data/ (엔진 입력)
 ```
+
+`build_world.py`가 만드는 것:
+- `players/players_<lpl|lec|lcs|lcp|cblol>2026.csv`: 리그 안 포지션 백분위 능력치(LCK 표와 같은 방식)와 마지막 정규 스플릿 소속·출전 수
+- `teams/overseas_teams2026.csv`: 마지막 정규 스플릿 참가팀(LPL 12, LEC 10, LCS 8, LCP 8, CBLOL 8)과 최근 정규 스플릿 2개 세트 승률
+- `calibration/international_pairs.csv`, `international_strength.json`
+  - 2024~2026 국제전 리그 쌍 전적과 리그 강도(브래들리-테리, LCK = 0)
+  - 연도별 리그 이름을 맞춤: 2025 LTA N → LCS, LTA S → CBLOL, 2024 PCS·VCS·LJL → LCP
+  - 예전 `international_region_matrix_*.csv`는 이 매핑이 없어서 엔진에선 안 씀
+
+`export_engine_data.py` 규칙:
+- **소속**: 2026에 리그를 옮긴 선수는 마지막으로 뛴 리그 팀에만 둔다 (예: Loki는 BRO 후보 → C9 미드).
+- **주전**: LCK는 2026 출전 수, 해외는 마지막 정규 스플릿 출전 수가 가장 많은 선수.
+- **표본 부족(15경기 미만)**: 가진 경기로 리그·포지션 백분위를 내고, 표본이 적은 만큼 중앙값(69.5) 쪽으로 당긴다. 예전엔 50으로 고정했음. `lowSample`로 표시.
+- **해외 선수 운영 기여**: 추정치가 없어 0, `intangibleKnown: false`.
+- `engine/data/world.json`: 해외 팀별 실제 승률, 국제전 리그 쌍 기준값.
 
 `raw/oe_drive/`(Oracle's Elixir CSV, 약 600MB)는 용량 때문에 저장소에 넣지 않았다.
 다시 만들려면 [Oracle's Elixir 구글 드라이브 폴더](https://drive.google.com/drive/folders/1gLSw0RLjBbtaNy0dgnGQDAZOHIgCe-HH)에서

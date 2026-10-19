@@ -1,9 +1,10 @@
-// 이적 실험실: 맞트레이드 전후 정규시즌을 여러 번 돌린다 (메인 화면이 멈추지 않게 워커에서).
+// 이적 실험실: 맞트레이드 전후 LCK 정규시즌을 여러 번 돌린다 (메인 화면이 멈추지 않게 워커에서).
+// 해외 선수와 바꾸면 그 선수는 LCK 팀으로 오고, 해외 팀은 시뮬에 안 들어간다.
 import { createRng, hashSeed } from "../../../engine/src/rng.ts";
 import { playSeason } from "../../../engine/src/season.ts";
 import { swapPlayers } from "../../../engine/src/lineup.ts";
 import { buildDraftPool } from "../../../engine/src/tune.ts";
-import { baseUniverse, params } from "../engine.ts";
+import { lckUniverse, params } from "../engine.ts";
 import type { Universe } from "../engine.ts";
 
 export interface LabRequest {
@@ -45,7 +46,7 @@ self.onmessage = (e: MessageEvent<LabRequest>) => {
   const req = e.data;
   const post = (m: LabMessage) => (self as unknown as Worker).postMessage(m);
   const progress = (done: number) => post({ type: "progress", done, total: req.runs * 2 });
-  const before = run(baseUniverse, req, 0, progress);
-  const after = run(swapPlayers(baseUniverse, req.a, req.b), req, 1, progress);
+  const before = run(lckUniverse, req, 0, progress);
+  const after = run(swapPlayers(lckUniverse, req.a, req.b), req, 1, progress);
   post({ type: "result", before, after });
 };

@@ -1,4 +1,4 @@
-import { baseUniverse, POSITIONS, realWinrate2026 } from "../engine.ts";
+import { lckUniverse as baseUniverse, POSITIONS, realWinrate2026 } from "../engine.ts";
 import { grade, pct, TEAM_STYLE } from "../game/meta.ts";
 import { teamProfile } from "../game/teamStats.ts";
 import { TeamBadge } from "../ui/bits.tsx";
@@ -8,13 +8,13 @@ export function TeamSelect({ onPick }: { onPick: (teamId: string) => void }) {
   return (
     <div className="page">
       <section className="hero">
-        <span className="label">2026 LCK 정규시즌</span>
+        <span className="label">2026 시즌</span>
         <h1>
           어느 팀의 <em>감독</em>이 될까
         </h1>
         <p>
-          팀을 고르면 정규시즌 28일이 시작됨. 내 경기는 직접 밴픽하고 중계로 지켜보고, 다른 경기는 엔진이 실제 LCK 통계에
-          맞춰 시뮬함.
+          LCK 정규시즌에서 시작해 Road to MSI, MSI, LCK 플레이오프를 거쳐 월즈까지 한 해를 치름. 내 경기는 직접 밴픽하고
+          중계로 지켜보고, 다른 경기와 해외 5개 리그는 엔진이 실제 통계에 맞춰 시뮬함.
         </p>
       </section>
       <div className="team-grid">
