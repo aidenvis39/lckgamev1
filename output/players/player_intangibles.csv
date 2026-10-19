@@ -1,0 +1,222 @@
+﻿playerid,intangible,intangible_se,player,position,games,teams,last_year
+oe:player:e1edfc5cea461399a63cb813cf795cc,0.243,0.174,Faker,mid,719,T1,2026
+oe:player:5bbc2b92348d930ebd500cb9ce71bb7,0.208,0.159,Peyz,bot,321,Gen.G / T1,2026
+oe:player:ee051912ad5f9a97aa9ce4980cbb481,0.199,0.162,Peter,sup,308,Nongshim RedForce / KT Rolster / DN SOOPers,2026
+oe:player:f9cd2ef9afea5cda0eb3263a025cec1,0.195,0.167,Zeka,mid,533,Kiwoom DRX / Hanwha Life Esports,2026
+oe:player:e4e24b8656e4e6a74b939af730b0148,0.175,0.146,Lehends,sup,681,Hanwha Life Esports / DN SOOPers / Gen.G / KT Rolster / Nongshim RedForce,2026
+oe:player:a41eb80b5f23627fc710cc41c516e49,0.172,0.188,LazyFeel,bot,76,Kiwoom DRX,2026
+oe:player:030a726de315d9ad86989bf360809e9,0.168,0.196,Prince,bot,123,Liiv SANDBOX,2022
+oe:player:effd5b04b5d98b779f0a6162c40735a,0.161,0.193,Fisher,mid,73,Nongshim RedForce,2025
+oe:player:d709285b163a94af9d819e568c592ba,0.153,0.179,VicLa,mid,253,KT Rolster / BNK FEARX,2026
+oe:player:98dd15c330fb5abb4508347265a7f76,0.148,0.163,Zeus,top,575,T1 / Hanwha Life Esports,2026
+oe:player:6fbf57b984dbf130701e09ea4110bb8,0.141,0.171,Rich,top,325,Team Dynamics / Nongshim RedForce / Kiwoom DRX,2026
+oe:player:f8b68f268106124fc4bc1c946adc9b0,0.131,0.183,Oner,jng,601,T1,2026
+oe:player:57acacc1f182893280e7400073a3dd1,0.13,0.145,Doran,top,731,Kiwoom DRX / KT Rolster / Gen.G / Hanwha Life Esports / T1,2026
+oe:player:29bef8f5895e5e4fef8ff0945e68567,0.128,0.17,PerfecT,top,292,KT Rolster,2026
+oe:player:b9972f46c1e52797d66236b118d2970,0.127,0.204,Khan,top,99,Dplus Kia,2021
+oe:player:5ef70ecd799a70ebbda239cd9a9f1e7,0.105,0.17,Andil,sup,278,DN SOOPers / Kiwoom DRX,2026
+oe:player:862e14690d1a332958f454c3c71e4e7,0.101,0.206,Leaper,bot,44,DN SOOPers,2024
+oe:player:637ed20b1e41be1c51bd1a4cb211357,0.096,0.186,Raptor,jng,266,HANJIN BRION / BNK FEARX,2026
+oe:player:f9fe6d28d5b67bf9ac673b2cc8edf15,0.088,0.149,Cuzz,jng,631,T1 / KT Rolster / DN SOOPers,2026
+oe:player:30361653a485a9609fb2d3aa073282c,0.088,0.154,Bdd,mid,704,Gen.G / Nongshim RedForce / KT Rolster,2026
+oe:player:d3abb04a273ed8615be5f54a391818e,0.086,0.189,Clid,jng,263,Gen.G / Hanwha Life Esports,2023
+oe:player:566586ef99b39b57e9c85c59f021da5,0.085,0.189,Burdol,top,130,Gen.G / Dplus Kia / Liiv SANDBOX,2023
+oe:player:41deab55354f57a94135989133f9968,0.085,0.194,Kanavi,jng,99,Hanwha Life Esports,2026
+oe:player:d24f38ec30ce6f7577066f80e43e4bf,0.085,0.19,Kael,sup,179,Liiv SANDBOX,2023
+oe:player:9573154ad8bc9459b4c0d940315054f,0.082,0.169,Viper,bot,432,Griffin / Hanwha Life Esports,2025
+oe:player:c795dfff10a7c952f4c5438951e9ece,0.081,0.218,Cover,mid,25,SeolHaeOne Prince,2020
+oe:player:1d22c812efd7b8a4244d93c51acc399,0.081,0.185,Dove,mid,194,Liiv SANDBOX / KT Rolster,2022
+oe:player:7b28158d613ea1869441676fa32a3b5,0.08,0.208,Mystic,bot,96,DN SOOPers,2020
+oe:player:b0e54ad49a5ce7a200bcb877eee7ed9,0.079,0.189,Envyy,bot,124,Liiv SANDBOX / HANJIN BRION,2024
+oe:player:d87853a5c1c5463889d70a62cdbcffc,0.078,0.179,Clear,top,312,Kiwoom DRX / Liiv SANDBOX / BNK FEARX,2026
+oe:player:054e5f8aeb885db6713f4a3e7328efc,0.078,0.209,Jun,sup,43,Kiwoom DRX / DN SOOPers,2023
+oe:player:ae4cccea87290717523772f7472e7f5,0.078,0.209,Spirit,jng,81,DN SOOPers,2020
+oe:player:16c1637b4b44b008b4d6627f68ae30a,0.077,0.187,Vsta,sup,226,Hanwha Life Esports,2022
+oe:player:8643b56ba8000250b81fdaca1d7f06e,0.075,0.158,Jiwoo,bot,293,Nongshim RedForce / Kiwoom DRX / KT Rolster,2026
+oe:player:f539873281c1c0bc463c393e24c583e,0.067,0.211,Flawless,jng,80,SeolHaeOne Prince / Gen.G,2021
+oe:player:092f2ba9f39fbc2876e64d12cd662f7,0.064,0.213,Ben,sup,54,DN SOOPers,2020
+oe:player:655ff5d5e29058249fdf0ab0e1389f8,0.062,0.211,FenRir,bot,13,KT Rolster,2026
+oe:player:e9017664588010860a92ceb5f8fcb82,0.062,0.204,Quad,mid,86,Kiwoom DRX / Nongshim RedForce,2023
+oe:player:6c1d0c529e73fe4c8b9a5306867c4bf,0.06,0.21,BAO,bot,69,Kiwoom DRX,2021
+oe:player:655c522b43d1444e55a0a4615c2b59b,0.06,0.21,Grizzly,jng,35,Hanwha Life Esports,2023
+oe:player:c25ed32694e455959de4abe0c535ecc,0.057,0.212,Mihile,top,29,Nongshim RedForce,2024
+oe:player:ea58943d300b14d684bb05b3975fe15,0.055,0.198,Roamer,mid,76,HANJIN BRION,2026
+oe:player:618a87d272773f68239d8ce5555f39d,0.052,0.146,Kingen,top,608,Kiwoom DRX / Hanwha Life Esports / Dplus Kia / Nongshim RedForce,2026
+oe:player:178ec186b0d43d2669342596c2808cd,0.052,0.172,Diable,bot,200,BNK FEARX / Nongshim RedForce,2026
+oe:player:18bdb3898e7fecb3bb0be7ff075d509,0.049,0.148,deokdam,bot,480,Team Dynamics / Nongshim RedForce / Dplus Kia / Kiwoom DRX / KT Rolster / DN SOOPers,2026
+oe:player:db79ce6ad35451c938fbe2995dabd37,0.045,0.176,Keria,sup,776,Kiwoom DRX / T1,2026
+oe:player:5f8ff49cd56eae61d635966b183a451,0.043,0.169,ShowMaker,mid,743,Dplus Kia,2026
+oe:player:1e6947ac7fb3a9529a9726eb692c8cc,0.042,0.213,Secret,sup,66,SeolHaeOne Prince,2020
+oe:player:5c6f901a83ec448d51703aebba0ca64,0.042,0.17,Croco,jng,297,Liiv SANDBOX / Kiwoom DRX / HANJIN BRION,2025
+oe:player:e4ef81cce7e4e10033ebb10962dfdd5,0.042,0.208,Blank,jng,58,KT Rolster,2021
+oe:player:97e9a3eb84113179c74c87e035d52c8,0.041,0.212,ikssu,top,84,SeolHaeOne Prince,2020
+oe:player:eada4723af6f51cf2391d85b5fde49b,0.04,0.175,Ruler,bot,511,Gen.G,2026
+oe:player:87f7503a6cdacffa612aeee7f04cc7c,0.037,0.208,Callme,mid,40,Nongshim RedForce,2024
+oe:player:99e732def3601275db892c84fb85a0c,0.032,0.195,Career,sup,120,Dplus Kia,2026
+oe:player:18a70ca6e551b080cf886828cc18394,0.031,0.205,Sharvel,jng,21,Dplus Kia / DN SOOPers,2026
+oe:player:d4236a5c6d033d0388ab042acd884f1,0.031,0.204,HyBriD,bot,100,SeolHaeOne Prince / KT Rolster,2021
+oe:player:845ea84cec22236278388f19fcd20bf,0.03,0.204,HamBak,jng,37,Liiv SANDBOX / KT Rolster / HANJIN BRION,2025
+oe:player:abfd02e2b6f54ea12bc17037b08ff86,0.029,0.21,Mir,jng,46,Hanwha Life Esports,2021
+oe:player:3ee0c18b85e7bb8eaad86d58498e27d,0.025,0.209,Juhan,jng,36,Kiwoom DRX,2023
+oe:player:92544d7a994bd6841cccd9f6e42e3de,0.025,0.172,Canyon,jng,705,Dplus Kia / Gen.G,2026
+oe:player:b46cf7715e2fe895a9153a650308fff,0.025,0.216,SnowFlower,sup,19,Nongshim RedForce,2022
+oe:player:cc00384e754d3b4db840275587813eb,0.022,0.213,Yohan,jng,33,Hanwha Life Esports,2021
+oe:player:dee54127bb56d2e2540ba71cc416f1c,0.021,0.148,BeryL,sup,591,Dplus Kia / Kiwoom DRX / KT Rolster,2025
+oe:player:bc4f68ea698f26bb1e2f6d34f900f57,0.018,0.207,SamD,bot,71,Hanwha Life Esports,2022
+oe:player:92c21511d7b383b2f8ba5b00c3c9a47,0.018,0.198,Bull,bot,53,DN SOOPers / HANJIN BRION,2025
+oe:player:dda4a873265dfd06df50a0d8a294908,0.016,0.168,Peanut,jng,536,Nongshim RedForce / Gen.G / Hanwha Life Esports,2025
+oe:player:710189789fdc5ea114d5b9ea646ff43,0.016,0.22,SSUN,mid,13,DN SOOPers,2020
+oe:player:605821ebcf6a2e53f03ec6e8e463d1b,0.015,0.185,Duro,sup,255,BNK FEARX / Gen.G,2026
+oe:player:95d286ec0a5d750d09e848a4e630c56,0.014,0.212,Noah,bot,41,KT Rolster,2021
+oe:player:b0ec3df39d61f953e7af0afd8eb8c4a,0.014,0.155,Kellin,sup,601,Gen.G / Nongshim RedForce / Dplus Kia / BNK FEARX,2026
+oe:player:78081d0b3c01f1f295d52d53744261a,0.014,0.179,Ghost,bot,253,Dplus Kia / Nongshim RedForce / KT Rolster,2026
+oe:player:60b1614a632775c97a37a57bda799f2,0.012,0.174,GIDEON,jng,277,KT Rolster / HANJIN BRION / Nongshim RedForce,2026
+oe:player:2861898294dd867b05fd28dca284e57,0.012,0.215,Tempt,mid,39,Hanwha Life Esports,2020
+oe:player:24cd6812f523cf30c3502344539be6f,0.011,0.174,FATE,mid,333,Liiv SANDBOX / DN SOOPers / Kiwoom DRX / HANJIN BRION,2024
+oe:player:94e552221e552e3ebaaeefff76fd6ea,0.011,0.208,Gori,mid,56,Nongshim RedForce,2021
+oe:player:53841c6e42a6ce77b6f3b80133c9342,0.01,0.223,Peach,jng,1,Kiwoom DRX,2022
+oe:player:140685b8f5c6b18ddb68c087c31ea97,0.01,0.219,Punch,jng,15,Liiv SANDBOX,2020
+oe:player:51e528aaaafe5451e0a14c0da847dc4,0.01,0.217,Bluffing,sup,6,Hanwha Life Esports,2026
+oe:player:1e48e6a94caf09f3d8275ffba847eea,0.009,0.213,Jelly,sup,46,DN SOOPers,2020
+oe:player:dfc279de8d7bd571aa8edfd7eb89c03,0.009,0.198,Moham,sup,60,DN SOOPers / Dplus Kia,2024
+oe:player:5aea7cdf0f3349ac62a04335ec1c918,0.008,0.219,Ivory,mid,10,HANJIN BRION,2023
+oe:player:d1ae0e2f9f3ac1e0e0cdcb86504ca77,0.007,0.223,Feisty,mid,3,HANJIN BRION / KT Rolster,2023
+oe:player:786b5bbf7bbfb7b79379e8589a865c1,0.007,0.223,Zest,top,2,Gen.G,2022
+oe:player:baf26814ef7b2f10fac33a00c3d53a3,0.006,0.166,Willer,jng,264,Hanwha Life Esports / Liiv SANDBOX / BNK FEARX / Kiwoom DRX,2026
+oe:player:326f63d01099f1c8b91620cbc893813,0.006,0.203,Paduck,bot,56,Kiwoom DRX / KT Rolster,2025
+oe:player:6adb46561c24655e0455d9b3fdc5698,0.006,0.153,Clozer,mid,490,T1 / Liiv SANDBOX / BNK FEARX / HANJIN BRION / DN SOOPers,2026
+oe:player:0015d99e65183977a9e65547b37f1cb,0.006,0.215,Harp,sup,28,KT Rolster,2021
+oe:player:49dea036f5b15e39632aaaf1666a28b,0.006,0.218,5kid,bot,15,KT Rolster,2021
+oe:player:c65e22a7eaa6de4391b7af6d56e6e82,0.005,0.214,Beyond,jng,48,Team Dynamics,2020
+oe:player:c12513153fca703d809f0eafa5fccbe,0.005,0.214,Kuzan,mid,48,Team Dynamics,2020
+oe:player:3382b716fc38cebef2ee6adb170a16b,0.004,0.221,Untara,top,10,Griffin,2020
+oe:player:97cae9bbdbfe09bafe83c5a7bda0727,0.004,0.202,Namgung,sup,93,HANJIN BRION,2026
+oe:player:942180f580887b12bcb04219e0dde84,0.003,0.219,Yaharong,mid,12,HANJIN BRION,2021
+oe:player:03daae1844b9ad257324c3eedf41e28,0.002,0.164,Kiin,top,721,DN SOOPers / KT Rolster / Gen.G,2026
+oe:player:39b7c8fcabea217972326ec1f441b0a,0.001,0.22,Lonely,top,12,Liiv SANDBOX,2020
+oe:player:6427b0c5a7c3106e92a7c11257a08c6,0.001,0.222,Guwon,jng,4,Hanwha Life Esports / T1,2024
+oe:player:110de1170a2c2ac8bbc0dc557061b69,0.0,0.211,SoHwan,top,62,KT Rolster,2020
+oe:player:46e6f8781dd60e2635430b61db51126,0.0,0.221,Mia,sup,17,SeolHaeOne Prince,2020
+oe:player:479bf0803cf7122f9d77ebf7bfb7576,-0.0,0.223,Zenit,bot,5,Hanwha Life Esports,2020
+oe:player:a9fdc6a800e800eb897d38b389f96f0,-0.001,0.208,GorillA,sup,85,Liiv SANDBOX,2020
+oe:player:f17b90d1dd0f1814bb1f82f77c2f861,-0.001,0.197,Nuguri,top,135,Dplus Kia,2022
+oe:player:308e48bf56284c09a1a9aadf55bc80c,-0.002,0.19,kyeahoo,mid,97,Kiwoom DRX,2025
+oe:player:fa041fc1bfc803198b9d3dc85626ce7,-0.002,0.223,Secret,sup,1,SeolHaeOne Prince,2020
+oe:player:a2a0d7ab33e23da9a23c463f697f82c,-0.002,0.223,Naehyun,mid,1,Griffin,2020
+oe:player:e9741b3a238723ea6380ef2113fae63,-0.004,0.223,Loopy,sup,2,HANJIN BRION,2022
+oe:player:8ddd8d88391896aa4d9e751dee81770,-0.004,0.223,Listo,jng,2,HANJIN BRION,2022
+oe:player:21846207612858fb49a468b43e56dd3,-0.004,0.223,Destroy,top,1,Kiwoom DRX,2021
+oe:player:051ca2e31ba25123961b3df95fdef4c,-0.005,0.169,Delight,sup,609,HANJIN BRION / Gen.G / Hanwha Life Esports,2026
+oe:player:8f8eaac8e99c203ee76e57c5c81c91f,-0.005,0.222,Quid,mid,5,Gen.G,2022
+oe:player:c2a081a2acc5642bb16930d4868aff1,-0.006,0.222,Roach,top,4,T1,2020
+oe:player:d06ddbf2ef1a12432c3fe5f7544e5d5,-0.007,0.21,Kuro,mid,75,KT Rolster,2020
+oe:player:c512fd0489043fe22857696467766fd,-0.007,0.223,Ssol,bot,4,DN SOOPers,2020
+oe:player:8139e3b2070343b1729402f9bf20205,-0.007,0.221,Bonnie,jng,6,KT Rolster,2021
+oe:player:1c3f29080dd3dd4f666adbd6448cef4,-0.007,0.218,Pungyeon,mid,12,DN SOOPers,2025
+oe:player:2df72e2c6d92a7c074a408f7bda4a0b,-0.008,0.207,Zzus,sup,63,KT Rolster,2021
+oe:player:41207d9e26609714711a822e6c4ba10,-0.008,0.223,MapSSi,sup,1,DN SOOPers,2021
+oe:player:67447707ec7cbde9ab25bfa2ed69877,-0.008,0.214,DDoiV,jng,15,HANJIN BRION / DN SOOPers,2026
+oe:player:0758af26fa0c3af6899bb1569059609,-0.008,0.222,Lospa,sup,5,Gen.G,2022
+oe:player:87b0ff8e56b0ce96bc0a82ea5dc9a7e,-0.009,0.223,Kuri,sup,2,T1,2020
+oe:player:7d306cd72ad7ffa40115a6b36f8a07b,-0.009,0.22,CaD,jng,16,Hanwha Life Esports,2020
+oe:player:1b26a8bba6e841f1c375b283db5c1c6,-0.009,0.219,Keine,mid,26,SeolHaeOne Prince,2020
+oe:player:129cceb571377b110358f27f22cc5e1,-0.009,0.209,bon0,jng,80,KT Rolster,2020
+oe:player:3dbe8ecf9c97fc12b28ad199bdb5f82,-0.009,0.222,Baut,sup,5,Hanwha Life Esports,2022
+oe:player:2f96ac60b6a8218682a0825641c80c7,-0.009,0.223,dispel,sup,1,Nongshim RedForce,2022
+oe:player:9406e3c325bfc9873426e5eda4ba6e1,-0.01,0.222,Ray,top,6,KT Rolster,2020
+oe:player:5b86bafc34d79c84a8847d29b64ca29,-0.01,0.217,Mireu,mid,28,Hanwha Life Esports,2020
+oe:player:99ce2ea4de279c28bb0315848da8a48,-0.01,0.196,Summit,top,175,Liiv SANDBOX,2021
+oe:player:4d08cbf857994dc42e1b09205158e15,-0.011,0.22,Painter,jng,3,T1,2026
+oe:player:eaebb7118d7bd83eabac513053e1f6c,-0.011,0.185,Smash,bot,144,T1 / Dplus Kia,2026
+oe:player:559813e734d182e8896481003507b1f,-0.011,0.221,Pullbae,mid,6,HANJIN BRION,2024
+oe:player:c4a5196a4f7e430cf448a76adadb028,-0.011,0.221,Nova,sup,8,Seorabeol Gaming,2020
+oe:player:8717c30fc91279cbeb8dc3283f07910,-0.011,0.221,DanChung,mid,8,Seorabeol Gaming,2020
+oe:player:887b308d89aa7ff0f3ff21a1c29f588,-0.011,0.221,Sangyoon,bot,8,Seorabeol Gaming,2020
+oe:player:3f7e5fe2a3074da1a836da8a63e8b49,-0.011,0.221,KaKAO,jng,8,Seorabeol Gaming,2020
+oe:player:06f871352444da0cbc5769be21a42fb,-0.011,0.221,Thal,top,8,Seorabeol Gaming,2020
+oe:player:8484fddc2b2b38d15cb8ca424d1d442,-0.012,0.223,Prove,sup,2,Liiv SANDBOX,2022
+oe:player:25546fe55464aef59d6f46b52f22bcb,-0.013,0.22,Ophelia,bot,8,Gen.G,2022
+oe:player:c588a2d07b69ca4ba61c96aebd3f793,-0.013,0.161,Deft,bot,489,Kiwoom DRX / Hanwha Life Esports / Dplus Kia / KT Rolster,2024
+oe:player:f064e548adf728629afbc6fee730317,-0.013,0.203,Leo,bot,78,Liiv SANDBOX / DN SOOPers,2021
+oe:player:d824e1e2a435ff9d8a567b1af0bad2a,-0.015,0.222,Chieftain,jng,5,HANJIN BRION,2021
+oe:player:fb6e61b8acb05df17b7e5ad4ae7c800,-0.015,0.167,Chovy,mid,736,Kiwoom DRX / Hanwha Life Esports / Gen.G,2026
+oe:player:4ff7b91bbc9492e9f96d28dda496653,-0.015,0.21,SeTab,mid,35,Kiwoom DRX,2024
+oe:player:38e0af7278d6769d0c81d7c4b47ac1e,-0.016,0.217,Soboro,top,12,HANJIN BRION / BNK FEARX,2025
+oe:player:a83e3a47f2f38f28a36e7e901eadee9,-0.016,0.222,Kuma,jng,9,SeolHaeOne Prince,2020
+oe:player:998b3e49b01ecc41eacc392477a98cf,-0.016,0.222,Gamin,bot,5,HANJIN BRION,2022
+oe:player:49311bd7f1e5550f578fbd1c2a1d21b,-0.016,0.222,Wadid,sup,4,Griffin,2020
+oe:player:bd6a2e6aaeb993fd29f43790265297f,-0.017,0.174,Ucal,mid,252,Griffin / KT Rolster / Kiwoom DRX,2026
+oe:player:2f0b9f7cda18943425d555b51e570e8,-0.019,0.222,Minous,sup,1,Kiwoom DRX,2026
+oe:player:b06f165ee2371a61d3be74d413e1e21,-0.021,0.216,Malrang,jng,25,KT Rolster / Dplus Kia,2021
+oe:player:d3a36b831bf6dfc749f79a1d3a71fad,-0.021,0.212,CuVee,top,56,Hanwha Life Esports,2020
+oe:player:0923739b522ef9fc94428a92c255531,-0.021,0.222,Joker,sup,6,Liiv SANDBOX,2020
+oe:player:b1e10c40bba8608f1acfd3acdea43c2,-0.024,0.203,GuGer,sup,77,Team Dynamics / Nongshim RedForce,2024
+oe:player:3f4027dc08a489bd4d5390913f5dc71,-0.024,0.173,Sponge,jng,266,Kiwoom DRX / Nongshim RedForce,2026
+oe:player:252de481e83ab0bc87aada93aeb424c,-0.025,0.2,vital,bot,71,Nongshim RedForce,2025
+oe:player:1a75a7cf8c98442be881fed562346f5,-0.026,0.195,Sylvie,jng,175,Nongshim RedForce,2024
+oe:player:750126a9b77f68942d7f412ad74b67d,-0.026,0.214,sanghyeon,sup,48,Griffin / Liiv SANDBOX,2020
+oe:player:5788fbc5ff334175ec2eccae6f0ed81,-0.027,0.215,Bible,sup,18,Dplus Kia,2023
+oe:player:4f6302984cea43e6384d488973fe1d2,-0.027,0.222,Howling,top,4,Liiv SANDBOX,2022
+oe:player:22b6f6057ca1b2f7a0cdf1b9a8de831,-0.027,0.222,Ten10,mid,4,Liiv SANDBOX,2022
+oe:player:6c1fa8d6ae91f559b9d317477dad3ea,-0.028,0.197,Fly,mid,179,DN SOOPers,2021
+oe:player:2736a0eb19c2525920f8ff4af5086c0,-0.028,0.212,Haru,jng,61,Hanwha Life Esports,2020
+oe:player:e68cc4b2bef76a96aae344b49a81579,-0.028,0.209,Daystar,mid,18,BNK FEARX,2026
+oe:player:9daf04bfd9c8815cc827414f59f45af,-0.03,0.164,Rascal,top,438,Gen.G / KT Rolster / Kiwoom DRX,2024
+oe:player:0906d77d4804d5ba6d0c0a7bcf707da,-0.03,0.216,Smeb,top,32,KT Rolster,2020
+oe:player:ed4b59fdd87aa318a52777affd42d00,-0.031,0.202,Hoit,sup,87,Dplus Kia / DN SOOPers,2022
+oe:player:0ba4bf5acd16f4d72e7cefa20774769,-0.032,0.217,Mickey,mid,33,SeolHaeOne Prince,2020
+oe:player:4047b7fecd736a6924aa13b05f42897,-0.032,0.182,Taeyoon,bot,100,Nongshim RedForce / BNK FEARX,2026
+oe:player:c942f21cd85aaf8d7892aa712e3e2ce,-0.032,0.2,Frog,top,40,Kiwoom DRX,2026
+oe:player:e2c655411d8d95ef73d8026704f5e7a,-0.034,0.222,Rahel,bot,3,Dplus Kia,2023
+oe:player:317aeb74a6dd16bea711bbad361ca44,-0.035,0.182,BuLLDoG,mid,249,DN SOOPers,2025
+oe:player:62922f2b370657a966de4d84f5586bf,-0.036,0.213,Tarzan,jng,50,Griffin,2020
+oe:player:9f80edbc5030ac495358c47c74da99f,-0.036,0.216,Jun,sup,24,Kiwoom DRX,2021
+oe:player:5bc99370722c5ecbfa9b3c1e17338e6,-0.037,0.218,Trigger,bot,23,SeolHaeOne Prince / Nongshim RedForce,2025
+oe:player:be17beb4d906e22fa6995e17060ebd3,-0.038,0.221,Slayer,bot,2,BNK FEARX,2026
+oe:player:10b86429ce8048aba673d802632e358,-0.038,0.187,Lucid,jng,359,Dplus Kia,2026
+oe:player:45fa65486c55c031328f189912bbe4b,-0.04,0.208,TusiN,sup,90,KT Rolster,2020
+oe:player:dea5251e486aed942e1bc06e1d5c116,-0.04,0.16,Life,sup,476,Gen.G / KT Rolster / Hanwha Life Esports / DN SOOPers,2026
+oe:player:cada0080d5951aaafd67134bcbd7760,-0.041,0.218,Cheoni,bot,18,Hanwha Life Esports,2022
+oe:player:2452114de900ce4bb971851b668786d,-0.041,0.197,Hype,bot,91,KT Rolster / HANJIN BRION,2025
+oe:player:8bac58409e91b96ecd05f6d8f053e07,-0.042,0.213,Ice,bot,32,Liiv SANDBOX,2022
+oe:player:82a08dfbbc2a9515bc6962cd307507c,-0.043,0.217,Jett,mid,21,Kiwoom DRX,2021
+oe:player:57ac9f77eae511aeee1e854434f73f2,-0.044,0.2,HOYA,top,104,Griffin / HANJIN BRION / Dplus Kia,2022
+oe:player:5836a085b5ebaa7662fbba55341703c,-0.046,0.22,Enosh,bot,4,DN SOOPers,2026
+oe:player:b3dae530a02238b0628518ef886e505,-0.049,0.211,Sw0rd,top,44,Griffin / HANJIN BRION,2022
+oe:player:0a53c1102dafce61e89decc517b3175,-0.051,0.21,Loki,mid,17,HANJIN BRION,2026
+oe:player:c9441d0e78cf438ef0b372dc74010e3,-0.053,0.197,Calix,mid,85,Nongshim RedForce,2025
+oe:player:035b9ae578574cdf728d8760483d804,-0.055,0.153,Effort,sup,419,T1 / Liiv SANDBOX / Nongshim RedForce / HANJIN BRION / KT Rolster,2026
+oe:player:9405c3aff9112c3c60d03b94792877d,-0.056,0.207,Route,bot,85,Liiv SANDBOX,2021
+oe:player:2e82913920d8a6d0efa480bc35f1ba8,-0.057,0.21,Aria,mid,38,KT Rolster,2022
+oe:player:e35d06a0430095562086a40a2676d8e,-0.059,0.195,OnFleek,jng,163,Liiv SANDBOX / Hanwha Life Esports,2022
+oe:player:341e10748bb6d388250fd1f013e45a4,-0.063,0.198,DnDn,top,142,Nongshim RedForce,2024
+oe:player:5ee64eb3feb02e60832a2265db54f71,-0.064,0.202,FIESTA,mid,81,Nongshim RedForce,2024
+oe:player:0582fabc486c42d0db3bf52f56c6fc3,-0.064,0.21,Bay,mid,47,Nongshim RedForce,2021
+oe:player:c78788a736a0c7e5a77890144fd2986,-0.069,0.207,Quantum,sup,30,DN SOOPers,2026
+oe:player:526e67744f0b90739ec17c191c62d24,-0.074,0.211,Bang,bot,42,DN SOOPers,2021
+oe:player:c49e6d739a7a7356e88aa84503666ee,-0.075,0.217,Nuclear,bot,26,Dplus Kia,2020
+oe:player:da9f969a7ab3819b9e528072aa4d5e6,-0.077,0.187,Siwoo,top,251,Dplus Kia,2026
+oe:player:37b0ff747a3bc11f577c0a05f0dedd1,-0.078,0.215,Samver,bot,18,HANJIN BRION,2024
+oe:player:8c6395564a23f3c2af8d378540012b0,-0.082,0.208,Way,sup,23,KT Rolster,2025
+oe:player:952237fce714ed1eca8ded17523bee9,-0.084,0.198,Taeyoon,bot,112,Kiwoom DRX / DN SOOPers,2024
+oe:player:f73dde2d8c7879ae8d1fcdc03c4ffeb,-0.084,0.163,Morgan,top,425,Hanwha Life Esports / HANJIN BRION,2025
+oe:player:c7319736816efe935787b4381c6f321,-0.089,0.169,Gumayusi,bot,586,T1 / Hanwha Life Esports,2026
+oe:player:579ae2e0addc18db74179b2a3d33294,-0.102,0.192,Ellim,jng,142,T1 / DN SOOPers / HANJIN BRION,2025
+oe:player:71e79ef80600d398d90cfebe3b0b758,-0.103,0.2,Scout,mid,86,Nongshim RedForce,2026
+oe:player:40cd014b7b6251e3a22e6a45a73a64e,-0.103,0.204,Execute,sup,54,BNK FEARX,2024
+oe:player:5fac949d3a1a7631ddaef68ea4cbe1e,-0.104,0.188,Dread,jng,194,DN SOOPers / Nongshim RedForce,2022
+oe:player:3126bca5d4d2555ba3b460699508e16,-0.115,0.186,Pollu,sup,175,HANJIN BRION / KT Rolster,2026
+oe:player:1d18fe2cdd43a72d46421ecfe81b599,-0.12,0.193,Lava,mid,185,Hanwha Life Esports / HANJIN BRION,2022
+oe:player:7fdedd3126915607d5c8f42f8239253,-0.121,0.183,Pleata,sup,175,Kiwoom DRX / Nongshim RedForce,2026
+oe:player:e5feef89d633a666eeaaf6392ca2fa9,-0.126,0.191,YoungJae,jng,136,Hanwha Life Esports / Gen.G / DN SOOPers / HANJIN BRION,2024
+oe:player:460ae5a7af8d68f7831b70307210ab3,-0.133,0.197,Berserker,bot,88,DN SOOPers,2025
+oe:player:1970fcb701acce66e0771946bbb3105,-0.134,0.193,UmTi,jng,255,HANJIN BRION,2023
+oe:player:9712524dc88851032bd53054f8b49b4,-0.138,0.178,Hena,bot,348,HANJIN BRION / BNK FEARX,2024
+oe:player:85104684d1eb7f4c0ce393441a0b669,-0.147,0.142,Aiming,bot,623,KT Rolster / Dplus Kia / Kiwoom DRX,2026
+oe:player:2b5fa564a1259b97bc238fbfa719b07,-0.161,0.152,Teddy,bot,521,T1 / DN SOOPers / Liiv SANDBOX / Kiwoom DRX / HANJIN BRION,2026
+oe:player:7577c239c73fa5f3011cd7b5503e75e,-0.174,0.165,Canna,top,361,T1 / Nongshim RedForce / Dplus Kia,2023
+oe:player:498246d6c44175256a07ed5f322c817,-0.175,0.18,Karis,mid,228,Gen.G / Hanwha Life Esports / HANJIN BRION,2024
+oe:player:86a59ad7ba2334ad7505f303d3f2ab6,-0.187,0.191,Casting,top,115,KT Rolster / HANJIN BRION,2026
+oe:player:4e0ee55680fa265c49e158f85e26650,-0.189,0.215,Poby,mid,18,T1,2023
+oe:player:6e6a78244523ed9e54731d07d1f79f4,-0.197,0.161,DuDu,top,498,Hanwha Life Esports / DN SOOPers,2026
+oe:player:a2357eb17578485c2ba736db36cbc42,-0.215,0.153,Pyosik,jng,540,Kiwoom DRX / KT Rolster / DN SOOPers,2026

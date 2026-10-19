@@ -14,6 +14,8 @@
    "survival": 67.0,
    "champPool": 96.0
   },
+  "intangible": 0.078,
+  "intangibleSe": 0.179,
   "champions": {
    "Rumble": 28.5,
    "Renekton": 27.5,
@@ -65,6 +67,8 @@
    "survival": 56.0,
    "champPool": 96.0
   },
+  "intangible": 0.096,
+  "intangibleSe": 0.186,
   "champions": {
    "XinZhao": 27.5,
    "JarvanIV": 26.0,
@@ -112,6 +116,8 @@
    "survival": 45.0,
    "champPool": 88.0
   },
+  "intangible": 0.153,
+  "intangibleSe": 0.179,
   "champions": {
    "Ryze": 26.0,
    "Taliyah": 21.5,
@@ -156,6 +162,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": -0.028,
+  "intangibleSe": 0.209,
   "champions": {
    "Taliyah": 11.0,
    "Ahri": 10.0,
@@ -200,6 +208,8 @@
    "survival": 56.0,
    "champPool": 64.0
   },
+  "intangible": -0.032,
+  "intangibleSe": 0.182,
   "champions": {
    "Ezreal": 29.5,
    "Yunara": 24.0,
@@ -239,6 +249,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": -0.038,
+  "intangibleSe": 0.221,
   "champions": {
    "Ezreal": 24.0,
    "Kaisa": 17.0,
@@ -285,6 +297,8 @@
    "survival": 83.0,
    "champPool": 78.0
   },
+  "intangible": 0.014,
+  "intangibleSe": 0.155,
   "champions": {
    "Neeko": 20.5,
    "Lulu": 18.0,
@@ -329,6 +343,8 @@
    "survival": 83.0,
    "champPool": 61.0
   },
+  "intangible": -0.197,
+  "intangibleSe": 0.161,
   "champions": {
    "Ambessa": 27.5,
    "Rumble": 25.0,
@@ -371,6 +387,8 @@
    "survival": 94.0,
    "champPool": 45.0
   },
+  "intangible": 0.031,
+  "intangibleSe": 0.205,
   "champions": {
    "MonkeyKing": 20.0,
    "XinZhao": 19.0,
@@ -414,6 +432,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": -0.008,
+  "intangibleSe": 0.214,
   "champions": {
    "XinZhao": 28.5,
    "JarvanIV": 27.5,
@@ -461,6 +481,8 @@
    "survival": 67.0,
    "champPool": 59.0
   },
+  "intangible": -0.215,
+  "intangibleSe": 0.153,
   "champions": {
    "MonkeyKing": 19.5,
    "LeeSin": 13.5,
@@ -501,6 +523,8 @@
    "survival": 67.0,
    "champPool": 67.0
   },
+  "intangible": 0.006,
+  "intangibleSe": 0.153,
   "champions": {
    "Ahri": 22.0,
    "Cassiopeia": 19.5,
@@ -542,6 +566,8 @@
    "survival": 51.0,
    "champPool": 86.0
   },
+  "intangible": 0.049,
+  "intangibleSe": 0.148,
   "champions": {
    "Jhin": 24.5,
    "Ezreal": 19.0,
@@ -584,6 +610,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": -0.046,
+  "intangibleSe": 0.22,
   "champions": {
    "Ezreal": 25.0,
    "Yunara": 21.0,
@@ -623,6 +651,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": -0.069,
+  "intangibleSe": 0.207,
   "champions": {
    "Lulu": 21.0,
    "Nautilus": 18.5,
@@ -665,6 +695,8 @@
    "survival": 45.0,
    "champPool": 45.0
   },
+  "intangible": -0.04,
+  "intangibleSe": 0.16,
   "champions": {
    "Rell": 10.0,
    "Nautilus": 6.0,
@@ -704,6 +736,8 @@
    "survival": 61.0,
    "champPool": 59.0
   },
+  "intangible": 0.199,
+  "intangibleSe": 0.162,
   "champions": {
    "Alistar": 19.5,
    "Nautilus": 18.5,
@@ -747,6 +781,8 @@
    "survival": 56.0,
    "champPool": 86.0
   },
+  "intangible": -0.077,
+  "intangibleSe": 0.187,
   "champions": {
    "Jayce": 27.0,
    "KSante": 23.5,
@@ -795,6 +831,8 @@
    "survival": 72.0,
    "champPool": 78.0
   },
+  "intangible": -0.038,
+  "intangibleSe": 0.187,
   "champions": {
    "JarvanIV": 37.5,
    "XinZhao": 33.0,
@@ -838,6 +876,8 @@
    "survival": 83.0,
    "champPool": 99.0
   },
+  "intangible": 0.043,
+  "intangibleSe": 0.169,
   "champions": {
    "Ahri": 24.5,
    "Ryze": 24.5,
@@ -898,6 +938,8 @@
    "survival": 94.0,
    "champPool": 94.0
   },
+  "intangible": -0.011,
+  "intangibleSe": 0.185,
   "champions": {
    "Lucian": 21.5,
    "Jhin": 21.0,
@@ -940,6 +982,8 @@
    "survival": 88.0,
    "champPool": 94.0
   },
+  "intangible": 0.032,
+  "intangibleSe": 0.195,
   "champions": {
    "Lulu": 23.0,
    "Bard": 22.0,
@@ -990,6 +1034,8 @@
    "survival": 99.0,
    "champPool": 78.0
   },
+  "intangible": 0.002,
+  "intangibleSe": 0.164,
   "champions": {
    "Ambessa": 22.5,
    "Gwen": 20.0,
@@ -1042,6 +1088,8 @@
    "survival": 99.0,
    "champPool": 67.0
   },
+  "intangible": 0.025,
+  "intangibleSe": 0.172,
   "champions": {
    "XinZhao": 30.5,
    "Vi": 24.5,
@@ -1084,6 +1132,8 @@
    "survival": 99.0,
    "champPool": 94.0
   },
+  "intangible": -0.015,
+  "intangibleSe": 0.167,
   "champions": {
    "Galio": 27.5,
    "Ryze": 25.5,
@@ -1134,6 +1184,8 @@
    "survival": 99.0,
    "champPool": 86.0
   },
+  "intangible": 0.04,
+  "intangibleSe": 0.175,
   "champions": {
    "Jhin": 28.5,
    "Ezreal": 24.5,
@@ -1178,6 +1230,8 @@
    "survival": 99.0,
    "champPool": 86.0
   },
+  "intangible": 0.015,
+  "intangibleSe": 0.185,
   "champions": {
    "Rakan": 23.0,
    "Bard": 18.0,
@@ -1221,6 +1275,8 @@
    "survival": 88.0,
    "champPool": 61.0
   },
+  "intangible": -0.187,
+  "intangibleSe": 0.191,
   "champions": {
    "Jayce": 22.5,
    "Rumble": 22.5,
@@ -1267,6 +1323,8 @@
    "survival": 88.0,
    "champPool": 59.0
   },
+  "intangible": 0.012,
+  "intangibleSe": 0.174,
   "champions": {
    "XinZhao": 31.5,
    "Pantheon": 22.0,
@@ -1309,6 +1367,8 @@
    "survival": 56.0,
    "champPool": 45.0
   },
+  "intangible": -0.051,
+  "intangibleSe": 0.21,
   "champions": {
    "Orianna": 11.5,
    "Taliyah": 9.0,
@@ -1349,6 +1409,8 @@
    "survival": 72.0,
    "champPool": 67.0
   },
+  "intangible": 0.055,
+  "intangibleSe": 0.198,
   "champions": {
    "Ryze": 19.5,
    "Orianna": 14.5,
@@ -1389,6 +1451,8 @@
    "survival": 78.0,
    "champPool": 78.0
   },
+  "intangible": -0.161,
+  "intangibleSe": 0.152,
   "champions": {
    "Ezreal": 32.5,
    "Jhin": 18.5,
@@ -1429,6 +1493,8 @@
    "survival": 67.0,
    "champPool": 86.0
   },
+  "intangible": 0.004,
+  "intangibleSe": 0.202,
   "champions": {
    "Neeko": 24.5,
    "Nautilus": 16.0,
@@ -1475,6 +1541,8 @@
    "survival": 61.0,
    "champPool": 96.0
   },
+  "intangible": 0.148,
+  "intangibleSe": 0.163,
   "champions": {
    "Gnar": 24.0,
    "Ambessa": 23.0,
@@ -1531,6 +1599,8 @@
    "survival": 51.0,
    "champPool": 78.0
   },
+  "intangible": 0.085,
+  "intangibleSe": 0.194,
   "champions": {
    "JarvanIV": 33.0,
    "Vi": 32.5,
@@ -1580,6 +1650,8 @@
    "survival": 94.0,
    "champPool": 67.0
   },
+  "intangible": 0.195,
+  "intangibleSe": 0.167,
   "champions": {
    "Ryze": 23.0,
    "Ahri": 22.5,
@@ -1628,6 +1700,8 @@
    "survival": 72.0,
    "champPool": 72.0
   },
+  "intangible": -0.089,
+  "intangibleSe": 0.169,
   "champions": {
    "Jhin": 29.5,
    "Ziggs": 21.0,
@@ -1669,6 +1743,8 @@
    "survival": 72.0,
    "champPool": 67.0
   },
+  "intangible": -0.005,
+  "intangibleSe": 0.169,
   "champions": {
    "Alistar": 26.0,
    "Bard": 21.5,
@@ -1712,6 +1788,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": 0.01,
+  "intangibleSe": 0.217,
   "champions": {
    "Nautilus": 18.0,
    "Alistar": 17.0,
@@ -1752,6 +1830,8 @@
    "survival": 94.0,
    "champPool": 61.0
   },
+  "intangible": 0.128,
+  "intangibleSe": 0.17,
   "champions": {
    "Renekton": 23.0,
    "Jayce": 21.5,
@@ -1796,6 +1876,8 @@
    "survival": 83.0,
    "champPool": 88.0
   },
+  "intangible": 0.088,
+  "intangibleSe": 0.149,
   "champions": {
    "Pantheon": 24.5,
    "MonkeyKing": 20.5,
@@ -1841,6 +1923,8 @@
    "survival": 88.0,
    "champPool": 67.0
   },
+  "intangible": 0.088,
+  "intangibleSe": 0.154,
   "champions": {
    "Ryze": 34.5,
    "Taliyah": 23.0,
@@ -1887,6 +1971,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": 0.062,
+  "intangibleSe": 0.211,
   "champions": {
    "Ezreal": 28.5,
    "Yunara": 19.5,
@@ -1929,6 +2015,8 @@
    "survival": 67.0,
    "champPool": 53.0
   },
+  "intangible": 0.075,
+  "intangibleSe": 0.158,
   "champions": {
    "Ezreal": 29.0,
    "Yunara": 19.5,
@@ -1971,6 +2059,8 @@
    "survival": 78.0,
    "champPool": 59.0
   },
+  "intangible": -0.055,
+  "intangibleSe": 0.153,
   "champions": {
    "Nautilus": 22.5,
    "Lulu": 18.0,
@@ -2009,6 +2099,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": -0.115,
+  "intangibleSe": 0.186,
   "champions": {
    "Nautilus": 24.5,
    "Rell": 16.0,
@@ -2050,6 +2142,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": 0.014,
+  "intangibleSe": 0.179,
   "champions": {
    "Neeko": 4.0,
    "Corki": 3.5,
@@ -2095,6 +2189,8 @@
    "survival": 72.0,
    "champPool": 51.0
   },
+  "intangible": 0.141,
+  "intangibleSe": 0.171,
   "champions": {
    "Gnar": 27.5,
    "KSante": 22.0,
@@ -2137,6 +2233,8 @@
    "survival": 78.0,
    "champPool": 45.0
   },
+  "intangible": -0.032,
+  "intangibleSe": 0.2,
   "champions": {
    "Gnar": 19.5,
    "Jayce": 18.0,
@@ -2182,6 +2280,8 @@
    "survival": 61.0,
    "champPool": 78.0
   },
+  "intangible": 0.006,
+  "intangibleSe": 0.166,
   "champions": {
    "XinZhao": 30.5,
    "JarvanIV": 23.0,
@@ -2228,6 +2328,8 @@
    "survival": 78.0,
    "champPool": 51.0
   },
+  "intangible": -0.017,
+  "intangibleSe": 0.174,
   "champions": {
    "Ryze": 24.0,
    "Aurora": 19.0,
@@ -2273,6 +2375,8 @@
    "survival": 88.0,
    "champPool": 53.0
   },
+  "intangible": -0.147,
+  "intangibleSe": 0.142,
   "champions": {
    "Ezreal": 20.5,
    "Jhin": 19.0,
@@ -2312,6 +2416,8 @@
    "survival": 45.0,
    "champPool": 45.0
   },
+  "intangible": 0.172,
+  "intangibleSe": 0.188,
   "champions": {
    "Ezreal": 25.5,
    "Yunara": 24.0,
@@ -2350,6 +2456,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": -0.019,
+  "intangibleSe": 0.222,
   "champions": {
    "Bard": 19.5,
    "Nautilus": 14.5,
@@ -2392,6 +2500,8 @@
    "survival": 56.0,
    "champPool": 72.0
   },
+  "intangible": 0.105,
+  "intangibleSe": 0.17,
   "champions": {
    "Nautilus": 26.5,
    "Bard": 15.5,
@@ -2438,6 +2548,8 @@
    "survival": 45.0,
    "champPool": 72.0
   },
+  "intangible": 0.052,
+  "intangibleSe": 0.146,
   "champions": {
    "Rumble": 24.5,
    "Jayce": 20.5,
@@ -2487,6 +2599,8 @@
    "survival": 45.0,
    "champPool": 51.0
   },
+  "intangible": -0.024,
+  "intangibleSe": 0.173,
   "champions": {
    "JarvanIV": 25.0,
    "Pantheon": 24.5,
@@ -2526,6 +2640,8 @@
    "survival": 61.0,
    "champPool": 67.0
   },
+  "intangible": -0.103,
+  "intangibleSe": 0.2,
   "champions": {
    "Ryze": 24.5,
    "Azir": 19.0,
@@ -2572,6 +2688,8 @@
    "survival": 61.0,
    "champPool": 64.0
   },
+  "intangible": 0.052,
+  "intangibleSe": 0.172,
   "champions": {
    "Ezreal": 36.0,
    "Lucian": 22.5,
@@ -2610,6 +2728,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": -0.121,
+  "intangibleSe": 0.183,
   "champions": {
    "Bard": 21.0,
    "Rell": 20.5,
@@ -2656,6 +2776,8 @@
    "survival": 51.0,
    "champPool": 51.0
   },
+  "intangible": 0.175,
+  "intangibleSe": 0.146,
   "champions": {
    "Nautilus": 26.0,
    "Neeko": 17.5,
@@ -2698,6 +2820,8 @@
    "survival": 51.0,
    "champPool": 86.0
   },
+  "intangible": 0.13,
+  "intangibleSe": 0.145,
   "champions": {
    "Ambessa": 28.0,
    "Jayce": 26.0,
@@ -2747,6 +2871,8 @@
    "survival": 50.0,
    "champPool": 50.0
   },
+  "intangible": -0.011,
+  "intangibleSe": 0.22,
   "champions": {
    "XinZhao": 32.0,
    "Vi": 26.5,
@@ -2790,6 +2916,8 @@
    "survival": 78.0,
    "champPool": 96.0
   },
+  "intangible": 0.131,
+  "intangibleSe": 0.183,
   "champions": {
    "XinZhao": 41.5,
    "Vi": 29.5,
@@ -2837,6 +2965,8 @@
    "survival": 51.0,
    "champPool": 83.0
   },
+  "intangible": 0.243,
+  "intangibleSe": 0.174,
   "champions": {
    "Ryze": 32.0,
    "Orianna": 25.5,
@@ -2883,6 +3013,8 @@
    "survival": 83.0,
    "champPool": 99.0
   },
+  "intangible": 0.208,
+  "intangibleSe": 0.159,
   "champions": {
    "Jhin": 23.0,
    "Lucian": 21.5,
@@ -2929,6 +3061,8 @@
    "survival": 94.0,
    "champPool": 99.0
   },
+  "intangible": 0.045,
+  "intangibleSe": 0.176,
   "champions": {
    "Neeko": 20.5,
    "Bard": 19.5,

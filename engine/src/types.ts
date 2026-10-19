@@ -23,6 +23,9 @@ export interface Player {
   games2026: number;
   starter: boolean;
   ratings: Ratings;
+  // 운영·콜처럼 개인 기록에 안 잡히는 기여 (경기 승리 로짓 단위, 2020~2026 LCK 회귀 추정). 이적하면 따라간다
+  intangible: number;
+  intangibleSe: number;
   champions: Record<string, number>; // 챔피언 id → 출전 경기 수 (2025는 0.5배)
 }
 

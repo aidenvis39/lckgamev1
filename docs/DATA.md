@@ -2,6 +2,7 @@
 
 ```bash
 python3 -I scripts/build_all.py .            # raw/ → output/ 전체 재생성 (약 25초)
+python3 -I scripts/player_intangibles.py .   # 선수 운영 기여 회귀분석 (약 15초)
 python3 -I scripts/export_engine_data.py .   # output/ → engine/data/ (엔진 입력)
 ```
 
@@ -59,6 +60,7 @@ python3 -I scripts/export_engine_data.py .   # output/ → engine/data/ (엔진 
 | `birthdate_crosscheck.csv` | 나무위키 ↔ Leaguepedia 생년월일 대조 결과 |
 | `age_profile_*.csv` | 시즌별 나이대 평균 능력치 (횡단면) |
 | `aging_curve_delta.csv`, `aging_pairs.csv` | **2020~2026 여러 시즌에 걸친 성장·노쇠 곡선** (아래 설명) |
+| `player_intangibles.csv`, `intangibles_summary.json` | 선수 운영 기여(개인 기록 밖의 기여)와 표준오차, 회귀 요약. `scripts/player_intangibles.py` 결과. 설명은 [ENGINE.md](ENGINE.md) 5절 |
 
 `rating_*`는 같은 리그·시즌·포지션 안에서의 백분위를 40~99점으로 바꾼 값임. 15경기 미만 선수는 계산에서 빠짐.
 - 라인전 = CSD/GD/XPD@15
@@ -68,7 +70,7 @@ python3 -I scripts/export_engine_data.py .   # output/ → engine/data/ (엔진 
 - 챔프폭 = 플레이한 챔프 수
 
 ### teams/
-`teams_lck{연도}.csv`(팀 성적과 스타일 지표), `series_lck{연도}.csv`(시리즈별 세트 결과)
+`teams_lck{연도}.csv`(팀 성적과 스타일 지표), `series_lck{연도}.csv`(시리즈별 세트 결과), `team_season_effects.csv`(운영 기여 회귀의 팀 시즌 효과. 교차검증이 거의 0을 골라서 값은 모두 0에 가까움)
 
 ## 핵심 숫자: LCK 2025 → 2026
 

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { loadParams, loadUniverse } from "../src/data.ts";
 import { runDraft } from "../src/draft.ts";
-import { lineupOf } from "../src/lineup.ts";
+import { lineupOf, swapPlayers } from "../src/lineup.ts";
 import { simulateGame } from "../src/match.ts";
 import { createRng } from "../src/rng.ts";
 import { playSeason } from "../src/season.ts";
@@ -68,6 +68,15 @@ test("경기 결과 값이 말이 되는 범위", () => {
     assert.equal(k("blue"), r.kills.blue);
     assert.equal(k("red"), r.kills.red);
   }
+});
+
+test("맞트레이드: 소속·주전 자리가 바뀌고 원본은 그대로", () => {
+  const after = swapPlayers(u, "faker", "clozer");
+  assert.equal(lineupOf(after, "T1").players.mid.id, "clozer");
+  assert.equal(lineupOf(after, "DNS").players.mid.id, "faker");
+  assert.equal(after.players.get("faker")!.team, "DNS");
+  assert.equal(lineupOf(u, "T1").players.mid.id, "faker");
+  assert.throws(() => swapPlayers(u, "faker", "keria"));
 });
 
 test("시즌: 1~2라운드 90시리즈 + 그룹별 3~4라운드 40시리즈, 승패 합계가 맞다", () => {

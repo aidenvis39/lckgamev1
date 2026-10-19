@@ -38,13 +38,24 @@ export interface Evaluation {
   metrics: Metrics;
 }
 
+export function simulate(u: Universe, p: Params, seasons: number, seed: number, draft?: DraftProvider): Metrics {
+  return measure(Array.from({ length: seasons }, (_, i) => playSeason(u, p, createRng(hashSeed(seed, "season", i)), { draft })));
+}
+
 export function evaluate(u: Universe, p: Params, targets: Targets, seasons: number, seed: number, draft?: DraftProvider): Evaluation {
-  const results = Array.from({ length: seasons }, (_, i) =>
-    playSeason(u, p, createRng(hashSeed(seed, "season", i)), { draft }),
-  );
-  const metrics = measure(results);
+  const metrics = simulate(u, p, seasons, seed, draft);
   const rows = compare(metrics, targets);
   return { rows, loss: loss(rows), metrics };
+}
+
+// 전투력 1 차이가 경기 승리 로짓을 얼마나 바꾸는지 재서, 선수 운영 기여(로짓 단위)를 전투력으로 바꾸는 배율을 정한다.
+// 블루 보너스(교전 로짓)를 ±ε 바꿨을 때 블루 승률 로짓 변화 = κ, 전투력 1 = 교전 로짓 fightSkill 이므로 배율 = 1 / (κ × fightSkill)
+export function fitMacroWeight(u: Universe, p: Params, seasons: number, seed: number, draft: DraftProvider): Params {
+  const eps = 0.15;
+  const logit = (x: number) => Math.log(x / (1 - x));
+  const wr = (sb: number) => simulate(u, { ...p, sideBonus: sb }, seasons, seed, draft).blueWinrate;
+  const kappa = (logit(wr(p.sideBonus + eps)) - logit(wr(p.sideBonus - eps))) / (2 * eps);
+  return { ...p, macroWeight: 1 / (kappa * p.fightSkill) };
 }
 
 export interface TuneOptions {
@@ -82,6 +93,7 @@ export function tune(u: Universe, targets: Targets, start: Params, opts: TuneOpt
   const half = Math.ceil(opts.iterations / 2);
   for (let i = 0; i < opts.iterations; i++) {
     if (i % half === 0) {
+      best = fitMacroWeight(u, best, 2 * opts.seasons, opts.seed, draft);
       best = fitTeamwork(u, targets, best, opts.seasons, opts.seed, draft);
       bestLoss = evaluate(u, best, targets, opts.seasons, opts.seed, draft).loss;
     }
@@ -99,6 +111,7 @@ export function tune(u: Universe, targets: Targets, start: Params, opts: TuneOpt
     }
     opts.onProgress?.(i, bestLoss);
   }
+  best = fitMacroWeight(u, best, 2 * opts.seasons, opts.seed, draft);
   best = fitTeamwork(u, targets, best, opts.seasons, opts.seed, draft);
   return { params: best, loss: evaluate(u, best, targets, opts.seasons, opts.seed, draft).loss };
 }

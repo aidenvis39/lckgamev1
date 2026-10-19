@@ -3,15 +3,19 @@
 //   node src/cli.ts season [--seed 1] [--runs 200]
 //   node src/cli.ts calibrate [--year 2026] [--seasons 30] [--seed 1] [--full-draft]
 //   node src/cli.ts tune [--year 2026] [--iters 300] [--seasons 8] [--seed 1]
+//   node src/cli.ts transfer faker clozer [--runs 300]   (같은 포지션 두 선수 맞트레이드 전후 비교)
+//   --params <파일> 로 다른 조절값 파일을 쓸 수 있다 (실험용)
+import { readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import type { Row } from "./calibrate.ts";
 import { loadParams, loadTargets, loadUniverse, saveParams } from "./data.ts";
-import { lineupOf } from "./lineup.ts";
+import { lineupOf, swapPlayers } from "./lineup.ts";
 import { createRng, hashSeed } from "./rng.ts";
 import { playSeason } from "./season.ts";
 import { playSeries } from "./series.ts";
+import { DEFAULT_PARAMS } from "./params.ts";
 import { buildDraftPool, evaluate, tune } from "./tune.ts";
-import type { Position, Side } from "./types.ts";
+import type { Position, Side, Universe } from "./types.ts";
 import { POSITIONS } from "./types.ts";
 
 const POS_KO: Record<Position, string> = { top: "탑", jng: "정글", mid: "미드", bot: "원딜", sup: "서폿" };
@@ -27,12 +31,13 @@ const { values, positionals } = parseArgs({
     seasons: { type: "string", default: "30" },
     iters: { type: "string", default: "300" },
     "full-draft": { type: "boolean", default: false },
+    params: { type: "string" },
   },
 });
 const [command, ...rest] = positionals;
 const seed = Number(values.seed);
 const u = loadUniverse();
-const params = loadParams();
+const params = values.params ? { ...DEFAULT_PARAMS, ...JSON.parse(readFileSync(values.params, "utf8")) } : loadParams();
 
 switch (command) {
   case "match":
@@ -47,8 +52,11 @@ switch (command) {
   case "tune":
     runTune();
     break;
+  case "transfer":
+    transfer(rest[0], rest[1], Number(values.runs === "1" ? 300 : values.runs));
+    break;
   default:
-    console.log("명령: match <팀1> <팀2> | season | calibrate | tune   (팀: " + [...u.teams.keys()].join(", ") + ")");
+    console.log("명령: match <팀1> <팀2> | season | calibrate | tune | transfer <선수1> <선수2>   (팀: " + [...u.teams.keys()].join(", ") + ")");
 }
 
 function match(a: string, b: string) {
@@ -134,8 +142,11 @@ function calibrate() {
   for (const pos of POSITIONS) console.log(`  ${pad(POS_KO[pos], 5)} 시뮬 ${ev.metrics.laneWeight[pos].toFixed(2)}   실제 ${real[pos].toFixed(2)}`);
   console.log("\n팀별 정규시즌 세트 승률 (팀워크: 개인 스탯 밖의 팀 전력, z 단위)");
   const realTeam = targets.team_regular_winrate;
-  for (const team of Object.keys(realTeam).sort((a, b) => realTeam[b] - realTeam[a]))
-    console.log(`  ${pad(team, 5)} 시뮬 ${pct(ev.metrics.teamWinrate[team])}   실제 ${pct(realTeam[team])}   팀워크 ${(params.teamwork[team] ?? 0) >= 0 ? "+" : ""}${(params.teamwork[team] ?? 0).toFixed(2)}`);
+  console.log("  (선수 운영 = 주전 5명 운영 기여 합 × 배율, 팀 고유 = 선수로 설명 안 되는 2026 팀 효과. 둘 다 전투력 단위)");
+  for (const team of Object.keys(realTeam).sort((a, b) => realTeam[b] - realTeam[a])) {
+    const macro = params.macroWeight * POSITIONS.reduce((s, pos) => s + lineupOf(u, team).players[pos].intangible, 0);
+    console.log(`  ${pad(team, 5)} 시뮬 ${pct(ev.metrics.teamWinrate[team])}   실제 ${pct(realTeam[team])}   선수 운영 ${signedFix(macro)}   팀 고유 ${signedFix(params.teamwork[team] ?? 0)}`);
+  }
   console.log("\n정규시즌 승률 차이별 강팀 승률");
   const realUpset = new Map(targets.upset_game_level.map(([k, n, wr]) => [k, [n, wr]]));
   for (const [k, n, wr] of ev.metrics.upset) {
@@ -159,6 +170,43 @@ function runTune() {
   });
   saveParams(result.params);
   console.log(`\n저장: data/params.json (튜닝 손실 ${result.loss.toFixed(2)}). 검증은 npm run calibrate`);
+}
+
+function transfer(aId: string, bId: string, runs: number) {
+  const after = swapPlayers(u, aId, bId);
+  const a = u.players.get(aId.toLowerCase())!;
+  const b = u.players.get(bId.toLowerCase())!;
+  const stats = (uni: Universe) => {
+    const draft = buildDraftPool(uni, params, seed);
+    const out = new Map<string, { wins: number; games: number; rank: number }>();
+    for (let i = 0; i < runs; i++) {
+      const r = playSeason(uni, params, createRng(hashSeed(seed, "transfer", i)), { draft });
+      r.standings.forEach((t, rank) => {
+        const s = out.get(t.team) ?? { wins: 0, games: 0, rank: 0 };
+        s.wins += t.gameWins;
+        s.games += t.gameWins + t.gameLosses;
+        s.rank += rank + 1;
+        out.set(t.team, s);
+      });
+    }
+    return out;
+  };
+  const describe = (x: typeof a) =>
+    `${x.name}(${x.team} ${POS_KO[x.position]}) 운영 ${signedFix(x.intangible)}±${x.intangibleSe.toFixed(2)} · ` +
+    `라인전 ${x.ratings.laning.toFixed(0)} 한타 ${x.ratings.teamfight.toFixed(0)} 시야 ${x.ratings.vision.toFixed(0)} 생존 ${x.ratings.survival.toFixed(0)}`;
+  console.log(`\n맞트레이드: ${describe(a)}\n            ${describe(b)}\n(정규시즌 ${runs}회 평균)\n`);
+  const [s0, s1] = [stats(u), stats(after)];
+  console.log("팀    세트 승률 (전 → 후)       평균 순위 (전 → 후)");
+  for (const team of [a.team, b.team]) {
+    const x = s0.get(team)!;
+    const y = s1.get(team)!;
+    const d = y.wins / y.games - x.wins / x.games;
+    console.log(`${pad(team, 5)} ${pct(x.wins / x.games)} → ${pct(y.wins / y.games)} (${d >= 0 ? "+" : ""}${(d * 100).toFixed(1)}%p)   ${(x.rank / runs).toFixed(1)} → ${(y.rank / runs).toFixed(1)}`);
+  }
+}
+
+function signedFix(x: number): string {
+  return `${x >= 0 ? "+" : ""}${x.toFixed(2)}`;
 }
 
 function printRows(rows: Row[]) {

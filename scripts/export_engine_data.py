@@ -1,6 +1,7 @@
 """output/ 과 raw/ 에서 시뮬 엔진이 읽을 JSON(engine/data/)을 만든다.
 
-- players.json     LCK 2026 로스터: 닉네임, 팀, 포지션, 나이(정수), 능력치, 챔피언 숙련(출전 경기 수)
+- players.json     LCK 2026 로스터: 닉네임, 팀, 포지션, 나이(정수), 능력치, 챔피언 숙련(출전 경기 수),
+                   운영 기여(intangible, scripts/player_intangibles.py 결과)
 - teams.json       팀 이름·약칭·주전/후보
 - champions.json   드래프트 가능한 챔피언: 포지션 비중, 메타 점수, 초반/후반 성향, 딜 구성
 - matchups.json    라인 상성(같은 라인 맞대결 15분 골드차), 바텀 조합 승률
@@ -108,6 +109,8 @@ def export_players(by_name):
             if champ in by_name:
                 d = pools.setdefault(player, {})
                 d[by_name[champ]] = d.get(by_name[champ], 0) + n * weight
+    intang = pd.read_csv(OUT / "players/player_intangibles.csv")
+    intang = intang.assign(key=intang["player"].str.lower()).drop_duplicates("key").set_index("key")
     starters = p.sort_values("games", ascending=False).drop_duplicates(["team", "position"])
     players = []
     for _, r in p.iterrows():
@@ -116,6 +119,8 @@ def export_players(by_name):
             "age": None if pd.isna(r["age"]) else int(r["age"]), "games2026": int(r["games"]),
             "starter": bool(((starters["player"] == r["player"]) & (starters["team"] == r["team"])).any()),
             "ratings": {v: float(r[k]) for k, v in RATINGS.items()},
+            "intangible": float(intang["intangible"].get(r["player"].lower(), 0.0)),
+            "intangibleSe": float(intang["intangible_se"].get(r["player"].lower(), 0.0)),
             "champions": dict(sorted(pools.get(r["player"].lower(), {}).items(), key=lambda kv: -kv[1])),
         })
     teams = []

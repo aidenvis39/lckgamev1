@@ -31,6 +31,7 @@ npm run season -- --seed 3          # 정규시즌 1회 (LCK 2026 방식: 1~2라
 npm run season -- --runs 500        # 500시즌 평균: 팀별 1위·6위 안 확률
 npm run calibrate                   # 시뮬 vs 실제 LCK 2026 통계 비교
 npm run tune                        # 조절값 자동 튜닝 → data/params.json
+npm run transfer -- faker clozer    # 같은 포지션 두 선수 맞트레이드 전후 비교 (시즌 300회)
 npm test && npm run typecheck
 ```
 
@@ -41,22 +42,30 @@ npm test && npm run typecheck
 | 경로 | 내용 |
 |---|---|
 | `engine/` | 경기 시뮬 엔진 (TypeScript). 설명은 [docs/ENGINE.md](docs/ENGINE.md) |
-| `scripts/` | 데이터 파이프라인 (Python, pandas)<br>`build_all.py`: 원본 → 분석 결과<br>`export_engine_data.py`: 분석 결과 → 엔진 입력<br>`fetch_leaguepedia.py`: Leaguepedia 수집 |
+| `scripts/` | 데이터 파이프라인 (Python, pandas)<br>`build_all.py`: 원본 → 분석 결과<br>`player_intangibles.py`: 선수 운영 기여 회귀분석<br>`export_engine_data.py`: 분석 결과 → 엔진 입력<br>`fetch_leaguepedia.py`: Leaguepedia 수집 |
 | `output/` | 분석 결과: 튜닝 기준값, 챔피언·메타, 선수·팀 통계, 성장 곡선. 설명은 [docs/DATA.md](docs/DATA.md) |
 | `raw/` | 원본 중 용량이 작은 것: Leaguepedia, 나무위키 대조표, Data Dragon<br>Oracle's Elixir CSV(600MB)는 넣지 않았음. 받는 법은 DATA.md 참고 |
 | `docs/` | 데이터·엔진 문서 |
 
-## 캘리브레이션 요약 (튜닝에 쓰지 않은 시드, 50시즌·15,994경기)
+## 선수 능력치
+- **개인 기록 능력치**: 라인전, 한타, 시야, 생존, 챔프폭. 2026 실제 기록을 같은 포지션 안 백분위로 바꾼 값.
+- **챔피언 숙련도**: 실제 출전 기록 기반
+- **운영 기여**: 콜·운영처럼 기록에 안 잡히는 기여
+  - 2020~2026 LCK 3,465경기와 이적한 선수 85명을 이용한 회귀분석으로 추정함
+  - **이적하면 선수를 따라감.** 예: Faker ↔ Clozer 맞트레이드 시 T1 -5.5%p, DNS +4.5%p
+  - 자세한 내용은 [docs/ENGINE.md](docs/ENGINE.md) 5절
+
+## 캘리브레이션 요약 (튜닝에 쓰지 않은 시드, 50시즌·15,993경기)
 
 | 지표 | 시뮬 | 실제 LCK 2026 |
 |---|---|---|
-| 평균 경기 시간 | 32.4분 | 32.2분 |
-| 경기당 킬 | 29.6 | 29.4 |
-| 블루 진영 승률 | 54.1% | 56.4% |
-| 15분 골드 1k당 승리 로짓 | 0.507 | 0.534 |
-| 원딜 라인 영향력 | 0.39 | 0.39 |
-| 팀별 정규시즌 승률 오차 | 2.2%p | – |
-| 강팀 승률 (승률 차이 20~30%p / 30~45%p) | 81.4% / 90.4% | 87.9% / 92.3% (2025+26 합산 81.4% / 89.5%) |
+| 평균 경기 시간 | 32.3분 | 32.2분 |
+| 경기당 킬 | 29.0 | 29.4 |
+| 블루 진영 승률 | 54.4% | 56.4% |
+| 15분 골드 1k당 승리 로짓 | 0.522 | 0.534 |
+| 원딜 라인 영향력 | 0.37 | 0.39 |
+| 팀별 정규시즌 승률 오차 | 1.6%p | – |
+| 강팀 승률 (승률 차이 20~30%p / 30~45%p) | 81.9% / 92.4% | 87.9% / 92.3% (2025+26 합산 81.4% / 89.5%) |
 
 - 비교한 27개 지표 전부 허용 오차의 2배 안에 들어옴.
 - 시즌 500회를 돌리면 상위 5팀이 실제 2026 레전드 그룹(GEN·HLE·T1·DK·KT)과 같게 나옴.

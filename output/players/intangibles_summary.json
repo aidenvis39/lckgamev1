@@ -1,0 +1,17 @@
+{
+  "games": 3465,
+  "players": 221,
+  "team_seasons": 72,
+  "lambda_player": 20,
+  "lambda_team_season": 10000.0,
+  "cv_logloss_box_only": 0.6031,
+  "cv_logloss_with_effects": 0.5908,
+  "box_coef": {
+    "laning": 0.89,
+    "teamfight": 0.546,
+    "vision": 0.345,
+    "survival": 0.476
+  },
+  "side_intercept": 0.207,
+  "players_moved_teams": 85
+}
