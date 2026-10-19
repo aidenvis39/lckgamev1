@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { loadParams, loadUniverse } from "../src/data.ts";
-import { runDraft } from "../src/draft.ts";
+import { applyChoice, currentTurn, newDraft, rankOptions, runDraft } from "../src/draft.ts";
 import { lineupOf, swapPlayers } from "../src/lineup.ts";
 import { simulateGame } from "../src/match.ts";
 import { createRng } from "../src/rng.ts";
@@ -88,4 +88,28 @@ test("시즌: 1~2라운드 90시리즈 + 그룹별 3~4라운드 40시리즈, 승
   const group = new Map<string, string>([...s.groups!.legend.map((t) => [t, "L"] as const), ...s.groups!.rise.map((t) => [t, "R"] as const)]);
   for (const x of s.series.slice(90)) assert.equal(group.get(x.teams[0]), group.get(x.teams[1]));
   for (const t of s.standings) assert.equal(t.seriesWins + t.seriesLosses, 26);
+});
+
+test("밴픽 단계 API: 사람이 한쪽을 맡아도 규칙이 지켜진다", () => {
+  const ctx = { u, lineups, p };
+  let s = newDraft(["Vi"]);
+  assert.throws(() => applyChoice(s, { kind: "ban", side: "blue", champion: "Vi" })); // 피어리스로 막힘
+  assert.throws(() => applyChoice(s, { kind: "pick", side: "blue", champion: "Azir", position: "mid" })); // 지금은 밴 차례
+  while (currentTurn(s)) {
+    const [kind, side] = currentTurn(s)!;
+    const opt = rankOptions(ctx, s, side)[0];
+    s = applyChoice(s, kind === "ban" ? { kind, side, champion: opt.champion } : { kind, side, champion: opt.champion, position: opt.position });
+  }
+  assert.equal(s.steps.length, 20);
+  assert.ok(!s.taken.has("Vi") || s.unavailable.has("Vi"));
+});
+
+test("타임라인: 킬 수와 용 수가 결과와 맞는다", () => {
+  const rng = createRng(3);
+  const r = simulateGame(u, lineups, runDraft(u, lineups, p, rng.fork("d")), p, rng.fork("g"));
+  const count = (kind: string, side: Side) => r.timeline.filter((e) => e.kind === kind && e.side === side).reduce((n, e) => n + (e.count ?? 1), 0);
+  assert.equal(count("kill", "blue"), r.kills.blue);
+  assert.equal(count("dragon", "red"), r.dragons.red);
+  assert.equal(count("tower", "blue"), r.towers.blue);
+  assert.equal(count("tower", "red"), r.towers.red);
 });

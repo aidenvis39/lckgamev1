@@ -1,7 +1,23 @@
 # LCK 구단 운영 시뮬레이션 (프로토타입)
 
-LCK 구단의 단장 겸 감독이 되어 밴픽, 로스터, 운영으로 우승을 노리는 시뮬레이션 게임의 **경기 시뮬 엔진**과 **데이터 파이프라인**.
+LCK 구단의 단장 겸 감독이 되어 밴픽, 로스터, 운영으로 우승을 노리는 시뮬레이션 게임.
+**웹 게임**, **경기 시뮬 엔진**, **데이터 파이프라인**으로 되어 있음.
 엔진의 조절값은 실제 LCK 2026 경기 통계에 맞춰 튜닝되어 있음.
+
+## 웹 게임
+
+팀을 고르고, 내 경기는 직접 밴픽하고, 중계를 보며 LCK 2026 정규시즌을 치른다. 로스터 교체와 이적 실험실도 있음.
+
+```bash
+cd web
+npm install
+npm run dev        # http://localhost:5173
+```
+
+Cloudflare Workers에 정적 사이트로 올려 친구들과 함께 쓸 수 있음 (서버 비용 없음).
+배포 방법, 친구만 들어오게 막는 법, 친구 리그(멀티플레이) 설계는 [docs/WEB.md](docs/WEB.md) 참고.
+
+## 엔진 명령줄 도구
 
 ```
 $ npm run match -- GEN T1 --seed 7
@@ -18,8 +34,6 @@ $ npm run match -- GEN T1 --seed 7
   29:45 [GEN] 교전 승리 3:3 → 바론 (골드 차이 +3,388)
   33:36 [GEN] 넥서스 파괴 — GEN 승리
 ```
-
-## 빠른 시작
 
 Node 22.18 이상이 필요함.
 
@@ -41,11 +55,12 @@ npm test && npm run typecheck
 
 | 경로 | 내용 |
 |---|---|
+| `web/` | 웹 게임 (Vite + React). 엔진을 브라우저에서 그대로 돌림. 설명은 [docs/WEB.md](docs/WEB.md) |
 | `engine/` | 경기 시뮬 엔진 (TypeScript). 설명은 [docs/ENGINE.md](docs/ENGINE.md) |
 | `scripts/` | 데이터 파이프라인 (Python, pandas)<br>`build_all.py`: 원본 → 분석 결과<br>`player_intangibles.py`: 선수 운영 기여 회귀분석<br>`export_engine_data.py`: 분석 결과 → 엔진 입력<br>`fetch_leaguepedia.py`: Leaguepedia 수집 |
 | `output/` | 분석 결과: 튜닝 기준값, 챔피언·메타, 선수·팀 통계, 성장 곡선. 설명은 [docs/DATA.md](docs/DATA.md) |
 | `raw/` | 원본 중 용량이 작은 것: Leaguepedia, 나무위키 대조표, Data Dragon<br>Oracle's Elixir CSV(600MB)는 넣지 않았음. 받는 법은 DATA.md 참고 |
-| `docs/` | 데이터·엔진 문서 |
+| `docs/` | 데이터·엔진·웹 문서 |
 
 ## 선수 능력치
 - **개인 기록 능력치**: 라인전, 한타, 시야, 생존, 챔프폭. 2026 실제 기록을 같은 포지션 안 백분위로 바꾼 값.

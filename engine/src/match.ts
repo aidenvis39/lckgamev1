@@ -5,7 +5,7 @@
 import type { Params } from "./params.ts";
 import { sigmoid, type Rng } from "./rng.ts";
 import { compScore, fighterPower, mastery, matchupGd15, z } from "./strength.ts";
-import type { DraftResult, GameEvent, GameResult, Lineup, PlayerLine, Position, Side, Universe } from "./types.ts";
+import type { DraftResult, GameEvent, GameResult, Lineup, PlayerLine, Position, Side, TimelineEntry, Universe } from "./types.ts";
 import { POSITIONS, SIDES, other } from "./types.ts";
 
 const KILL_SHARE: Record<Position, number> = { top: 0.18, jng: 0.22, mid: 0.24, bot: 0.31, sup: 0.05 };
@@ -30,6 +30,10 @@ export function simulateGame(
 ): GameResult {
   const log = opts.log ?? false;
   const events: GameEvent[] = [];
+  const timeline: TimelineEntry[] = [];
+  const mark = (t: number, side: Side, kind: TimelineEntry["kind"], count?: number) => {
+    timeline.push(count === undefined ? { t: round1(t), side, kind } : { t: round1(t), side, kind, count });
+  };
   const say = (t: number, side: Side | undefined, text: string) => {
     if (log) events.push({ t, side, text });
   };
@@ -57,6 +61,7 @@ export function simulateGame(
     lines[s][killer].kills++;
     lines[other(s)][victim].deaths++;
     kills[s]++;
+    mark(t, s, "kill");
     for (const pos of POSITIONS) if (pos !== killer && rng.next() < ASSIST_RATE[pos]) lines[s][pos].assists++;
     if (!firstBlood) {
       firstBlood = s;
@@ -92,7 +97,9 @@ export function simulateGame(
 
   // 공허 유충 (6분)
   const grubs = control(lane.jng + 0.5 * lane.top);
-  say(6 + rng.next(), grubs, "공허 유충 획득");
+  const tGrubs = 6 + rng.next();
+  say(tGrubs, grubs, "공허 유충 획득");
+  mark(tGrubs, grubs, "grubs");
   // 첫 용 (5~8분), 두 번째 용 (+5~6분)
   let tDragon = 5 + 3 * rng.next();
   const firstDragon = control(lane.jng + 0.5 * (lane.bot + lane.sup));
@@ -115,10 +122,14 @@ export function simulateGame(
   const laneBonus = POSITIONS.reduce((s, pos) => s + (p.laneValue[pos] - 1) * laneGd15[pos], 0);
   const firstTower: Side = rng.next() < sigmoid(gd15 / 1500) ? "blue" : "red";
   towers[firstTower]++;
-  say(11 + 4 * rng.next(), firstTower, "첫 포탑 파괴");
+  const tFirstTower = 11 + 4 * rng.next();
+  say(tFirstTower, firstTower, "첫 포탑 파괴");
+  mark(tFirstTower, firstTower, "tower");
   const herald = control(lane.jng + 0.5 * (lane.top + lane.mid));
   towers[herald]++;
   gold += herald === "blue" ? 300 : -300;
+  mark(15.2, herald, "herald");
+  mark(15.6, herald, "tower");
   if (log) {
     const lead = gd15 >= 0 ? 1 : -1; // 앞선 팀 기준으로 표시
     const lanes = POSITIONS.map((pos) => `${POS_KO[pos]} ${signed(lead * laneGd15[pos])}`).join(" / ");
@@ -167,12 +178,14 @@ export function simulateGame(
     let what = "";
     if (soul && t >= nextElder) {
       elders[w]++;
+      mark(t, w, "elder");
       elderUntil[w] = t + 2.5;
       nextElder = t + 6;
       wonTowers++;
       what = "장로 용";
     } else if (t >= nextBaron && rng.next() < p.baronContest) {
       barons[w]++;
+      mark(t, w, "baron");
       firstBaron ??= w;
       baronUntil[w] = t + 3;
       nextBaron = t + 6;
@@ -184,7 +197,9 @@ export function simulateGame(
       nextDragon = t + 5;
     }
     if (baronUntil[w] > t) wonTowers++;
+    const before = towers[w];
     towers[w] = Math.min(MAX_TOWERS, towers[w] + wonTowers);
+    if (towers[w] > before) mark(t, w, "tower", towers[w] - before);
     gold += sign * swing;
     goldTimeline.push([round1(t), Math.round(gold)]);
     if (log) say(t, w, `교전 승리 ${kw}:${kl}${what ? ` → ${what}` : ""} (골드 차이 ${signed(sign * gold)})`);
@@ -197,9 +212,11 @@ export function simulateGame(
   }
 
   const duration = round1(t + 0.5 + rng.next());
+  if (towers[winner] < MAX_TOWERS) mark(duration, winner, "tower");
   towers[winner] = Math.min(MAX_TOWERS, towers[winner] + 1); // 마무리 과정에서 부수는 포탑
   say(duration, winner, `넥서스 파괴 — ${lineups[winner].team.id} 승리`);
   events.sort((a, b) => a.t - b.t);
+  timeline.sort((a, b) => a.t - b.t);
 
   return {
     winner,
@@ -214,12 +231,14 @@ export function simulateGame(
     soul,
     firsts: { blood: firstBlood ?? "blue", dragon: firstDragon, tower: firstTower, baron: firstBaron },
     goldTimeline,
+    timeline,
     lines,
     events,
   };
 
   function takeDragon(s: Side, at: number, announce = true): string {
     dragons[s]++;
+    mark(at, s, "dragon");
     const kind = DRAGON_KO[rng.int(DRAGON_KO.length)];
     if (dragons[s] === 4 && !soul) {
       soul = s;

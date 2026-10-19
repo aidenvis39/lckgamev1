@@ -1,8 +1,9 @@
 # 경기 시뮬 엔진
 
 TypeScript, 런타임 의존성 없음. Node 22.18+에서 `.ts`를 바로 실행한다.
-엔진 코어(`draft`, `match`, `series`, `season`, `calibrate`)는 `fs`를 쓰지 않아 나중에 브라우저(React)로 그대로 옮길 수 있다.
-파일 로딩은 `data.ts`만 맡는다.
+엔진 코어(`universe`, `draft`, `match`, `series`, `season`, `calibrate`)는 `fs`를 쓰지 않는다.
+그래서 웹 게임(`web/`, [WEB.md](WEB.md))이 브라우저에서 그대로 가져다 쓴다.
+파일 로딩은 Node 전용인 `data.ts`만 맡는다.
 
 ## 구조
 
@@ -11,10 +12,13 @@ engine/
   data/            데이터 파이프라인이 만든 입력 (players, teams, champions, matchups, targets) + 튜닝된 params.json
   src/
     rng.ts         시드 고정 난수 (mulberry32). 같은 시드 = 같은 결과
-    types.ts       Player, Champion, DraftResult, GameResult ...
+    types.ts       Player, Champion, DraftResult, GameResult(중계용 timeline 포함) ...
+    universe.ts    JSON 데이터 → Universe (fs 없음, 브라우저 공용)
+    data.ts        data/*.json 읽기·쓰기 (Node 전용)
+    targets.ts     실제 통계 기준값 타입
     params.ts      모든 조절값 + 기본값 + 튜닝 범위
     strength.ts    능력치 표준화, 챔피언 숙련도, 상성, 조합 점수, 교전 전투력
-    draft.ts       밴픽 AI (프로 순서, 피어리스)
+    draft.ts       밴픽 AI (프로 순서, 피어리스). 한 단계씩 진행하는 API도 있어 사람이 끼어들 수 있다
     match.ts       한 세트 시뮬 + 한국어 중계 로그
     series.ts      BO1/3/5, 진 팀 블루 선택, 피어리스
     season.ts      LCK 2026 정규시즌 방식 (1~2라운드 전체 + 3~4라운드 레전드/라이즈 그룹)
@@ -28,7 +32,7 @@ engine/
 
 ### 입력
 - **선수 능력치 5개** (라인전, 한타, 시야, 생존, 챔프폭): 실제 2026 LCK 스탯을 같은 포지션 안 백분위로 바꾼 40~99점. 엔진에선 `z = (값 - 70) / 17`로 씀.
-- **챔피언 숙련도**: 실제 출전 경기 수(2026은 1, 2025는 0.5로 가중)
+- **챔피언 숙련도**: 실제 출전 경기 수(2026은 1, 2025는 0.5로 가중, 모든 리그. OE playerid로 묶어서 동명이인 기록이 섞이지 않음)
   - `1 - exp(-경기 수 / 6)`
   - 한 번도 안 해본 챔피언은 챔프폭 능력치에 따라 0.15~0.4
 - **챔피언 정보**

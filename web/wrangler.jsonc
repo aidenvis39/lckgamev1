@@ -1,0 +1,11 @@
+{
+  // Cloudflare Workers 정적 자산 배포. 빌드 결과(dist/)를 그대로 올린다.
+  // 친구 리그(멀티플레이)를 붙일 때 여기에 main(워커 스크립트)과 Durable Object 바인딩을 추가한다.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lckgamev1",
+  "compatibility_date": "2025-10-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}

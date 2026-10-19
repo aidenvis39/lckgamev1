@@ -100,17 +100,18 @@ def export_players(by_name):
     for col in RATINGS:
         p[col] = p[col].fillna(50)  # 15경기 미만 후보 선수
     # 챔피언 숙련: 2026 출전 1경기 = 1, 2025 = 0.5 (모든 리그·국제대회)
+    # 이름이 아니라 OE playerid로 묶는다. 다른 지역의 동명이인 기록이 섞이지 않게.
     pools = {}
     for year, weight in ((SEASON, 1.0), (SEASON - 1, 0.5)):
         df = pd.read_csv(RAW / f"{year}_LoL_esports_match_data_from_OraclesElixir.csv", low_memory=False,
-                         usecols=["playername", "position", "champion"])
-        df = df[df["position"].isin(POSITIONS)].dropna(subset=["playername", "champion"])
-        for (player, champ), n in df.groupby([df["playername"].str.lower(), "champion"]).size().items():
+                         usecols=["playerid", "position", "champion"])
+        df = df[df["position"].isin(POSITIONS)].dropna(subset=["playerid", "champion"])
+        for (player, champ), n in df.groupby(["playerid", "champion"]).size().items():
             if champ in by_name:
                 d = pools.setdefault(player, {})
                 d[by_name[champ]] = d.get(by_name[champ], 0) + n * weight
     intang = pd.read_csv(OUT / "players/player_intangibles.csv")
-    intang = intang.assign(key=intang["player"].str.lower()).drop_duplicates("key").set_index("key")
+    intang = intang.drop_duplicates("playerid").set_index("playerid")
     starters = p.sort_values("games", ascending=False).drop_duplicates(["team", "position"])
     players = []
     for _, r in p.iterrows():
@@ -119,9 +120,9 @@ def export_players(by_name):
             "age": None if pd.isna(r["age"]) else int(r["age"]), "games2026": int(r["games"]),
             "starter": bool(((starters["player"] == r["player"]) & (starters["team"] == r["team"])).any()),
             "ratings": {v: float(r[k]) for k, v in RATINGS.items()},
-            "intangible": float(intang["intangible"].get(r["player"].lower(), 0.0)),
-            "intangibleSe": float(intang["intangible_se"].get(r["player"].lower(), 0.0)),
-            "champions": dict(sorted(pools.get(r["player"].lower(), {}).items(), key=lambda kv: -kv[1])),
+            "intangible": float(intang["intangible"].get(r["playerid"], 0.0)),
+            "intangibleSe": float(intang["intangible_se"].get(r["playerid"], 0.0)),
+            "champions": dict(sorted(pools.get(r["playerid"], {}).items(), key=lambda kv: -kv[1])),
         })
     teams = []
     for name, short in TEAM_SHORT.items():

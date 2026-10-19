@@ -88,6 +88,16 @@ export interface GameEvent {
   text: string;
 }
 
+export type TimelineKind = "kill" | "tower" | "dragon" | "baron" | "elder" | "grubs" | "herald";
+
+// 중계 화면용: 무슨 일이 몇 분에 어느 팀에게 일어났는지
+export interface TimelineEntry {
+  t: number;
+  side: Side;
+  kind: TimelineKind;
+  count?: number; // 포탑 여러 개를 한 번에 부순 경우
+}
+
 export interface PlayerLine {
   kills: number;
   deaths: number;
@@ -107,6 +117,7 @@ export interface GameResult {
   soul: Side | null;
   firsts: { blood: Side; dragon: Side; tower: Side; baron: Side | null };
   goldTimeline: Array<[number, number]>; // [분, 블루 - 레드 골드]
+  timeline: TimelineEntry[];
   lines: Record<Side, Record<Position, PlayerLine>>;
   events: GameEvent[];
 }

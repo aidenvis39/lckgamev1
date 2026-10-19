@@ -1,5 +1,5 @@
 // 시뮬 결과를 실제 LCK 통계(targets.json)와 같은 방식으로 집계해서 비교한다.
-import type { Targets } from "./data.ts";
+import type { Targets } from "./targets.ts";
 import type { SeasonResult } from "./season.ts";
 import type { GameResult, Position, Side } from "./types.ts";
 import { POSITIONS } from "./types.ts";

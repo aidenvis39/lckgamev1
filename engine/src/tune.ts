@@ -1,6 +1,6 @@
 // 조절값 자동 튜닝: 시즌을 여러 번 돌려서 실제 LCK 통계와의 차이(손실)를 줄이는 방향으로 랜덤 탐색.
 import { compare, loss, measure, type Metrics, type Row } from "./calibrate.ts";
-import type { Targets } from "./data.ts";
+import type { Targets } from "./targets.ts";
 import { runDraft } from "./draft.ts";
 import { lineupOf } from "./lineup.ts";
 import { TUNABLE, getParam, setParam, type Params } from "./params.ts";
