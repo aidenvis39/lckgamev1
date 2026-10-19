@@ -20,7 +20,11 @@ python3 -I scripts/export_engine_data.py .   # output/ → engine/data/ (엔진 
 - **주전**: LCK는 2026 출전 수, 해외는 마지막 정규 스플릿 출전 수가 가장 많은 선수.
 - **표본 부족(15경기 미만)**: 가진 경기로 리그·포지션 백분위를 내고, 표본이 적은 만큼 중앙값(69.5) 쪽으로 당긴다. 예전엔 50으로 고정했음. `lowSample`로 표시.
 - **해외 선수 운영 기여**: 추정치가 없어 0, `intangibleKnown: false`.
-- `engine/data/world.json`: 해외 팀별 실제 승률, 국제전 리그 쌍 기준값.
+- `engine/data/world.json`: 해외 팀별 실제 승률, 국제전 리그 쌍 기준값, LCK CL → LCK 보정(`academyOffset` −12.3: 2025~2026에 두 리그를 같은 해 뛴 19명 평균. CL → LCK 다음 해 이동 12명은 −9).
+- **커리어용 신상** (`players.json`): 308명 전원 `birthDate`·`age`, 307명 `nationality`, 272명 `contractEnd`.
+  - LCK·CL은 `raw/leaguepedia/participation.json`, 해외는 `overseas_participation_2026.json`(242명 중 240명 매칭)에서 가져온다.
+  - `contractEnd`는 그 시즌 끝에 풀리는 해다. 만료일이 9월 이후면 그해, 그 전이면 전해 시즌 끝으로 본다 (2026-11-16 → 2026).
+- `engine/data/academy.json`: LCK 팀별 2군(LCK CL 2026 출전) 47명. 능력치는 LCK CL 안 포지션 백분위. 1군 로스터에 있는 선수는 뺀다.
 
 `raw/oe_drive/`(Oracle's Elixir CSV, 약 600MB)는 용량 때문에 저장소에 넣지 않았다.
 다시 만들려면 [Oracle's Elixir 구글 드라이브 폴더](https://drive.google.com/drive/folders/1gLSw0RLjBbtaNy0dgnGQDAZOHIgCe-HH)에서
@@ -126,7 +130,7 @@ python3 -I scripts/export_engine_data.py .   # output/ → engine/data/ (엔진 
 
 ## 그 밖에
 
-- 계약 만료일이 있는 129명 중 **94명이 2026-11-16 만료**임. 다가오는 스토브리그에 FA가 대량으로 풀린다는 뜻이라 이적시장 시뮬 설계에 참고할 만함.
+- 계약 만료일이 있는 129명 중 **94명이 2026-11-16 만료**임. 그래서 커리어 첫 스토브리그에 LCK 선수가 대량으로 FA가 됨.
 - 챔프 시간대별 승률에는 착시가 섞여 있음. 초반에 강한 챔프는 이기는 판이 원래 빨리 끝나서, 짧은 경기 승률이 실제보다 높게 나옴.
 
 ## 못 구한 데이터

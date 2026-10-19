@@ -50,10 +50,12 @@ export function closeSeason(world: WorldState, y: YearState, user?: { team: stri
   return { ...w, history: [...w.history, { season: world.season, champions: champs, places, owner, moves: [] }] };
 }
 
-// 은퇴: 26세부터, 실력이 낮을수록 잘 은퇴. 30세 이상은 더
-function retireChance(age: number, ovr: number): number {
+// 은퇴: 26세부터, 실력이 낮을수록 잘 은퇴. 30세 이상은 더.
+// 정상급 선수와 계약이 남은 선수는 잘 은퇴하지 않는다 (2026 Faker 30세, 2029년까지 계약)
+function retireChance(age: number, ovr: number, contracted: boolean): number {
   if (age < 26) return 0;
-  return clamp(0.05 * (age - 25) + Math.max(0, (70 - ovr) * 0.02) + (age >= 30 ? 0.2 : 0), 0, 0.9);
+  const elite = ovr >= 85 ? 0.35 : ovr >= 78 ? 0.6 : 1;
+  return clamp((0.05 * (age - 25) + Math.max(0, (70 - ovr) * 0.02) + (age >= 30 ? 0.2 : 0)) * elite * (contracted ? 0.2 : 1), 0, 0.9);
 }
 
 export function positionTop(champions: Map<string, Champion>, meta: Record<string, number>): Record<Position, string[]> {
@@ -75,7 +77,8 @@ export function beginOffseason(world: WorldState, stats: SeasonStats, champions:
   for (const p of Object.values(w.players)) {
     if (p.retired) continue;
     const longFa = !p.contract && p.faSeasons >= 2;
-    if (longFa || rng.next() < retireChance(p.age ?? 22, overall(p.ratings))) {
+    const contracted = (p.contract?.endSeason ?? 0) > world.season;
+    if (longFa || rng.next() < retireChance(p.age ?? 22, overall(p.ratings), contracted)) {
       if (p.contract) w = release(w, p.id);
       w = { ...w, players: { ...w.players, [p.id]: { ...w.players[p.id], retired: true, contract: null } }, freeAgents: w.freeAgents.filter((x) => x !== p.id) };
     }

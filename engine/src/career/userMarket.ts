@@ -42,6 +42,10 @@ export function acceptance(world: WorldState, o: Offer, last = false): { utility
 }
 
 // ── 재계약 (스토브리그 첫 단계) ──────────────────────
+// AI 팀은 요구 연봉 그대로 재계약한다. 사용자 재계약은 명성·주전·같은 지역·원소속 우대만큼 조금 깎을 수 있다
+// (명성 높은 팀 주전 ≈ 요구의 80%, 보통 팀 주전 ≈ 90%, 후보는 요구 이상)
+const RESIGN_ACCEPT = ACCEPT + 0.4;
+
 export function resignMine(world: WorldState, id: string, salary: number, years: number): Result {
   const p = world.players[id];
   const team = p.contract?.team;
@@ -49,13 +53,13 @@ export function resignMine(world: WorldState, id: string, salary: number, years:
   if (!p.academy && salary > capRoom(world, team, [id]) + 0.05) return fail(world, `연봉 상한 초과 (여유 ${capRoom(world, team, [id])}C)`);
   const role = world.teams[team].starters[p.position] === id ? "starter" : "bench";
   const u = offerUtility(world, p, { team, player: id, salary, years, role });
-  if (u < ACCEPT - 0.15) return fail(world, `선수가 거절 (연봉 ${salaryNeeded(world, p, team, role)}C 이상이면 남음)`);
+  if (u < RESIGN_ACCEPT) return fail(world, `선수가 거절 (연봉 ${salaryNeeded(world, p, team, role)}C 이상이면 남음)`);
   return { world: extend(world, id, salary, years), ok: true, reason: "" };
 }
 
 // 재계약에 필요한 최소 연봉 (효용 기준을 넘기는 연봉)
 export function salaryNeeded(world: WorldState, p: PlayerState, team: string, role: "starter" | "bench"): number {
-  for (let s = 0.3; s <= 20; s += 0.1) if (offerUtility(world, p, { team, player: p.id, salary: s, years: 1, role }) >= ACCEPT - 0.15) return round1(s);
+  for (let s = 0.3; s <= 20; s += 0.1) if (offerUtility(world, p, { team, player: p.id, salary: s, years: 1, role }) >= RESIGN_ACCEPT) return round1(s);
   return 20;
 }
 

@@ -1,8 +1,8 @@
 // 내 시리즈 진행: 밴픽 → 중계 → 세트 결과 → (진 팀이 진영 선택) → 다음 세트 … → 시리즈 결과
 // 세트가 끝날 때마다 진행을 저장해서, 나갔다 와도 그 세트부터 이어서 한다 (밴픽 중간은 저장 안 함)
 import { useMemo, useState } from "react";
-import { lineupOf, params, POSITIONS, simulateGame, type DraftResult, type Match, type Side } from "../../engine.ts";
-import { seriesRng, universeFor, type Career, type PlayedGame, type SeriesProgress } from "../../game/career.ts";
+import { lineupOf, POSITIONS, simulateGame, type DraftResult, type Match, type Side } from "../../engine.ts";
+import { paramsFor, seriesRng, universeFor, type Career, type PlayedGame, type SeriesProgress } from "../../game/career.ts";
 import { clock, TEAM_STYLE } from "../../game/meta.ts";
 import { TeamBadge } from "../../ui/bits.tsx";
 import { DraftBoard } from "./DraftBoard.tsx";
@@ -20,7 +20,9 @@ interface Props {
 }
 
 export function MatchFlow({ career, match, onDone, onLeave, onProgress }: Props) {
-  const u = useMemo(() => universeFor(career), [career]);
+  // 진행 저장(progress)만 바뀔 땐 세계·출전 기록이 그대로라 같은 Universe를 쓴다
+  const u = useMemo(() => universeFor(career), [career.world, career.stats]);
+  const params = useMemo(() => paramsFor(career), [career.world, career.stats]);
   const me = career.teamId;
   const opp = match.home === me ? match.away : match.home;
   const need = Math.ceil(match.bestOf / 2);
@@ -45,7 +47,7 @@ export function MatchFlow({ career, match, onDone, onLeave, onProgress }: Props)
   const lineups = useMemo(() => ({ blue: lineupOf(u, sides.blue), red: lineupOf(u, sides.red) }), [u, sides]);
   const userSide: Side = sides.blue === me ? "blue" : "red";
   // career가 세트마다 저장되며 바뀌어도 같은 세트의 난수는 그대로 (시드·경기·세트 번호로만 정해짐)
-  const rng = useMemo(() => seriesRng(career, match, `g${games.length}`), [career.seed, match.id, games.length]);
+  const rng = useMemo(() => seriesRng(career, match, `g${games.length}`), [career.year.seed, match.id, games.length]);
   const used = useMemo(() => games.flatMap((g) => (["blue", "red"] as Side[]).flatMap((s) => POSITIONS.map((p) => g.draft.picks[s][p]))), [games]);
   const shown = current && phase !== "draft" && phase !== "live" ? [...games, current] : games;
   const score = scoreOf(shown);

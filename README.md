@@ -6,9 +6,11 @@ LCK 구단의 단장 겸 감독이 되어 밴픽, 로스터, 운영으로 우승
 
 ## 웹 게임
 
-팀을 고르고, 내 경기는 직접 밴픽하고, 중계를 보며 한 해를 치른다.
-LCK 정규시즌 → Road to MSI → MSI → LCK 플레이오프 → 월즈까지 이어지고, 해외 5개 리그(LPL·LEC·LCS·LCP·CBLOL, 46팀)도 뒤에서 같이 진행되어 대표가 매번 새로 정해짐.
-로스터 교체와 이적 실험실(해외 선수 영입 포함)도 있음.
+팀을 고르고, 내 경기는 직접 밴픽하고, 중계를 보며 여러 시즌을 이어 간다.
+- 한 해: LCK 정규시즌 → Road to MSI → MSI → LCK 플레이오프 → 월즈. 해외 5개 리그(LPL·LEC·LCS·LCP·CBLOL, 46팀)도 뒤에서 같이 진행되어 대표가 매번 새로 정해짐. MSI 성적에 따라 월즈 출전권이 지역별로 바뀜(2025~2026 실제 규칙).
+- 시즌 중 여러 번 선수가 성장하고(MSI·월즈에 나가면 더), 시즌이 끝나면 나이를 먹고 은퇴함.
+- 스토브리그: 구단주 평가 → 재계약 → FA 4라운드·이적료 영입·트레이드 → 등록 → 다음 시즌. 연봉 상한과 이적 예산 안에서 움직임. 2군(LCK CL)과 가상 신인도 있음.
+- 이적 실험실(같은 포지션 두 선수 맞트레이드 전후 비교)도 있음.
 
 ```bash
 cd web
@@ -17,7 +19,7 @@ npm run dev        # http://localhost:5173
 ```
 
 Cloudflare Workers에 정적 사이트로 올려 친구들과 함께 쓸 수 있음 (서버 비용 없음).
-배포 방법, 친구만 들어오게 막는 법, 친구 리그(멀티플레이) 설계는 [docs/WEB.md](docs/WEB.md) 참고.
+배포 방법과 친구만 들어오게 막는 법은 [docs/WEB.md](docs/WEB.md) 참고.
 
 ## 엔진 명령줄 도구
 
@@ -49,6 +51,7 @@ npm run calibrate                   # 시뮬 vs 실제 LCK 2026 통계 비교
 npm run tune                        # 조절값 자동 튜닝 → data/params.json
 npm run transfer -- faker clozer    # 같은 포지션 두 선수 맞트레이드 전후 비교 (시즌 300회)
 npm run year -- --runs 100          # LCK·MSI·월즈 한 해 전체 100회: 대회별 우승 팀·리그 분포
+npm run career -- --years 10        # AI끼리 10년 커리어: 리그 실력 유지, 나이별 성장, 은퇴·FA·신인, 월즈 우승 지역
 npm run calibrate -- --intl         # 해외 리그 팀 승률 + 국제전 리그 쌍 승률 비교
 npm run tune -- --intl              # 해외 팀워크 + 리그 보정만 다시 맞춤
 npm test && npm run typecheck

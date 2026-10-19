@@ -10,7 +10,7 @@ export function Season({ career }: { career: Career }) {
     <div className="page">
       <div className="page-head">
         <div className="stack" style={{ gap: 6 }}>
-          <span className="label">{career.season} 정규시즌</span>
+          <span className="label">{career.world.season} 정규시즌</span>
           <h1>리그</h1>
         </div>
         <div className="seg seg-wrap" role="group" aria-label="리그 선택">

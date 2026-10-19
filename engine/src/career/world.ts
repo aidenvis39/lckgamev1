@@ -147,7 +147,7 @@ export function starterMeans(players: Record<string, PlayerState>, teams: Record
 export function retuneReplacement(world: WorldState): WorldState {
   const now = starterMeans(world.players, world.teams, world.macroWeight);
   const replacement = Object.fromEntries(
-    Object.entries(world.baseline).map(([lg, base]) => [lg, Math.round((base - REPLACEMENT_GAP + 2.5 * Math.max(-4, Math.min(6, base - (now[lg] ?? base)))) * 10) / 10]),
+    Object.entries(world.baseline).map(([lg, base]) => [lg, Math.round((base - REPLACEMENT_GAP + 4 * Math.max(-4, Math.min(6, base - (now[lg] ?? base)))) * 10) / 10]),
   );
   return { ...world, replacement };
 }

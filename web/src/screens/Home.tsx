@@ -1,12 +1,16 @@
 import { useMemo } from "react";
-import { champion, lckGroupStandings, lckSpringStandings, leagueStandings, type Match, type Standing } from "../engine.ts";
+import { champion, lckGroupStandings, lckSpringStandings, leagueStandings, mainRoster, payroll, type Match, type Standing } from "../engine.ts";
 import {
   dayLabel,
   isMine,
   isOverseasLeague,
+  markGrowthSeen,
   myMatchToday,
   myPendingChoice,
+  myTeam,
+  seasonOf,
   seasonOver,
+  startOffseason,
   today,
   universeFor,
   type Career,
@@ -14,7 +18,9 @@ import {
 import { EVENT_NAME, placeName, TEAM_STYLE } from "../game/meta.ts";
 import { teamProfile, type TeamProfile } from "../game/teamStats.ts";
 import { FormPill, LeagueTag, SideTag, TeamBadge } from "../ui/bits.tsx";
+import { GrowthList } from "../ui/player.tsx";
 import type { Tab } from "../App.tsx";
+import { Offseason } from "./Offseason.tsx";
 
 interface Props {
   career: Career;
@@ -22,14 +28,14 @@ interface Props {
   onAutoDay: () => void;
   onAdvance: () => void;
   onChoose: (id: string, team: string) => void;
-  onNewSeason: () => void;
+  onChange: (c: Career) => void;
   onOpen: (tab: Tab) => void;
 }
 
 const leagueOf = (c: Career, t: string) => universeFor(c).teams.get(t)!.league;
 export const placeOf = (c: Career, event: string) => c.year.finals[event]?.find(([, t]) => t === c.teamId)?.[0] ?? null;
 
-export function Home({ career, onPlay, onAutoDay, onAdvance, onChoose, onNewSeason, onOpen }: Props) {
+export function Home({ career, onPlay, onAutoDay, onAdvance, onChoose, onChange, onOpen }: Props) {
   const me = career.teamId;
   const y = career.year;
   const lck = useMemo(() => leagueStandings(y, "LCK"), [y]);
@@ -46,6 +52,7 @@ export function Home({ career, onPlay, onAutoDay, onAdvance, onChoose, onNewSeas
   const recent = y.matches.filter((m) => isMine(career, m) && y.results[m.id]).slice(-5).reverse();
   const inMsi = y.qualified.msi.some((e) => e.team === me);
   const inWorlds = y.qualified.worlds.some((e) => e.team === me);
+  const unread = career.growth.slice(career.growthSeen);
 
   return (
     <div className="page">
@@ -64,8 +71,27 @@ export function Home({ career, onPlay, onAutoDay, onAdvance, onChoose, onNewSeas
         </div>
       </div>
 
-      {seasonOver(career) ? (
-        <SeasonSummary career={career} onNewSeason={onNewSeason} onOpen={onOpen} />
+      {unread.length > 0 && !career.offseason && (
+        <section className="panel growth-banner">
+          <h2>
+            성장 리포트 <span className="label">{unread.map((n) => n.label).join(" · ")}</span>
+          </h2>
+          <GrowthList notes={unread} world={career.world} />
+          <div className="row" style={{ marginTop: 12 }}>
+            <button className="btn small" onClick={() => onChange(markGrowthSeen(career))}>
+              확인
+            </button>
+            <button className="btn small ghost" onClick={() => onOpen("club")}>
+              구단에서 보기
+            </button>
+          </div>
+        </section>
+      )}
+
+      {career.offseason ? (
+        <Offseason career={career} onChange={onChange} onOpen={onOpen} />
+      ) : seasonOver(career) ? (
+        <SeasonSummary career={career} onStove={() => onChange(startOffseason(career))} onOpen={onOpen} />
       ) : choice ? (
         <section className="panel stack">
           <h2>{choice.label}</h2>
@@ -135,6 +161,24 @@ export function Home({ career, onPlay, onAutoDay, onAdvance, onChoose, onNewSeas
                 </div>
               ))}
               {overseasToday > 0 && <p className="faint" style={{ fontSize: 13, margin: "8px 0 0" }}>해외 리그 {overseasToday}경기도 같이 진행됨</p>}
+            </section>
+          )}
+          {!career.offseason && (
+            <section className="panel">
+              <h2>
+                구단주 목표
+                <button className="btn ghost small" onClick={() => onOpen("club")}>
+                  구단
+                </button>
+              </h2>
+              <ul className="goals">
+                {career.goals.map((g) => (
+                  <li key={g.text}>{g.text}</li>
+                ))}
+              </ul>
+              <p className="faint" style={{ fontSize: 12, margin: "8px 0 0" }}>
+                연봉 {myPayroll(career)} / {myTeam(career).cap}C · 이적 예산 {myTeam(career).transferBudget}C
+              </p>
             </section>
           )}
           <section className="panel">
@@ -327,7 +371,9 @@ function NextMatch({ career, match, onPlay, onAuto }: { career: Career; match: M
   );
 }
 
-function SeasonSummary({ career, onNewSeason, onOpen }: { career: Career; onNewSeason: () => void; onOpen: (tab: Tab) => void }) {
+const myPayroll = (c: Career) => payroll(c.world.players, mainRoster(myTeam(c)));
+
+function SeasonSummary({ career, onStove, onOpen }: { career: Career; onStove: () => void; onOpen: (tab: Tab) => void }) {
   const y = career.year;
   const events = ["LCK", "MSI", "WORLDS"] as const;
   const eventKey = { LCK: "LCK", MSI: "MSI", WORLDS: "WORLDS" };
@@ -336,7 +382,7 @@ function SeasonSummary({ career, onNewSeason, onOpen }: { career: Career; onNewS
       <div className="winner-banner">
         <TeamBadge team={champion(y, "WORLDS")!} size={44} />
         <div className="stack" style={{ gap: 2 }}>
-          <span className="label">{career.season} 월즈 우승</span>
+          <span className="label">{seasonOf(career)} 월즈 우승</span>
           <h2>{TEAM_STYLE[champion(y, "WORLDS")!].name}</h2>
         </div>
       </div>
@@ -359,15 +405,15 @@ function SeasonSummary({ career, onNewSeason, onOpen }: { career: Career; onNewS
         })}
       </div>
       <div className="row" style={{ flexWrap: "wrap" }}>
-        <button className="btn primary" onClick={onNewSeason}>
-          같은 팀으로 새 시즌
+        <button className="btn primary" onClick={onStove}>
+          스토브리그 시작
         </button>
         <button className="btn" onClick={() => onOpen("events")}>
           대회 결과 보기
         </button>
       </div>
       <p className="faint" style={{ margin: 0, fontSize: 13 }}>
-        새 시즌은 같은 2026 로스터로 다시 시작함. 선수 성장·이적이 이어지는 다년 커리어는 다음 단계.
+        스토브리그: 시즌 결산·구단주 평가 → 재계약 → FA 시장(이적료 영입·트레이드) → 등록 → {seasonOf(career) + 1} 시즌. 선수는 나이를 먹고, 은퇴하고, 2군에 신인이 들어옴.
       </p>
     </section>
   );

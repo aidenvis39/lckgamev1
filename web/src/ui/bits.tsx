@@ -142,6 +142,7 @@ const ICONS: Record<string, string> = {
   roster: "M8 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm8 1a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM1 21c0-4 3-7 7-7s7 3 7 7zm14.5 0c0-2.5-1-4.6-2.6-5.9A6 6 0 0 1 23 21z",
   lab: "M9 3h6M10 3v6L4 20a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 20L14 9V3M7 15h10",
   trophy: "M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v3M8 21h8M9 21l1-4h4l1 4",
+  market: "M4 8h14l-3.5-3.5M20 16H6l3.5 3.5",
 };
 
 export function Icon({ name }: { name: keyof typeof ICONS | string }) {

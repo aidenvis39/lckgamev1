@@ -28,7 +28,7 @@ export function Events({ career }: { career: Career }) {
     <div className="page">
       <div className="page-head">
         <div className="stack" style={{ gap: 6 }}>
-          <span className="label">{career.season} 대회</span>
+          <span className="label">{career.world.season} 대회</span>
           <h1>{TABS.find((t) => t.id === tab)!.label}</h1>
         </div>
         <div className="seg seg-wrap" role="group" aria-label="대회 선택">
