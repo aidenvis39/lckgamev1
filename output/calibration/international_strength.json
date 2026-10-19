@@ -146,5 +146,12 @@
       "raw_winrate": 0.625,
       "model_winrate": 0.57
     }
-  ]
+  ],
+  "academy": {
+    "offset": -12.3,
+    "same_year_players": 19,
+    "same_year_median": -11.0,
+    "promoted_next_year_players": 12,
+    "promoted_next_year_mean": -8.9
+  }
 }

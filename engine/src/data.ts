@@ -2,7 +2,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { DEFAULT_PARAMS, type Params } from "./params.ts";
 import type { Targets, WorldTargets } from "./targets.ts";
-import type { Universe } from "./types.ts";
+import type { Player, Universe } from "./types.ts";
 import { createUniverse, type RawData } from "./universe.ts";
 
 export type { Targets, WorldTargets } from "./targets.ts";
@@ -38,4 +38,9 @@ export function loadTargets(year: string): Targets {
 
 export function loadWorldTargets(): WorldTargets {
   return read<WorldTargets>("world.json");
+}
+
+// LCK 팀별 2군(LCK CL) 선수. team = 1군 팀 약칭, 능력치는 LCK CL 안 백분위
+export function loadAcademy(): Player[] {
+  return read<Player[]>("academy.json");
 }

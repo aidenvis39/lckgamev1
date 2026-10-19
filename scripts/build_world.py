@@ -5,7 +5,8 @@
                                            + 마지막 스플릿 소속·출전 수 (주전 판정용)
 - output/teams/overseas_teams2026.csv      마지막 정규 스플릿 참가팀, 최근 정규 스플릿 2개 세트 승률
 - output/calibration/international_pairs.csv     2024~2026 국제전(MSI·월즈·FST·EWC) 리그 쌍별 전적
-- output/calibration/international_strength.json 리그 강도(브래들리-테리, LCK=0)와 리그 쌍 승리 확률
+- output/calibration/international_strength.json 리그 강도(브래들리-테리, LCK=0)와 리그 쌍 승리 확률,
+                                                 LCK CL(2군) → LCK 능력치 보정 (두 리그를 같은 해 뛴 선수 비교)
 
 사용법: python3 -I scripts/build_world.py .
 """
@@ -105,6 +106,26 @@ def pair_table(games, strength):
     return pd.DataFrame(rows)
 
 
+def academy_offset():
+    """LCK CL 백분위 능력치를 LCK 기준으로 옮기는 값: 같은 해 두 리그를 모두 15경기 이상 뛴 선수의 (LCK − CL) 평균.
+    다음 해 CL → LCK로 올라온 선수의 차이도 참고로 남긴다 (그 사이 성장이 섞여서 덜 음수)."""
+    rows = []
+    for tag, lg in (("lck", "LCK"), ("lckcl", "LCKC")):
+        for y in (2025, 2026):
+            t = pd.read_csv(OUT / f"players/players_{tag}{y}.csv")
+            t = t[~t["low_sample"].astype(bool)]
+            t = t.assign(lg=lg, y=y, ovr=t[["rating_laning", "rating_teamfight", "rating_vision", "rating_survival"]].mean(axis=1))
+            rows.append(t[["playerid", "lg", "y", "ovr"]])
+    a = pd.concat(rows)
+    both = a.pivot_table(index=["playerid", "y"], columns="lg", values="ovr").dropna()
+    same = both["LCK"] - both["LCKC"]
+    cl = a[(a["lg"] == "LCKC") & (a["y"] == 2025)].set_index("playerid")["ovr"]
+    nxt = a[(a["lg"] == "LCK") & (a["y"] == 2026)].set_index("playerid")["ovr"]
+    moved = (nxt - cl).dropna()
+    return {"offset": round(float(same.mean()), 1), "same_year_players": int(len(same)), "same_year_median": round(float(same.median()), 1),
+            "promoted_next_year_players": int(len(moved)), "promoted_next_year_mean": round(float(moved.mean()), 1)}
+
+
 def main():
     df = ba.load(SEASON, usecols=ba.PLAYER_COLS + ["split", "playoffs", "gameid", "side"])
     tables, teams = overseas_players(df)
@@ -118,7 +139,7 @@ def main():
     ba.dump_csv(pairs, OUT / "calibration/international_pairs.csv")
     ba.dump_json({"leagues": MAJOR, "year_weight": INTL_YEAR_WEIGHT, "games_by_year": games["year"].value_counts()
                   .sort_index().to_dict(), "strength_logit": {k: round(v, 3) for k, v in strength.items()},
-                  "pairs": pairs.to_dict("records")}, OUT / "calibration/international_strength.json")
+                  "pairs": pairs.to_dict("records"), "academy": academy_offset()}, OUT / "calibration/international_strength.json")
     print(teams.groupby("league").size().to_dict())
     print({k: round(v, 2) for k, v in strength.items()})
     print(pairs.to_string())

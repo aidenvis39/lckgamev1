@@ -25,6 +25,7 @@ export interface Targets {
 export interface WorldTargets {
   teamWinrate: Record<string, Record<string, number>>; // 리그 → 팀 → 최근 정규 스플릿 2개 세트 승률
   teamGames: Record<string, Record<string, number>>;
+  academyOffset: number; // LCK CL 백분위 능력치 → LCK 기준 (두 리그를 같은 해 뛴 선수 비교)
   international: {
     strength: Record<string, number>; // 브래들리-테리 리그 강도 (로짓, LCK = 0)
     pairs: Array<[string, string, number, number, number | null]>; // [리그 a, 리그 b, 가중 경기 수, 모델 승률, 실제 승률]

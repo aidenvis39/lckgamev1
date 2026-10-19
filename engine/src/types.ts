@@ -20,7 +20,10 @@ export interface Player {
   name: string;
   team: string;
   position: Position;
-  age: number | null;
+  age: number | null; // 2026-10-19 기준
+  birthDate?: string | null; // Leaguepedia
+  nationality?: string | null;
+  contractEnd?: number | null; // 이 시즌이 끝나면 계약이 풀림 (Leaguepedia 만료일 기준, 없으면 null)
   games2026: number;
   starter: boolean;
   ratingLeague: string; // 능력치 백분위를 낸 리그
