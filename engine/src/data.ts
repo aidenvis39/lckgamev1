@@ -53,6 +53,7 @@ export interface Targets {
   upset_game_level: Array<[string, number, number]>;
   team_gd15_std: number;
   regular_season_team_winrate_std: number;
+  team_regular_winrate: Record<string, number>; // 팀 약칭 → 정규시즌 세트 승률
 }
 
 export function loadTargets(year: string): Targets {

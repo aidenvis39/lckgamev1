@@ -20,6 +20,7 @@ export interface Params {
 
   // --- 중후반 (15분~): 몇 분마다 교전 → 승자가 골드·오브젝트·포탑 획득 ---
   roleWeight: Record<Position, number>; // 한타 전투력에서 포지션 비중
+  teamwork: Record<string, number>; // 팀 단위 능력치 (코칭·운영·합, z 단위). 개인 스탯에 안 잡히는 팀 전력. tune이 실제 팀 승률에 맞춘다
   fightSkill: number; // 팀 전투력 차이 → 교전 승률 (로짓)
   fightGold: number; // 골드 1,000 차이 → 교전 승률 (로짓)
   sideBonus: number; // 블루 진영 보너스 (로짓)
@@ -68,6 +69,7 @@ export const DEFAULT_PARAMS: Params = {
   killsAt15: 7.6,
 
   roleWeight: { top: 1.0, jng: 1.0, mid: 1.1, bot: 1.2, sup: 0.8 },
+  teamwork: {},
   fightSkill: 0.9,
   fightGold: 0.35,
   sideBonus: 0.15,

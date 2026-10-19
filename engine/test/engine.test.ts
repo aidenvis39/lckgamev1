@@ -70,9 +70,13 @@ test("경기 결과 값이 말이 되는 범위", () => {
   }
 });
 
-test("시즌: 10팀 90시리즈, 승패 합계가 맞다", () => {
+test("시즌: 1~2라운드 90시리즈 + 그룹별 3~4라운드 40시리즈, 승패 합계가 맞다", () => {
   const s = playSeason(u, p, createRng(1));
-  assert.equal(s.series.length, 90);
-  assert.equal(s.standings.reduce((n, t) => n + t.seriesWins, 0), 90);
-  assert.equal(s.standings.reduce((n, t) => n + t.seriesLosses, 0), 90);
+  assert.equal(s.series.length, 130);
+  assert.equal(s.standings.reduce((n, t) => n + t.seriesWins, 0), 130);
+  assert.equal(s.standings.reduce((n, t) => n + t.seriesLosses, 0), 130);
+  // 3~4라운드는 같은 그룹끼리만
+  const group = new Map<string, string>([...s.groups!.legend.map((t) => [t, "L"] as const), ...s.groups!.rise.map((t) => [t, "R"] as const)]);
+  for (const x of s.series.slice(90)) assert.equal(group.get(x.teams[0]), group.get(x.teams[1]));
+  for (const t of s.standings) assert.equal(t.seriesWins + t.seriesLosses, 26);
 });

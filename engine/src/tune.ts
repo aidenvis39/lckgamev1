@@ -54,13 +54,38 @@ export interface TuneOptions {
   onProgress?: (iteration: number, bestLoss: number) => void;
 }
 
+// 팀워크(팀 단위 능력치)를 팀별 실제 정규시즌 승률에 맞춘다: 시뮬 승률이 낮은 팀은 올리고 높은 팀은 내린다.
+export function fitTeamwork(u: Universe, targets: Targets, start: Params, seasons: number, seed: number, draft: DraftProvider, rounds = 12): Params {
+  let p = start;
+  const logit = (x: number) => Math.log(Math.min(0.98, Math.max(0.02, x)) / (1 - Math.min(0.98, Math.max(0.02, x))));
+  for (let r = 0; r < rounds; r++) {
+    const sim = evaluate(u, p, targets, seasons, seed, draft).metrics.teamWinrate;
+    const tw: Record<string, number> = { ...p.teamwork };
+    for (const team of u.teams.keys()) {
+      const real = targets.team_regular_winrate[team];
+      if (real === undefined) continue;
+      tw[team] = (tw[team] ?? 0) + (0.25 * (logit(real) - logit(sim[team]))) / Math.max(0.2, p.fightSkill);
+    }
+    const avg = Object.values(tw).reduce((a, b) => a + b, 0) / Object.keys(tw).length;
+    for (const team of Object.keys(tw)) tw[team] -= avg;
+    p = { ...p, teamwork: tw };
+  }
+  return p;
+}
+
+// 팀워크 맞춤 → 조절값 탐색을 두 번 반복하고, 마지막에 팀워크를 한 번 더 맞춘다.
 export function tune(u: Universe, targets: Targets, start: Params, opts: TuneOptions): { params: Params; loss: number } {
   const draft = buildDraftPool(u, start, opts.seed);
   const rng = createRng(hashSeed(opts.seed, "tune"));
   let best = start;
-  let bestLoss = evaluate(u, best, targets, opts.seasons, opts.seed, draft).loss;
+  let bestLoss = Infinity;
+  const half = Math.ceil(opts.iterations / 2);
   for (let i = 0; i < opts.iterations; i++) {
-    const step = 0.15 * (0.3 + (1 - i / opts.iterations)); // 갈수록 작게 움직인다
+    if (i % half === 0) {
+      best = fitTeamwork(u, targets, best, opts.seasons, opts.seed, draft);
+      bestLoss = evaluate(u, best, targets, opts.seasons, opts.seed, draft).loss;
+    }
+    const step = 0.15 * (0.3 + (1 - (i % half) / half)); // 갈수록 작게 움직인다
     let cand = best;
     for (let j = 1 + rng.int(3); j > 0; j--) {
       const { key, min, max } = TUNABLE[rng.int(TUNABLE.length)];
@@ -74,5 +99,6 @@ export function tune(u: Universe, targets: Targets, start: Params, opts: TuneOpt
     }
     opts.onProgress?.(i, bestLoss);
   }
-  return { params: best, loss: bestLoss };
+  best = fitTeamwork(u, targets, best, opts.seasons, opts.seed, draft);
+  return { params: best, loss: evaluate(u, best, targets, opts.seasons, opts.seed, draft).loss };
 }

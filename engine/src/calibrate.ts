@@ -27,6 +27,7 @@ export interface Metrics {
   firstBaron: number;
   laneWeight: Record<Position, number>;
   teamWinrateStd: number;
+  teamWinrate: Record<string, number>; // 시즌 평균 세트 승률
   bo3Game1Conversion: number;
   bo3Sweep: number;
   upset: Array<[string, number, number]>; // [승률 차이 구간, 경기 수, 강팀 승률]
@@ -69,6 +70,7 @@ export function measure(seasons: SeasonResult[]): Metrics {
 
   // 시즌 승률 표준편차 + 승률 차이별 강팀 승률 (실제 데이터와 같은 구간)
   const teamStd: number[] = [];
+  const teamWins = new Map<string, number[]>();
   const buckets: Array<[string, number, number]> = [
     ["0~10%p", 0, 0.1], ["10~20%p", 0.1, 0.2], ["20~30%p", 0.2, 0.3], ["30~45%p", 0.3, 0.45], ["45%p+", 0.45, 1.01],
   ];
@@ -76,6 +78,7 @@ export function measure(seasons: SeasonResult[]): Metrics {
   for (const s of seasons) {
     const wp = new Map(s.standings.map((t) => [t.team, t.gameWins / (t.gameWins + t.gameLosses)]));
     teamStd.push(std([...wp.values()]));
+    for (const [team, v] of wp) teamWins.set(team, [...(teamWins.get(team) ?? []), v]);
     for (const x of s.series) {
       for (const g of x.games) {
         const gap = Math.abs(wp.get(g.blue)! - wp.get(g.red)!);
@@ -109,6 +112,7 @@ export function measure(seasons: SeasonResult[]): Metrics {
     firstBaron: firstRate("baron"),
     laneWeight: Object.fromEntries(POSITIONS.map((pos, j) => [pos, laneCoef[j] / coefSum])) as Record<Position, number>,
     teamWinrateStd: mean(teamStd),
+    teamWinrate: Object.fromEntries([...teamWins].map(([team, vs]) => [team, mean(vs)])),
     bo3Game1Conversion: mean(conv),
     bo3Sweep: mean(bo3.map((x) => (x.games.length === 2 ? 1 : 0))),
     upset: buckets.map(([label], i) => [label, upsetHits[i][0], upsetHits[i][0] ? upsetHits[i][1] / upsetHits[i][0] : NaN]),
@@ -136,9 +140,27 @@ export function compare(m: Metrics, t: Targets): Row[] {
     ["첫 포탑 팀 승률", m.firstTower, t.objective_winrate.firsttower, 0.025],
     ["첫 바론 팀 승률", m.firstBaron, t.objective_winrate.firstbaron, 0.025],
     ["정규시즌 팀 승률 표준편차", m.teamWinrateStd, t.regular_season_team_winrate_std, 0.02],
+    ["팀별 정규시즌 승률 오차 (RMSE)", teamRmse(m, t), 0, 0.03],
     ["BO3 1세트 승리 팀 시리즈 승률", m.bo3Game1Conversion, t.bo3?.p_series_win_if_won_game1 ?? NaN, 0.03],
     ...POSITIONS.map((pos): Row => [`라인 영향력: ${POS_KO[pos]}`, m.laneWeight[pos], t.lane_relative_weight[pos], 0.04]),
+    ...upsetRows(m, t),
   ];
+}
+
+export function teamRmse(m: Metrics, t: Targets): number {
+  const teams = Object.keys(t.team_regular_winrate).filter((k) => k in m.teamWinrate);
+  return Math.sqrt(mean(teams.map((k) => (m.teamWinrate[k] - t.team_regular_winrate[k]) ** 2)));
+}
+
+// 정규시즌 승률 차이별 강팀 승률. 실제 표본이 작으니 허용 오차 = 이항분포 표준오차 (10경기 미만 구간은 제외)
+function upsetRows(m: Metrics, t: Targets): Row[] {
+  const real = new Map(t.upset_game_level.map(([label, n, wr]) => [label, { n, wr }]));
+  return m.upset.flatMap(([label, , sim]): Row[] => {
+    const r = real.get(label);
+    if (!r || r.n < 10) return [];
+    const se = Math.max(0.03, Math.sqrt((Math.min(r.wr, 0.97) * (1 - Math.min(r.wr, 0.97))) / r.n));
+    return [[`강팀 승률: 승률차 ${label}`, sim, r.wr, se]];
+  });
 }
 
 export function loss(rows: Row[]): number {

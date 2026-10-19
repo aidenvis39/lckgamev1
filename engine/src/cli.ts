@@ -132,6 +132,10 @@ function calibrate() {
   console.log("\n라인 영향력 (15분 라인 골드차 표준화 로지스틱 가중치)");
   const real = targets.lane_relative_weight;
   for (const pos of POSITIONS) console.log(`  ${pad(POS_KO[pos], 5)} 시뮬 ${ev.metrics.laneWeight[pos].toFixed(2)}   실제 ${real[pos].toFixed(2)}`);
+  console.log("\n팀별 정규시즌 세트 승률 (팀워크: 개인 스탯 밖의 팀 전력, z 단위)");
+  const realTeam = targets.team_regular_winrate;
+  for (const team of Object.keys(realTeam).sort((a, b) => realTeam[b] - realTeam[a]))
+    console.log(`  ${pad(team, 5)} 시뮬 ${pct(ev.metrics.teamWinrate[team])}   실제 ${pct(realTeam[team])}   팀워크 ${(params.teamwork[team] ?? 0) >= 0 ? "+" : ""}${(params.teamwork[team] ?? 0).toFixed(2)}`);
   console.log("\n정규시즌 승률 차이별 강팀 승률");
   const realUpset = new Map(targets.upset_game_level.map(([k, n, wr]) => [k, [n, wr]]));
   for (const [k, n, wr] of ev.metrics.upset) {

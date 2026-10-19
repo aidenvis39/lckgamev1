@@ -29,6 +29,7 @@ RATINGS = {"rating_laning": "laning", "rating_teamfight": "teamfight", "rating_v
 TEAM_SHORT = {"Gen.G": "GEN", "Hanwha Life Esports": "HLE", "T1": "T1", "Dplus Kia": "DK", "KT Rolster": "KT",
               "HANJIN BRION": "BRO", "Nongshim RedForce": "NS", "BNK FEARX": "BFX", "Kiwoom DRX": "DRX",
               "DN SOOPers": "DNS"}
+TEAM_SHORT_ALIASES = {**TEAM_SHORT, "DRX": "DRX"}  # 2025엔 Kiwoom 없이 DRX
 
 
 def dump(obj, name):
@@ -151,6 +152,7 @@ def raw_targets(year):
         "towers_per_game": g["towers"].sum().mean(),
         "inhibitors_per_game": g["inhibitors"].sum().mean(),
         "regular_season_team_winrate_std": reg.groupby("teamname")["result"].mean().std(),
+        "team_regular_winrate": {TEAM_SHORT_ALIASES[k]: v for k, v in reg.groupby("teamname")["result"].mean().items()},
         "kill_share_by_position": (p.groupby("position")["kills"].sum() / p["kills"].sum()).to_dict(),
         "loser_kill_share": t[t["result"] == 0]["kills"].sum() / t["kills"].sum(),
     }

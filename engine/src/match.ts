@@ -141,7 +141,7 @@ export function simulateGame(
   const power = (s: Side, now: number): number => {
     let v = 0;
     for (const pos of POSITIONS) v += p.roleWeight[pos] * (fighterPower(pl(s, pos), ch(s, pos), now, p) + form[s][pos]);
-    v = v / roleSum + comp[s] + p.drakeBuff * dragons[s];
+    v = v / roleSum + comp[s] + (p.teamwork[lineups[s].team.id] ?? 0) + p.drakeBuff * dragons[s];
     if (soul === s) v += p.soulBuff;
     if (baronUntil[s] > now) v += p.baronBuff;
     if (elderUntil[s] > now) v += p.elderBuff;

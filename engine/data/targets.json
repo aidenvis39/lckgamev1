@@ -203,6 +203,18 @@
   "towers_per_game": 11.4324,
   "inhibitors_per_game": 1.5712,
   "regular_season_team_winrate_std": 0.176,
+  "team_regular_winrate": {
+   "BFX": 0.4667,
+   "DNS": 0.2329,
+   "DK": 0.5714,
+   "GEN": 0.8429,
+   "BRO": 0.4103,
+   "HLE": 0.6571,
+   "KT": 0.4658,
+   "DRX": 0.3816,
+   "NS": 0.3662,
+   "T1": 0.6338
+  },
   "kill_share_by_position": {
    "bot": 0.3163,
    "jng": 0.211,
@@ -416,6 +428,18 @@
   "towers_per_game": 11.2869,
   "inhibitors_per_game": 1.5777,
   "regular_season_team_winrate_std": 0.1522,
+  "team_regular_winrate": {
+   "BFX": 0.4068,
+   "DNS": 0.2364,
+   "DK": 0.5738,
+   "GEN": 0.6949,
+   "BRO": 0.4426,
+   "HLE": 0.6719,
+   "KT": 0.5484,
+   "DRX": 0.3492,
+   "NS": 0.4098,
+   "T1": 0.6441
+  },
   "kill_share_by_position": {
    "bot": 0.3069,
    "jng": 0.2189,
