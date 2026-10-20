@@ -64,15 +64,15 @@
    "LCP": 46,
    "CBLOL": 47
   },
-  "meanShift": -3.464,
+  "meanShift": -3.627,
   "sd": 5,
   "replacementSd": 4,
   "cap": 62,
   "extra": 1
  },
  "replacement": {
-  "gap": 7.642,
-  "gain": 5.192,
+  "gap": 6.868,
+  "gain": 5.118,
   "lo": -4,
   "hi": 6
  },
@@ -95,7 +95,7 @@
  },
  "macro": {
   "newMean": {
-   "LCK": 0.059,
+   "LCK": 0.12,
    "LPL": -0.05,
    "LEC": -0.05,
    "LCS": -0.05,
@@ -106,7 +106,7 @@
   "maxAbs": 0.35,
   "obsSd": 1.5,
   "knownSe": 0.1,
-  "learn": 0.05,
+  "learn": 0.071,
   "learnGames": 400,
   "price": 0.6,
   "priceCap": 10

@@ -4750,10 +4750,10 @@
    "name": "113",
    "team": "SHFT",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 22,
+   "birthDate": "2004-08-12",
+   "ageEstimated": false,
+   "nationality": "Turkey",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -4811,10 +4811,10 @@
    "name": "369",
    "team": "TES",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-07-12",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -4910,10 +4910,10 @@
    "name": "Abbedagge",
    "team": "SK",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 27,
+   "birthDate": "1999-09-10",
+   "ageEstimated": false,
+   "nationality": "Germany",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -4965,10 +4965,10 @@
    "name": "Adam",
    "team": "NAVI",
    "position": "top",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 24,
+   "birthDate": "2001-12-30",
+   "ageEstimated": false,
+   "nationality": "France",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -5024,10 +5024,10 @@
    "name": "Aegis",
    "team": "RED",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 27,
+   "birthDate": "1999-09-09",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5076,10 +5076,10 @@
    "name": "Aki",
    "team": "TT",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-04-09",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -5131,10 +5131,10 @@
    "name": "Ale",
    "team": "JDG",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-07-23",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5189,7 +5189,7 @@
    "age": 28,
    "birthDate": "1998-02-27",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5230,10 +5230,10 @@
    "name": "Angel",
    "team": "EDG",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-09-16",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -5289,9 +5289,9 @@
    "team": "TL",
    "position": "mid",
    "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2002-03-05",
+   "ageEstimated": false,
+   "nationality": "United States",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -5345,10 +5345,10 @@
    "name": "Aress",
    "team": "GAM",
    "position": "mid",
-   "age": 21,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 22,
+   "birthDate": "2004-09-24",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5403,10 +5403,10 @@
    "name": "Beichuan",
    "team": "BLG",
    "position": "jng",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-07-21",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5457,10 +5457,10 @@
    "name": "Bejjaniii",
    "team": "LYON",
    "position": "top",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-03-06",
+   "ageEstimated": false,
+   "nationality": "Venezuela",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5497,7 +5497,7 @@
    "age": 21,
    "birthDate": "2005-06-01",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5553,7 +5553,7 @@
    "age": 29,
    "birthDate": "1997-04-01",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -5620,7 +5620,7 @@
    "age": 26,
    "birthDate": "1999-11-24",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5660,7 +5660,7 @@
    "age": 25,
    "birthDate": "2001-03-14",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5709,10 +5709,10 @@
    "name": "Boukada",
    "team": "SHFT",
    "position": "jng",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 24,
+   "birthDate": "2002-10-01",
+   "ageEstimated": false,
+   "nationality": "France",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -5764,10 +5764,10 @@
    "name": "Brance",
    "team": "RED",
    "position": "bot",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 22,
+   "birthDate": "2004-02-25",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5818,7 +5818,7 @@
    "age": 23,
    "birthDate": "2003-05-16",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -5870,10 +5870,10 @@
    "name": "Bwipo",
    "team": "FLY",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 27,
+   "birthDate": "1998-12-24",
+   "ageEstimated": false,
+   "nationality": "Belgium",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -5947,7 +5947,7 @@
    "age": 19,
    "birthDate": "2007-03-22",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -5995,10 +5995,10 @@
    "name": "Carlsen",
    "team": "TH",
    "position": "top",
-   "age": 22,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 20,
+   "birthDate": "2005-12-15",
+   "ageEstimated": false,
+   "nationality": "Denmark",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6058,9 +6058,9 @@
    "team": "DSG",
    "position": "top",
    "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2002-10-08",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6114,10 +6114,10 @@
    "name": "ceo",
    "team": "LEV",
    "position": "bot",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 22,
+   "birthDate": "2004-01-13",
+   "ageEstimated": false,
+   "nationality": "Argentina",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6165,10 +6165,10 @@
    "name": "climber",
    "team": "LGD",
    "position": "jng",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 22,
+   "birthDate": "2004-03-25",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6213,10 +6213,10 @@
    "name": "Closer",
    "team": "GX",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 28,
+   "birthDate": "1998-09-29",
+   "ageEstimated": false,
+   "nationality": "Turkey",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -6266,7 +6266,7 @@
    "age": 23,
    "birthDate": "2003-02-21",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -6312,7 +6312,7 @@
    "age": 26,
    "birthDate": "2000-02-23",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6369,10 +6369,10 @@
    "name": "curty",
    "team": "FXW7",
    "position": "top",
-   "age": 20,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 19,
+   "birthDate": "2006-12-19",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6421,10 +6421,10 @@
    "name": "Czajek",
    "team": "VIT",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 23,
+   "birthDate": "2003-09-24",
+   "ageEstimated": false,
+   "nationality": "Poland",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6480,10 +6480,10 @@
    "name": "DnDn",
    "team": "SK",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 23,
+   "birthDate": "2003-05-18",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6534,10 +6534,10 @@
    "name": "Doinb",
    "team": "NIP",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 29,
+   "birthDate": "1996-12-30",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6593,9 +6593,9 @@
    "team": "CFO",
    "position": "top",
    "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2002-04-04",
+   "ageEstimated": false,
+   "nationality": "Taiwan",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6644,10 +6644,10 @@
    "name": "dyNquedo",
    "team": "PNG",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 29,
+   "birthDate": "1997-10-14",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -6687,10 +6687,10 @@
    "name": "Easylove",
    "team": "GAM",
    "position": "bot",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "1999-11-26",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -6738,10 +6738,10 @@
    "name": "Elio",
    "team": "GAM",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2000-11-07",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6805,7 +6805,7 @@
    "age": 26,
    "birthDate": "2000-05-25",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6864,10 +6864,10 @@
    "name": "Emo",
    "team": "GAM",
    "position": "mid",
-   "age": 22,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 21,
+   "birthDate": "2005-07-15",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -6921,7 +6921,7 @@
    "age": 26,
    "birthDate": "2000-04-07",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -6969,10 +6969,10 @@
    "name": "FATE",
    "team": "SHG",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-08-22",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -7065,10 +7065,10 @@
    "name": "fNb",
    "team": "RED",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-02-03",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -7122,10 +7122,10 @@
    "name": "Gaeng",
    "team": "SHG",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 30,
+   "birthDate": "1996-08-10",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -7172,10 +7172,10 @@
    "name": "Ganks",
    "team": "FXW7",
    "position": "jng",
-   "age": 22,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-03-17",
+   "ageEstimated": false,
+   "nationality": "Peru",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -7234,10 +7234,10 @@
    "name": "Grevthar",
    "team": "RED",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 27,
+   "birthDate": "1999-08-24",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -7292,10 +7292,10 @@
    "name": "Guigs",
    "team": "FXW7",
    "position": "sup",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 27,
+   "birthDate": "1999-07-05",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -7349,10 +7349,10 @@
    "name": "haichao",
    "team": "LNG",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 23,
+   "birthDate": "2003-04-17",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -7407,7 +7407,7 @@
    "age": 23,
    "birthDate": "2003-04-08",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -7454,10 +7454,10 @@
    "name": "Hang",
    "team": "TES",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 23,
+   "birthDate": "2003-02-05",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -7507,10 +7507,10 @@
    "name": "Harp",
    "team": "DFM",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-06-03",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -7561,10 +7561,10 @@
    "name": "Hauz",
    "team": "LEV",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-04-29",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -7614,9 +7614,9 @@
    "team": "FXW7",
    "position": "top",
    "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2002-03-28",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -7666,9 +7666,9 @@
    "team": "TSW",
    "position": "top",
    "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2002-05-18",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -7714,10 +7714,10 @@
    "name": "Humanoid",
    "team": "FNC",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-03-14",
+   "ageEstimated": false,
+   "nationality": "Czech Republic",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -7773,10 +7773,10 @@
    "name": "Hylissang",
    "team": "VIT",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 31,
+   "birthDate": "1995-04-30",
+   "ageEstimated": false,
+   "nationality": "Bulgaria",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -7815,10 +7815,10 @@
    "name": "Ice",
    "team": "SHFT",
    "position": "bot",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-04-09",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -7868,9 +7868,9 @@
    "team": "SHFT",
    "position": "top",
    "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2001-10-22",
+   "ageEstimated": false,
+   "nationality": "Germany",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -7926,10 +7926,10 @@
    "name": "JNX",
    "team": "SK",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 27,
+   "birthDate": "1998-12-10",
+   "ageEstimated": false,
+   "nationality": "Germany",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -7998,9 +7998,9 @@
    "team": "LOUD",
    "position": "mid",
    "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2001-12-30",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -8061,7 +8061,7 @@
    "age": 25,
    "birthDate": "2001-08-31",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -8117,10 +8117,10 @@
    "name": "Kamiloo",
    "team": "TH",
    "position": "mid",
-   "age": 22,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 21,
+   "birthDate": "2005-07-20",
+   "ageEstimated": false,
+   "nationality": "France",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -8176,10 +8176,10 @@
    "name": "Kati",
    "team": "MVK",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "1999-11-05",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -8235,10 +8235,10 @@
    "name": "Keduii",
    "team": "SK",
    "position": "bot",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-10-13",
+   "ageEstimated": false,
+   "nationality": "Germany",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -8290,7 +8290,7 @@
    "age": 24,
    "birthDate": "2002-01-05",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -8339,9 +8339,9 @@
    "team": "VKS",
    "position": "mid",
    "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2003-03-07",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -8406,9 +8406,9 @@
    "team": "MVK",
    "position": "top",
    "age": 21,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2005-04-22",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -8455,10 +8455,10 @@
    "name": "Kuri",
    "team": "PNG",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-08-08",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -8509,10 +8509,10 @@
    "name": "Larssen",
    "team": "NAVI",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-03-30",
+   "ageEstimated": false,
+   "nationality": "Sweden",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -8560,7 +8560,7 @@
    "age": 26,
    "birthDate": "2000-01-12",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -8605,10 +8605,10 @@
    "name": "Levi",
    "team": "GAM",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 28,
+   "birthDate": "1997-11-18",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -8665,7 +8665,7 @@
    "age": 19,
    "birthDate": "2007-01-30",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -8719,10 +8719,10 @@
    "name": "Licorice",
    "team": "LYON",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 29,
+   "birthDate": "1997-09-30",
+   "ageEstimated": false,
+   "nationality": "Canada",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -8768,10 +8768,10 @@
    "name": "Light",
    "team": "WBG",
    "position": "bot",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-02-21",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -8823,10 +8823,10 @@
    "name": "Lira",
    "team": "DIG",
    "position": "jng",
-   "age": 19,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 31,
+   "birthDate": "1995-01-15",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -8863,7 +8863,7 @@
    "age": 26,
    "birthDate": "2000-08-29",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -8907,10 +8907,10 @@
    "name": "Lot",
    "team": "GX",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 22,
+   "birthDate": "2004-01-02",
+   "ageEstimated": false,
+   "nationality": "Turkey",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -8961,10 +8961,10 @@
    "name": "LP",
    "team": "LNG",
    "position": "bot",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 24,
+   "birthDate": "2002-08-04",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -9005,10 +9005,10 @@
    "name": "Mago",
    "team": "RED",
    "position": "mid",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 22,
+   "birthDate": "2004-01-12",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -9053,10 +9053,10 @@
    "name": "Malrang",
    "team": "NAVI",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-02-09",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9104,10 +9104,10 @@
    "name": "Marvin",
    "team": "FXW7",
    "position": "bot",
-   "age": 20,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 21,
+   "birthDate": "2005-07-16",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9159,10 +9159,10 @@
    "name": "Milan",
    "team": "DFM",
    "position": "bot",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-06-26",
+   "ageEstimated": false,
+   "nationality": "Japan",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -9196,10 +9196,10 @@
    "name": "naiyou",
    "team": "NIP",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 21,
+   "birthDate": "2004-10-19",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9256,7 +9256,7 @@
    "age": 17,
    "birthDate": "2008-12-12",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -9314,10 +9314,10 @@
    "name": "Niket",
    "team": "NIP",
    "position": "sup",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 22,
+   "birthDate": "2003-11-26",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9364,10 +9364,10 @@
    "name": "Nisqy",
    "team": "VIT",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 28,
+   "birthDate": "1998-07-28",
+   "ageEstimated": false,
+   "nationality": "Belgium",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -9427,10 +9427,10 @@
    "name": "Noah",
    "team": "GX",
    "position": "bot",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-10-04",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9481,10 +9481,10 @@
    "name": "Oddie",
    "team": "LYON",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 29,
+   "birthDate": "1997-08-28",
+   "ageEstimated": false,
+   "nationality": "Peru",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9532,10 +9532,10 @@
    "name": "OvO",
    "team": "LNG",
    "position": "sup",
-   "age": 20,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 21,
+   "birthDate": "2005-07-17",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -9579,7 +9579,7 @@
    "age": 28,
    "birthDate": "1998-02-03",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9638,10 +9638,10 @@
    "name": "Photon",
    "team": "DIG",
    "position": "top",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 24,
+   "birthDate": "2001-11-30",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9697,10 +9697,10 @@
    "name": "ppgod",
    "team": "NIP",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-03-31",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -9747,10 +9747,10 @@
    "name": "ProDelta",
    "team": "FXW7",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-05-08",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9798,7 +9798,7 @@
    "age": 22,
    "birthDate": "2004-06-22",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9854,10 +9854,10 @@
    "name": "RayFarky",
    "team": "DFM",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 27,
+   "birthDate": "1999-05-28",
+   "ageEstimated": false,
+   "nationality": "Japan",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9900,10 +9900,10 @@
    "name": "RedBert",
    "team": "LOUD",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 28,
+   "birthDate": "1998-08-26",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -9951,10 +9951,10 @@
    "name": "Reeker",
    "team": "SK",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-05-15",
+   "ageEstimated": false,
+   "nationality": "Germany",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -10018,10 +10018,10 @@
    "name": "Robo",
    "team": "LOUD",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 28,
+   "birthDate": "1998-04-22",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -10075,10 +10075,10 @@
    "name": "Route",
    "team": "LOUD",
    "position": "bot",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 27,
+   "birthDate": "1999-01-05",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -10126,10 +10126,10 @@
    "name": "sasi",
    "team": "LGD",
    "position": "top",
-   "age": 22,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 23,
+   "birthDate": "2003-06-09",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -10229,10 +10229,10 @@
    "name": "ScaryJerry",
    "team": "DSG",
    "position": "bot",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 24,
+   "birthDate": "2002-03-16",
+   "ageEstimated": false,
+   "nationality": "Argentina",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -10280,10 +10280,10 @@
    "name": "shanji",
    "team": "NIP",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-09-14",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -10332,9 +10332,9 @@
    "team": "DIG",
    "position": "jng",
    "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2001-11-22",
+   "ageEstimated": false,
+   "nationality": "Philippines",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -10379,10 +10379,10 @@
    "name": "Shini",
    "team": "LOUD",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 29,
+   "birthDate": "1997-07-14",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -10426,10 +10426,10 @@
    "name": "Shogun",
    "team": "MVK",
    "position": "bot",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 22,
+   "birthDate": "2004-03-31",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -10495,10 +10495,10 @@
    "name": "Solokill",
    "team": "NIP",
    "position": "top",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-10-13",
+   "ageEstimated": false,
+   "nationality": "Hong Kong",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -10549,7 +10549,7 @@
    "age": 22,
    "birthDate": "2004-10-14",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -10597,10 +10597,10 @@
    "name": "Steller",
    "team": "TSW",
    "position": "top",
-   "age": 19,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 20,
+   "birthDate": "2006-10-17",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -10649,9 +10649,9 @@
    "team": "MVK",
    "position": "bot",
    "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2002-01-11",
+   "ageEstimated": false,
+   "nationality": "Vietnam",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -10695,9 +10695,9 @@
    "team": "WE",
    "position": "bot",
    "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "birthDate": "2002-06-02",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -10746,10 +10746,10 @@
    "name": "Targamas",
    "team": "KC",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-06-30",
+   "ageEstimated": false,
+   "nationality": "Belgium",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -10806,10 +10806,10 @@
    "name": "Thayger",
    "team": "NAVI",
    "position": "jng",
-   "age": 22,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 24,
+   "birthDate": "2002-01-27",
+   "ageEstimated": false,
+   "nationality": "Spain",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -10869,7 +10869,7 @@
    "age": 19,
    "birthDate": "2007-08-19",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -10910,10 +10910,10 @@
    "name": "Tianzhen",
    "team": "WE",
    "position": "jng",
-   "age": 23,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 22,
+   "birthDate": "2004-09-13",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -10959,10 +10959,10 @@
    "name": "tinowns",
    "team": "LOUD",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 29,
+   "birthDate": "1997-05-06",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -11009,10 +11009,10 @@
    "name": "TitaN",
    "team": "PNG",
    "position": "bot",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "2000-07-09",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11060,10 +11060,10 @@
    "name": "Tomo",
    "team": "DIG",
    "position": "bot",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2001-01-19",
+   "ageEstimated": false,
+   "nationality": "United States",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11120,10 +11120,10 @@
    "name": "TopLop",
    "team": "LEV",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "1999-12-18",
+   "ageEstimated": false,
+   "nationality": "Argentina",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11174,7 +11174,7 @@
    "age": 26,
    "birthDate": "2000-10-10",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11222,10 +11222,10 @@
    "name": "Trymbi",
    "team": "VKS",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 25,
+   "birthDate": "2000-10-20",
+   "ageEstimated": false,
+   "nationality": "Spain",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11275,10 +11275,10 @@
    "name": "UmTi",
    "team": "TL",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 27,
+   "birthDate": "1999-06-02",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -11328,7 +11328,7 @@
    "age": 24,
    "birthDate": "2002-09-16",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -11382,10 +11382,10 @@
    "name": "Wink",
    "team": "JDG",
    "position": "sup",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "1999-11-02",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -11429,10 +11429,10 @@
    "name": "Wiz",
    "team": "LOUD",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 28,
+   "birthDate": "1998-04-23",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -11480,10 +11480,10 @@
    "name": "Wizer",
    "team": "PNG",
    "position": "top",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 27,
+   "birthDate": "1998-11-29",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11531,10 +11531,10 @@
    "name": "xiaohuangren",
    "team": "TT",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 21,
+   "birthDate": "2005-01-26",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -11579,10 +11579,10 @@
    "name": "XiaoXiang",
    "team": "DCG",
    "position": "mid",
-   "age": 20,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 18,
+   "birthDate": "2008-04-09",
+   "ageEstimated": false,
+   "nationality": "Taiwan",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -11624,10 +11624,10 @@
    "name": "xqw",
    "team": "LGD",
    "position": "mid",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 23,
+   "birthDate": "2003-04-02",
+   "ageEstimated": false,
+   "nationality": "China",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11673,10 +11673,10 @@
    "name": "Yampi",
    "team": "FXW7",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 28,
+   "birthDate": "1998-01-07",
+   "ageEstimated": false,
+   "nationality": "Brazil",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11721,10 +11721,10 @@
    "name": "Yohan",
    "team": "SHG",
    "position": "jng",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 26,
+   "birthDate": "1999-12-17",
+   "ageEstimated": false,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11769,7 +11769,7 @@
    "age": 23,
    "birthDate": "2002-11-16",
    "ageEstimated": false,
-   "nationality": null,
+   "nationality": "South Korea",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": false,
@@ -11831,10 +11831,10 @@
    "name": "Yuuji",
    "team": "TL",
    "position": "jng",
-   "age": 22,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 23,
+   "birthDate": "2002-11-13",
+   "ageEstimated": false,
+   "nationality": "Mongolia",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11887,10 +11887,10 @@
    "name": "Zven",
    "team": "C9",
    "position": "bot",
-   "age": 24,
-   "birthDate": null,
-   "ageEstimated": true,
-   "nationality": null,
+   "age": 29,
+   "birthDate": "1997-06-24",
+   "ageEstimated": false,
+   "nationality": "Denmark",
    "contractEnd": 2025,
    "games2026": 0,
    "starter": true,
@@ -11939,6 +11939,139 @@
   }
  ],
  "teams": {
+  "CFO": {
+   "starters": {
+    "top": "driver",
+    "jng": "junjia",
+    "mid": "hongq",
+    "bot": "doggo",
+    "sup": "kino"
+   },
+   "bench": [
+    "rest",
+    "kaiwing"
+   ],
+   "academy": [],
+   "winrate2025": 0.8571
+  },
+  "KT": {
+   "starters": {
+    "top": "casting",
+    "jng": "cuzz",
+    "mid": "bdd",
+    "bot": "deokdam",
+    "sup": "peter"
+   },
+   "bench": [
+    "perfect",
+    "fenrir",
+    "effort",
+    "paduck",
+    "way"
+   ],
+   "academy": [
+    "zinie",
+    "sero",
+    "hwichan",
+    "fenrir-kt",
+    "youngjae"
+   ],
+   "winrate2025": 0.4658
+  },
+  "DNS": {
+   "starters": {
+    "top": "dudu",
+    "jng": "ddoiv",
+    "mid": "bulldog",
+    "bot": "berserker",
+    "sup": "quantum"
+   },
+   "bench": [
+    "pyosik",
+    "life",
+    "pungyeon"
+   ],
+   "academy": [
+    "slayer",
+    "minous",
+    "lancer",
+    "flip"
+   ],
+   "winrate2025": 0.2329
+  },
+  "DK": {
+   "starters": {
+    "top": "siwoo",
+    "jng": "lucid",
+    "mid": "showmaker",
+    "bot": "aiming",
+    "sup": "beryl"
+   },
+   "bench": [],
+   "academy": [
+    "sharvel",
+    "jaehyuk",
+    "garden",
+    "wayne",
+    "solid",
+    "berr",
+    "bible",
+    "nevid",
+    "thumb"
+   ],
+   "winrate2025": 0.5714
+  },
+  "JDG": {
+   "starters": {
+    "top": "xiaoxu",
+    "jng": "xun",
+    "mid": "scout",
+    "bot": "peyz",
+    "sup": "zhuo"
+   },
+   "bench": [
+    "missing",
+    "ale",
+    "wink"
+   ],
+   "academy": [],
+   "winrate2025": 0.5395
+  },
+  "BLG": {
+   "starters": {
+    "top": "wenbo",
+    "jng": "shad0w",
+    "mid": "knight",
+    "bot": "elk",
+    "sup": "on"
+   },
+   "bench": [
+    "bin",
+    "beichuan"
+   ],
+   "academy": [],
+   "winrate2025": 0.6173
+  },
+  "RED": {
+   "starters": {
+    "top": "zynts",
+    "jng": "curse",
+    "mid": "kaze",
+    "bot": "rabelo",
+    "sup": "manel"
+   },
+   "bench": [
+    "stepz",
+    "frosty",
+    "aegis",
+    "brance",
+    "fnb",
+    "grevthar",
+    "mago"
+   ],
+   "academy": [],
+   "winrate2025": 0.5581
+  },
   "BFX": {
    "starters": {
     "top": "clear",
@@ -11963,6 +12096,403 @@
    ],
    "winrate2025": 0.4667
   },
+  "MKOI": {
+   "starters": {
+    "top": "myrwn",
+    "jng": "elyoya",
+    "mid": "jojopyun",
+    "bot": "supa",
+    "sup": "alvaro"
+   },
+   "bench": [],
+   "academy": [],
+   "winrate2025": 0.6562
+  },
+  "NS": {
+   "starters": {
+    "top": "kingen",
+    "jng": "gideon",
+    "mid": "fisher",
+    "bot": "jiwoo",
+    "sup": "lehends"
+   },
+   "bench": [
+    "calix",
+    "trigger",
+    "vital"
+   ],
+   "academy": [
+    "burdol",
+    "sylvie",
+    "janus",
+    "mihawk",
+    "lucy",
+    "carim",
+    "crack"
+   ],
+   "winrate2025": 0.3662
+  },
+  "VIT": {
+   "starters": {
+    "top": "naak nako",
+    "jng": "lyncas",
+    "mid": "fiesta",
+    "bot": "carzzy",
+    "sup": "fleshy"
+   },
+   "bench": [
+    "czajek",
+    "hylissang",
+    "nisqy"
+   ],
+   "academy": [],
+   "winrate2025": 0.4333
+  },
+  "SEN": {
+   "starters": {
+    "top": "",
+    "jng": "",
+    "mid": "",
+    "bot": "",
+    "sup": ""
+   },
+   "bench": [],
+   "academy": [],
+   "winrate2025": null
+  },
+  "SHG": {
+   "starters": {
+    "top": "evi",
+    "jng": "yohan",
+    "mid": "fate",
+    "bot": "marble",
+    "sup": "vsta"
+   },
+   "bench": [
+    "courage",
+    "gaeng"
+   ],
+   "academy": [],
+   "winrate2025": 0.3429
+  },
+  "DCG": {
+   "starters": {
+    "top": "flauren",
+    "jng": "pop9",
+    "mid": "hongsuo",
+    "bot": "feng",
+    "sup": "shiauc"
+   },
+   "bench": [
+    "xiaoxiang"
+   ],
+   "academy": [],
+   "winrate2025": null
+  },
+  "TT": {
+   "starters": {
+    "top": "hoya",
+    "jng": "aki",
+    "mid": "heru",
+    "bot": "1xn",
+    "sup": "feather"
+   },
+   "bench": [
+    "keshi",
+    "setab",
+    "xiaohuangren"
+   ],
+   "academy": [],
+   "winrate2025": 0.2941
+  },
+  "GZ": {
+   "starters": {
+    "top": "",
+    "jng": "",
+    "mid": "uniboy",
+    "bot": "",
+    "sup": ""
+   },
+   "bench": [],
+   "academy": [],
+   "winrate2025": null
+  },
+  "LEV": {
+   "starters": {
+    "top": "zothve",
+    "jng": "booki",
+    "mid": "hauz",
+    "bot": "strensh",
+    "sup": "shiku"
+   },
+   "bench": [
+    "devost",
+    "ceo",
+    "scary",
+    "toplop"
+   ],
+   "academy": [],
+   "winrate2025": 0.3548
+  },
+  "HLE": {
+   "starters": {
+    "top": "zeus",
+    "jng": "peanut",
+    "mid": "zeka",
+    "bot": "viper",
+    "sup": "delight"
+   },
+   "bench": [
+    "bluffing"
+   ],
+   "academy": [
+    "kangin",
+    "grizzly",
+    "tempester",
+    "panther",
+    "jackal",
+    "cracker",
+    "pyeonsik",
+    "valiant"
+   ],
+   "winrate2025": 0.6571
+  },
+  "GX": {
+   "starters": {
+    "top": "lot",
+    "jng": "isma",
+    "mid": "jackies",
+    "bot": "noah",
+    "sup": "jun"
+   },
+   "bench": [
+    "closer"
+   ],
+   "academy": [],
+   "winrate2025": 0.5161
+  },
+  "SR": {
+   "starters": {
+    "top": "fudge",
+    "jng": "contractz",
+    "mid": "palafox",
+    "bot": "bvoy",
+    "sup": "ceos"
+   },
+   "bench": [],
+   "academy": [],
+   "winrate2025": 0.4211
+  },
+  "WBG": {
+   "starters": {
+    "top": "breathe",
+    "jng": "tian",
+    "mid": "xiaohu",
+    "bot": "light",
+    "sup": "crisp"
+   },
+   "bench": [
+    "erha"
+   ],
+   "academy": [],
+   "winrate2025": 0.4198
+  },
+  "GAM": {
+   "starters": {
+    "top": "kiaya",
+    "jng": "draktharr",
+    "mid": "gloryy",
+    "bot": "artemis",
+    "sup": "elio"
+   },
+   "bench": [
+    "aress",
+    "easylove",
+    "emo",
+    "levi"
+   ],
+   "academy": [],
+   "winrate2025": 0.5938
+  },
+  "DRX": {
+   "starters": {
+    "top": "rich",
+    "jng": "sponge",
+    "mid": "ucal",
+    "bot": "teddy",
+    "sup": "andil"
+   },
+   "bench": [
+    "frog",
+    "lazyfeel",
+    "pleata",
+    "kyeahoo"
+   ],
+   "academy": [
+    "akaje",
+    "alive",
+    "juhan"
+   ],
+   "winrate2025": 0.3816
+  },
+  "FUR": {
+   "starters": {
+    "top": "guigo",
+    "jng": "tatu",
+    "mid": "tutsz",
+    "bot": "ayu",
+    "sup": "jojo"
+   },
+   "bench": [
+    "luuukz"
+   ],
+   "academy": [],
+   "winrate2025": 0.5
+  },
+  "TES": {
+   "starters": {
+    "top": "zuian",
+    "jng": "kanavi",
+    "mid": "creme",
+    "bot": "jackeylove",
+    "sup": "hang"
+   },
+   "bench": [
+    "369"
+   ],
+   "academy": [],
+   "winrate2025": 0.6829
+  },
+  "AL": {
+   "starters": {
+    "top": "flandre",
+    "jng": "tarzan",
+    "mid": "shanks",
+    "bot": "hope",
+    "sup": "kael"
+   },
+   "bench": [],
+   "academy": [],
+   "winrate2025": 0.6184
+  },
+  "LOUD": {
+   "starters": {
+    "top": "xyno",
+    "jng": "gryffinn",
+    "mid": "jool",
+    "bot": "route",
+    "sup": "uzent"
+   },
+   "bench": [
+    "sinatra",
+    "redbert",
+    "robo",
+    "shini",
+    "tinowns",
+    "wiz"
+   ],
+   "academy": [],
+   "winrate2025": 0.5946
+  },
+  "T1": {
+   "starters": {
+    "top": "doran",
+    "jng": "oner",
+    "mid": "faker",
+    "bot": "smash",
+    "sup": "keria"
+   },
+   "bench": [
+    "gumayusi",
+    "painter"
+   ],
+   "academy": [
+    "vincenzo",
+    "guti",
+    "cloud",
+    "haetae",
+    "cypher",
+    "eclipse",
+    "jinbeom",
+    "guardian"
+   ],
+   "winrate2025": 0.6338
+  },
+  "FLY": {
+   "starters": {
+    "top": "bwipo",
+    "jng": "inspired",
+    "mid": "quad",
+    "bot": "massu",
+    "sup": "busio"
+   },
+   "bench": [
+    "gakgos",
+    "cryogen"
+   ],
+   "academy": [],
+   "winrate2025": 0.8788
+  },
+  "EDG": {
+   "starters": {
+    "top": "zdz",
+    "jng": "xiaohao",
+    "mid": "angel",
+    "bot": "ahn",
+    "sup": "parukia"
+   },
+   "bench": [
+    "sinian"
+   ],
+   "academy": [],
+   "winrate2025": 0.7222
+  },
+  "VKS": {
+   "starters": {
+    "top": "zekas",
+    "jng": "disamis",
+    "mid": "mireu",
+    "bot": "morttheus",
+    "sup": "trymbi"
+   },
+   "bench": [
+    "jeskla",
+    "scamber",
+    "boal",
+    "kisee"
+   ],
+   "academy": [],
+   "winrate2025": 0.7143
+  },
+  "TSW": {
+   "starters": {
+    "top": "hiro02",
+    "jng": "hizto",
+    "mid": "dire",
+    "bot": "eddie",
+    "sup": "taki"
+   },
+   "bench": [
+    "pun",
+    "steller"
+   ],
+   "academy": [],
+   "winrate2025": 0.6
+  },
+  "TL": {
+   "starters": {
+    "top": "impact",
+    "jng": "yuuji",
+    "mid": "apa",
+    "bot": "yeon",
+    "sup": "corejj"
+   },
+   "bench": [
+    "umti"
+   ],
+   "academy": [],
+   "winrate2025": 0.4643
+  },
   "C9": {
    "starters": {
     "top": "thanatos",
@@ -11975,35 +12505,52 @@
    "academy": [],
    "winrate2025": 0.6757
   },
-  "KC": {
+  "LYON": {
    "starters": {
-    "top": "canna",
-    "jng": "yike",
-    "mid": "vladi",
-    "bot": "caliste",
-    "sup": "targamas"
-   },
-   "bench": [],
-   "academy": [],
-   "winrate2025": 0.6857
-  },
-  "SK": {
-   "starters": {
-    "top": "wunder",
-    "jng": "skeanz",
-    "mid": "slowq",
-    "bot": "jopa",
-    "sup": "loopy"
+    "top": "srtty",
+    "jng": "armao",
+    "mid": "saint",
+    "bot": "hena",
+    "sup": "lyonz"
    },
    "bench": [
-    "abbedagge",
-    "dndn",
-    "jnx",
-    "keduii",
-    "reeker"
+    "bejjaniii",
+    "licorice",
+    "oddie"
    ],
    "academy": [],
-   "winrate2025": 0.25
+   "winrate2025": 0.3571
+  },
+  "DFM": {
+   "starters": {
+    "top": "momo",
+    "jng": "citrus",
+    "mid": "aria",
+    "bot": "kakkun",
+    "sup": "harp"
+   },
+   "bench": [
+    "guwon",
+    "milan",
+    "rayfarky"
+   ],
+   "academy": [],
+   "winrate2025": 0.3226
+  },
+  "PNG": {
+   "starters": {
+    "top": "wizer",
+    "jng": "cariok",
+    "mid": "roamer",
+    "bot": "titan",
+    "sup": "kuri"
+   },
+   "bench": [
+    "namiru",
+    "dynquedo"
+   ],
+   "academy": [],
+   "winrate2025": 0.6111
   },
   "GEN": {
    "starters": {
@@ -12044,18 +12591,6 @@
    "academy": [],
    "winrate2025": 0.5938
   },
-  "IG": {
-   "starters": {
-    "top": "theshy",
-    "jng": "wei",
-    "mid": "rookie",
-    "bot": "gala",
-    "sup": "meiko"
-   },
-   "bench": [],
-   "academy": [],
-   "winrate2025": 0.6076
-  },
   "LOS": {
    "starters": {
     "top": "zest",
@@ -12068,54 +12603,204 @@
    "academy": [],
    "winrate2025": null
   },
-  "DRX": {
+  "NIP": {
    "starters": {
-    "top": "rich",
-    "jng": "sponge",
-    "mid": "ucal",
-    "bot": "teddy",
-    "sup": "andil"
+    "top": "solokill",
+    "jng": "naiyou",
+    "mid": "doinb",
+    "bot": "leave",
+    "sup": "fengyue"
    },
    "bench": [
-    "frog",
-    "lazyfeel",
-    "pleata",
-    "kyeahoo"
-   ],
-   "academy": [
-    "akaje",
-    "alive",
-    "juhan"
-   ],
-   "winrate2025": 0.3816
-  },
-  "GX": {
-   "starters": {
-    "top": "lot",
-    "jng": "isma",
-    "mid": "jackies",
-    "bot": "noah",
-    "sup": "jun"
-   },
-   "bench": [
-    "closer"
+    "niket",
+    "ppgod",
+    "shanji"
    ],
    "academy": [],
-   "winrate2025": 0.5161
+   "winrate2025": 0.4706
   },
-  "DCG": {
+  "DIG": {
    "starters": {
-    "top": "flauren",
-    "jng": "pop9",
-    "mid": "hongsuo",
-    "bot": "feng",
-    "sup": "shiauc"
+    "top": "denathor",
+    "jng": "dardoch",
+    "mid": "",
+    "bot": "tomo",
+    "sup": "ignar"
    },
    "bench": [
-    "xiaoxiang"
+    "isles",
+    "lira",
+    "photon",
+    "sheiden"
    ],
    "academy": [],
-   "winrate2025": null
+   "winrate2025": 0.25
+  },
+  "LGD": {
+   "starters": {
+    "top": "sasi",
+    "jng": "climber",
+    "mid": "xqw",
+    "bot": "shaoye",
+    "sup": "ycx"
+   },
+   "bench": [],
+   "academy": [],
+   "winrate2025": 0.5946
+  },
+  "KC": {
+   "starters": {
+    "top": "canna",
+    "jng": "yike",
+    "mid": "vladi",
+    "bot": "caliste",
+    "sup": "targamas"
+   },
+   "bench": [],
+   "academy": [],
+   "winrate2025": 0.6857
+  },
+  "SK": {
+   "starters": {
+    "top": "wunder",
+    "jng": "skeanz",
+    "mid": "slowq",
+    "bot": "jopa",
+    "sup": "loopy"
+   },
+   "bench": [
+    "abbedagge",
+    "dndn",
+    "jnx",
+    "keduii",
+    "reeker"
+   ],
+   "academy": [],
+   "winrate2025": 0.25
+  },
+  "SHFT": {
+   "starters": {
+    "top": "rooster",
+    "jng": "boukada",
+    "mid": "nuc",
+    "bot": "ice",
+    "sup": "parus"
+   },
+   "bench": [
+    "113",
+    "irrelevant"
+   ],
+   "academy": [],
+   "winrate2025": 0.3667
+  },
+  "TH": {
+   "starters": {
+    "top": "tracyn",
+    "jng": "sheo",
+    "mid": "serin",
+    "bot": "flakked",
+    "sup": "stend"
+   },
+   "bench": [
+    "daglas",
+    "carlsen",
+    "kamiloo"
+   ],
+   "academy": [],
+   "winrate2025": 0.4375
+  },
+  "DSG": {
+   "starters": {
+    "top": "castle",
+    "jng": "exyu",
+    "mid": "callme",
+    "bot": "sajed",
+    "sup": "huhi"
+   },
+   "bench": [
+    "kryra",
+    "darkwings",
+    "rahel",
+    "scaryjerry"
+   ],
+   "academy": [],
+   "winrate2025": 0.2812
+  },
+  "IG": {
+   "starters": {
+    "top": "theshy",
+    "jng": "wei",
+    "mid": "rookie",
+    "bot": "gala",
+    "sup": "meiko"
+   },
+   "bench": [],
+   "academy": [],
+   "winrate2025": 0.6076
+  },
+  "FXW7": {
+   "starters": {
+    "top": "curty",
+    "jng": "peach",
+    "mid": "fuuu",
+    "bot": "bao",
+    "sup": "momochi"
+   },
+   "bench": [
+    "ganks",
+    "guigs",
+    "hidan",
+    "marvin",
+    "prodelta",
+    "yampi"
+   ],
+   "academy": [],
+   "winrate2025": 0.1538
+  },
+  "LNG": {
+   "starters": {
+    "top": "zika",
+    "jng": "xiaofang",
+    "mid": "nia",
+    "bot": "fishone",
+    "sup": "ovo"
+   },
+   "bench": [
+    "weiwei",
+    "photic",
+    "5t5",
+    "haichao",
+    "lp"
+   ],
+   "academy": [],
+   "winrate2025": 0.4118
+  },
+  "FNC": {
+   "starters": {
+    "top": "oscarinin",
+    "jng": "razork",
+    "mid": "poby",
+    "bot": "upset",
+    "sup": "lospa"
+   },
+   "bench": [
+    "mikyx",
+    "humanoid"
+   ],
+   "academy": [],
+   "winrate2025": 0.7
+  },
+  "G2": {
+   "starters": {
+    "top": "brokenblade",
+    "jng": "skewmond",
+    "mid": "caps",
+    "bot": "hans sama",
+    "sup": "labrov"
+   },
+   "bench": [],
+   "academy": [],
+   "winrate2025": 0.7
   },
   "BRO": {
    "starters": {
@@ -12143,267 +12828,6 @@
    ],
    "winrate2025": 0.4103
   },
-  "NIP": {
-   "starters": {
-    "top": "solokill",
-    "jng": "naiyou",
-    "mid": "doinb",
-    "bot": "leave",
-    "sup": "fengyue"
-   },
-   "bench": [
-    "niket",
-    "ppgod",
-    "shanji"
-   ],
-   "academy": [],
-   "winrate2025": 0.4706
-  },
-  "DSG": {
-   "starters": {
-    "top": "castle",
-    "jng": "exyu",
-    "mid": "callme",
-    "bot": "sajed",
-    "sup": "huhi"
-   },
-   "bench": [
-    "kryra",
-    "darkwings",
-    "rahel",
-    "scaryjerry"
-   ],
-   "academy": [],
-   "winrate2025": 0.2812
-  },
-  "FNC": {
-   "starters": {
-    "top": "oscarinin",
-    "jng": "razork",
-    "mid": "poby",
-    "bot": "upset",
-    "sup": "lospa"
-   },
-   "bench": [
-    "mikyx",
-    "humanoid"
-   ],
-   "academy": [],
-   "winrate2025": 0.7
-  },
-  "LNG": {
-   "starters": {
-    "top": "zika",
-    "jng": "xiaofang",
-    "mid": "nia",
-    "bot": "fishone",
-    "sup": "ovo"
-   },
-   "bench": [
-    "weiwei",
-    "photic",
-    "5t5",
-    "haichao",
-    "lp"
-   ],
-   "academy": [],
-   "winrate2025": 0.4118
-  },
-  "TES": {
-   "starters": {
-    "top": "zuian",
-    "jng": "kanavi",
-    "mid": "creme",
-    "bot": "jackeylove",
-    "sup": "hang"
-   },
-   "bench": [
-    "369"
-   ],
-   "academy": [],
-   "winrate2025": 0.6829
-  },
-  "G2": {
-   "starters": {
-    "top": "brokenblade",
-    "jng": "skewmond",
-    "mid": "caps",
-    "bot": "hans sama",
-    "sup": "labrov"
-   },
-   "bench": [],
-   "academy": [],
-   "winrate2025": 0.7
-  },
-  "DK": {
-   "starters": {
-    "top": "siwoo",
-    "jng": "lucid",
-    "mid": "showmaker",
-    "bot": "aiming",
-    "sup": "beryl"
-   },
-   "bench": [],
-   "academy": [
-    "sharvel",
-    "jaehyuk",
-    "garden",
-    "wayne",
-    "solid",
-    "berr",
-    "bible",
-    "nevid",
-    "thumb"
-   ],
-   "winrate2025": 0.5714
-  },
-  "DNS": {
-   "starters": {
-    "top": "dudu",
-    "jng": "ddoiv",
-    "mid": "bulldog",
-    "bot": "berserker",
-    "sup": "quantum"
-   },
-   "bench": [
-    "pyosik",
-    "life",
-    "pungyeon"
-   ],
-   "academy": [
-    "slayer",
-    "minous",
-    "lancer",
-    "flip"
-   ],
-   "winrate2025": 0.2329
-  },
-  "HLE": {
-   "starters": {
-    "top": "zeus",
-    "jng": "peanut",
-    "mid": "zeka",
-    "bot": "viper",
-    "sup": "delight"
-   },
-   "bench": [
-    "bluffing"
-   ],
-   "academy": [
-    "kangin",
-    "grizzly",
-    "tempester",
-    "panther",
-    "jackal",
-    "cracker",
-    "pyeonsik",
-    "valiant"
-   ],
-   "winrate2025": 0.6571
-  },
-  "WBG": {
-   "starters": {
-    "top": "breathe",
-    "jng": "tian",
-    "mid": "xiaohu",
-    "bot": "light",
-    "sup": "crisp"
-   },
-   "bench": [
-    "erha"
-   ],
-   "academy": [],
-   "winrate2025": 0.4198
-  },
-  "RED": {
-   "starters": {
-    "top": "zynts",
-    "jng": "curse",
-    "mid": "kaze",
-    "bot": "rabelo",
-    "sup": "manel"
-   },
-   "bench": [
-    "stepz",
-    "frosty",
-    "aegis",
-    "brance",
-    "fnb",
-    "grevthar",
-    "mago"
-   ],
-   "academy": [],
-   "winrate2025": 0.5581
-  },
-  "MKOI": {
-   "starters": {
-    "top": "myrwn",
-    "jng": "elyoya",
-    "mid": "jojopyun",
-    "bot": "supa",
-    "sup": "alvaro"
-   },
-   "bench": [],
-   "academy": [],
-   "winrate2025": 0.6562
-  },
-  "PNG": {
-   "starters": {
-    "top": "wizer",
-    "jng": "cariok",
-    "mid": "roamer",
-    "bot": "titan",
-    "sup": "kuri"
-   },
-   "bench": [
-    "namiru",
-    "dynquedo"
-   ],
-   "academy": [],
-   "winrate2025": 0.6111
-  },
-  "SEN": {
-   "starters": {
-    "top": "",
-    "jng": "",
-    "mid": "",
-    "bot": "",
-    "sup": ""
-   },
-   "bench": [],
-   "academy": [],
-   "winrate2025": null
-  },
-  "LYON": {
-   "starters": {
-    "top": "srtty",
-    "jng": "armao",
-    "mid": "saint",
-    "bot": "hena",
-    "sup": "lyonz"
-   },
-   "bench": [
-    "bejjaniii",
-    "licorice",
-    "oddie"
-   ],
-   "academy": [],
-   "winrate2025": 0.3571
-  },
-  "WE": {
-   "starters": {
-    "top": "cube",
-    "jng": "monki",
-    "mid": "karis",
-    "bot": "taeyoon-we",
-    "sup": "vampire"
-   },
-   "bench": [
-    "tianzhen"
-   ],
-   "academy": [],
-   "winrate2025": 0.4198
-  },
   "NAVI": {
    "starters": {
     "top": "maynter",
@@ -12420,443 +12844,19 @@
    "academy": [],
    "winrate2025": 0.0
   },
-  "GZ": {
+  "WE": {
    "starters": {
-    "top": "",
-    "jng": "",
-    "mid": "uniboy",
-    "bot": "",
-    "sup": ""
-   },
-   "bench": [],
-   "academy": [],
-   "winrate2025": null
-  },
-  "FXW7": {
-   "starters": {
-    "top": "curty",
-    "jng": "peach",
-    "mid": "fuuu",
-    "bot": "bao",
-    "sup": "momochi"
+    "top": "cube",
+    "jng": "monki",
+    "mid": "karis",
+    "bot": "taeyoon-we",
+    "sup": "vampire"
    },
    "bench": [
-    "ganks",
-    "guigs",
-    "hidan",
-    "marvin",
-    "prodelta",
-    "yampi"
+    "tianzhen"
    ],
    "academy": [],
-   "winrate2025": 0.1538
-  },
-  "VIT": {
-   "starters": {
-    "top": "naak nako",
-    "jng": "lyncas",
-    "mid": "fiesta",
-    "bot": "carzzy",
-    "sup": "fleshy"
-   },
-   "bench": [
-    "czajek",
-    "hylissang",
-    "nisqy"
-   ],
-   "academy": [],
-   "winrate2025": 0.4333
-  },
-  "VKS": {
-   "starters": {
-    "top": "zekas",
-    "jng": "disamis",
-    "mid": "mireu",
-    "bot": "morttheus",
-    "sup": "trymbi"
-   },
-   "bench": [
-    "jeskla",
-    "scamber",
-    "boal",
-    "kisee"
-   ],
-   "academy": [],
-   "winrate2025": 0.7143
-  },
-  "DFM": {
-   "starters": {
-    "top": "momo",
-    "jng": "citrus",
-    "mid": "aria",
-    "bot": "kakkun",
-    "sup": "harp"
-   },
-   "bench": [
-    "guwon",
-    "milan",
-    "rayfarky"
-   ],
-   "academy": [],
-   "winrate2025": 0.3226
-  },
-  "TL": {
-   "starters": {
-    "top": "impact",
-    "jng": "yuuji",
-    "mid": "apa",
-    "bot": "yeon",
-    "sup": "corejj"
-   },
-   "bench": [
-    "umti"
-   ],
-   "academy": [],
-   "winrate2025": 0.4643
-  },
-  "SHFT": {
-   "starters": {
-    "top": "rooster",
-    "jng": "boukada",
-    "mid": "nuc",
-    "bot": "ice",
-    "sup": "parus"
-   },
-   "bench": [
-    "113",
-    "irrelevant"
-   ],
-   "academy": [],
-   "winrate2025": 0.3667
-  },
-  "FLY": {
-   "starters": {
-    "top": "bwipo",
-    "jng": "inspired",
-    "mid": "quad",
-    "bot": "massu",
-    "sup": "busio"
-   },
-   "bench": [
-    "gakgos",
-    "cryogen"
-   ],
-   "academy": [],
-   "winrate2025": 0.8788
-  },
-  "JDG": {
-   "starters": {
-    "top": "xiaoxu",
-    "jng": "xun",
-    "mid": "scout",
-    "bot": "peyz",
-    "sup": "zhuo"
-   },
-   "bench": [
-    "missing",
-    "ale",
-    "wink"
-   ],
-   "academy": [],
-   "winrate2025": 0.5395
-  },
-  "SHG": {
-   "starters": {
-    "top": "evi",
-    "jng": "yohan",
-    "mid": "fate",
-    "bot": "marble",
-    "sup": "vsta"
-   },
-   "bench": [
-    "courage",
-    "gaeng"
-   ],
-   "academy": [],
-   "winrate2025": 0.3429
-  },
-  "EDG": {
-   "starters": {
-    "top": "zdz",
-    "jng": "xiaohao",
-    "mid": "angel",
-    "bot": "ahn",
-    "sup": "parukia"
-   },
-   "bench": [
-    "sinian"
-   ],
-   "academy": [],
-   "winrate2025": 0.7222
-  },
-  "FUR": {
-   "starters": {
-    "top": "guigo",
-    "jng": "tatu",
-    "mid": "tutsz",
-    "bot": "ayu",
-    "sup": "jojo"
-   },
-   "bench": [
-    "luuukz"
-   ],
-   "academy": [],
-   "winrate2025": 0.5
-  },
-  "BLG": {
-   "starters": {
-    "top": "wenbo",
-    "jng": "shad0w",
-    "mid": "knight",
-    "bot": "elk",
-    "sup": "on"
-   },
-   "bench": [
-    "bin",
-    "beichuan"
-   ],
-   "academy": [],
-   "winrate2025": 0.6173
-  },
-  "AL": {
-   "starters": {
-    "top": "flandre",
-    "jng": "tarzan",
-    "mid": "shanks",
-    "bot": "hope",
-    "sup": "kael"
-   },
-   "bench": [],
-   "academy": [],
-   "winrate2025": 0.6184
-  },
-  "LGD": {
-   "starters": {
-    "top": "sasi",
-    "jng": "climber",
-    "mid": "xqw",
-    "bot": "shaoye",
-    "sup": "ycx"
-   },
-   "bench": [],
-   "academy": [],
-   "winrate2025": 0.5946
-  },
-  "GAM": {
-   "starters": {
-    "top": "kiaya",
-    "jng": "draktharr",
-    "mid": "gloryy",
-    "bot": "artemis",
-    "sup": "elio"
-   },
-   "bench": [
-    "aress",
-    "easylove",
-    "emo",
-    "levi"
-   ],
-   "academy": [],
-   "winrate2025": 0.5938
-  },
-  "DIG": {
-   "starters": {
-    "top": "denathor",
-    "jng": "dardoch",
-    "mid": "",
-    "bot": "tomo",
-    "sup": "ignar"
-   },
-   "bench": [
-    "isles",
-    "lira",
-    "photon",
-    "sheiden"
-   ],
-   "academy": [],
-   "winrate2025": 0.25
-  },
-  "TT": {
-   "starters": {
-    "top": "hoya",
-    "jng": "aki",
-    "mid": "heru",
-    "bot": "1xn",
-    "sup": "feather"
-   },
-   "bench": [
-    "keshi",
-    "setab",
-    "xiaohuangren"
-   ],
-   "academy": [],
-   "winrate2025": 0.2941
-  },
-  "TSW": {
-   "starters": {
-    "top": "hiro02",
-    "jng": "hizto",
-    "mid": "dire",
-    "bot": "eddie",
-    "sup": "taki"
-   },
-   "bench": [
-    "pun",
-    "steller"
-   ],
-   "academy": [],
-   "winrate2025": 0.6
-  },
-  "LEV": {
-   "starters": {
-    "top": "zothve",
-    "jng": "booki",
-    "mid": "hauz",
-    "bot": "strensh",
-    "sup": "shiku"
-   },
-   "bench": [
-    "devost",
-    "ceo",
-    "scary",
-    "toplop"
-   ],
-   "academy": [],
-   "winrate2025": 0.3548
-  },
-  "T1": {
-   "starters": {
-    "top": "doran",
-    "jng": "oner",
-    "mid": "faker",
-    "bot": "smash",
-    "sup": "keria"
-   },
-   "bench": [
-    "gumayusi",
-    "painter"
-   ],
-   "academy": [
-    "vincenzo",
-    "guti",
-    "cloud",
-    "haetae",
-    "cypher",
-    "eclipse",
-    "jinbeom",
-    "guardian"
-   ],
-   "winrate2025": 0.6338
-  },
-  "CFO": {
-   "starters": {
-    "top": "driver",
-    "jng": "junjia",
-    "mid": "hongq",
-    "bot": "doggo",
-    "sup": "kino"
-   },
-   "bench": [
-    "rest",
-    "kaiwing"
-   ],
-   "academy": [],
-   "winrate2025": 0.8571
-  },
-  "LOUD": {
-   "starters": {
-    "top": "xyno",
-    "jng": "gryffinn",
-    "mid": "jool",
-    "bot": "route",
-    "sup": "uzent"
-   },
-   "bench": [
-    "sinatra",
-    "redbert",
-    "robo",
-    "shini",
-    "tinowns",
-    "wiz"
-   ],
-   "academy": [],
-   "winrate2025": 0.5946
-  },
-  "KT": {
-   "starters": {
-    "top": "casting",
-    "jng": "cuzz",
-    "mid": "bdd",
-    "bot": "deokdam",
-    "sup": "peter"
-   },
-   "bench": [
-    "perfect",
-    "fenrir",
-    "effort",
-    "paduck",
-    "way"
-   ],
-   "academy": [
-    "zinie",
-    "sero",
-    "hwichan",
-    "fenrir-kt",
-    "youngjae"
-   ],
-   "winrate2025": 0.4658
-  },
-  "TH": {
-   "starters": {
-    "top": "tracyn",
-    "jng": "sheo",
-    "mid": "serin",
-    "bot": "flakked",
-    "sup": "stend"
-   },
-   "bench": [
-    "daglas",
-    "carlsen",
-    "kamiloo"
-   ],
-   "academy": [],
-   "winrate2025": 0.4375
-  },
-  "NS": {
-   "starters": {
-    "top": "kingen",
-    "jng": "gideon",
-    "mid": "fisher",
-    "bot": "jiwoo",
-    "sup": "lehends"
-   },
-   "bench": [
-    "calix",
-    "trigger",
-    "vital"
-   ],
-   "academy": [
-    "burdol",
-    "sylvie",
-    "janus",
-    "mihawk",
-    "lucy",
-    "carim",
-    "crack"
-   ],
-   "winrate2025": 0.3662
-  },
-  "SR": {
-   "starters": {
-    "top": "fudge",
-    "jng": "contractz",
-    "mid": "palafox",
-    "bot": "bvoy",
-    "sup": "ceos"
-   },
-   "bench": [],
-   "academy": [],
-   "winrate2025": 0.4211
+   "winrate2025": 0.4198
   }
  },
  "history": {

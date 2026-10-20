@@ -13,3 +13,7 @@
 ## 2026 해외 5개 리그 출전 선수 (받아 둠: overseas_participation_2026.json)
 생년월일·국적·계약 만료 (다년 커리어 나이·계약용)
 - https://lol.fandom.com/wiki/Special:CargoExport?tables=ScoreboardPlayers%3DSP%2CPlayerRedirects%3DPR%2CPlayers%3DP&join_on=SP.Link%3DPR.AllName%2CPR.OverviewPage%3DP.OverviewPage&fields=SP.OverviewPage%3DTournament%2CSP.Team%3DTeam%2CSP.Role%3DRole%2CCOUNT%28%2A%29%3DGames%2CP.OverviewPage%3DPage%2CP.ID%3DID%2CP.Birthdate%3DBirthdate%2CP.Country%3DCountry%2CP.Nationality%3DNationality%2CP.Residency%3DResidency%2CP.Team%3DCurrentTeam%2CP.Contract%3DContractEnd&where=%28SP.OverviewPage+LIKE+%27LPL%2F2026%25%27+OR+SP.OverviewPage+LIKE+%27LEC%2F2026%25%27+OR+SP.OverviewPage+LIKE+%27LCS%2F2026%25%27+OR+SP.OverviewPage+LIKE+%27LCP%2F2026%25%27+OR+SP.OverviewPage+LIKE+%27CBLOL%2F2026%25%27%29&group_by=SP.OverviewPage%2CSP.Team%2CP.OverviewPage&limit=5000&format=json
+
+## 2025 출전 선수 생년월일 (받아 둠: birthdates_2025.csv)
+2025에 뛴 전 리그 선수 3,896명의 생년월일·국적 (Players 테이블, 사용자가 CargoExport로 받음). 본명 열은 빼고 저장했음.
+커리어 시작 데이터(`export_start2025.py`)에서 2025에만 뛴 선수의 나이·국적에 씀.

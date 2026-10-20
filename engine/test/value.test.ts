@@ -45,7 +45,7 @@ test("숨은 운영 능력: 신인은 리그 평균에서 시작하고, 시즌�
 });
 
 test("경험이 쌓이는 동안 진짜 운영 능력이 오른다 (learnGames 세트까지)", () => {
-  const r = { ...makeRookie(w, "LCK", "jng", null, false, createRng(9)), id: "learner", careerGames: 0 };
+  const r = { ...makeRookie(w, "LCK", "jng", null, false, createRng(9)), id: "learner", careerGames: 0, macroTrue: 0 }; // 상한(maxAbs)에 안 걸리게
   let x = { ...w, players: { ...w.players, [r.id]: r } };
   for (let s = 0; s < 6; s++) x = seasonMacro({ ...x, season: 2026 + s }, { ...emptyStats(), games: { [r.id]: 100 } });
   const gained = x.players[r.id].macroTrue - r.macroTrue;

@@ -9,7 +9,8 @@
 - 계약: 같은 구단에 남은 선수는 지금 계약 만료, 옮긴 선수는 2025에 만료(= 이번 스토브리그 FA).
   2025 기록이 없는 선수(신인·하부 리그에서 온 선수)는 처음부터 2026 팀에 있다.
 - 2025에만 뛴 선수: 2025 능력치(리그 안 백분위)로 넣는다. 2026 OE 기록이 없거나 Leaguepedia 은퇴면 은퇴.
-  생년월일이 없으면 첫 프로 시즌(2020~) + 18세로 나이를 추정한다.
+  생년월일·국적은 Leaguepedia 2025 출전 선수 표(raw/leaguepedia/birthdates_2025.csv)에서 찾고,
+  그래도 없으면 첫 프로 시즌(2020~) + 18세로 나이를 추정한다.
 - 2020~2025 실제 우승(LCK 스플릿, MSI, 월즈)과 통산 경기 수, 팀별 2025 정규 승률, 2025 우승팀.
 
 사용법: python3 -I scripts/export_start2025.py .
@@ -146,6 +147,35 @@ def titles_2020_2025():
     return titles, champs
 
 
+# 리그 → 그 리그 선수에게 흔한 국적 (Leaguepedia ID가 겹칠 때 고르는 용도)
+LEAGUE_NATIONS = {
+    "LCK": {"South Korea"}, "LPL": {"China"},
+    "LCP": {"Vietnam", "Taiwan", "Japan", "Hong Kong", "Philippines", "Australia", "Thailand"},
+    "CBLOL": {"Brazil", "Argentina", "Chile", "Mexico", "Peru", "Uruguay", "Colombia"},
+    "LCS": {"United States", "Canada"},
+}
+
+
+def lp_births():
+    """Leaguepedia 2025 출전 선수 생년월일·국적: 소문자 ID → [(생년월일, 국적), ...]"""
+    path = ROOT / "raw/leaguepedia/birthdates_2025.csv"
+    out = {}
+    if path.exists():
+        for r in pd.read_csv(path).itertuples():
+            out.setdefault(str(r.ID).lower(), []).append((r.Birthdate, r.Country if isinstance(r.Country, str) else None))
+    return out
+
+
+def pick_birth(cands, league):
+    """같은 ID가 여럿이면 2025 리그에 맞는 국적인 선수 (LEC는 그 밖의 국적), 못 고르면 None"""
+    if len(cands) == 1:
+        return cands[0]
+    nations = LEAGUE_NATIONS.get(league)
+    other = set().union(*LEAGUE_NATIONS.values())
+    fit = [c for c in cands if (c[1] in nations if nations else c[1] not in other)]
+    return fit[0] if len(fit) == 1 else None
+
+
 def career_games():
     """통산 출전 세트(2020~2025)와 처음 나온 해 (생년월일이 없는 선수의 나이 추정용)"""
     n, first = Counter(), {}
@@ -198,6 +228,7 @@ def main():
     world_pids = set(oe_ids.values())
     only25 = {pid: e for pid, e in end.items() if pid not in world_pids and e["team"]}
     rated = ratings_2025(dom, set(only25))
+    births = lp_births()
     extra = []
     for pid, e in sorted(only25.items(), key=lambda kv: kv[1]["player"].lower()):
         if pid not in rated:
@@ -211,12 +242,18 @@ def main():
         retire = pid not in seen2026 or e["player"].lower() in retired_lp
         report["only25-retire" if retire else "only25-fa"] += 1
         birth = r.get("birth_date") if isinstance(r.get("birth_date"), str) else None
+        nation = r.get("Nationality") if isinstance(r.get("Nationality"), str) else None
+        lp = pick_birth(births.get(e["player"].lower(), []), e["league"])
+        if lp:
+            birth = birth or lp[0]
+            nation = nation or lp[1]
+        report["only25-birth" if birth else "only25-age-estimated"] += 1
         # 생년월일이 없으면 첫 프로 시즌(2020 이전이면 2020) + 18세로 추정
         age = ee.age_of(birth) if birth else min(32, YEAR + 1 - first_year.get(pid, YEAR) + 18)
         extra.append({
             "id": eid, "name": e["player"], "team": e["team"], "position": e["position"],
             "age": age, "birthDate": birth[:10] if birth else None, "ageEstimated": not birth,
-            "nationality": r.get("Nationality") if isinstance(r.get("Nationality"), str) else None,
+            "nationality": nation,
             "contractEnd": YEAR, "games2026": 0, "starter": e["starter"], "ratingLeague": rating_league,
             "lowSample": bool(r["low_sample"]),
             "ratings": {v: float(r[k]) for k, v in ee.RATINGS.items()},

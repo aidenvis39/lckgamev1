@@ -96,11 +96,11 @@ export function initWorld(input: WorldInput): WorldState {
     players[p.id] = base;
   };
   for (const p of [...input.players, ...input.academy]) add(p, st.entries[p.id]);
-  // 2025에만 뛴 선수: 2026엔 실제로 1부 리그 로스터에 없었다. 무소속 한 시즌을 이미 보낸 셈으로 둬서 이번에도 못 뛰면 은퇴
+  // 2025에만 뛴 선수: 2026엔 실제로 1부 리그 로스터에 없었다. 첫 스토브리그에선 AI가 실제 이적만 재현하니 대개 FA로 남고,
+  // 2026 스토브리그 시장에 다른 FA와 똑같이 나온다 (거기서도 못 찾으면 '두 번 무소속'으로 은퇴)
   for (const x of st.extra) {
     const { academy, dest, destAcademy, destStarter, destYears, retire: r, titles, careerGames, contractEnd, ageEstimated: _, ...p } = x;
     add({ ...p, contractEnd } as Player, { team: p.team || null, academy, starter: p.starter, contractEnd, dest, destAcademy, destStarter, destYears, retire: r, titles, careerGames });
-    if (!r) players[p.id].faSeasons = 1;
   }
 
   // 실제 2026 로스터: 세계 수준 기준선, 연봉 상한(실제 영입이 상한 안에 들게), 첫 스토브리그 목표
