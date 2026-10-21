@@ -82,7 +82,7 @@
  },
  "retire": {
   "startAge": 26,
-  "perYear": 0.041,
+  "perYear": 0.02,
   "lowOvr": 70,
   "lowRate": 0.02,
   "oldAge": 30,
