@@ -58,7 +58,7 @@
  "rookies": {
   "mean": {
    "LCK": 62,
-   "LPL": 56,
+   "LPL": 49.223,
    "LEC": 50,
    "LCS": 47,
    "LCP": 46,
@@ -110,7 +110,7 @@
   "maxAbs": 0.35,
   "obsSd": 1.5,
   "knownSe": 0.1,
-  "learn": 0.071,
+  "learn": 0.092,
   "learnGames": 400,
   "ratingEquiv": 0.568,
   "price": 1.056,
