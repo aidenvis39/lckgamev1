@@ -57,7 +57,7 @@
  },
  "rookies": {
   "mean": {
-   "LCK": 55,
+   "LCK": 62,
    "LPL": 56,
    "LEC": 50,
    "LCS": 47,
@@ -70,8 +70,8 @@
   "cap": 62,
   "extra": 1,
   "extraLeague": {
-   "LCK": 0,
-   "LPL": 1.27
+   "LCK": -0.894,
+   "LPL": -0.357
   }
  },
  "replacement": {
