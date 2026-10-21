@@ -9,6 +9,7 @@
 //   node src/cli.ts year [--runs 100] [--seed 1]          (LCK·MSI·월즈 한 해 전체. 우승 분포)
 //   node src/cli.ts career [--years 10] [--runs 3]        (다년 커리어 AI끼리: 리그 실력 유지, 성장 곡선, 이적·은퇴)
 //   node src/cli.ts tune --career [--stage A|B] [--iters 60] [--years 3] [--runs 4]  (다년 커리어 조절값 튜닝 → data/careerParams.json)
+//   node src/cli.ts tune --macro-equiv                    (운영 1점 = 능력 몇 점인지 재서 careerParams.macro.ratingEquiv에 저장)
 //   --params <파일> 로 다른 조절값 파일을 쓸 수 있다 (실험용)
 import { readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
@@ -25,7 +26,7 @@ import { createRng, hashSeed } from "./rng.ts";
 import { playSeason } from "./season.ts";
 import { playSeries } from "./series.ts";
 import { DEFAULT_PARAMS, type Params } from "./params.ts";
-import { buildDraftPool, evaluate, tune } from "./tune.ts";
+import { buildDraftPool, evaluate, measureMacroEquiv, tune } from "./tune.ts";
 import type { Position, Side, Universe } from "./types.ts";
 import { POSITIONS } from "./types.ts";
 
@@ -46,6 +47,7 @@ const { values, positionals } = parseArgs({
     games: { type: "string", default: "6" },
     years: { type: "string", default: "10" },
     career: { type: "boolean", default: false },
+    "macro-equiv": { type: "boolean", default: false },
     stage: { type: "string", default: "A" },
     params: { type: "string" },
   },
@@ -67,7 +69,8 @@ switch (command) {
     values.intl ? calibrateWorld() : calibrate();
     break;
   case "tune":
-    if (values.career) await careerTuneCli(values.stage, Number(values.iters === "300" ? 60 : values.iters), Number(values.years === "10" ? 3 : values.years), Number(values.runs === "1" ? 4 : values.runs));
+    if (values["macro-equiv"]) macroEquivCli();
+    else if (values.career) await careerTuneCli(values.stage, Number(values.iters === "300" ? 60 : values.iters), Number(values.years === "10" ? 3 : values.years), Number(values.runs === "1" ? 4 : values.runs));
     else values.intl ? tuneWorld() : runTune();
     break;
   case "year":
@@ -294,6 +297,18 @@ async function career(years: number, runs: number) {
   const l = res.loss;
   console.log(`\n손실 ${l.total.toFixed(3)}: 리그 하락 ${l.drift.toFixed(2)} (LCK 최대 ${l.lckMaxDrift.toFixed(1)}점) · 퍼짐 ${l.spread.toFixed(2)} · 나이 RMSE ${l.ageRmse.toFixed(2)}점 · 격차 ${l.gaps.toFixed(2)} · 모양 ${l.shape.toFixed(2)}`);
   if (res.runs.some((r) => r.rosterErrors)) console.log(`로스터 오류 ${res.runs.reduce((s, r) => s + r.rosterErrors, 0)}건`);
+}
+
+// 운영 기여 → 능력 점수 환산 비율 (실효 실력·리그 평균·격차 지표가 같이 쓴다). 시장 평가(연봉)는 그대로 두도록 price를 같이 맞춘다
+function macroEquivCli() {
+  const r = measureMacroEquiv(u, params, seed);
+  console.log(`운영 1점의 승리 효과 = 능력 ${r.ratio}점  (팀별 ${Object.entries(r.byTeam).map(([t, v]) => `${t} ${v}`).join(", ")})`);
+  const cp = loadCareerParams();
+  const market = cp.macro.price * cp.macro.ratingEquiv; // 지금 시장이 운영을 쳐 주는 비율 (옛 환산 기준)
+  cp.macro.ratingEquiv = r.ratio;
+  cp.macro.price = Math.round((market / r.ratio) * 1000) / 1000;
+  saveCareerParams(cp);
+  console.log(`저장: data/careerParams.json (macro.ratingEquiv ${r.ratio}, macro.price ${cp.macro.price})`);
 }
 
 async function careerTuneCli(stage: string, iters: number, years: number, runs: number) {

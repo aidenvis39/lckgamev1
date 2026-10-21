@@ -6,8 +6,8 @@ import { POSITIONS } from "../types.ts";
 import type { CareerParams } from "./params.ts";
 import { knot } from "./params.ts";
 import { aiOffseason, aiOpening, playCareerSeason } from "./play.ts";
-import type { PlayerState, TeamState, WorldState } from "./types.ts";
-import { overall, payroll } from "./value.ts";
+import type { TeamState, WorldState } from "./types.ts";
+import { overall, payroll, teamMacroPoints } from "./value.ts";
 import { initWorld, mainRoster, starterMeans, validateWorld, type WorldInput } from "./world.ts";
 
 export const LEAGUES6 = ["LCK", "LPL", "LEC", "LCS", "LCP", "CBLOL"];
@@ -29,15 +29,16 @@ export interface RunMetrics {
 
 export type CareerData = Omit<WorldInput, "seed" | "cp"> & { base: Universe; params: Params };
 
-const teamStrength = (players: Record<string, PlayerState>, t: TeamState, mw: number) => {
-  const ids = POSITIONS.map((pos) => t.starters[pos]).filter((id) => players[id]);
-  const ovr = ids.reduce((s, id) => s + overall(players[id].ratings), 0) / Math.max(1, ids.length);
-  return ovr + 17 * mw * ids.reduce((s, id) => s + (players[id].macroTrue ?? players[id].intangible ?? 0), 0);
+// 팀 전력 (능력 점수): 능력 평균 + 운영(승리 효과 환산) + 팀워크. 월즈 같은 국제전 결과를 정하는 몫을 다 넣는다
+const teamStrength = (w: WorldState, t: TeamState) => {
+  const ids = POSITIONS.map((pos) => t.starters[pos]).filter((id) => w.players[id]);
+  const ovr = ids.reduce((s, id) => s + overall(w.players[id].ratings), 0) / Math.max(1, ids.length);
+  return ovr + teamMacroPoints(w) * ids.reduce((s, id) => s + (w.players[id].macroTrue ?? w.players[id].intangible ?? 0), 0) + 17 * t.teamwork;
 };
 
 function topGaps(w: WorldState): Record<string, number> {
   const top4 = (lg: string) => {
-    const s = Object.values(w.teams).filter((t) => t.league === lg).map((t) => teamStrength(w.players, t, w.macroWeight)).sort((a, b) => b - a).slice(0, 4);
+    const s = Object.values(w.teams).filter((t) => t.league === lg).map((t) => teamStrength(w, t)).sort((a, b) => b - a).slice(0, 4);
     return s.reduce((a, b) => a + b, 0) / s.length;
   };
   const lck = top4("LCK");
@@ -61,7 +62,7 @@ export function careerRun(data: CareerData, cp: CareerParams, seed: number, year
   let prev: { snap: Map<string, { group: string; age: number; ovr: number }>; games: Record<string, number> } | null = null;
   for (let yr = 0; yr < years; yr++) {
     m.seasons.push(w.season);
-    m.leagueMeans.push(starterMeans(w.players, w.teams, w.macroWeight));
+    m.leagueMeans.push(starterMeans(w.players, w.teams, w));
     m.topGaps.push(topGaps(w));
     m.fa.push(w.freeAgents.length);
     m.rookies.push(Object.values(w.players).filter((p) => p.virtual && !p.retired).length);

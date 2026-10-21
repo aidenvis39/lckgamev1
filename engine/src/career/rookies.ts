@@ -70,7 +70,7 @@ export function makeRookie(
     intangibleKnown: false,
     macroTrue,
     champions: {},
-    potential: rollPotential(world.cp, ratings, age, rng, Math.max(0, drift) + rk.extra),
+    potential: rollPotential(world.cp, ratings, age, rng, Math.max(0, drift) + rk.extra + (rk.extraLeague[league] ?? 0)),
     contract: team ? { team, endSeason: world.season + 2, salary: opts.salary ?? (academy ? 0.3 : 0.6), role: "bench", generated: true } : null,
     academy,
     virtual: true,

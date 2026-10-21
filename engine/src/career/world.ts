@@ -6,7 +6,7 @@ import type { Champion, Player, Ratings, TeamInfo, Universe } from "../types.ts"
 import { POSITIONS } from "../types.ts";
 import { DEFAULT_CAREER_PARAMS, knot, type CareerParams } from "./params.ts";
 import type { PlayerState, PreAgreement, SeasonStats, Start2025, StartEntry, TeamState, WorldState } from "./types.ts";
-import { contractYears, payroll, salaryDemand } from "./value.ts";
+import { contractYears, payroll, salaryDemand, teamMacroPoints } from "./value.ts";
 
 export const OPENING_SEASON = 2025; // 커리어는 2025 시즌이 끝난 스토브리그에서 시작
 export const FIRST_SEASON = 2026; // 처음 치르는 시즌
@@ -130,7 +130,7 @@ export function initWorld(input: WorldInput): WorldState {
     realTeams[t.id] = { ...state, starters: { ...t.starters }, bench: [...t.bench] };
   }
   const meta = Object.fromEntries(input.champions.map((c) => [c.id, c.meta]));
-  const baseline = starterMeans(players, realTeams, input.params.macroWeight);
+  const baseline = starterMeans(players, realTeams, { macroWeight: input.params.macroWeight, cp });
   const replacement = Object.fromEntries(Object.entries(baseline).map(([lg, m]) => [lg, Math.round((m - cp.replacement.gap) * 10) / 10]));
   const freeAgents = Object.values(players).filter((p) => !p.contract).map((p) => p.id);
   return {
@@ -147,6 +147,7 @@ export function initWorld(input: WorldInput): WorldState {
     nextRookie: 1,
     replacement,
     baseline,
+    baselineEquiv: cp.macro.ratingEquiv,
     macroWeight: input.params.macroWeight,
     cp,
     opening: {
@@ -158,10 +159,10 @@ export function initWorld(input: WorldInput): WorldState {
   };
 }
 
-// 리그별 주전 평균 '실효' 실력 = 경기 능력 평균 + 팀 운영 기여를 능력 점수로 바꾼 값.
-// 운영 기여(팀 합 × macroWeight)는 팀 전투력에 바로 더해지는데, 전투력 1 = 주전 5명 능력 17점과 같다.
+// 리그별 주전 평균 '실효' 실력 = 경기 능력 평균 + 팀 운영 기여를 승리 효과가 같은 능력 점수로 바꾼 값 (value.ts teamMacroPoints).
 // LCK 선수에게만 운영 추정치가 있어서, 이걸 빼면 LCK 수준이 실제보다 낮게 잡히고 은퇴로 사라지는 몫을 못 메운다
-export function starterMeans(players: Record<string, PlayerState>, teams: Record<string, TeamState>, macroWeight: number): Record<string, number> {
+export function starterMeans(players: Record<string, PlayerState>, teams: Record<string, TeamState>, ctx: { macroWeight: number; cp: CareerParams }): Record<string, number> {
+  const per = teamMacroPoints(ctx);
   const out: Record<string, number> = {};
   for (const lg of new Set(Object.values(teams).map((t) => t.league))) {
     const list = Object.values(teams).filter((t) => t.league === lg);
@@ -170,8 +171,7 @@ export function starterMeans(players: Record<string, PlayerState>, teams: Record
       const ids = POSITIONS.map((pos) => t.starters[pos]).filter((id) => players[id]);
       const r = (id: string) => players[id].ratings;
       const ovr = ids.reduce((s, id) => s + (r(id).laning + r(id).teamfight + r(id).vision + r(id).survival) / 4, 0) / Math.max(1, ids.length);
-      const macro = macroWeight * ids.reduce((s, id) => s + (players[id].macroTrue ?? players[id].intangible ?? 0), 0);
-      sum += ovr + 17 * macro;
+      sum += ovr + per * ids.reduce((s, id) => s + (players[id].macroTrue ?? players[id].intangible ?? 0), 0);
     }
     out[lg] = Math.round((sum / list.length) * 10) / 10;
   }
@@ -180,7 +180,7 @@ export function starterMeans(players: Record<string, PlayerState>, teams: Record
 
 // 세계 수준 유지: 리그 주전 평균이 2026보다 떨어지면 새로 들어오는 선수(대체 선수·유망주·신인) 수준을 올리고, 오르면 내린다
 export function retuneReplacement(world: WorldState): WorldState {
-  const now = starterMeans(world.players, world.teams, world.macroWeight);
+  const now = starterMeans(world.players, world.teams, world);
   const r = world.cp.replacement;
   const replacement = Object.fromEntries(
     Object.entries(world.baseline).map(([lg, base]) => [lg, Math.round((base - r.gap + r.gain * Math.max(r.lo, Math.min(r.hi, base - (now[lg] ?? base)))) * 10) / 10]),

@@ -68,11 +68,15 @@
   "sd": 5,
   "replacementSd": 4,
   "cap": 62,
-  "extra": 1
+  "extra": 1,
+  "extraLeague": {
+   "LCK": 0,
+   "LPL": 0
+  }
  },
  "replacement": {
   "gap": 6.868,
-  "gain": 5.118,
+  "gain": 1.5,
   "lo": -4,
   "hi": 6
  },
@@ -95,7 +99,7 @@
  },
  "macro": {
   "newMean": {
-   "LCK": 0.12,
+   "LCK": -0.02,
    "LPL": -0.05,
    "LEC": -0.05,
    "LCS": -0.05,
@@ -108,7 +112,8 @@
   "knownSe": 0.1,
   "learn": 0.071,
   "learnGames": 400,
-  "price": 0.6,
+  "ratingEquiv": 0.568,
+  "price": 1.056,
   "priceCap": 10
  },
  "fame": {

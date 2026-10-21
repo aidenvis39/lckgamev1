@@ -37,6 +37,7 @@ export interface CareerParams {
     replacementSd: number;
     cap: number; // 신인 평균 상한
     extra: number; // 신인 잠재력 여유 추가
+    extraLeague: Record<string, number>; // 리그별 잠재력 여유 추가 (스타가 나오는 정도. 상위 팀 전력 유지용)
   };
   replacement: {
     gap: number; // 대체 선수 = 리그 주전 평균 − gap
@@ -69,6 +70,7 @@ export interface CareerParams {
     knownSe: number; // 불확실성이 이 아래면 '추정 있음'
     learn: number; // 경험으로 오르는 운영 능력 (learnGames 세트까지 고르게)
     learnGames: number;
+    ratingEquiv: number; // 운영 1점(팀 전투력 기준)의 승리 효과 = 능력 몇 점 (npm run tune -- --macro-equiv로 잼)
     price: number; // 시장 평가에 넣는 운영 기여 비율 (불확실성 할인)
     priceCap: number; // 시장 평가에 더하는 운영 기여 상한 (실력 점수)
   };
@@ -113,6 +115,7 @@ export const DEFAULT_CAREER_PARAMS: CareerParams = {
     replacementSd: 4,
     cap: 62,
     extra: 1,
+    extraLeague: {},
   },
   replacement: { gap: 8, gain: 4, lo: -4, hi: 6 },
   retire: {
@@ -138,7 +141,8 @@ export const DEFAULT_CAREER_PARAMS: CareerParams = {
     knownSe: 0.1,
     learn: 0.05,
     learnGames: 400,
-    price: 0.6,
+    ratingEquiv: 0.568,
+    price: 1.056,
     priceCap: 10,
   },
   fame: { weights: { worlds: 1, msi: 0.6, lck: 0.5, split: 0.35 }, decay: 0.85, rate: 0.15, cap: 0.6 },

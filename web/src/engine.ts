@@ -100,7 +100,7 @@ export { mainRoster, toUniverse, validateWorld, worldParams, MAX_MAIN_ROSTER, OP
 export { CHECKPOINTS, crossedCheckpoints, developAt } from "../../engine/src/career/develop.ts";
 export { aiOpening, newYearFor } from "../../engine/src/career/play.ts";
 export { beginOpening } from "../../engine/src/career/opening.ts";
-export { upgradeWorld } from "../../engine/src/career/migrate.ts";
+export { refreshBaseline, upgradeWorld } from "../../engine/src/career/migrate.ts";
 export const startData = start2025 as unknown as Start2025;
 export { beginOffseason, closeSeason, finishOffseason, positionTop } from "../../engine/src/career/rollover.ts";
 export { makeRookie, seedPool } from "../../engine/src/career/rookies.ts";

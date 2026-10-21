@@ -80,12 +80,18 @@ export const STAGES: Record<string, Record<string, [number, number]>> = {
     "growth.maxYearGain": [3, 12],
     "potential.prodigyP": [0, 0.3],
   },
+  // 새 선수 공급: 리그 평균(drift)과 상위 4팀 격차(gaps)를 같이 지키도록. LCK 신인 운영 평균은 LCK 주전 평균(0.03) − 경험 성장 근처로 묶고,
+  // 대체 선수 보정 배율은 크면 해마다 크게 출렁이다 몇 년 뒤 슈퍼팀이 생겨서 3 이하로 묶는다
   B: {
-    "macro.newMean.LCK": [-0.12, 0.12],
+    "macro.newMean.LCK": [-0.05, 0.08],
     "macro.learn": [0, 0.15],
     "rookies.meanShift": [-8, 8],
+    "rookies.mean.LCK": [45, 62],
+    "rookies.mean.LPL": [45, 62],
+    "rookies.extraLeague.LCK": [-3, 6],
+    "rookies.extraLeague.LPL": [-3, 6],
     "replacement.gap": [3, 12],
-    "replacement.gain": [0, 8],
+    "replacement.gain": [0.5, 3],
     "retire.perYear": [0.02, 0.12],
   },
 };

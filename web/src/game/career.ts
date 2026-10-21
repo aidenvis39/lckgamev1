@@ -52,6 +52,7 @@ import {
   todayMatches,
   toUniverse,
   upgradeWorld,
+  refreshBaseline,
   worldParams,
   type Ability,
   type Bid,
@@ -595,13 +596,14 @@ export function loadCareer(): { career: Career | null; notice: LoadNotice } {
     const raw = localStorage.getItem(KEY);
     if (raw) {
       const c = JSON.parse(raw) as Career;
-      if (c.version === 4) return { career: { ...c, world: { ...c.world, cp: careerParams } }, notice };
+      // 조절값은 최신으로. 운영 환산 비율이 바뀌었으면 리그 기준선도 다시 계산
+      if (c.version === 4) return { career: { ...c, world: refreshBaseline({ ...c.world, cp: careerParams }, careerParams, () => newWorld(c.world.seed)) }, notice };
     }
     const v3 = localStorage.getItem(V3_KEY);
     if (v3) {
       const c3 = JSON.parse(v3) as Omit<Career, "version"> & { version: 3 };
       if (c3.version === 3) {
-        const c: Career = { ...c3, version: 4, world: upgradeWorld(c3.world, startData, careerParams) };
+        const c: Career = { ...c3, version: 4, world: refreshBaseline(upgradeWorld(c3.world, startData, careerParams), careerParams, () => newWorld(c3.world.seed)) };
         localStorage.setItem(KEY, JSON.stringify(c));
         localStorage.removeItem(V3_KEY);
         return { career: c, notice };

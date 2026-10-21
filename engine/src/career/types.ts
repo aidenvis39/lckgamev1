@@ -72,6 +72,7 @@ export interface WorldState {
   nextRookie: number; // 신인 id 번호
   replacement: Record<string, number>; // 리그별 '대체 선수 수준'. 빈자리·해외 유망주·신인 능력 기준 (해마다 보정)
   baseline: Record<string, number>; // 2026 리그별 주전 평균 '실효' 실력 (세계 수준 유지 목표)
+  baselineEquiv?: number; // baseline을 계산할 때 쓴 운영 환산 비율 (cp.macro.ratingEquiv). 없으면 예전 저장(1)
   macroWeight: number; // 운영 기여를 실력 점수로 바꿀 때 씀 (엔진 params.macroWeight)
   cp: CareerParams; // 성장·노쇠·신인·은퇴 조절값 (저장을 불러올 때 최신 값으로 바꿀 수 있음)
   opening: Opening | null; // 첫 스토브리그(2025 → 2026) 동안만: 실제 2026 이적 재현용

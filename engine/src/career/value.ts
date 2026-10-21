@@ -15,8 +15,13 @@ export interface ValueCtx {
 // 경기 능력 평균 (챔프폭 제외)
 export const overall = (r: Ratings) => (r.laning + r.teamfight + r.vision + r.survival) / 4;
 
-// 운영 기여 1 = 선수 한 명 실력 몇 점인가. 팀 전투력에 macroWeight × 운영 기여가 더해지고, 전투력 1 = 주전 5명 평균 17점
-export const macroPoints = (ctx: ValueCtx) => 5 * 17 * ctx.macroWeight;
+// 팀 운영 기여 합 1 = 팀 평균 실력 몇 점인가.
+// 팀 전투력에 macroWeight × 운영 합이 더해지고 전투력 1 = 능력 17점이지만, 능력치는 라인전·시야·오브젝트에도 들어가서
+// 승리에 주는 효과로 맞추면 운영은 그 ratingEquiv배(약 0.57)다 (tune.ts measureMacroEquiv)
+export const teamMacroPoints = (ctx: Pick<ValueCtx, "macroWeight" | "cp">) => ctx.cp.macro.ratingEquiv * 17 * ctx.macroWeight;
+
+// 운영 기여 1 = 선수 한 명 실력 몇 점인가 (팀 평균에 1/5로 들어감)
+export const macroPoints = (ctx: Pick<ValueCtx, "macroWeight" | "cp">) => 5 * teamMacroPoints(ctx);
 
 // 실효 실력: 경기에서 내는 힘 (공개 추정치 기준). AI 주전 선택·영입에 쓴다
 export const effective = (ctx: ValueCtx, p: PlayerState) => overall(p.ratings) + macroPoints(ctx) * p.intangible;

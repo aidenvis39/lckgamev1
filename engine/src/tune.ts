@@ -2,11 +2,14 @@
 import { compare, loss, measure, type Metrics, type Row } from "./calibrate.ts";
 import type { Targets } from "./targets.ts";
 import { runDraft } from "./draft.ts";
+import { lineupOf } from "./lineup.ts";
+import { simulateGame } from "./match.ts";
 import { TUNABLE, getParam, setParam, type Params } from "./params.ts";
 import { createRng, hashSeed } from "./rng.ts";
 import { playSeason } from "./season.ts";
 import type { DraftProvider } from "./series.ts";
-import type { DraftResult, Universe } from "./types.ts";
+import type { DraftResult, Lineup, Universe } from "./types.ts";
+import { POSITIONS } from "./types.ts";
 
 // 드래프트는 경기 조절값과 무관하므로 (블루, 레드, 실제 금지 목록)별로 한 번만 만들어 재사용한다.
 // 피어리스 금지 목록까지 키에 넣어야 진영이 바뀐 시리즈에서도 앞 세트 챔피언을 다시 고르지 않는다.
@@ -22,6 +25,47 @@ export function buildDraftPool(u: Universe, p: Params, seed: number): DraftProvi
     }
     return d;
   };
+}
+
+// 운영 기여 1점(실효 실력 기준: 팀 운영 합 × macroWeight × 17)이 능력치 1점에 비해 승리에 얼마나 작용하나.
+// 능력치는 교전 전투력 말고도 라인전·시야·오브젝트에 들어가서, 같은 점수라도 운영보다 크게 작용한다.
+// 같은 팀끼리 붙이고 블루만 (a) 경기 능력 4개 +D, (b) 운영 +D점을 줘서 블루 승률 로짓 증가의 비를 잰다 (같은 드래프트·같은 난수).
+export function measureMacroEquiv(u: Universe, p: Params, seed: number, teams = ["GEN", "HLE", "T1", "DK", "KT"], games = 3000): { ratio: number; byTeam: Record<string, number> } {
+  const logit = (x: number) => Math.log(x / (1 - x));
+  const bump = (base: Lineup, mode: "rating" | "macro", d: number): Lineup => ({
+    ...base,
+    players: Object.fromEntries(
+      POSITIONS.map((pos) => {
+        const x = base.players[pos];
+        if (mode === "macro") return [pos, { ...x, intangible: x.intangible + d / (5 * 17 * p.macroWeight) }];
+        const r = x.ratings;
+        return [pos, { ...x, ratings: { ...r, laning: r.laning + d, teamfight: r.teamfight + d, vision: r.vision + d, survival: r.survival + d } }];
+      }),
+    ) as Lineup["players"],
+  });
+  let sumMacro = 0;
+  let sumRating = 0;
+  const byTeam: Record<string, number> = {};
+  for (const team of teams.filter((t) => u.teams.has(t))) {
+    const base = lineupOf(u, team);
+    const drafts = Array.from({ length: 200 }, (_, i) => runDraft(u, { blue: base, red: base }, p, createRng(hashSeed(seed, "equiv-draft", team, i))));
+    const wr = (blue: Lineup) => {
+      let w = 0;
+      for (let i = 0; i < games; i++) w += simulateGame(u, { blue, red: base }, drafts[i % drafts.length], p, createRng(hashSeed(seed, "equiv", team, i))).winner === "blue" ? 1 : 0;
+      return w / games;
+    };
+    const b0 = logit(wr(base));
+    let m = 0;
+    let r = 0;
+    for (const d of [3, 6]) {
+      m += logit(wr(bump(base, "macro", d))) - b0;
+      r += logit(wr(bump(base, "rating", d))) - b0;
+    }
+    byTeam[team] = Math.round((m / r) * 1000) / 1000;
+    sumMacro += m;
+    sumRating += r;
+  }
+  return { ratio: Math.round((sumMacro / sumRating) * 1000) / 1000, byTeam };
 }
 
 export interface Evaluation {
