@@ -58,7 +58,7 @@
  "rookies": {
   "mean": {
    "LCK": 62,
-   "LPL": 49.223,
+   "LPL": 48.157,
    "LEC": 50,
    "LCS": 47,
    "LCP": 46,
@@ -76,7 +76,7 @@
  },
  "replacement": {
   "gap": 5.271,
-  "gain": 2.686,
+  "gain": 2.069,
   "lo": -4,
   "hi": 6
  },
@@ -110,7 +110,7 @@
   "maxAbs": 0.35,
   "obsSd": 1.5,
   "knownSe": 0.1,
-  "learn": 0.092,
+  "learn": 0.08,
   "learnGames": 400,
   "ratingEquiv": 0.568,
   "price": 1.056,
