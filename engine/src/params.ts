@@ -41,7 +41,7 @@ export interface Params {
   swingMean: number; // 교전 승리 시 골드 이득
   swingSd: number;
   baronGold: number;
-  killsPerFight: number; // 교전 승리 팀 평균 킬
+  killsPerFight: number; // 교전 승리 팀 킬 추첨의 포아송 λ (실제 킬은 생존자 수로 제한)
   loserKillRatio: number; // 진 팀 킬 비율
   baronContest: number; // 바론이 있을 때 바론 싸움이 날 확률
   endBase: number; // 마무리(넥서스 파괴) 확률 로짓

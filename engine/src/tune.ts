@@ -2,34 +2,32 @@
 import { compare, loss, measure, type Metrics, type Row } from "./calibrate.ts";
 import type { Targets } from "./targets.ts";
 import { runDraft } from "./draft.ts";
-import { lineupOf } from "./lineup.ts";
 import { TUNABLE, getParam, setParam, type Params } from "./params.ts";
 import { createRng, hashSeed } from "./rng.ts";
 import { playSeason } from "./season.ts";
 import type { DraftProvider } from "./series.ts";
-import type { DraftResult, Side, Universe } from "./types.ts";
-import { POSITIONS } from "./types.ts";
+import type { DraftResult, Universe } from "./types.ts";
+import { POSITIONS, SIDES } from "./types.ts";
 
-// 드래프트는 경기 조절값과 무관하므로 (블루, 레드, 세트 번호)별로 미리 만들어 재사용한다.
+// 실제 피어리스 이력과 현재 로스터가 같을 때만 재사용한다. 진영은 세트 결과에 따라 바뀐다.
+// depth는 캐시할 세트 수일 뿐, 이후 세트에 마지막 드래프트를 재사용하는 상한이 아니다.
+// 챔피언·상성 데이터가 바뀌면 새 풀을 만든다 (예: 커리어 시즌 전환).
 export function buildDraftPool(u: Universe, p: Params, seed: number, depth = 3): DraftProvider {
-  const pool = new Map<string, DraftResult[]>();
-  const teams = [...u.teams.keys()];
-  for (const blue of teams) {
-    for (const red of teams) {
-      if (blue === red) continue;
-      const lineups = { blue: lineupOf(u, blue), red: lineupOf(u, red) };
-      const rng = createRng(hashSeed(seed, blue, red));
-      const used = new Set<string>();
-      const seq: DraftResult[] = [];
-      for (let g = 0; g < depth; g++) {
-        const d = runDraft(u, lineups, p, rng.fork(g), { unavailable: used });
-        for (const side of ["blue", "red"] as Side[]) for (const pos of POSITIONS) used.add(d.picks[side][pos]);
-        seq.push(d);
-      }
-      pool.set(`${blue}|${red}`, seq);
-    }
-  }
-  return (g, lineups) => pool.get(`${lineups.blue.team.id}|${lineups.red.team.id}`)![Math.min(g, depth - 1)];
+  const pool = new Map<string, DraftResult>();
+  return (g, lineups, unavailable) => {
+    const blocked = [...unavailable].sort();
+    const roster = SIDES.map((side) => [lineups[side].team.id, POSITIONS.map((pos) => {
+      const player = lineups[side].players[pos];
+      return [player.id, player.ratings.champPool, Object.entries(player.champions).sort(([a], [b]) => a.localeCompare(b))];
+    })]);
+    const key = JSON.stringify([g, roster, blocked, p.draftMeta, p.draftMastery, p.draftNoise]);
+    const cached = pool.get(key);
+    if (cached) return cached;
+    // 호출 순서·캐시 적중 여부·금지 목록 삽입 순서에 무관한 시드.
+    const d = runDraft(u, lineups, p, createRng(hashSeed(seed, key)), { unavailable: new Set(blocked) });
+    if (g < depth) pool.set(key, d);
+    return d;
+  };
 }
 
 export interface Evaluation {

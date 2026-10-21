@@ -104,6 +104,12 @@ export interface TimelineEntry {
   side: Side;
   kind: TimelineKind;
   count?: number; // 포탑 여러 개를 한 번에 부순 경우
+  kill?: { // 킬 사건의 실제 참여자. 포지션은 해당 세트 라인업의 선수를 가리킨다.
+    killer: Position;
+    victim: Position;
+    assists: Position[];
+    respawnAt: number; // 피해자 부활 시각 (분)
+  };
 }
 
 export interface PlayerLine {
