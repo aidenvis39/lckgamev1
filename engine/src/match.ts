@@ -2,6 +2,7 @@
 //   1) 라인전(0~15분): 포지션별 우위 → 라인 골드차, 첫 킬·첫 용·유충·첫 포탑
 //   2) 중후반(15분~): 몇 분마다 교전. 전투력 차이 + 골드차 + 버프로 승자를 정하고,
 //      승자가 골드·킬·용·바론·포탑을 가져간다. 포탑이 충분히 밀리면 마무리 시도.
+//   킬은 그 시각에 살아 있는 선수끼리만 난다. 죽은 선수는 부활 시간 동안 죽지도 킬을 내지도 못한다.
 import type { Params } from "./params.ts";
 import { sigmoid, type Rng } from "./rng.ts";
 import { compScore, fighterPower, mastery, matchupGd15, z } from "./strength.ts";
@@ -15,9 +16,13 @@ const POS_KO: Record<Position, string> = { top: "탑", jng: "정글", mid: "미�
 const DRAGON_KO = ["화염", "대지", "바다", "바람", "마법공학", "화학공학"];
 const TOWERS_TO_END = 7; // 이만큼 부숴야 넥서스를 칠 수 있다 (외곽·내곽·억제기 포탑 중 한 라인 이상)
 const MAX_TOWERS = 11;
+const FIGHT_MIN = 0.5; // 교전 하나의 킬이 나오는 구간 (분). 15분 이후 부활 시간보다 짧아서 한 교전에서 두 번 죽지 않는다
+// 부활 시간 (분): 15분 약 32초, 30분 54초, 40분 69초
+export const deathTimer = (t: number) => Math.min(1.3, 0.15 + 0.025 * t);
 
 export interface SimOptions {
   log?: boolean; // 중계 로그 생성 (시즌·튜닝 시엔 끈다)
+  onKill?: (t: number, side: Side, killer: Position, victim: Position) => void; // 킬마다 호출 (시험용)
 }
 
 export function simulateGame(
@@ -51,22 +56,36 @@ export function simulateGame(
   let firstBlood: Side | null = null;
   let firstBaron: Side | null = null;
 
-  const pickWeighted = (w: Record<Position, number>): Position => {
-    let r = rng.next() * POSITIONS.reduce((s, pos) => s + w[pos], 0);
-    for (const pos of POSITIONS) if ((r -= w[pos]) <= 0) return pos;
-    return "sup";
+  const deadUntil: Record<Side, Record<Position, number>> = {
+    blue: { top: -1, jng: -1, mid: -1, bot: -1, sup: -1 },
+    red: { top: -1, jng: -1, mid: -1, bot: -1, sup: -1 },
   };
-  const addKill = (t: number, s: Side, killer: Position = pickWeighted(KILL_SHARE)) => {
-    const victim = pickWeighted(DEATH_SHARE);
+  const alive = (s: Side, pos: Position, t: number) => deadUntil[s][pos] <= t;
+  // 조건에 맞는 포지션 중 가중치로 하나 (없으면 null)
+  const pickWeighted = (w: Record<Position, number>, ok: (pos: Position) => boolean): Position | null => {
+    const cand = POSITIONS.filter(ok);
+    let r = rng.next() * cand.reduce((s, pos) => s + w[pos], 0);
+    for (const pos of cand) if ((r -= w[pos]) <= 0) return pos;
+    return cand.at(-1) ?? null;
+  };
+  // s 팀의 킬. 살아 있는 선수끼리만 나고, 상대가 다 죽어 있으면(에이스) 더 나지 않는다
+  const addKill = (t: number, s: Side, preferred?: Position): boolean => {
+    const o = other(s);
+    const killer = preferred && alive(s, preferred, t) ? preferred : pickWeighted(KILL_SHARE, (pos) => alive(s, pos, t));
+    const victim = pickWeighted(DEATH_SHARE, (pos) => alive(o, pos, t));
+    if (!killer || !victim) return false;
+    deadUntil[o][victim] = t + deathTimer(t);
     lines[s][killer].kills++;
-    lines[other(s)][victim].deaths++;
+    lines[o][victim].deaths++;
     kills[s]++;
     mark(t, s, "kill");
-    for (const pos of POSITIONS) if (pos !== killer && rng.next() < ASSIST_RATE[pos]) lines[s][pos].assists++;
+    for (const pos of POSITIONS) if (pos !== killer && alive(s, pos, t) && rng.next() < ASSIST_RATE[pos]) lines[s][pos].assists++;
+    opts.onKill?.(t, s, killer, victim);
     if (!firstBlood) {
       firstBlood = s;
-      say(t, s, `퍼스트 블러드! ${who(s, killer)} → ${who(other(s), victim)}`);
+      say(t, s, `퍼스트 블러드! ${who(s, killer)} → ${who(o, victim)}`);
     }
+    return true;
   };
 
   // 경기마다 선수 컨디션이 조금씩 흔들린다
@@ -111,7 +130,7 @@ export function simulateGame(
   const earlyKills = Math.max(1, rng.poisson(p.killsAt15));
   const killTimes = Array.from({ length: earlyKills }, () => 2 + 13 * rng.next()).sort((a, b) => a - b);
   for (const t of killTimes) {
-    const pos = pickWeighted(KILL_SHARE);
+    const pos = pickWeighted(KILL_SHARE, () => true)!;
     const s: Side = rng.next() < sigmoid((1.2 * laneGd15[pos]) / p.laneSd[pos]) ? "blue" : "red";
     addKill(t, s, pos);
   }
@@ -171,21 +190,28 @@ export function simulateGame(
     let swing = Math.max(150, p.swingMean + p.swingSd * rng.normal());
     let wonTowers = 1;
 
-    const kw = rng.poisson(p.killsPerFight);
-    const kl = rng.poisson(p.killsPerFight * p.loserKillRatio);
-    for (let i = 0; i < kw; i++) addKill(t, w);
-    for (let i = 0; i < kl; i++) addKill(t, other(w));
+    // 양 팀 킬을 섞어서 교전 구간(FIGHT_MIN) 안에 차례로. 오브젝트는 교전이 끝난 뒤
+    const order: Side[] = [...Array<Side>(rng.poisson(p.killsPerFight)).fill(w), ...Array<Side>(rng.poisson(p.killsPerFight * p.loserKillRatio)).fill(other(w))];
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = rng.int(i + 1);
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    const got = { blue: 0, red: 0 };
+    order.forEach((s, i) => {
+      if (addKill(t + (FIGHT_MIN * (i + 1)) / (order.length + 1), s)) got[s]++;
+    });
+    const tEnd = t + FIGHT_MIN;
     let what = "";
     if (soul && t >= nextElder) {
       elders[w]++;
-      mark(t, w, "elder");
+      mark(tEnd, w, "elder");
       elderUntil[w] = t + 2.5;
       nextElder = t + 6;
       wonTowers++;
       what = "장로 용";
     } else if (t >= nextBaron && rng.next() < p.baronContest) {
       barons[w]++;
-      mark(t, w, "baron");
+      mark(tEnd, w, "baron");
       firstBaron ??= w;
       baronUntil[w] = t + 3;
       nextBaron = t + 6;
@@ -193,16 +219,16 @@ export function simulateGame(
       wonTowers++;
       what = "바론";
     } else if (!soul && t >= nextDragon) {
-      what = takeDragon(w, t, false);
+      what = takeDragon(w, tEnd, false);
       nextDragon = t + 5;
     }
     if (baronUntil[w] > t) wonTowers++;
     const before = towers[w];
     towers[w] = Math.min(MAX_TOWERS, towers[w] + wonTowers);
-    if (towers[w] > before) mark(t, w, "tower", towers[w] - before);
+    if (towers[w] > before) mark(tEnd, w, "tower", towers[w] - before);
     gold += sign * swing;
-    goldTimeline.push([round1(t), Math.round(gold)]);
-    if (log) say(t, w, `교전 승리 ${kw}:${kl}${what ? ` → ${what}` : ""} (골드 차이 ${signed(sign * gold)})`);
+    goldTimeline.push([round1(tEnd), Math.round(gold)]);
+    if (log) say(tEnd, w, `교전 승리 ${got[w]}:${got[other(w)]}${what ? ` → ${what}` : ""} (골드 차이 ${signed(sign * gold)})`);
 
     if (towers[w] >= TOWERS_TO_END && t >= 20) {
       const buffed = baronUntil[w] > t || elderUntil[w] > t ? 1 : 0;

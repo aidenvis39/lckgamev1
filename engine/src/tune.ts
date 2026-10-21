@@ -2,34 +2,26 @@
 import { compare, loss, measure, type Metrics, type Row } from "./calibrate.ts";
 import type { Targets } from "./targets.ts";
 import { runDraft } from "./draft.ts";
-import { lineupOf } from "./lineup.ts";
 import { TUNABLE, getParam, setParam, type Params } from "./params.ts";
 import { createRng, hashSeed } from "./rng.ts";
 import { playSeason } from "./season.ts";
 import type { DraftProvider } from "./series.ts";
-import type { DraftResult, Side, Universe } from "./types.ts";
-import { POSITIONS } from "./types.ts";
+import type { DraftResult, Universe } from "./types.ts";
 
-// 드래프트는 경기 조절값과 무관하므로 (블루, 레드, 세트 번호)별로 미리 만들어 재사용한다.
-export function buildDraftPool(u: Universe, p: Params, seed: number, depth = 3): DraftProvider {
-  const pool = new Map<string, DraftResult[]>();
-  const teams = [...u.teams.keys()];
-  for (const blue of teams) {
-    for (const red of teams) {
-      if (blue === red) continue;
-      const lineups = { blue: lineupOf(u, blue), red: lineupOf(u, red) };
-      const rng = createRng(hashSeed(seed, blue, red));
-      const used = new Set<string>();
-      const seq: DraftResult[] = [];
-      for (let g = 0; g < depth; g++) {
-        const d = runDraft(u, lineups, p, rng.fork(g), { unavailable: used });
-        for (const side of ["blue", "red"] as Side[]) for (const pos of POSITIONS) used.add(d.picks[side][pos]);
-        seq.push(d);
-      }
-      pool.set(`${blue}|${red}`, seq);
+// 드래프트는 경기 조절값과 무관하므로 (블루, 레드, 실제 금지 목록)별로 한 번만 만들어 재사용한다.
+// 피어리스 금지 목록까지 키에 넣어야 진영이 바뀐 시리즈에서도 앞 세트 챔피언을 다시 고르지 않는다.
+// 금지 목록은 앞 세트들의 진영 순서로 정해지므로 경우의 수는 적다 (BO3 쌍당 7, BO5 31).
+export function buildDraftPool(u: Universe, p: Params, seed: number): DraftProvider {
+  const pool = new Map<string, DraftResult>();
+  return (_g, lineups, unavailable) => {
+    const key = `${lineups.blue.team.id}|${lineups.red.team.id}|${[...unavailable].sort().join(",")}`;
+    let d = pool.get(key);
+    if (!d) {
+      d = runDraft(u, lineups, p, createRng(hashSeed(seed, key)), { unavailable });
+      pool.set(key, d);
     }
-  }
-  return (g, lineups) => pool.get(`${lineups.blue.team.id}|${lineups.red.team.id}`)![Math.min(g, depth - 1)];
+    return d;
+  };
 }
 
 export interface Evaluation {

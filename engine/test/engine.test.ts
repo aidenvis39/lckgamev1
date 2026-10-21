@@ -3,11 +3,12 @@ import { test } from "node:test";
 import { loadParams, loadUniverse } from "../src/data.ts";
 import { applyChoice, currentTurn, newDraft, rankOptions, runDraft } from "../src/draft.ts";
 import { lineupOf, swapPlayers } from "../src/lineup.ts";
-import { simulateGame } from "../src/match.ts";
+import { deathTimer, simulateGame } from "../src/match.ts";
 import { createRng } from "../src/rng.ts";
+import { buildDraftPool } from "../src/tune.ts";
 import { playSeason } from "../src/season.ts";
 import { playSeries } from "../src/series.ts";
-import { POSITIONS, type Side } from "../src/types.ts";
+import { POSITIONS, type Position, type Side } from "../src/types.ts";
 import { leagueUniverse } from "../src/universe.ts";
 
 const world = loadUniverse();
@@ -47,6 +48,27 @@ test("피어리스: 이전 세트 챔피언은 다시 안 나온다", () => {
   }
 });
 
+// 시리즈 안에서 앞 세트에 나온 챔피언을 다시 고른 시리즈 수
+const fearlessRepeats = (series: Array<{ games: Array<{ draft: { picks: Record<Side, Record<Position, string>> } }> }>) =>
+  series.filter((s) => {
+    const seen = new Set<string>();
+    return s.games.some((g) => {
+      const picks = (["blue", "red"] as Side[]).flatMap((side) => POSITIONS.map((pos) => g.draft.picks[side][pos]));
+      const dup = picks.some((c) => seen.has(c));
+      picks.forEach((c) => seen.add(c));
+      return dup;
+    });
+  }).length;
+
+test("피어리스: 튜닝용 드래프트 캐시를 써도 진영이 바뀐 세트에서 이전 챔피언을 다시 안 고른다", () => {
+  const draft = buildDraftPool(u, p, 5);
+  for (let i = 0; i < 3; i++) assert.equal(fearlessRepeats(playSeason(u, p, createRng(i), { draft }).series), 0);
+  const bo5 = Array.from({ length: 30 }, (_, i) => playSeries(u, lineups.blue, lineups.red, p, createRng(100 + i), { bestOf: 5, draft }));
+  assert.equal(fearlessRepeats(bo5), 0);
+  // 캐시는 호출 순서와 무관: 새 캐시로 같은 시즌을 돌리면 같은 결과
+  assert.deepEqual(playSeason(u, p, createRng(9), { draft: buildDraftPool(u, p, 5) }).standings, playSeason(u, p, createRng(9), { draft }).standings);
+});
+
 test("시리즈 점수: BO3는 2승 먼저, 진 팀이 다음 세트 블루", () => {
   for (let seed = 0; seed < 30; seed++) {
     const s = playSeries(u, lineups.blue, lineups.red, p, createRng(seed), { bestOf: 3 });
@@ -69,6 +91,30 @@ test("경기 결과 값이 말이 되는 범위", () => {
     const k = (s: Side) => POSITIONS.reduce((n, pos) => n + r.lines[s][pos].kills, 0);
     assert.equal(k("blue"), r.kills.blue);
     assert.equal(k("red"), r.kills.red);
+  }
+});
+
+test("교전: 죽은 선수는 부활 전까지 다시 죽거나 킬을 내지 않고, 한 교전에서 한쪽 킬은 5 이하", () => {
+  const rng = createRng(11);
+  for (let i = 0; i < 300; i++) {
+    const kills: Array<{ t: number; side: Side; killer: Position; victim: Position }> = [];
+    const r = simulateGame(u, lineups, runDraft(u, lineups, p, rng.fork(`d${i}`)), p, rng.fork(`g${i}`), {
+      onKill: (t, side, killer, victim) => kills.push({ t, side, killer, victim }),
+    });
+    const deadUntil = new Map<string, number>();
+    for (const k of kills) {
+      const enemy = k.side === "blue" ? "red" : "blue";
+      assert.ok((deadUntil.get(`${k.side}|${k.killer}`) ?? -1) <= k.t, `${i}경기 ${k.t}분: 죽은 ${k.killer}가 킬`);
+      assert.ok((deadUntil.get(`${enemy}|${k.victim}`) ?? -1) <= k.t, `${i}경기 ${k.t}분: 죽은 ${k.victim}가 또 죽음`);
+      deadUntil.set(`${enemy}|${k.victim}`, k.t + deathTimer(k.t));
+    }
+    // 15분 이후 30초 구간마다 한쪽 킬 5 이하
+    for (const a of kills.filter((k) => k.t >= 15)) assert.ok(kills.filter((k) => k.side === a.side && k.t >= a.t && k.t < a.t + 0.5).length <= 5);
+    for (const s of ["blue", "red"] as Side[]) {
+      const enemy = s === "blue" ? "red" : "blue";
+      assert.equal(kills.filter((k) => k.side === s).length, r.kills[s]);
+      assert.equal(POSITIONS.reduce((n, pos) => n + r.lines[enemy][pos].deaths, 0), r.kills[s]);
+    }
   }
 });
 

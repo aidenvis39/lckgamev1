@@ -22,7 +22,7 @@ export interface SeriesResult {
   games: SeriesGame[];
 }
 
-// 튜너가 미리 만들어 둔 드래프트를 끼워 넣을 수 있게 분리
+// 튜너가 재사용하는 드래프트를 끼워 넣을 수 있게 분리. 제공 함수는 받은 금지 목록(unavailable)을 꼭 지켜야 한다
 export type DraftProvider = (
   gameIndex: number,
   lineups: Record<Side, Lineup>,

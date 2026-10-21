@@ -235,7 +235,7 @@ function calibrateWorld() {
 
 // 한 해 전체를 여러 번: 대회별 우승 팀·리그 분포
 function year(runs: number) {
-  const draft = buildDraftPool(world, params, seed, 5);
+  const draft = buildDraftPool(world, params, seed);
   const wins: Record<string, Map<string, number>> = { LCK: new Map(), MSI: new Map(), WORLDS: new Map() };
   const region = new Map<string, Map<string, number>>();
   const leagueOf = (t: string) => world.teams.get(t)!.league;
