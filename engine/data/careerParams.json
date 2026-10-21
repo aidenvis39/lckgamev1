@@ -71,7 +71,7 @@
   "extra": 1,
   "extraLeague": {
    "LCK": 0,
-   "LPL": 0
+   "LPL": 1.27
   }
  },
  "replacement": {
@@ -82,7 +82,7 @@
  },
  "retire": {
   "startAge": 26,
-  "perYear": 0.021,
+  "perYear": 0.031,
   "lowOvr": 70,
   "lowRate": 0.02,
   "oldAge": 30,
