@@ -71,12 +71,12 @@
   "extra": 1,
   "extraLeague": {
    "LCK": 0,
-   "LPL": 1.27
+   "LPL": 0
   }
  },
  "replacement": {
-  "gap": 6.868,
-  "gain": 1.5,
+  "gap": 5.271,
+  "gain": 2.686,
   "lo": -4,
   "hi": 6
  },

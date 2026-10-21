@@ -155,12 +155,14 @@ export function careerLoss(runs: RunMetrics[], target: AgeTarget[], cp: CareerPa
     na += t.n;
   }
   age /= Math.max(1, na);
+  // 상위 4팀 격차: 국제전(월즈)에서 가장 자주 맞붙는 LPL은 두 배로 센다
   let gaps = 0, ng = 0;
   for (const r of runs)
     for (let t = 1; t < r.topGaps.length; t++)
       for (const lg of Object.keys(r.topGaps[0])) {
-        gaps += ((r.topGaps[t][lg] - r.topGaps[0][lg]) / 1.5) ** 2;
-        ng++;
+        const wt = lg === "LPL" ? 2 : 1;
+        gaps += wt * ((r.topGaps[t][lg] - r.topGaps[0][lg]) / 1.5) ** 2;
+        ng += wt;
       }
   gaps /= Math.max(1, ng);
   // 나이 계수는 나이가 들수록 줄고, 노쇠는 늘어나야 한다 (어기면 벌점)
@@ -171,7 +173,7 @@ export function careerLoss(runs: RunMetrics[], target: AgeTarget[], cp: CareerPa
     shape += Math.max(0, knot(cp.decline.byAge, ages[i - 1]) - knot(cp.decline.byAge, ages[i]));
     shape += Math.max(0, knot(cp.potential.headroom, ages[i]) - knot(cp.potential.headroom, ages[i - 1])) * 0.2;
   }
-  const total = drift + 0.5 * spread + age + 0.5 * gaps + 0.1 * shape;
+  const total = drift + 0.5 * spread + age + gaps + 0.1 * shape;
   return { total, drift, spread, age, gaps, shape, ageRmse: Math.sqrt(age), lckMaxDrift: maxDrift };
 }
 
